@@ -47,5 +47,8 @@
     "prettier": "3.2.5",
     "ts-jest": "^29.1.2",
     "typescript": "^5.4.3"
+  },
+  "dependencies": {
+    "i18next": "^23.10.1"
   }
 }
