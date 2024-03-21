@@ -1,0 +1,4 @@
+testsite
+.github
+__tests__/__snapshots__
+coverage
