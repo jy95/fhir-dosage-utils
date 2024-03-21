@@ -1,4 +1,7 @@
 {
     "to": "to",
-    "upTo": "up to"
+    "upTo": "up to",
+    "atARateOf": "at a rate of",
+    "per": "per",
+    "every": "every"
 }
