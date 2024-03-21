@@ -1,10 +1,41 @@
 {
   "name": "fhir-dosage-to-text",
   "version": "0.0.0-development",
-  "description": "",
-  "main": "index.js",
+  "description": "Transform FHIR Dosage to human readable text",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/main.js",
+  "module": "dist/module.js",
+  "types": "dist/module.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/main.js",
+      "import": "./dist/module.js"
+    }
+  },
+  "targets": {
+    "main": {
+      "context": "node",
+      "source": "src/index.ts",
+      "optimize": true,
+      "outputFormat": "commonjs"
+    },
+    "module": {
+      "context": "node",
+      "source": "src/index.ts",
+      "optimize": true,
+      "outputFormat": "esmodule"
+    }
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "npx parcel watch",
+    "build": "npx parcel build",
+    "test": "npx jest",
+    "test:coverage": "npx jest --coverage",
+    "lint": "npx prettier --check .",
+    "lint-fix": "npx prettier --write .",
+    "prepare": "npm run build"
   },
   "author": "jy95",
   "license": "AGPL-3.0-or-later",
@@ -12,6 +43,8 @@
     "@types/fhir": "^0.0.41",
     "@types/jest": "^29.5.12",
     "jest": "^29.7.0",
+    "parcel": "^2.12.0",
+    "prettier": "3.2.5",
     "ts-jest": "^29.1.2",
     "typescript": "^5.4.3"
   }
