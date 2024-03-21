@@ -3,10 +3,10 @@
 // import the original type declarations
 import "i18next";
 // import all namespaces (for the default language, only)
-import UnitsOfTime from "../locales/en/UnitsOfTime.json";
-import DaysOfWeek from "../locales/en/DaysOfWeek.json";
-import EventTiming from "../locales/en/EventTiming.json";
-import Common from "../locales/en/common.json";
+import UnitsOfTime from "../src/locales/en/UnitsOfTime.json";
+import DaysOfWeek from "../src/locales/en/DaysOfWeek.json";
+import EventTiming from "../src/locales/en/EventTiming.json";
+import Common from "../src/locales/en/common.json";
 
 declare module "i18next" {
     // Extend CustomTypeOptions
