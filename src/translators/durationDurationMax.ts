@@ -19,18 +19,19 @@ export function transformDurationDurationMaxToText(
   if (unit === undefined) {
     return undefined;
   } else {
-    // concatenate duration and durationMax, if present
     return [
+      // duration
       duration !== undefined &&
         i18next.t("fields.duration", {
           durationText: i18next.t(`unitsOfTime.${unit}`, { count: duration }),
         }),
+      // durationMax
       max !== undefined &&
-        i18next.t("fields.duration", {
-          durationText: i18next.t(`unitsOfTime.${unit}`, { count: duration }),
+        i18next.t("fields.durationMax", {
+          durationText: i18next.t(`unitsOfTime.${unit}`, { count: max }),
         }),
     ]
-      .filter((s) => s !== undefined)
+      .filter((s) => s !== false)
       .join(" ");
   }
 }

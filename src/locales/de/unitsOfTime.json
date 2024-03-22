@@ -1,0 +1,16 @@
+{
+  "s_one": "{{count}} sekunde",
+  "s_other": "{{count}} sekunden",
+  "min_one": "{{count}} minute",
+  "min_other": "{{count}} minuten",
+  "h_one": "{{count}} stunde",
+  "h_other": "{{count}} stunden",
+  "d_one": "{{count}} tag",
+  "d_other": "{{count}} tage",
+  "wk_one": "{{count}} woche",
+  "wk_other": "{{count}} wochen",
+  "mo_one": "{{count}} monat",
+  "mo_other": "{{count}} monate",
+  "a_one": "{{count}} jahr",
+  "a_other": "{{count}} jahre"
+}
