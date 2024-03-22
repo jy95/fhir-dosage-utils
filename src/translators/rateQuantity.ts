@@ -19,8 +19,8 @@ export function transformRateQuantityToText(dos: Dosage): string | undefined {
     // TODO replace code by human text and with plural (001 => tablets) later
     let unit = rateQuantity.rateQuantity!.unit || "";
 
-    // linkwords
-    let atARateOf = i18next.t("common:atARateOf");
-
-    return `${atARateOf} ${value} ${unit}`;
+    return i18next.t("fields.rateQuantity", {
+        quantity: value,
+        unit: unit
+    });
 }

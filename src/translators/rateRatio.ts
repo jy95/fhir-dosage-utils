@@ -21,13 +21,14 @@ export function transformRateRatioToText(dos: Dosage): string | undefined {
     let quantityNum = numerator?.value || 1;
     let quantityDenom = denominator?.value || 1;
 
-    // linkwords
-    let atARateOf = i18next.t("common:atARateOf");
-    let joinWord = (quantityDenom === 1) ? i18next.t("common:per") : i18next.t("common:every");
-
     // TODO replace code by human text and with plural (001 => tablets) later
     let numeratorUnit = numerator?.unit || "";
     let denominatorUnit = denominator?.unit || "";
 
-    return `${atARateOf} ${quantityNum} ${numeratorUnit} ${joinWord} ${quantityDenom} ${denominatorUnit}`;
+    return i18next.t("fields.rateRatio.rateRatio", {
+        count: quantityDenom,
+        quantityNumerator: quantityNum,
+        numeratorUnit: numeratorUnit,
+        denominatorUnit: denominatorUnit
+    })
 }

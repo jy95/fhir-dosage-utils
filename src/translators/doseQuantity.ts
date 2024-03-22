@@ -1,3 +1,4 @@
+import i18next from 'i18next';
 import type { Dosage } from "fhir/r4";
 
 export function transformDoseQuantityToText(dos: Dosage): string | undefined {
@@ -17,5 +18,8 @@ export function transformDoseQuantityToText(dos: Dosage): string | undefined {
     // TODO replace code by human text and with plural (001 => tablets) later
     let unit = doseQuantity.doseQuantity!.unit || "";
 
-    return `${quantity} ${unit}`
+    return i18next.t("doseQuantity", {
+        quantity: quantity,
+        unit: unit
+    });
 }

@@ -1,7 +1,20 @@
 {
-    "to": "to",
-    "upTo": "up to",
-    "atARateOf": "at a rate of",
-    "per": "per",
-    "every": "every"
+    "fields": {
+        "doseQuantity": "{{quantity}} {{unit}}",
+        "doseRange": {
+            "lowAndHigh": "{{low}} to {{high}} {{unit}}",
+            "onlyHigh": "up to {{high}} {{unit}}",
+            "onlyLow": "{{low}} {{unit}}"
+        },
+        "rateQuantity": "at a rate of {{quantity}} {{unit}}",
+        "rateRange": {
+            "lowAndHigh": "at a rate of {{low}} to {{high}} {{unit}}",
+            "onlyHigh": "at a rate of {{high}} {{unit}}",
+            "onlyLow": "at a rate of {{low}} {{unit}}"
+        },
+        "rateRatio": {
+            "rateRatio_one": "at a rate of {{quantityNumerator}} {{numeratorUnit}} per {{denominatorUnit}}",
+            "rateRatio_other": "at a rate of {{quantityNumerator}} {{numeratorUnit}} every {{count}} {{denominatorUnit}}"
+        }
+    }
 }

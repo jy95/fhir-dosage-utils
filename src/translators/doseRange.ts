@@ -21,20 +21,25 @@ export function transformDoseRangeToText(dos: Dosage): string | undefined {
 
     // 1. Both low & high are present
     if (high !== undefined && low !== undefined) {
-        let linkWord = i18next.t("common:to");
         // TODO replace code by human text and with plural (001 => tablets) later
         let unit = doseRange.doseRange?.high?.unit || "";
 
-        return `${low} ${linkWord} ${high} ${unit}`;
+        return i18next.t("fields.doseRange.lowAndHigh", {
+            low: low,
+            high: high,
+            unit: unit
+        });
     }
 
     // 2. Only high is present
     if (high !== undefined) {
-        let linkWord = i18next.t("common:upTo");
         // TODO replace code by human text and with plural (001 => tablets) later
         let unit = doseRange.doseRange?.high?.unit || "";
 
-        return `${linkWord} ${high} ${unit}`;
+        return i18next.t("fields.doseRange.onlyHigh", {
+            high: high,
+            unit: unit
+        });
     }
 
     // 3. Only low is present
@@ -43,6 +48,9 @@ export function transformDoseRangeToText(dos: Dosage): string | undefined {
     // TODO replace code by human text and with plural (001 => tablets) later
     let lowUnit = doseRange.doseRange?.low?.unit || "";
 
-    return `${low} ${lowUnit}`
+    return i18next.t("fields.doseRange.onlyLow", {
+        low: low,
+        unit: lowUnit
+    });
 
 }
