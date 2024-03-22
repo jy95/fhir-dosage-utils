@@ -1,0 +1,9 @@
+{
+  "mon": "lundi",
+  "tue": "mardi",
+  "wed": "mercredi",
+  "thu": "jeudi",
+  "fri": "vendredi",
+  "sat": "samedi",
+  "sun": "dimanche"
+}
