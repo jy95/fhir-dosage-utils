@@ -15,6 +15,8 @@
         "rateRatio": {
             "rateRatio_one": "at a rate of {{quantityNumerator}} {{numeratorUnit}} per {{denominatorUnit}}",
             "rateRatio_other": "at a rate of {{quantityNumerator}} {{numeratorUnit}} every {{count}} {{denominatorUnit}}"
-        }
+        },
+        "duration": "over {{durationText}}",
+        "durationMax": "(maximum {{durationMaxText}})"
     }
 }
