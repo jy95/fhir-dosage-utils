@@ -7,9 +7,9 @@ import eventTiming from "./locales/en/eventTiming.json";
 export const defaultNS = "common";
 export const resources = {
   en: {
-    common,
-    unitsOfTime,
-    daysOfWeek,
-    eventTiming
+    common: common,
+    unitsOfTime: unitsOfTime,
+    daysOfWeek: daysOfWeek,
+    eventTiming: eventTiming,
   },
 } as const;
