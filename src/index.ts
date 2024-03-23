@@ -14,7 +14,8 @@ import {
   transformFrequencyFrequencyMaxToText,
   transformPeriodPeriodMaxToText,
   transformOffsetWhenToText,
-  transformDayOfWeekToText
+  transformDayOfWeekToText,
+  transformTimeOfDayToText,
 } from "./translators";
 
 // Types
@@ -150,6 +151,7 @@ export class FhirDosageUtils {
           case "dayOfWeek":
             return transformDayOfWeekToText(dos);
           case "timeOfDay":
+            return transformTimeOfDayToText(dos);
           case "route":
             return undefined;
           case "site":

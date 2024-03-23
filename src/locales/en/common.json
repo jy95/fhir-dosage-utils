@@ -43,6 +43,7 @@
     "dayOfWeek": {
       "dayOfWeek_one": "on {{dayOfWeek}}",
       "dayOfWeek_other": "on {{dayOfWeek}}"
-    }
+    },
+    "timeOfDay": "at {{timeOfDay}}"
   }
 }
