@@ -4,6 +4,7 @@ import resourcesToBackend from "i18next-resources-to-backend";
 
 // Functions
 import { defaultFromFHIRQuantityUnitToString } from "./utils/fromFHIRQuantityUnitToString";
+import { defaultFromCodeableConceptToString } from "./utils/fromCodeableConceptToString";
 import {
   transformDoseQuantityToText,
   transformDoseRangeToText,
@@ -32,6 +33,7 @@ export class FhirDosageUtils {
       // default attributes
       language: "en",
       fromFHIRQuantityUnitToString: defaultFromFHIRQuantityUnitToString,
+      fromCodeableConceptToString: defaultFromCodeableConceptToString,
       displayOrder: [
         "method",
         "doseQuantity",
@@ -120,7 +122,10 @@ export class FhirDosageUtils {
       .map((entry) => {
         switch (entry) {
           case "method":
-            return undefined;
+            return this.config.fromCodeableConceptToString({
+              language: this.config.language,
+              code: dos.method,
+            });
           case "doseQuantity":
             return transformDoseQuantityToText(dos);
           case "doseRange":
@@ -153,9 +158,15 @@ export class FhirDosageUtils {
           case "timeOfDay":
             return transformTimeOfDayToText(dos);
           case "route":
-            return undefined;
+            return this.config.fromCodeableConceptToString({
+              language: this.config.language,
+              code: dos.route,
+            });
           case "site":
-            return undefined;
+            return this.config.fromCodeableConceptToString({
+              language: this.config.language,
+              code: dos.site,
+            });
           case "asNeededCodeableConcept":
             return undefined;
           case "asNeeded":
@@ -168,6 +179,7 @@ export class FhirDosageUtils {
           case "maxDosePerLifetime":
           case "additionalInstruction":
           case "patientInstruction":
+            return dos.patientInstruction;
         }
       })
       .filter((s) => s !== undefined);

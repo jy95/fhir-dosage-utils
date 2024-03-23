@@ -1,7 +1,9 @@
 // Types
 import type { FromFHIRQuantityUnitToStringFct } from "./utils/fromFHIRQuantityUnitToString";
+import type { FromCodeableConceptToStringFct } from "./utils/fromCodeableConceptToString";
 
-export type { FromFHIRQuantityUnitToStringFct };
+export type { FromFHIRQuantityUnitToStringFct, FromCodeableConceptToStringFct };
+
 export type Language = "en" | "fr" | "nl" | "de";
 export type DisplayOrder =
   | "method"
@@ -43,6 +45,11 @@ export type Params = {
    * The choice to handle plural form or not is thus under the hands of people ;)
    */
   fromFHIRQuantityUnitToString?: FromFHIRQuantityUnitToStringFct;
+  /**
+   * Function to turn a codeable concept (e.g SNOMED CT "311504000") into a string for humans (e.g "With or after food")
+   * The choice to handle extension, local valueset, ... is thus under the hands of people ;)
+   */
+  fromCodeableConceptToString?: FromCodeableConceptToStringFct;
   /**
    * Control the display order used by the algorithm
    * Useful when you want to turn off some rules for some reason
