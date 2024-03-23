@@ -47,6 +47,11 @@
     "timeOfDay": "at {{timeOfDay}}",
     "asNeeded": "as required",
     "asNeededFor": "as required for {{reasons}}",
-    "boundsDuration": "for {{durationText}}"
+    "boundsDuration": "for {{durationText}}",
+    "boundsRange": {
+      "lowAndHigh": "for {{low}} to {{high}} {{unit}}",
+      "onlyHigh": "for up to {{high}} {{unit}}",
+      "onlyLow": "for at least {{low}} {{unit}}"
+    }
   }
 }
