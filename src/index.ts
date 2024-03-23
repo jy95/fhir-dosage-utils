@@ -12,6 +12,7 @@ import {
   transformRateRatioToText,
   transformDurationDurationMaxToText,
   transformFrequencyFrequencyMaxToText,
+  transformPeriodPeriodMaxToText,
 } from "./translators";
 
 // Types
@@ -134,11 +135,13 @@ export class FhirDosageUtils {
               // frequencyFrequencyMax
               transformFrequencyFrequencyMaxToText(dos),
               // periodPeriodMax
+              transformPeriodPeriodMaxToText(dos),
             ].filter((s) => s !== undefined);
             return subParts.length > 0 ? subParts.join(" ") : undefined;
           case "frequencyFrequencyMax":
             return transformFrequencyFrequencyMaxToText(dos);
           case "periodPeriodMax":
+            return transformPeriodPeriodMaxToText(dos);
           case "offsetWhen":
           case "dayOfWeek":
           case "timeOfDay":
