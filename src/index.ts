@@ -4,6 +4,15 @@ import resourcesToBackend from "i18next-resources-to-backend";
 
 // Functions
 import { defaultFromFHIRQuantityUnitToString } from "./utils/fromFHIRQuantityUnitToString";
+import {
+  transformDoseQuantityToText,
+  transformDoseRangeToText,
+  transformRateQuantityToText,
+  transformRateRangeToText,
+  transformRateRatioToText,
+  transformDurationDurationMaxToText,
+  transformFrequencyFrequencyMaxToText,
+} from "./translators";
 
 // Types
 import type { Dosage } from "fhir/r4";
@@ -35,8 +44,7 @@ export class FhirDosageUtils {
       "rateQuantity",
       "rateRange",
       "durationDurationMax",
-      "frequencyFrequencyMax",
-      "periodPeriodMax",
+      "frequencyFrequencyMaxPeriodPeriodMax",
       //"offsetWhen",
       //"dayOfWeek",
       //"timeOfDay",
@@ -102,6 +110,48 @@ export class FhirDosageUtils {
    * Turn a FHIR Dosage object into text
    */
   fromDosageToText(dos: Dosage): string {
-    
+    // iterate on each key and generate a string from each part
+    let parts = this.displayOrder
+      .map((entry) => {
+        switch (entry) {
+          case "method":
+          case "doseQuantity":
+            return transformDoseQuantityToText(dos);
+          case "doseRange":
+            return transformDoseRangeToText(dos);
+          case "rateRatio":
+            return transformRateRatioToText(dos);
+          case "rateQuantity":
+            return transformRateQuantityToText(dos);
+          case "rateRange":
+            return transformRateRangeToText(dos);
+          case "durationDurationMax":
+            return transformDurationDurationMaxToText(dos);
+          // Some people might like to have frequency and period separated, why better to give the choice
+          case "frequencyFrequencyMax":
+            return transformFrequencyFrequencyMaxToText(dos);
+          case "periodPeriodMax":
+          case "offsetWhen":
+          case "dayOfWeek":
+          case "timeOfDay":
+          case "route":
+          case "site":
+          case "asNeededCodeableConcept":
+          case "asNeeded":
+          case "boundsDuration":
+          case "boundsRange":
+          case "countCountMax":
+          case "event":
+          case "maxDosePerPeriod":
+          case "maxDosePerAdministration":
+          case "maxDosePerLifetime":
+          case "additionalInstruction":
+          case "patientInstruction":
+        }
+      })
+      .filter((s) => s !== undefined);
+
+    // Join each part with a "-" separator
+    return parts.join(" - ");
   }
 }

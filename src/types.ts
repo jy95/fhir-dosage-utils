@@ -13,6 +13,7 @@ export type DisplayOrder =
   | "durationDurationMax"
   | "frequencyFrequencyMax"
   | "periodPeriodMax"
+  | "frequencyFrequencyMaxPeriodPeriodMax"
   | "offsetWhen"
   | "dayOfWeek"
   | "timeOfDay"

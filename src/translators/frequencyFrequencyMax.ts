@@ -1,7 +1,7 @@
 import i18next from "i18next";
 import type { Dosage } from "fhir/r4";
 
-export function transformDurationDurationMaxToText(
+export function transformFrequencyFrequencyMaxToText(
   dos: Dosage,
 ): string | undefined {
   // If empty, return undefined

@@ -5,3 +5,5 @@ export { transformDoseRangeToText } from "./doseRange";
 export { transformRateQuantityToText } from "./rateQuantity";
 export { transformRateRangeToText } from "./rateRange";
 export { transformRateRatioToText } from "./rateRatio";
+export { transformDurationDurationMaxToText } from "./durationDurationMax";
+export { transformFrequencyFrequencyMaxToText } from "./frequencyFrequencyMax";
