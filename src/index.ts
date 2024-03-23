@@ -6,33 +6,54 @@ import resourcesToBackend from "i18next-resources-to-backend";
 import { defaultFromFHIRQuantityUnitToString } from "./utils/fromFHIRQuantityUnitToString";
 
 // Types
-import type { FromFHIRQuantityUnitToStringFct } from "./utils/fromFHIRQuantityUnitToString";
-
-export type Language = "en" | "fr" | "nl" | "de";
-
-type Params = {
-  /**
-   * To set up the language
-   * @default "en" (English)
-   */
-  language?: Language;
-  /**
-   * Function to turn a quantity unit (e.g UCUM "ml") into a string for humans (e.g "militier")
-   * The choice to handle plural form or not is thus under the hands of people ;)
-   */
-  fromFHIRQuantityUnitToString?: FromFHIRQuantityUnitToStringFct;
-};
+import type { Dosage } from "fhir/r4";
+import type {
+  Language,
+  Params,
+  FromFHIRQuantityUnitToStringFct,
+  DisplayOrder,
+} from "./types";
 
 export class FhirDosageUtils {
   // current language
   currentLng: Language;
   // resolver for quantity unit
   fromFHIRQuantityUnitToString: FromFHIRQuantityUnitToStringFct;
+  // display order
+  displayOrder: DisplayOrder[];
 
+  // Set up lib, according provided parameters
   constructor(args?: Params) {
     this.currentLng = args?.language || "en";
     this.fromFHIRQuantityUnitToString =
       args?.fromFHIRQuantityUnitToString || defaultFromFHIRQuantityUnitToString;
+    this.displayOrder = args?.displayOrder || [
+      "method",
+      "doseQuantity",
+      "doseRange",
+      "rateRatio",
+      "rateQuantity",
+      "rateRange",
+      "durationDurationMax",
+      "frequencyFrequencyMax",
+      "periodPeriodMax",
+      //"offsetWhen",
+      //"dayOfWeek",
+      //"timeOfDay",
+      //"route",
+      //"site",
+      //"asNeededCodeableConcept",
+      //"asNeeded",
+      //"boundsDuration",
+      //"boundsRange",
+      //"countCountMax",
+      //"event",
+      //"maxDosePerPeriod",
+      //"maxDosePerAdministration",
+      //"maxDosePerLifetime",
+      //"additionalInstruction",
+      //"patientInstruction",
+    ];
   }
 
   /**
@@ -68,5 +89,19 @@ export class FhirDosageUtils {
   async changeLanguage(lng: Language) {
     this.currentLng = lng;
     return i18next.changeLanguage(lng);
+  }
+
+  /**
+   * To change display order
+   */
+  changeDisplayOrder(order: DisplayOrder[]): void {
+    this.displayOrder = order;
+  }
+
+  /**
+   * Turn a FHIR Dosage object into text
+   */
+  fromDosageToText(dos: Dosage): string {
+    
   }
 }
