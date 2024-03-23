@@ -49,3 +49,6 @@ export type Params = {
    */
   displayOrder?: DisplayOrder[];
 };
+
+// Config requires all parameter to be set
+export type Config = Required<Params>;

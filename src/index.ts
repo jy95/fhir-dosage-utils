@@ -16,52 +16,47 @@ import {
 
 // Types
 import type { Dosage } from "fhir/r4";
-import type {
-  Language,
-  Params,
-  FromFHIRQuantityUnitToStringFct,
-  DisplayOrder,
-} from "./types";
+import type { Params, Config, Language, DisplayOrder } from "./types";
 
 export class FhirDosageUtils {
-  // current language
-  currentLng: Language;
-  // resolver for quantity unit
-  fromFHIRQuantityUnitToString: FromFHIRQuantityUnitToStringFct;
-  // display order
-  displayOrder: DisplayOrder[];
+  // Configuration (Immutability has its advantages ...)
+  config: Config;
 
   // Set up lib, according provided parameters
   constructor(args?: Params) {
-    this.currentLng = args?.language || "en";
-    this.fromFHIRQuantityUnitToString =
-      args?.fromFHIRQuantityUnitToString || defaultFromFHIRQuantityUnitToString;
-    this.displayOrder = args?.displayOrder || [
-      "method",
-      "doseQuantity",
-      "doseRange",
-      "rateRatio",
-      "rateQuantity",
-      "rateRange",
-      "durationDurationMax",
-      "frequencyFrequencyMaxPeriodPeriodMax",
-      //"offsetWhen",
-      //"dayOfWeek",
-      //"timeOfDay",
-      //"route",
-      //"site",
-      //"asNeededCodeableConcept",
-      //"asNeeded",
-      //"boundsDuration",
-      //"boundsRange",
-      //"countCountMax",
-      //"event",
-      //"maxDosePerPeriod",
-      //"maxDosePerAdministration",
-      //"maxDosePerLifetime",
-      //"additionalInstruction",
-      //"patientInstruction",
-    ];
+    this.config = {
+      // default attributes
+      language: "en",
+      fromFHIRQuantityUnitToString: defaultFromFHIRQuantityUnitToString,
+      displayOrder: [
+        "method",
+        "doseQuantity",
+        "doseRange",
+        "rateRatio",
+        "rateQuantity",
+        "rateRange",
+        "durationDurationMax",
+        "frequencyFrequencyMaxPeriodPeriodMax",
+        "offsetWhen",
+        "dayOfWeek",
+        "timeOfDay",
+        "route",
+        "site",
+        "asNeededCodeableConcept",
+        "asNeeded",
+        "boundsDuration",
+        "boundsRange",
+        "countCountMax",
+        "event",
+        "maxDosePerPeriod",
+        "maxDosePerAdministration",
+        "maxDosePerLifetime",
+        "additionalInstruction",
+        "patientInstruction",
+      ],
+      // attributes set by user
+      ...args,
+    };
   }
 
   /**
@@ -70,7 +65,7 @@ export class FhirDosageUtils {
   async init() {
     i18next.use(ChainedBackend).init({
       fallbackLng: "en",
-      lng: this.currentLng,
+      lng: this.config.language,
       defaultNS: "common",
       backend: {
         backends: [
@@ -95,7 +90,10 @@ export class FhirDosageUtils {
    * To change language
    */
   async changeLanguage(lng: Language) {
-    this.currentLng = lng;
+    this.config = {
+      ...this.config,
+      language: lng,
+    };
     return i18next.changeLanguage(lng);
   }
 
@@ -103,7 +101,10 @@ export class FhirDosageUtils {
    * To change display order
    */
   changeDisplayOrder(order: DisplayOrder[]): void {
-    this.displayOrder = order;
+    this.config = {
+      ...this.config,
+      displayOrder: order,
+    };
   }
 
   /**
@@ -111,7 +112,7 @@ export class FhirDosageUtils {
    */
   fromDosageToText(dos: Dosage): string {
     // iterate on each key and generate a string from each part
-    let parts = this.displayOrder
+    let parts = this.config.displayOrder
       .map((entry) => {
         switch (entry) {
           case "method":
@@ -128,6 +129,13 @@ export class FhirDosageUtils {
           case "durationDurationMax":
             return transformDurationDurationMaxToText(dos);
           // Some people might like to have frequency and period separated, why better to give the choice
+          case "frequencyFrequencyMaxPeriodPeriodMax":
+            let subParts = [
+              // frequencyFrequencyMax
+              transformFrequencyFrequencyMaxToText(dos),
+              // periodPeriodMax
+            ].filter((s) => s !== undefined);
+            return subParts.length > 0 ? subParts.join(" ") : undefined;
           case "frequencyFrequencyMax":
             return transformFrequencyFrequencyMaxToText(dos);
           case "periodPeriodMax":

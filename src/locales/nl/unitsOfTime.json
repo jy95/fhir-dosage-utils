@@ -1,16 +1,34 @@
 {
-  "s_one": "{{count}} seconde",
-  "s_other": "{{count}} seconden",
-  "min_one": "{{count}} minuut",
-  "min_other": "{{count}} minuten",
-  "h_one": "{{count}} uur",
-  "h_other": "{{count}} uren",
-  "d_one": "{{count}} dag",
-  "d_other": "{{count}} dagen",
-  "wk_one": "{{count}} week",
-  "wk_other": "{{count}} weken",
-  "mo_one": "{{count}} maand",
-  "mo_other": "{{count}} maanden",
-  "a_one": "{{count}} jaar",
-  "a_other": "{{count}} jaren"
+  "withCount": {
+    "s_one": "{{count}} seconde",
+    "s_other": "{{count}} seconden",
+    "min_one": "{{count}} minuut",
+    "min_other": "{{count}} minuten",
+    "h_one": "{{count}} uur",
+    "h_other": "{{count}} uren",
+    "d_one": "{{count}} dag",
+    "d_other": "{{count}} dagen",
+    "wk_one": "{{count}} week",
+    "wk_other": "{{count}} weken",
+    "mo_one": "{{count}} maand",
+    "mo_other": "{{count}} maanden",
+    "a_one": "{{count}} jaar",
+    "a_other": "{{count}} jaren"
+  },
+  "withoutCount": {
+    "s_one": "seconde",
+    "s_other": "seconden",
+    "min_one": "minuut",
+    "min_other": "minuten",
+    "h_one": "uur",
+    "h_other": "uren",
+    "d_one": "dag",
+    "d_other": "dagen",
+    "wk_one": "week",
+    "wk_other": "weken",
+    "mo_one": "maand",
+    "mo_other": "maanden",
+    "a_one": "jaar",
+    "a_other": "jaren"
+  }
 }
