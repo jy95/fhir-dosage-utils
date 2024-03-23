@@ -1,4 +1,7 @@
 {
+  "linkwords": {
+    "and": "and"
+  },
   "fields": {
     "doseQuantity": "{{quantity}} {{unit}}",
     "doseRange": {
@@ -36,6 +39,10 @@
       "withPeriod": "every {{period}} to {{count}} {{unit}}",
       "onlyPeriodMax_one": "every {{unit}}",
       "onlyPeriodMax_other": "every {{count}} {{unit}}"
+    },
+    "dayOfWeek": {
+      "dayOfWeek_one": "on {{dayOfWeek}}",
+      "dayOfWeek_other": "on {{dayOfWeek}}"
     }
   }
 }

@@ -13,6 +13,7 @@ import {
   transformDurationDurationMaxToText,
   transformFrequencyFrequencyMaxToText,
   transformPeriodPeriodMaxToText,
+  transformOffsetWhenToText
 } from "./translators";
 
 // Types
@@ -117,6 +118,7 @@ export class FhirDosageUtils {
       .map((entry) => {
         switch (entry) {
           case "method":
+            return undefined;
           case "doseQuantity":
             return transformDoseQuantityToText(dos);
           case "doseRange":
@@ -143,11 +145,15 @@ export class FhirDosageUtils {
           case "periodPeriodMax":
             return transformPeriodPeriodMaxToText(dos);
           case "offsetWhen":
+            return transformOffsetWhenToText(dos);
           case "dayOfWeek":
           case "timeOfDay":
           case "route":
+            return undefined;
           case "site":
+            return undefined;
           case "asNeededCodeableConcept":
+            return undefined;
           case "asNeeded":
           case "boundsDuration":
           case "boundsRange":

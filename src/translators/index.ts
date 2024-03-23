@@ -8,3 +8,4 @@ export { transformRateRatioToText } from "./rateRatio";
 export { transformDurationDurationMaxToText } from "./durationDurationMax";
 export { transformFrequencyFrequencyMaxToText } from "./frequencyFrequencyMax";
 export { transformPeriodPeriodMaxToText } from "./periodPeriodMax";
+export { transformOffsetWhenToText } from "./offsetWhen";
