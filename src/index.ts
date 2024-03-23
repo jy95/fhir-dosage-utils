@@ -17,6 +17,7 @@ import {
   transformOffsetWhenToText,
   transformDayOfWeekToText,
   transformTimeOfDayToText,
+  transformAsNeededToText,
 } from "./translators";
 
 // Types
@@ -48,7 +49,6 @@ export class FhirDosageUtils {
         "timeOfDay",
         "route",
         "site",
-        "asNeededCodeableConcept",
         "asNeeded",
         "boundsDuration",
         "boundsRange",
@@ -167,9 +167,8 @@ export class FhirDosageUtils {
               language: this.config.language,
               code: dos.site,
             });
-          case "asNeededCodeableConcept":
-            return undefined;
           case "asNeeded":
+            return transformAsNeededToText(dos, this.config);
           case "boundsDuration":
           case "boundsRange":
           case "countCountMax":

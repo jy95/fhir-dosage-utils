@@ -21,7 +21,6 @@ export type DisplayOrder =
   | "timeOfDay"
   | "route"
   | "site"
-  | "asNeededCodeableConcept"
   | "asNeeded"
   | "boundsDuration"
   | "boundsRange"

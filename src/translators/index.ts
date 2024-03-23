@@ -11,3 +11,4 @@ export { transformPeriodPeriodMaxToText } from "./periodPeriodMax";
 export { transformOffsetWhenToText } from "./offsetWhen";
 export { transformDayOfWeekToText } from "./dayOfWeek";
 export { transformTimeOfDayToText } from "./timeOfDay";
+export { transformAsNeededToText } from "./asNeeded";

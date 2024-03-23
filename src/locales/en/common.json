@@ -44,6 +44,8 @@
       "dayOfWeek_one": "on {{dayOfWeek}}",
       "dayOfWeek_other": "on {{dayOfWeek}}"
     },
-    "timeOfDay": "at {{timeOfDay}}"
+    "timeOfDay": "at {{timeOfDay}}",
+    "asNeeded": "as required",
+    "asNeededFor": "as required for {{reasons}}"
   }
 }
