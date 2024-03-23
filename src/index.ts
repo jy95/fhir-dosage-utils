@@ -127,11 +127,11 @@ export class FhirDosageUtils {
               code: dos.method,
             });
           case "doseQuantity":
-            return transformDoseQuantityToText(dos);
+            return transformDoseQuantityToText(dos, this.config);
           case "doseRange":
-            return transformDoseRangeToText(dos);
+            return transformDoseRangeToText(dos, this.config);
           case "rateRatio":
-            return transformRateRatioToText(dos);
+            return transformRateRatioToText(dos, this.config);
           case "rateQuantity":
             return transformRateQuantityToText(dos);
           case "rateRange":

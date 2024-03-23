@@ -1,7 +1,13 @@
 import i18next from "i18next";
-import type { Dosage } from "fhir/r4";
 
-export function transformRateRatioToText(dos: Dosage): string | undefined {
+// types
+import type { Dosage } from "fhir/r4";
+import type { Config } from "../types";
+
+export function transformRateRatioToText(
+  dos: Dosage,
+  config: Config,
+): string | undefined {
   // If empty, return undefined
   if (dos.doseAndRate === undefined) {
     return undefined;
@@ -21,9 +27,22 @@ export function transformRateRatioToText(dos: Dosage): string | undefined {
   let quantityNum = numerator?.value || 1;
   let quantityDenom = denominator?.value || 1;
 
-  // TODO replace code by human text and with plural (001 => tablets) later
-  let numeratorUnit = numerator?.unit || "";
-  let denominatorUnit = denominator?.unit || "";
+  // units as text
+  let numeratorUnit =
+    numerator !== undefined
+      ? config.fromFHIRQuantityUnitToString({
+          language: config.language,
+          quantity: numerator,
+        })
+      : "";
+
+  let denominatorUnit =
+    denominator !== undefined
+      ? config.fromFHIRQuantityUnitToString({
+          language: config.language,
+          quantity: denominator,
+        })
+      : "";
 
   return i18next.t("fields.rateRatio.rateRatio", {
     count: quantityDenom,

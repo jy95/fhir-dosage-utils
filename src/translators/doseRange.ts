@@ -1,7 +1,13 @@
 import i18next from "i18next";
-import type { Dosage } from "fhir/r4";
 
-export function transformDoseRangeToText(dos: Dosage): string | undefined {
+// types
+import type { Dosage } from "fhir/r4";
+import type { Config } from "../types";
+
+export function transformDoseRangeToText(
+  dos: Dosage,
+  config: Config,
+): string | undefined {
   // If empty, return undefined
   if (dos.doseAndRate === undefined) {
     return undefined;
@@ -17,13 +23,21 @@ export function transformDoseRangeToText(dos: Dosage): string | undefined {
   let low = doseRange.doseRange!.low?.value;
   let high = doseRange.doseRange!.high?.value;
 
+  let quantityUnit =
+    doseRange.doseRange!.high !== undefined
+      ? doseRange.doseRange!.high
+      : doseRange.doseRange!.low!;
+
+  // quantity unit
+  let unit = config.fromFHIRQuantityUnitToString({
+    language: config.language,
+    quantity: quantityUnit,
+  });
+
   // Three cases
 
   // 1. Both low & high are present
   if (high !== undefined && low !== undefined) {
-    // TODO replace code by human text and with plural (001 => tablets) later
-    let unit = doseRange.doseRange?.high?.unit || "";
-
     return i18next.t("fields.doseRange.lowAndHigh", {
       low: low,
       high: high,
@@ -33,9 +47,6 @@ export function transformDoseRangeToText(dos: Dosage): string | undefined {
 
   // 2. Only high is present
   if (high !== undefined) {
-    // TODO replace code by human text and with plural (001 => tablets) later
-    let unit = doseRange.doseRange?.high?.unit || "";
-
     return i18next.t("fields.doseRange.onlyHigh", {
       high: high,
       unit: unit,
@@ -45,11 +56,8 @@ export function transformDoseRangeToText(dos: Dosage): string | undefined {
   // 3. Only low is present
   // Warning, this case is kind dangerous and clinically unsafe so minimal effort on this ...
 
-  // TODO replace code by human text and with plural (001 => tablets) later
-  let lowUnit = doseRange.doseRange?.low?.unit || "";
-
   return i18next.t("fields.doseRange.onlyLow", {
     low: low,
-    unit: lowUnit,
+    unit: unit,
   });
 }
