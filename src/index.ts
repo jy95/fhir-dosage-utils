@@ -18,6 +18,7 @@ import {
   transformDayOfWeekToText,
   transformTimeOfDayToText,
   transformAsNeededToText,
+  transformBoundsDurationToText,
 } from "./translators";
 
 // Types
@@ -171,6 +172,7 @@ export class FhirDosageUtils {
           case "asNeeded":
             return transformAsNeededToText(dos, this.config);
           case "boundsDuration":
+            return transformBoundsDurationToText(dos, this.config);
           case "boundsRange":
           case "countCountMax":
           case "event":
