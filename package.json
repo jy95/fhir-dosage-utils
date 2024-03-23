@@ -49,6 +49,8 @@
     "typescript": "^5.4.3"
   },
   "dependencies": {
-    "i18next": "^23.10.1"
+    "i18next": "^23.10.1",
+    "i18next-chained-backend": "^4.6.2",
+    "i18next-resources-to-backend": "^1.2.0"
   }
 }
