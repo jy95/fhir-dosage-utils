@@ -1,7 +1,13 @@
 import i18next from "i18next";
-import type { Dosage } from "fhir/r4";
 
-export function transformRateRangeToText(dos: Dosage): string | undefined {
+// types
+import type { Dosage } from "fhir/r4";
+import type { Config } from "../types";
+
+export function transformRateRangeToText(
+  dos: Dosage,
+  config: Config,
+): string | undefined {
   // If empty, return undefined
   if (dos.doseAndRate === undefined) {
     return undefined;
@@ -21,13 +27,16 @@ export function transformRateRangeToText(dos: Dosage): string | undefined {
   let quantityLow = low?.value;
   let quantityHigh = high?.value;
 
+  // quantity unit
+  let unit = config.fromFHIRQuantityUnitToString({
+    language: config.language,
+    quantity: high || low!,
+  });
+
   // Three cases
 
   // 1. Both low & high are present
   if (quantityHigh !== undefined && quantityLow !== undefined) {
-    // TODO replace code by human text and with plural (001 => tablets) later
-    let unit = high?.unit || "";
-
     return i18next.t("fields.rateRange.lowAndHigh", {
       low: quantityLow,
       high: quantityHigh,
@@ -37,9 +46,6 @@ export function transformRateRangeToText(dos: Dosage): string | undefined {
 
   // 2. Only high is present
   if (quantityHigh !== undefined) {
-    // TODO replace code by human text and with plural (001 => tablets) later
-    let unit = high?.unit || "";
-
     return i18next.t("fields.rateRange.onlyHigh", {
       high: quantityHigh,
       unit: unit,
@@ -49,11 +55,8 @@ export function transformRateRangeToText(dos: Dosage): string | undefined {
   // 3. Only low is present
   // Warning, this case is kind dangerous and clinically unsafe so minimal effort on this ...
 
-  // TODO replace code by human text and with plural (001 => tablets) later
-  let lowUnit = low?.unit || "";
-
   return i18next.t("fields.rateRange.onlyLow", {
     low: quantityLow,
-    unit: lowUnit,
+    unit: unit,
   });
 }

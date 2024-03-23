@@ -134,9 +134,9 @@ export class FhirDosageUtils {
           case "rateRatio":
             return transformRateRatioToText(dos, this.config);
           case "rateQuantity":
-            return transformRateQuantityToText(dos);
+            return transformRateQuantityToText(dos, this.config);
           case "rateRange":
-            return transformRateRangeToText(dos);
+            return transformRateRangeToText(dos, this.config);
           case "durationDurationMax":
             return transformDurationDurationMaxToText(dos);
           // Some people might like to have frequency and period separated, why better to give the choice
@@ -184,7 +184,7 @@ export class FhirDosageUtils {
       })
       .filter((s) => s !== undefined);
 
-    // Join each part with a "-" separator
+    // Join each part with a separator
     return parts.join(this.config.displaySeparator);
   }
 }

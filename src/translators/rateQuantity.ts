@@ -1,7 +1,13 @@
 import i18next from "i18next";
-import type { Dosage } from "fhir/r4";
 
-export function transformRateQuantityToText(dos: Dosage): string | undefined {
+// types
+import type { Dosage } from "fhir/r4";
+import type { Config } from "../types";
+
+export function transformRateQuantityToText(
+  dos: Dosage,
+  config: Config,
+): string | undefined {
   // If empty, return undefined
   if (dos.doseAndRate === undefined) {
     return undefined;
@@ -16,8 +22,12 @@ export function transformRateQuantityToText(dos: Dosage): string | undefined {
 
   // information from rate
   let value = rateQuantity.rateQuantity!.value || 1;
-  // TODO replace code by human text and with plural (001 => tablets) later
-  let unit = rateQuantity.rateQuantity!.unit || "";
+
+  // quantity unit
+  let unit = config.fromFHIRQuantityUnitToString({
+    language: config.language,
+    quantity: rateQuantity.rateQuantity!,
+  });
 
   return i18next.t("fields.rateQuantity", {
     quantity: value,
