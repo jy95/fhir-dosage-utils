@@ -54,6 +54,11 @@ export type Params = {
    * Useful when you want to turn off some rules for some reason
    */
   displayOrder?: DisplayOrder[];
+  /**
+   * Override separator between each part of "Dosage"
+   * @default " - "
+   */
+  displaySeparator?: string;
 };
 
 // Config requires all parameter to be set

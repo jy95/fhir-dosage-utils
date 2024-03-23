@@ -60,6 +60,7 @@ export class FhirDosageUtils {
         "additionalInstruction",
         "patientInstruction",
       ],
+      displaySeparator: " - ",
       // attributes set by user
       ...args,
     };
@@ -184,6 +185,6 @@ export class FhirDosageUtils {
       .filter((s) => s !== undefined);
 
     // Join each part with a "-" separator
-    return parts.join(" - ");
+    return parts.join(this.config.displaySeparator);
   }
 }
