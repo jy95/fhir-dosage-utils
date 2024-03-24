@@ -27,5 +27,5 @@ export function transformAdditionalInstructionToText(
     )
     .filter((s) => s !== undefined);
 
-  return fromListToString(additionalInstructions);
+  return fromListToString(additionalInstructions as string[]);
 }

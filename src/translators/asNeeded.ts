@@ -22,7 +22,7 @@ function fromCodeableConceptArrayToString(
     )
     .filter((s) => s !== undefined);
 
-  return fromListToString(codesAsString);
+  return fromListToString(codesAsString as string[]);
 }
 
 export function transformAsNeededToText(
