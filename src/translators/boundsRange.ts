@@ -14,7 +14,7 @@ function transformQuantityUnitToString(
   // If common units from HL7, do the job
   if (quantity.system === "http://hl7.org/fhir/ValueSet/duration-units") {
     let code = quantity.code! as "s" | "min" | "h" | "d" | "wk" | "mo" | "a";
-    return i18next.t(`unitsOfTime.withoutCount.${code}`, {
+    return i18next.t(`unitsOfTime:withoutCount.${code}`, {
       count: quantityValue,
     });
   } else {

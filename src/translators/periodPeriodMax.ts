@@ -26,7 +26,7 @@ export function transformPeriodPeriodMaxToText(
       return i18next.t("fields.periodMax.withPeriod", {
         period: period,
         count: max,
-        unit: i18next.t(`unitsOfTime.withoutCount.${unit}`, { count: max }),
+        unit: i18next.t(`unitsOfTime:withoutCount.${unit}`, { count: max }),
       });
     }
 
@@ -34,14 +34,14 @@ export function transformPeriodPeriodMaxToText(
     if (max !== undefined) {
       return i18next.t("fields.periodMax.onlyPeriodMax", {
         count: max,
-        unit: i18next.t(`unitsOfTime.withoutCount.${unit}`, { count: max }),
+        unit: i18next.t(`unitsOfTime:withoutCount.${unit}`, { count: max }),
       });
     }
 
     // 3. Only period present
     return i18next.t("fields.period.period", {
       count: period,
-      unit: i18next.t(`unitsOfTime.withoutCount.${unit}`, { count: period }),
+      unit: i18next.t(`unitsOfTime:withoutCount.${unit}`, { count: period }),
     });
   }
 }

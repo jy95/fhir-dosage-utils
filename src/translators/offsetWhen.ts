@@ -28,14 +28,14 @@ function transformOffset(offset?: number): string | undefined {
   let subParts = [
     // days
     time.days > 0
-      ? i18next.t("unitsOfTime.withCount.d", { count: time.days })
+      ? i18next.t("unitsOfTime:withCount.d", { count: time.days })
       : undefined,
     // hours
     time.hours > 0
-      ? i18next.t("unitsOfTime.withCount.h", { count: time.hours })
+      ? i18next.t("unitsOfTime:withCount.h", { count: time.hours })
       : undefined,
     // minutes
-    i18next.t("unitsOfTime.withCount.min", { count: time.minutes }),
+    i18next.t("unitsOfTime:withCount.min", { count: time.minutes }),
   ].filter((s) => s !== undefined);
 
   return subParts.join(" ");
@@ -49,7 +49,7 @@ function transformWhen(when?: string[]): string | undefined {
   }
 
   // Turn it into a string
-  const whens = when.map((whenCode) => i18next.t(`eventTiming.${whenCode}`));
+  const whens = when.map((whenCode) => i18next.t(`eventTiming:${whenCode}`));
   const finalString = fromListToString(whens);
 
   return finalString;

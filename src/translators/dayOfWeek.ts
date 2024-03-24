@@ -23,7 +23,7 @@ export function transformDayOfWeekToText(dos: Dosage): string | undefined {
   } else {
     // Turn it into a string
     const dayOfWeeks = dayOfWeek.map((dayCode) =>
-      i18next.t(`daysOfWeek.${dayCode}`),
+      i18next.t(`daysOfWeek:${dayCode}`),
     );
     const dayOfWeeksAsString = fromListToString(dayOfWeeks);
 

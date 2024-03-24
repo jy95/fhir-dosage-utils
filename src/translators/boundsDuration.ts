@@ -11,7 +11,7 @@ function transformDurationToString(duration: Duration, config: Config): string {
   // If common units from HL7, do the job
   if (duration.system === "http://hl7.org/fhir/ValueSet/duration-units") {
     let code = duration.code! as "s" | "min" | "h" | "d" | "wk" | "mo" | "a";
-    return i18next.t(`unitsOfTime.withCount.${code}`, { count: quantity });
+    return i18next.t(`unitsOfTime:withCount.${code}`, { count: quantity });
   } else {
     // otherwise, it is UCUM, ... so let the user do the job
     let unit = config.fromFHIRQuantityUnitToString({
