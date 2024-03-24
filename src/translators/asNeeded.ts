@@ -58,7 +58,10 @@ export function transformAsNeededToText(
 
   if (codeableList.length > 0) {
     return i18next.t("fields.asNeededFor", {
-      reasons: fromCodeableConceptArrayToString(codeableList, config),
+      reasons: fromCodeableConceptArrayToString(
+        codeableList as CodeableConcept[],
+        config,
+      ),
     });
   } else {
     // merge boolean to make it simpler

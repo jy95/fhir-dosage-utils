@@ -34,7 +34,7 @@ export type DisplayOrder =
   | "patientInstruction";
 
 // Parameters
-export type Params = {
+export interface Params {
   /**
    * To set up the language
    * @default "en" (English)
@@ -60,7 +60,7 @@ export type Params = {
    * @default " - "
    */
   displaySeparator?: string;
-};
+}
 
 // Config requires all parameter to be set
 export type Config = Required<Params>;
