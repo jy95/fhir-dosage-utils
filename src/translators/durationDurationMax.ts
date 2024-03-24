@@ -30,7 +30,7 @@ export function transformDurationDurationMaxToText(
       // durationMax
       max !== undefined &&
         i18next.t("fields.durationMax", {
-          durationText: i18next.t(`unitsOfTime:withCount.${unit}`, {
+          durationMaxText: i18next.t(`unitsOfTime:withCount.${unit}`, {
             count: max,
           }),
         }),
