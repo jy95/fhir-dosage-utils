@@ -17,7 +17,7 @@ describe("fromDosageToText - asNeeded", () => {
 
   test("No asNeeded ", () => {
     const dosage: DosageR4 = {
-      text: "no additional instruction",
+      text: "no asNeeded",
     };
 
     let result = dosageUtils.fromDosageToText(dosage);
