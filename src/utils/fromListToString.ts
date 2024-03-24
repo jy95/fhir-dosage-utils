@@ -7,7 +7,7 @@ export function fromListToString(arr: string[]): string {
   const lastString = arr.slice(-1).join("");
 
   // concatenate the result
-  const linkWord = arr.length > 1 ? i18next.t("linkwords.and") : "";
+  const linkWord = arr.length > 1 ? ` ${i18next.t("linkwords.and")} ` : "";
   const finalString = firstString + linkWord + lastString;
   return finalString;
 }
