@@ -1,4 +1,9 @@
 import i18next from "i18next";
+
+// Functions
+import { fromListToString } from "../utils/fromListToString";
+
+// Types
 import type { Dosage } from "fhir/r4";
 
 /**
@@ -34,19 +39,12 @@ export function transformTimeOfDayToText(dos: Dosage): string | undefined {
   if (timeOfDay === undefined || timeOfDay.length === 0) {
     return undefined;
   } else {
-    // Split the array into two parts: all entries except the last one, and the last
-    const firstPart = timeOfDay.slice(0, -1);
-    const lastPart = timeOfDay.slice(-1);
-
-    const firstString = firstPart.map(formatString).join(", ");
-    const lastString = lastPart.map(formatString).join("");
-
-    // concatenate the result
-    const linkWord = timeOfDay.length > 1 ? i18next.t("linkwords.and") : "";
-    const finalString = firstString + linkWord + lastString;
+    // Turn it into a string
+    const timeOfDays = timeOfDay.map(formatString);
+    const timeOfDaysAsString = fromListToString(timeOfDays);
 
     return i18next.t("fields.timeOfDay", {
-      timeOfDay: finalString,
+      timeOfDay: timeOfDaysAsString,
     });
   }
 }

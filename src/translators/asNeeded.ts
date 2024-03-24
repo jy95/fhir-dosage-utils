@@ -1,5 +1,8 @@
 import i18next from "i18next";
 
+// Function
+import { fromListToString } from "../utils/fromListToString";
+
 // types
 import type { Dosage as DosageR4, CodeableConcept } from "fhir/r4";
 import type { Dosage as DosageR5 } from "fhir/r5";
@@ -10,35 +13,16 @@ function fromCodeableConceptArrayToString(
   codes: CodeableConcept[],
   config: Config,
 ): string | undefined {
-  // Split the array into two parts: all entries except the last one, and the last
-  const firstPart = codes.slice(0, -1);
-  const lastPart = codes.slice(-1);
-
-  const firstString = firstPart
+  const codesAsString = codes
     .map((code) =>
       config.fromCodeableConceptToString({
         code: code,
         language: config.language,
       }),
     )
-    .filter((s) => s !== undefined)
-    .join(", ");
+    .filter((s) => s !== undefined);
 
-  const lastString = lastPart
-    .map((code) =>
-      config.fromCodeableConceptToString({
-        code: code,
-        language: config.language,
-      }),
-    )
-    .filter((s) => s !== undefined)
-    .join("");
-
-  // concatenate the result
-  const linkWord = codes.length > 1 ? i18next.t("linkwords.and") : "";
-  const finalString = firstString + linkWord + lastString;
-
-  return finalString;
+  return fromListToString(codesAsString);
 }
 
 export function transformAsNeededToText(

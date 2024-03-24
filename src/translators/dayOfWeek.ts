@@ -1,4 +1,9 @@
 import i18next from "i18next";
+
+// Function
+import { fromListToString } from "../utils/fromListToString";
+
+// Types
 import type { Dosage } from "fhir/r4";
 
 // Function to transform dayOfWeek into a string
@@ -16,25 +21,15 @@ export function transformDayOfWeekToText(dos: Dosage): string | undefined {
   if (dayOfWeek === undefined || dayOfWeek.length === 0) {
     return undefined;
   } else {
-    // Split the array into two parts: all entries except the last one, and the last
-    const firstPart = dayOfWeek.slice(0, -1);
-    const lastPart = dayOfWeek.slice(-1);
-
-    const firstString = firstPart
-      .map((dayCode) => i18next.t(`daysOfWeek.${dayCode}`))
-      .join(", ");
-
-    const lastString = lastPart
-      .map((dayCode) => i18next.t(`daysOfWeek.${dayCode}`))
-      .join("");
-
-    // concatenate the result
-    const linkWord = dayOfWeek.length > 1 ? i18next.t("linkwords.and") : "";
-    const finalString = firstString + linkWord + lastString;
+    // Turn it into a string
+    const dayOfWeeks = dayOfWeek.map((dayCode) =>
+      i18next.t(`daysOfWeek.${dayCode}`),
+    );
+    const dayOfWeeksAsString = fromListToString(dayOfWeeks);
 
     return i18next.t("fields.dayOfWeek.dayOfWeek", {
       count: dayOfWeek.length,
-      dayOfWeek: finalString,
+      dayOfWeek: dayOfWeeksAsString,
     });
   }
 }

@@ -15,3 +15,4 @@ export { transformAsNeededToText } from "./asNeeded";
 export { transformBoundsDurationToText } from "./boundsDuration";
 export { transformBoundsRangeToText } from "./boundsRange";
 export { transformCountCountMaxToText } from "./countCountMax";
+export { transformEventToText } from "./event";

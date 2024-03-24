@@ -21,6 +21,7 @@ import {
   transformBoundsDurationToText,
   transformBoundsRangeToText,
   transformCountCountMaxToText,
+  transformEventToText,
 } from "./translators";
 
 // Types
@@ -65,6 +66,7 @@ export class FhirDosageUtils {
         "patientInstruction",
       ],
       displaySeparator: " - ",
+      dateTimeFormatOptions: {},
       // attributes set by user
       ...args,
     };
@@ -182,6 +184,7 @@ export class FhirDosageUtils {
           case "countCountMax":
             return transformCountCountMaxToText(dos);
           case "event":
+            return transformEventToText(dos, this.config);
           case "code":
             return this.config.fromCodeableConceptToString({
               language: this.config.language,

@@ -1,4 +1,9 @@
 import i18next from "i18next";
+
+// Functions
+import { fromListToString } from "../utils/fromListToString";
+
+// Types
 import type { Dosage } from "fhir/r4";
 
 // Function to extract times
@@ -43,21 +48,9 @@ function transformWhen(when?: string[]): string | undefined {
     return undefined;
   }
 
-  // Split the array into two parts: all entries except the last one, and the last
-  const firstPart = when.slice(0, -1);
-  const lastPart = when.slice(-1);
-
-  const firstString = firstPart
-    .map((whenCode) => i18next.t(`eventTiming.${whenCode}`))
-    .join(", ");
-
-  const lastString = lastPart
-    .map((whenCode) => i18next.t(`eventTiming.${whenCode}`))
-    .join("");
-
-  // concatenate the result
-  const linkWord = when.length > 1 ? i18next.t("linkwords.and") : "";
-  const finalString = firstString + linkWord + lastString;
+  // Turn it into a string
+  const whens = when.map((whenCode) => i18next.t(`eventTiming.${whenCode}`));
+  const finalString = fromListToString(whens);
 
   return finalString;
 }

@@ -60,6 +60,10 @@
     "countMax": {
       "countMax_one": "take {{low}} to {{count}} time",
       "countMax_other": "take {{low}} to {{count}} times"
+    },
+    "event": {
+      "event_one": "on {{event}}",
+      "event_other": "on {{event}}"
     }
   }
 }

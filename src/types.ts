@@ -60,6 +60,12 @@ export interface Params {
    * @default " - "
    */
   displaySeparator?: string;
+  /**
+   * To control the formatting of dateTime objects.
+   * If not provided, will use the defaults according locale e.g. "20/01/2024"
+   * @default {}
+   */
+  dateTimeFormatOptions?: Intl.DateTimeFormatOptions;
 }
 
 // Config requires all parameter to be set
