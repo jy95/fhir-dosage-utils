@@ -56,6 +56,7 @@ export class FhirDosageUtils {
         "boundsRange",
         "countCountMax",
         "event",
+        "code",
         "maxDosePerPeriod",
         "maxDosePerAdministration",
         "maxDosePerLifetime",
@@ -72,7 +73,7 @@ export class FhirDosageUtils {
    * To init i18next properly according requested criteria
    */
   async init() {
-    i18next.use(ChainedBackend).init({
+    await i18next.use(ChainedBackend).init({
       fallbackLng: "en",
       lng: this.config.language,
       defaultNS: "common",
@@ -176,8 +177,14 @@ export class FhirDosageUtils {
             return transformBoundsDurationToText(dos, this.config);
           case "boundsRange":
             return transformBoundsRangeToText(dos, this.config);
+          // TODO "boundsPeriod" later ?
           case "countCountMax":
           case "event":
+          case "code":
+            return this.config.fromCodeableConceptToString({
+              language: this.config.language,
+              code: dos.timing?.code,
+            });
           case "maxDosePerPeriod":
           case "maxDosePerAdministration":
           case "maxDosePerLifetime":

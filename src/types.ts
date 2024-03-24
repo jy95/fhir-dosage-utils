@@ -26,6 +26,7 @@ export type DisplayOrder =
   | "boundsRange"
   | "countCountMax"
   | "event"
+  | "code"
   | "maxDosePerPeriod"
   | "maxDosePerAdministration"
   | "maxDosePerLifetime"
