@@ -40,14 +40,12 @@ describe("fromDosageToText - boundsDuration", () => {
     expect(result).toBe("for 3 days");
   });
 
-  test("with other ValueSet (for example SNOMED CT)", () => {
+  test("with other ValueSet", () => {
     const dosage: Dosage = {
       timing: {
         repeat: {
           boundsDuration: {
-            system: "http://snomed.info/sct",
             value: 3,
-            code: "258703001",
             unit: "days",
           },
         },

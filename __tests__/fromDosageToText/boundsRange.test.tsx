@@ -72,9 +72,7 @@ describe("fromDosageToText - boundsRange", () => {
         repeat: {
           boundsRange: {
             low: {
-              system: "http://snomed.info/sct",
               value: 5,
-              code: "258703001",
               unit: "days",
             },
           },
