@@ -1,0 +1,29 @@
+name: Lint
+on: [push]
+jobs:
+  lint:
+    name: Ensure our linting standards
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      actions: write
+      contents: write
+    steps:
+      - name: 🛎️ Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: 🔨 Setup Node.js
+        uses: actions/setup-node@v4.0.2
+        with:
+          node-version: "lts/*"
+      - name: 🚧 Install dependencies
+        run: npm ci
+      - name: 🛂 Enforce linting
+        run: npm run lint-fix
+      - uses: EndBug/add-and-commit@v9.1.4
+        if: ${{ github.ref == 'ref/heads/main' }}
+        with:
+          author_name: "Prettier Bot"
+          author_email: "actions@github.com"
+          message: "chore: Use prettier to lint files [skip ci]"
