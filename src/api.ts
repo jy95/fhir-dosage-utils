@@ -79,14 +79,17 @@ export class FhirDosageUtils {
    * To init i18next properly according requested criteria
    */
   async init() {
-    await i18next.use(ChainedBackend).init({
+    return await i18next.use(ChainedBackend).init({
+      //debug: true,
       fallbackLng: "en",
       lng: this.config.language,
+      ns: ["common", "daysOfWeek", "eventTiming", "unitsOfTime"],
       defaultNS: "common",
       backend: {
         backends: [
           resourcesToBackend(
-            async (lng: string, ns: string) => import(`./locales/${lng}/${ns}.json`),
+            async (lng: string, ns: string) =>
+              import(`./locales/${lng}/${ns}.json`),
           ),
         ],
       },
