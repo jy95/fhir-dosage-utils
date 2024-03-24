@@ -64,6 +64,8 @@
     "event": {
       "event_one": "on {{event}}",
       "event_other": "on {{event}}"
-    }
+    },
+    "maxDosePerLifetime": "up to a maximum of {{count}} {{unit}} for the lifetime of patient",
+    "maxDosePerAdministration": "up to a maximum of {{count}} {{unit}} per dose"
   }
 }

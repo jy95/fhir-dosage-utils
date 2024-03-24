@@ -23,6 +23,8 @@ import {
   transformCountCountMaxToText,
   transformEventToText,
   transformAdditionalInstructionToText,
+  transformMaxDosePerLifetimeToText,
+  transformMaxDosePerAdministrationToText,
 } from "./translators";
 
 // Types
@@ -193,7 +195,9 @@ export class FhirDosageUtils {
             });
           case "maxDosePerPeriod":
           case "maxDosePerAdministration":
+            return transformMaxDosePerAdministrationToText(dos, this.config);
           case "maxDosePerLifetime":
+            return transformMaxDosePerLifetimeToText(dos, this.config);
           case "additionalInstruction":
             return transformAdditionalInstructionToText(dos, this.config);
           case "patientInstruction":

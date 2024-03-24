@@ -17,3 +17,5 @@ export { transformBoundsRangeToText } from "./boundsRange";
 export { transformCountCountMaxToText } from "./countCountMax";
 export { transformEventToText } from "./event";
 export { transformAdditionalInstructionToText } from "./additionalInstruction";
+export { transformMaxDosePerLifetimeToText } from "./maxDosePerLifetime";
+export { transformMaxDosePerAdministrationToText } from "./maxDosePerAdministration";

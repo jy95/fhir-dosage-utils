@@ -1,5 +1,3 @@
-import i18next from "i18next";
-
 // Function
 import { fromListToString } from "../utils/fromListToString";
 
