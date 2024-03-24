@@ -2,6 +2,18 @@
 import { expect, test, describe } from "@jest/globals";
 import FhirDosageUtils from "../../src/index";
 
+// For the WHY, consult this
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/format#avoid_comparing_formatted_date_values_to_static_values
+function decodeHtmlEntities(text: string): string {
+  return text
+    .replace(/&#(\d+);/g, function (match, dec) {
+      return String.fromCharCode(dec);
+    })
+    .replace(/&#x([0-9A-Fa-f]+);/g, function (match, hex) {
+      return String.fromCharCode(parseInt(hex, 16));
+    });
+}
+
 // types
 import type { Dosage } from "fhir/r4";
 
@@ -42,7 +54,7 @@ describe("fromDosageToText - event", () => {
     };
 
     let result = dosageUtils.fromDosageToText(dosage);
-    expect(result).toBe("at 1/1/2024");
+    expect(decodeHtmlEntities(result)).toBe("on 1/1/2024");
   });
 
   test("N+1 items", () => {
@@ -58,6 +70,8 @@ describe("fromDosageToText - event", () => {
     };
 
     let result = dosageUtils.fromDosageToText(dosage);
-    expect(result).toBe("at 1/1/2018, 6/1/1973 and 8/23/1905");
+    expect(decodeHtmlEntities(result)).toBe(
+      "on 1/1/2018, 6/1/1973 and 8/23/1905",
+    );
   });
 });
