@@ -86,7 +86,7 @@ export class FhirDosageUtils {
       backend: {
         backends: [
           resourcesToBackend(
-            (lng: string, ns: string) => import(`./locales/${lng}/${ns}.json`),
+            async (lng: string, ns: string) => import(`./locales/${lng}/${ns}.json`),
           ),
         ],
       },
