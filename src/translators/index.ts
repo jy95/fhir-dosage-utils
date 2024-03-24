@@ -14,3 +14,4 @@ export { transformTimeOfDayToText } from "./timeOfDay";
 export { transformAsNeededToText } from "./asNeeded";
 export { transformBoundsDurationToText } from "./boundsDuration";
 export { transformBoundsRangeToText } from "./boundsRange";
+export { transformCountCountMaxToText } from "./countCountMax";

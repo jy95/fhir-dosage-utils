@@ -52,6 +52,14 @@
       "lowAndHigh": "for {{low}} to {{high}} {{unit}}",
       "onlyHigh": "for up to {{high}} {{unit}}",
       "onlyLow": "for at least {{low}} {{unit}}"
+    },
+    "count": {
+      "count_one": "take {{count}} time",
+      "count_other": "take {{count}} times"
+    },
+    "countMax": {
+      "countMax_one": "take {{low}} to {{count}} time",
+      "countMax_other": "take {{low}} to {{count}} times"
     }
   }
 }

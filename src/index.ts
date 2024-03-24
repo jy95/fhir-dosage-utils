@@ -20,6 +20,7 @@ import {
   transformAsNeededToText,
   transformBoundsDurationToText,
   transformBoundsRangeToText,
+  transformCountCountMaxToText,
 } from "./translators";
 
 // Types
@@ -179,6 +180,7 @@ export class FhirDosageUtils {
             return transformBoundsRangeToText(dos, this.config);
           // TODO "boundsPeriod" later ?
           case "countCountMax":
+            return transformCountCountMaxToText(dos);
           case "event":
           case "code":
             return this.config.fromCodeableConceptToString({
