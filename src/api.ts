@@ -168,10 +168,9 @@ export class FhirDosageUtils {
               transformPeriodPeriodMaxToText(dos),
             ].filter((s) => s !== undefined);
             return subParts.length > 0 ? subParts.join(" ") : undefined;
-          // TODO  maxDosePerAdministration
-          //case "maxDosePerAdministration":
-          case "maxDosePerPeriod":
+          case "maxDosePerAdministration":
             return transformMaxDosePerAdministrationToText(dos, this.config);
+          // case "maxDosePerPeriod":
           case "maxDosePerLifetime":
             return transformMaxDosePerLifetimeToText(dos, this.config);
           case "method":
