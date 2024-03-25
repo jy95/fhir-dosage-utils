@@ -16,11 +16,15 @@ Turn [FHIR Dosage](https://build.fhir.org/dosage.html) into human readable text 
 Key Features:
 
 - **Compatible:** Works with [Dosage R4](https://hl7.org/fhir/R4/dosage.html) and [Dosage R5](https://hl7.org/fhir/R5/dosage.html)
-- **Internationalization** Extend to your own language , thanks to `i18next`
-- **Easy to integrate** In the browser, in Node.js, ... Your choice !
-- ...
+- **Extensibility** Easily adaptable and extendable to accommodate your requirements
+- **Internationalization** Seamlessly extendable to other languages with `i18next`
+- **Integration Ease** Works effortlessly in various environments like the browser, Node.js, ...
 
 Read more on :
+
+## Credits
+
+Special thanks to [NHS England](https://digital.nhs.uk/), the author of [`Implementation guide for interoperable medicines`](https://simplifier.net/guide/ukcoreimplementationguideformedicines/dosetotexttranslation?version=current) document, which this project took some inspirations as a starting base.
 
 ## Contributors
 
