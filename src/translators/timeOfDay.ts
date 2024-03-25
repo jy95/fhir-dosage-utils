@@ -45,6 +45,7 @@ export function transformTimeOfDayToText(dos: Dosage): string | undefined {
 
     return i18next.t("fields.timeOfDay", {
       timeOfDay: timeOfDaysAsString,
+      count: timeOfDays.length,
     });
   }
 }
