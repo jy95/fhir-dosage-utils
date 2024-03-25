@@ -66,7 +66,7 @@ describe("fromDosageToText - offsetWhen", () => {
     const dosage: Dosage = {
       timing: {
         repeat: {
-          when: []
+          when: [],
         },
       },
     };
@@ -79,9 +79,7 @@ describe("fromDosageToText - offsetWhen", () => {
     const dosage: Dosage = {
       timing: {
         repeat: {
-          when: [
-            "MORN"
-          ]
+          when: ["MORN"],
         },
       },
     };
@@ -94,10 +92,7 @@ describe("fromDosageToText - offsetWhen", () => {
     const dosage: Dosage = {
       timing: {
         repeat: {
-          when: [
-            "MORN",
-            "AFT"
-          ]
+          when: ["MORN", "AFT"],
         },
       },
     };
@@ -111,9 +106,7 @@ describe("fromDosageToText - offsetWhen", () => {
       timing: {
         repeat: {
           offset: 15,
-          when: [
-            "MORN"
-          ]
+          when: ["MORN"],
         },
       },
     };
@@ -121,5 +114,4 @@ describe("fromDosageToText - offsetWhen", () => {
     let result = dosageUtils.fromDosageToText(dosage);
     expect(result).toBe("15 minutes during the morning");
   });
-
 });

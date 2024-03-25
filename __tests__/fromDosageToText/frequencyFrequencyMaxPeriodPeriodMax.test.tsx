@@ -5,25 +5,39 @@ import FhirDosageUtils from "../../src/index";
 // types
 import type { Dosage } from "fhir/r4";
 
-describe("fromDosageToText - periodPeriodMax", () => {
+describe("fromDosageToText - frequencyFrequencyMaxPeriodPeriodMax", () => {
   let dosageUtils: FhirDosageUtils;
 
   beforeAll(async () => {
     dosageUtils = await FhirDosageUtils.build({
-      displayOrder: ["periodPeriodMax"],
+      displayOrder: ["frequencyFrequencyMaxPeriodPeriodMax"],
     });
   });
 
-  test("No periodPeriodMax", () => {
+  test("No frequencyFrequencyMaxPeriodPeriodMax", () => {
     const dosage: Dosage = {
-      text: "no periodPeriodMax",
+      text: "no frequencyFrequencyMaxPeriodPeriodMax",
     };
 
     let result = dosageUtils.fromDosageToText(dosage);
     expect(result).toBe("");
   });
 
-  test("period and periodMax", () => {
+  test("frequencyFrequencyMax only", () => {
+    const dosage: Dosage = {
+      timing: {
+        repeat: {
+          frequency: 1,
+          frequencyMax: 3,
+        },
+      },
+    };
+
+    let result = dosageUtils.fromDosageToText(dosage);
+    expect(result).toBe("1-3 times");
+  });
+
+  test("periodPeriodMax only", () => {
     const dosage: Dosage = {
       timing: {
         repeat: {
@@ -38,10 +52,13 @@ describe("fromDosageToText - periodPeriodMax", () => {
     expect(result).toBe("every 1 to 3 days");
   });
 
-  test("periodMax only", () => {
+  test("frequencyFrequencyMax and periodPeriodMax", () => {
     const dosage: Dosage = {
       timing: {
         repeat: {
+          frequency: 1,
+          frequencyMax: 3,
+          period: 1,
           periodMax: 3,
           periodUnit: "d",
         },
@@ -49,20 +66,6 @@ describe("fromDosageToText - periodPeriodMax", () => {
     };
 
     let result = dosageUtils.fromDosageToText(dosage);
-    expect(result).toBe("every 3 days");
-  });
-
-  test("period only", () => {
-    const dosage: Dosage = {
-      timing: {
-        repeat: {
-          period: 1,
-          periodUnit: "d",
-        },
-      },
-    };
-
-    let result = dosageUtils.fromDosageToText(dosage);
-    expect(result).toBe("every day");
+    expect(result).toBe("1-3 times every 1 to 3 days");
   });
 });
