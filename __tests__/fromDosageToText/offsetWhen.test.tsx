@@ -106,4 +106,20 @@ describe("fromDosageToText - offsetWhen", () => {
     expect(result).toBe("during the morning and during the afternoon");
   });
 
+  test("when and offset together", () => {
+    const dosage: Dosage = {
+      timing: {
+        repeat: {
+          offset: 15,
+          when: [
+            "MORN"
+          ]
+        },
+      },
+    };
+
+    let result = dosageUtils.fromDosageToText(dosage);
+    expect(result).toBe("15 minutes during the morning");
+  });
+
 });
