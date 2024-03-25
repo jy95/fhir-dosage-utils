@@ -23,6 +23,20 @@ describe("fromDosageToText - durationDurationMax", () => {
     expect(result).toBe("");
   });
 
+  test("No durationUnit", () => {
+    const dosage: Dosage = {
+      timing: {
+        repeat: {
+          duration: 1,
+          durationMax: 3,
+        },
+      },
+    };
+
+    let result = dosageUtils.fromDosageToText(dosage);
+    expect(result).toBe("");
+  });
+
   test("duration and DurationMax", () => {
     const dosage: Dosage = {
       timing: {
