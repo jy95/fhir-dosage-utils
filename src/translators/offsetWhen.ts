@@ -4,7 +4,36 @@ import i18next from "i18next";
 import { fromListToString } from "../utils/fromListToString";
 
 // Types
-import type { Dosage } from "fhir/r4";
+import type { Dosage } from "../types";
+
+type TimeKeys =
+  | "MORN"
+  | "MORN.early"
+  | "MORN.late"
+  | "NOON"
+  | "AFT"
+  | "AFT.early"
+  | "AFT.late"
+  | "EVE"
+  | "EVE.early"
+  | "EVE.late"
+  | "NIGHT"
+  | "PHS"
+  | "IMD"
+  | "HS"
+  | "WAKE"
+  | "C"
+  | "CM"
+  | "CD"
+  | "CV"
+  | "AC"
+  | "ACM"
+  | "ACD"
+  | "ACV"
+  | "PC"
+  | "PCM"
+  | "PCD"
+  | "PCV";
 
 // Function to extract times
 function extractTime(minutes: number) {
@@ -51,7 +80,9 @@ function transformWhen(when?: string[]): string | undefined {
   }
 
   // Turn it into a string
-  const whens = when.map((whenCode) => i18next.t(`eventTiming:${whenCode}`));
+  const whens = (when as TimeKeys[]).map((whenCode) =>
+    i18next.t(`eventTiming:${whenCode}`),
+  );
   const finalString = fromListToString(whens);
 
   return finalString;

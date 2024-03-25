@@ -1,5 +1,5 @@
 import i18next from "i18next";
-import type { Dosage } from "fhir/r4";
+import type { Dosage } from "../types";
 
 export function transformCountCountMaxToText(dos: Dosage): string | undefined {
   // If empty, return undefined

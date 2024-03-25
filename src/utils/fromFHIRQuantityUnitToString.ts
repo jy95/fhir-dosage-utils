@@ -1,4 +1,4 @@
-import type { Quantity } from "fhir/r4";
+import type { Quantity } from "../types";
 
 /**
  * Function to turn a quantity unit (e.g UCUM "ml") into a string for humans (e.g "militier")

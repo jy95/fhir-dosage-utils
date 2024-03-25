@@ -2,6 +2,26 @@
 import type { FromFHIRQuantityUnitToStringFct } from "./utils/fromFHIRQuantityUnitToString";
 import type { FromCodeableConceptToStringFct } from "./utils/fromCodeableConceptToString";
 
+import type {
+  Dosage as DosageR4,
+  CodeableConcept as CodeableConceptR4,
+  Quantity as QuantityR4,
+  Duration as DurationR4,
+} from "fhir/r4";
+import type {
+  Dosage as DosageR5,
+  CodeableConcept as CodeableConceptR5,
+  Quantity as QuantityR5,
+  Duration as DurationR5,
+} from "fhir/r5";
+
+// Exported types
+
+export type Dosage = DosageR4 | DosageR5;
+export type CodeableConcept = CodeableConceptR4 | CodeableConceptR5;
+export type Quantity = QuantityR4 | QuantityR5;
+export type Duration = DurationR4 | DurationR5;
+
 export type { FromFHIRQuantityUnitToStringFct, FromCodeableConceptToStringFct };
 
 export type Language = "en" | "fr" | "nl" | "de";

@@ -1,8 +1,7 @@
 import i18next from "i18next";
 
 // types
-import type { Dosage, Duration } from "fhir/r4";
-import type { Config } from "../types";
+import type { Config, Dosage, Duration } from "../types";
 
 // Duration to string
 function transformDurationToString(duration: Duration, config: Config): string {

@@ -4,7 +4,7 @@ import i18next from "i18next";
 import { fromListToString } from "../utils/fromListToString";
 
 // Types
-import type { Dosage } from "fhir/r4";
+import type { Dosage } from "../types";
 
 /**
  * time during the day, in the format hh:mm:ss (a subset of [ISO8601] icon).

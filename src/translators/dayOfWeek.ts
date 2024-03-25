@@ -4,7 +4,7 @@ import i18next from "i18next";
 import { fromListToString } from "../utils/fromListToString";
 
 // Types
-import type { Dosage } from "fhir/r4";
+import type { Dosage } from "../types";
 
 // Function to transform dayOfWeek into a string
 export function transformDayOfWeekToText(dos: Dosage): string | undefined {

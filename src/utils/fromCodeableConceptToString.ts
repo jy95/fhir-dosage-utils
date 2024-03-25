@@ -1,4 +1,4 @@
-import type { CodeableConcept } from "fhir/r4";
+import type { CodeableConcept } from "../types";
 
 /**
  * Function to turn codeable concept (e.g SNOMED CT "311504000") into a string for humans (e.g "With or after food")

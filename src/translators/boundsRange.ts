@@ -1,8 +1,7 @@
 import i18next from "i18next";
 
 // types
-import type { Dosage, Quantity } from "fhir/r4";
-import type { Config } from "../types";
+import type { Config, Dosage, Quantity } from "../types";
 
 // Quantity unit to string
 function transformQuantityUnitToString(

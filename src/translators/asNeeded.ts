@@ -4,9 +4,9 @@ import i18next from "i18next";
 import { fromListToString } from "../utils/fromListToString";
 
 // types
-import type { Dosage as DosageR4, CodeableConcept } from "fhir/r4";
+import type { Dosage as DosageR4 } from "fhir/r4";
 import type { Dosage as DosageR5 } from "fhir/r5";
-import type { Config } from "../types";
+import type { Config, Dosage, CodeableConcept } from "../types";
 
 // Turn a list of codeable concept into a string
 function fromCodeableConceptArrayToString(
@@ -26,7 +26,7 @@ function fromCodeableConceptArrayToString(
 }
 
 export function transformAsNeededToText(
-  dos: DosageR4 | DosageR5,
+  dos: Dosage,
   config: Config,
 ): string | undefined {
   // Pickup the interesting attributes

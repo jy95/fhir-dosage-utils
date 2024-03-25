@@ -28,8 +28,7 @@ import {
 } from "./translators";
 
 // Types
-import type { Dosage } from "fhir/r4";
-import type { Params, Config, Language, DisplayOrder } from "./types";
+import type { Dosage, Params, Config, Language, DisplayOrder } from "./types";
 
 export class FhirDosageUtils {
   // Configuration (Immutability has its advantages ...)

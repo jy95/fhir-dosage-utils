@@ -38,8 +38,7 @@ describe("fromDosageToText - asNeeded", () => {
       asNeeded: true,
     };
 
-    // Later I will change the typing in the api class
-    let result = dosageUtils.fromDosageToText(dosage as any);
+    let result = dosageUtils.fromDosageToText(dosage);
     expect(result).toBe("as required");
   });
 
@@ -66,8 +65,7 @@ describe("fromDosageToText - asNeeded", () => {
       ],
     };
 
-    // Later I will change the typing in the api class
-    let result = dosageUtils.fromDosageToText(dosage as any);
+    let result = dosageUtils.fromDosageToText(dosage);
     expect(result).toBe("as required for reason 1 and reason 2");
   });
 });

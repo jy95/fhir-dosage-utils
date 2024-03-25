@@ -4,8 +4,7 @@ import i18next from "i18next";
 import { fromListToString } from "../utils/fromListToString";
 
 // types
-import type { Dosage } from "fhir/r4";
-import type { Config } from "../types";
+import type { Config, Dosage } from "../types";
 
 export function transformEventToText(
   dos: Dosage,

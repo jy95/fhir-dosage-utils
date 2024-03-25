@@ -2,8 +2,7 @@
 import { fromListToString } from "../utils/fromListToString";
 
 // types
-import type { Dosage } from "fhir/r4";
-import type { Config } from "../types";
+import type { Config, Dosage } from "../types";
 
 export function transformAdditionalInstructionToText(
   dos: Dosage,
