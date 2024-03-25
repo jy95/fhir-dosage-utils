@@ -134,42 +134,63 @@ export class FhirDosageUtils {
     let parts = this.config.displayOrder
       .map((entry) => {
         switch (entry) {
+          case "additionalInstruction":
+            return transformAdditionalInstructionToText(dos, this.config);
+          case "asNeeded":
+            return transformAsNeededToText(dos, this.config);
+          case "boundsDuration":
+            return transformBoundsDurationToText(dos, this.config);
+          // TODO "boundsPeriod" later ?
+          case "boundsRange":
+            return transformBoundsRangeToText(dos, this.config);
+          case "code":
+            return this.config.fromCodeableConceptToString({
+              language: this.config.language,
+              code: dos.timing?.code,
+            });
+          case "countCountMax":
+            return transformCountCountMaxToText(dos);
+          case "dayOfWeek":
+            return transformDayOfWeekToText(dos);
+          case "doseQuantity":
+            return transformDoseQuantityToText(dos, this.config);
+          case "doseRange":
+            return transformDoseRangeToText(dos, this.config);
+          case "durationDurationMax":
+            return transformDurationDurationMaxToText(dos);
+          case "event":
+            return transformEventToText(dos, this.config);
+          case "frequencyFrequencyMax":
+            return transformFrequencyFrequencyMaxToText(dos);
+          case "frequencyFrequencyMaxPeriodPeriodMax":
+            let subParts = [
+              transformFrequencyFrequencyMaxToText(dos),
+              transformPeriodPeriodMaxToText(dos),
+            ].filter((s) => s !== undefined);
+            return subParts.length > 0 ? subParts.join(" ") : undefined;
+          // TODO  maxDosePerAdministration
+          //case "maxDosePerAdministration":
+          case "maxDosePerPeriod":
+            return transformMaxDosePerAdministrationToText(dos, this.config);
+          case "maxDosePerLifetime":
+            return transformMaxDosePerLifetimeToText(dos, this.config);
           case "method":
             return this.config.fromCodeableConceptToString({
               language: this.config.language,
               code: dos.method,
             });
-          case "doseQuantity":
-            return transformDoseQuantityToText(dos, this.config);
-          case "doseRange":
-            return transformDoseRangeToText(dos, this.config);
-          case "rateRatio":
-            return transformRateRatioToText(dos, this.config);
+          case "offsetWhen":
+            return transformOffsetWhenToText(dos);
+          case "patientInstruction":
+            return dos.patientInstruction;
+          case "periodPeriodMax":
+            return transformPeriodPeriodMaxToText(dos);
           case "rateQuantity":
             return transformRateQuantityToText(dos, this.config);
           case "rateRange":
             return transformRateRangeToText(dos, this.config);
-          case "durationDurationMax":
-            return transformDurationDurationMaxToText(dos);
-          // Some people might like to have frequency and period separated, why better to give the choice
-          case "frequencyFrequencyMaxPeriodPeriodMax":
-            let subParts = [
-              // frequencyFrequencyMax
-              transformFrequencyFrequencyMaxToText(dos),
-              // periodPeriodMax
-              transformPeriodPeriodMaxToText(dos),
-            ].filter((s) => s !== undefined);
-            return subParts.length > 0 ? subParts.join(" ") : undefined;
-          case "frequencyFrequencyMax":
-            return transformFrequencyFrequencyMaxToText(dos);
-          case "periodPeriodMax":
-            return transformPeriodPeriodMaxToText(dos);
-          case "offsetWhen":
-            return transformOffsetWhenToText(dos);
-          case "dayOfWeek":
-            return transformDayOfWeekToText(dos);
-          case "timeOfDay":
-            return transformTimeOfDayToText(dos);
+          case "rateRatio":
+            return transformRateRatioToText(dos, this.config);
           case "route":
             return this.config.fromCodeableConceptToString({
               language: this.config.language,
@@ -180,31 +201,8 @@ export class FhirDosageUtils {
               language: this.config.language,
               code: dos.site,
             });
-          case "asNeeded":
-            return transformAsNeededToText(dos, this.config);
-          case "boundsDuration":
-            return transformBoundsDurationToText(dos, this.config);
-          case "boundsRange":
-            return transformBoundsRangeToText(dos, this.config);
-          // TODO "boundsPeriod" later ?
-          case "countCountMax":
-            return transformCountCountMaxToText(dos);
-          case "event":
-            return transformEventToText(dos, this.config);
-          case "code":
-            return this.config.fromCodeableConceptToString({
-              language: this.config.language,
-              code: dos.timing?.code,
-            });
-          case "maxDosePerPeriod":
-          case "maxDosePerAdministration":
-            return transformMaxDosePerAdministrationToText(dos, this.config);
-          case "maxDosePerLifetime":
-            return transformMaxDosePerLifetimeToText(dos, this.config);
-          case "additionalInstruction":
-            return transformAdditionalInstructionToText(dos, this.config);
-          case "patientInstruction":
-            return dos.patientInstruction;
+          case "timeOfDay":
+            return transformTimeOfDayToText(dos);
         }
       })
       .filter((s) => s !== undefined);
