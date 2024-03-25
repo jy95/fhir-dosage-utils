@@ -35,7 +35,9 @@ function transformOffset(offset?: number): string | undefined {
       ? i18next.t("unitsOfTime:withCount.h", { count: time.hours })
       : undefined,
     // minutes
-    i18next.t("unitsOfTime:withCount.min", { count: time.minutes }),
+    time.minutes > 0
+      ? i18next.t("unitsOfTime:withCount.min", { count: time.minutes })
+      : undefined,
   ].filter((s) => s !== undefined);
 
   return subParts.join(" ");
