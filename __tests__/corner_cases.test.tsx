@@ -70,4 +70,22 @@ describe("Corner cases", () => {
     let result = dosageUtils.fromDosageToText(dosage);
     expect(result).toBe("42 ");
   });
+
+  test("rateRatio - no denominator", () => {
+    const dosage: Dosage = {
+      doseAndRate: [
+        {
+          rateRatio: {
+            numerator: {
+              value: 3,
+              unit: "pills",
+            },
+          },
+        },
+      ],
+    };
+
+    let result = dosageUtils.fromDosageToText(dosage);
+    expect(result).toBe("at a rate of 3 pills per ");
+  });
 });
