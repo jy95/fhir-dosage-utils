@@ -61,7 +61,7 @@ describe("Corner cases", () => {
       doseAndRate: [
         {
           doseQuantity: {
-            value: 42
+            value: 42,
           },
         },
       ],

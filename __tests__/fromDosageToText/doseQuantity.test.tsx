@@ -47,4 +47,19 @@ describe("fromDosageToText - doseQuantity", () => {
     let result = dosageUtils.fromDosageToText(dosage);
     expect(result).toBe("3 pills");
   });
+
+  test("Without value", () => {
+    const dosage: Dosage = {
+      doseAndRate: [
+        {
+          doseQuantity: {
+            unit: "pill",
+          },
+        },
+      ],
+    };
+
+    let result = dosageUtils.fromDosageToText(dosage);
+    expect(result).toBe("1 pill");
+  });
 });
