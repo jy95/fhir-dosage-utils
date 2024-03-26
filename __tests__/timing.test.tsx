@@ -115,6 +115,55 @@ describe("Timing common examples", () => {
         },
       },
     },
+    {
+      title: "With breakfast",
+      expected: "at breakfast",
+      dosage: {
+        timing: {
+          repeat: {
+            when: ["CM"],
+          },
+        },
+      },
+    },
+    {
+      title: "For 5 minutes, 10 minutes before meals",
+      expected: "over 5 minutes - 10 minutes before meal",
+      dosage: {
+        timing: {
+          repeat: {
+            duration: 5,
+            durationUnit: "min",
+            when: ["AC"],
+            offset: 10,
+          },
+        },
+      },
+    },
+    {
+      title: "1 tablet 3 times daily, 30 minutes before meals",
+      expected: "1 tablet - 3 times every day - 30 minutes before meal",
+      dosage: {
+        doseAndRate: [
+          {
+            doseQuantity: {
+              value: 1,
+              unit: "tablet",
+            },
+          },
+        ],
+        timing: {
+          repeat: {
+            frequency: 3,
+            period: 1,
+            periodUnit: "d",
+            when: ["AC"],
+            offset: 30,
+          },
+        },
+      },
+    },
+    // TODO start from "BID, 30 mins before meal, for next 10 days"
   ];
 
   test.each(testCases)("$title", ({ dosage, expected }) => {
