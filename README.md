@@ -4,7 +4,7 @@
 
 Turn [FHIR Dosage](https://build.fhir.org/dosage.html) into human readable text in your wanted language (english, french, dutch, german, ...)
 
-[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://github.com/jy95/fhir-dosage-to-text/blob/main/LICENSE) [![npm latest package](https://img.shields.io/npm/v/fhir-dosage-to-text/latest.svg)] [![npm downloads](https://img.shields.io/npm/dm/fhir-dosage-to-text.svg)] [![Codacy Badge](https://app.codacy.com/project/badge/Grade/9c444b5c17fe497cb21d052b0a7ab4e6)](https://app.codacy.com/gh/jy95/fhir-dosage-to-text/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade) [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/9c444b5c17fe497cb21d052b0a7ab4e6)](https://app.codacy.com/gh/jy95/fhir-dosage-to-text/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage) [![prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) <a href="https://www.buymeacoffee.com/GPFR" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="41" width="174" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;" ></a>
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://github.com/jy95/fhir-dosage-utils/blob/main/LICENSE) [![npm latest package](https://img.shields.io/npm/v/fhir-dosage-utils/latest.svg)] [![npm downloads](https://img.shields.io/npm/dm/fhir-dosage-utils.svg)] [![Codacy Badge](https://app.codacy.com/project/badge/Grade/9c444b5c17fe497cb21d052b0a7ab4e6)](https://app.codacy.com/gh/jy95/fhir-dosage-utils/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade) [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/9c444b5c17fe497cb21d052b0a7ab4e6)](https://app.codacy.com/gh/jy95/fhir-dosage-utils/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage) [![prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) <a href="https://www.buymeacoffee.com/GPFR" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="41" width="174" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;" ></a>
 <br />
 
 </div>
@@ -28,6 +28,6 @@ Special thanks to [NHS England](https://digital.nhs.uk/), the author of [`Implem
 
 ## Contributors
 
-<a href="https://github.com/jy95/fhir-dosage-to-text/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=jy95/fhir-dosage-to-text" />
+<a href="https://github.com/jy95/fhir-dosage-utils/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=jy95/fhir-dosage-utils" />
 </a>
