@@ -1,71 +1,71 @@
 {
   "linkwords": {
-    "and": "und"
+    "and": "and"
   },
   "fields": {
     "doseQuantity": "{{quantity}} {{unit}}",
     "doseRange": {
-      "lowAndHigh": "zwischen {{low}} und {{high}} {{unit}}",
-      "onlyHigh": "bis {{high}} {{unit}}",
+      "lowAndHigh": "{{low}} to {{high}} {{unit}}",
+      "onlyHigh": "up to {{high}} {{unit}}",
       "onlyLow": "{{low}} {{unit}}"
     },
-    "rateQuantity": "mit einem Verhältnis von {{quantity}} {{unit}}",
+    "rateQuantity": "at a rate of {{quantity}} {{unit}}",
     "rateRange": {
-      "lowAndHigh": "mit einem Verhältnis zwischen {{low}} und {{high}} {{unit}}",
-      "onlyHigh": "mit einem Verhältnis von {{high}} {{unit}}",
-      "onlyLow": "mit einem Verhältnis von {{low}} {{unit}}"
+      "lowAndHigh": "at a rate of {{low}} to {{high}} {{unit}}",
+      "onlyHigh": "at a rate of {{high}} {{unit}}",
+      "onlyLow": "at a rate of {{low}} {{unit}}"
     },
     "rateRatio": {
-      "rateRatio_one": "mit einem Verhältnis von {{quantityNumerator}} {{numeratorUnit}} pro {{denominatorUnit}}",
-      "rateRatio_other": "mit einem Verhältnis von {{quantityNumerator}} {{numeratorUnit}} jeder {{count}} {{denominatorUnit}}"
+      "rateRatio_one": "at a rate of {{quantityNumerator}} {{numeratorUnit}} per {{denominatorUnit}}",
+      "rateRatio_other": "at a rate of {{quantityNumerator}} {{numeratorUnit}} every {{count}} {{denominatorUnit}}"
     },
-    "duration": "für {{durationText}}",
-    "durationMax": "(maximal {{durationMaxText}})",
+    "duration": "over {{durationText}}",
+    "durationMax": "(maximum {{durationMaxText}})",
     "frequency": {
-      "onlyFrequency_one": "{{count}} Mal",
-      "onlyFrequency_other": "{{count}} Mal",
-      "withfrequencyMax_one": "{{frequency}}-{{count}} Mal",
-      "withfrequencyMax_other": "{{frequency}}-{{count}} Mal"
+      "onlyFrequency_one": "{{count}} time",
+      "onlyFrequency_other": "{{count}} times",
+      "withfrequencyMax_one": "{{frequency}}-{{count}} time",
+      "withfrequencyMax_other": "{{frequency}}-{{count}} times"
     },
     "frequencyMax": {
-      "frequencyMax_one": "bis zu {{count}} Mal",
-      "frequencyMax_other": "bis zu {{count}} Mal"
+      "frequencyMax_one": "up to {{count}} time",
+      "frequencyMax_other": "up to {{count}} times"
     },
     "period": {
-      "period_one": "jede {{unit}}",
-      "period_other": "alle {{count}} {{unit}}"
+      "period_one": "every {{unit}}",
+      "period_other": "every {{count}} {{unit}}"
     },
     "periodMax": {
-      "withPeriod": "jede {{period}} bis zu {{count}} {{unit}}",
-      "onlyPeriodMax_one": "jede {{unit}}",
-      "onlyPeriodMax_other": "alle {{count}} {{unit}}"
+      "withPeriod": "every {{period}} to {{count}} {{unit}}",
+      "onlyPeriodMax_one": "every {{unit}}",
+      "onlyPeriodMax_other": "every {{count}} {{unit}}"
     },
     "dayOfWeek": {
-      "dayOfWeek_one": "{{dayOfWeek}}",
-      "dayOfWeek_other": "{{dayOfWeek}}"
+      "dayOfWeek_one": "on {{dayOfWeek}}",
+      "dayOfWeek_other": "on {{dayOfWeek}}"
     },
-    "timeOfDay": "um {{timeOfDay}}",
-    "asNeeded": "bei Bedarf",
-    "asNeededFor": "bei Bedarf für {{reasons}}",
-    "boundsDuration": "für {{durationText}}",
+    "timeOfDay": "at {{timeOfDay}}",
+    "asNeeded": "as required",
+    "asNeededFor": "as required for {{reasons}}",
+    "boundsDuration": "for {{durationText}}",
     "boundsRange": {
-      "lowAndHigh": "für {{low}} bis {{high}} {{unit}}",
-      "onlyHigh": "bis {{high}} {{unit}}",
-      "onlyLow": "für mindestens {{low}} {{unit}}"
+      "lowAndHigh": "for {{low}} to {{high}} {{unit}}",
+      "onlyHigh": "for up to {{high}} {{unit}}",
+      "onlyLow": "for at least {{low}} {{unit}}"
     },
     "count": {
-      "count_one": "{{count}} Mal nehmen",
-      "count_other": "{{count}} Mal nehmen"
+      "count_one": "take {{count}} time",
+      "count_other": "take {{count}} times"
     },
     "countMax": {
-      "countMax_one": "von {{low}} bis {{count}} Mal nehmen",
-      "countMax_other": "von {{low}} bis {{count}} Mal nehmen"
+      "countMax_one": "take {{low}} to {{count}} time",
+      "countMax_other": "take {{low}} to {{count}} times"
     },
     "event": {
-      "event_one": "{{event}}",
-      "event_other": "{{event}}"
+      "event_one": "on {{event}}",
+      "event_other": "on {{event}}"
     },
-    "maxDosePerLifetime": "bis zu einer maximalen Menge von {{count}} {{unit}} über die Lebenszeit des Patienten",
-    "maxDosePerAdministration": "bis zu einer maximalen Menge von {{count}} {{unit}} pro Dosis"
+    "maxDosePerLifetime": "up to a maximum of {{count}} {{unit}} for the lifetime of patient",
+    "maxDosePerAdministration": "up to a maximum of {{count}} {{unit}} per dose"
   }
 }
