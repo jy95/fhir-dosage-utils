@@ -99,6 +99,11 @@ export function transformOffsetWhenToText(dos: Dosage): string | undefined {
   let offset = repeat.offset;
   let when = repeat.when;
 
+  // If both are undefined, don't do anything
+  if (offset === undefined && when === undefined) {
+    return undefined;
+  }
+
   return [
     // offset part
     transformOffset(offset),
