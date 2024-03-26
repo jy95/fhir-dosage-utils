@@ -1,71 +1,71 @@
 {
   "linkwords": {
-    "and": "en"
+    "and": "and"
   },
   "fields": {
     "doseQuantity": "{{quantity}} {{unit}}",
     "doseRange": {
-      "lowAndHigh": "tussen {{low}} en {{high}} {{unit}}",
-      "onlyHigh": "tot {{high}} {{unit}}",
+      "lowAndHigh": "{{low}} to {{high}} {{unit}}",
+      "onlyHigh": "up to {{high}} {{unit}}",
       "onlyLow": "{{low}} {{unit}}"
     },
-    "rateQuantity": "met een verhouding van {{quantity}} {{unit}}",
+    "rateQuantity": "at a rate of {{quantity}} {{unit}}",
     "rateRange": {
-      "lowAndHigh": "met een verhouding tussen {{low}} en {{high}} {{unit}}",
-      "onlyHigh": "met een verhouding van {{high}} {{unit}}",
-      "onlyLow": "met een verhouding van {{low}} {{unit}}"
+      "lowAndHigh": "at a rate of {{low}} to {{high}} {{unit}}",
+      "onlyHigh": "at a rate of {{high}} {{unit}}",
+      "onlyLow": "at a rate of {{low}} {{unit}}"
     },
     "rateRatio": {
-      "rateRatio_one": "met een verhouding van {{quantityNumerator}} {{numeratorUnit}} per {{denominatorUnit}}",
-      "rateRatio_other": "met een verhouding van {{quantityNumerator}} {{numeratorUnit}} elke {{count}} {{denominatorUnit}}"
+      "rateRatio_one": "at a rate of {{quantityNumerator}} {{numeratorUnit}} per {{denominatorUnit}}",
+      "rateRatio_other": "at a rate of {{quantityNumerator}} {{numeratorUnit}} every {{count}} {{denominatorUnit}}"
     },
-    "duration": "gedurende {{durationText}}",
-    "durationMax": "(maximaal {{durationMaxText}})",
+    "duration": "over {{durationText}}",
+    "durationMax": "(maximum {{durationMaxText}})",
     "frequency": {
-      "onlyFrequency_one": "{{count}} keer",
-      "onlyFrequency_other": "{{count}} keer",
-      "withfrequencyMax_one": "{{frequency}}-{{count}} keer",
-      "withfrequencyMax_other": "{{frequency}}-{{count}} keer"
+      "onlyFrequency_one": "{{count}} time",
+      "onlyFrequency_other": "{{count}} times",
+      "withfrequencyMax_one": "{{frequency}}-{{count}} time",
+      "withfrequencyMax_other": "{{frequency}}-{{count}} times"
     },
     "frequencyMax": {
-      "frequencyMax_one": "tot {{count}} keer",
-      "frequencyMax_other": "tot {{count}} keer"
+      "frequencyMax_one": "up to {{count}} time",
+      "frequencyMax_other": "up to {{count}} times"
     },
     "period": {
-      "period_one": "elke {{unit}}",
-      "period_other": "per {{count}} {{unit}}"
+      "period_one": "every {{unit}}",
+      "period_other": "every {{count}} {{unit}}"
     },
     "periodMax": {
-      "withPeriod": "elke {{period}} tot {{count}} {{unit}}",
-      "onlyPeriodMax_one": "elke {{unit}}",
-      "onlyPeriodMax_other": "per {{count}} {{unit}}"
+      "withPeriod": "every {{period}} to {{count}} {{unit}}",
+      "onlyPeriodMax_one": "every {{unit}}",
+      "onlyPeriodMax_other": "every {{count}} {{unit}}"
     },
     "dayOfWeek": {
-      "dayOfWeek_one": "{{dayOfWeek}}",
-      "dayOfWeek_other": "{{dayOfWeek}}"
+      "dayOfWeek_one": "on {{dayOfWeek}}",
+      "dayOfWeek_other": "on {{dayOfWeek}}"
     },
-    "timeOfDay": "om {{timeOfDay}}",
-    "asNeeded": "indien nodig",
-    "asNeededFor": "zoals nodig voor {{reasons}}",
-    "boundsDuration": "gedurende {{durationText}}",
+    "timeOfDay": "at {{timeOfDay}}",
+    "asNeeded": "as required",
+    "asNeededFor": "as required for {{reasons}}",
+    "boundsDuration": "for {{durationText}}",
     "boundsRange": {
-      "lowAndHigh": "gedurende {{low}} tot {{high}} {{unit}}",
-      "onlyHigh": "tot {{high}} {{unit}}",
-      "onlyLow": "gedurende minstens {{low}} {{unit}}"
+      "lowAndHigh": "for {{low}} to {{high}} {{unit}}",
+      "onlyHigh": "for up to {{high}} {{unit}}",
+      "onlyLow": "for at least {{low}} {{unit}}"
     },
     "count": {
-      "count_one": "{{count}} keer nemen",
-      "count_other": "{{count}} keer nemen"
+      "count_one": "take {{count}} time",
+      "count_other": "take {{count}} times"
     },
     "countMax": {
-      "countMax_one": "{{low}} tot {{count}} keer nemen",
-      "countMax_other": "{{low}} tot {{count}} keer nemen"
+      "countMax_one": "take {{low}} to {{count}} time",
+      "countMax_other": "take {{low}} to {{count}} times"
     },
     "event": {
-      "event_one": "{{event}}",
-      "event_other": "{{event}}"
+      "event_one": "on {{event}}",
+      "event_other": "on {{event}}"
     },
-    "maxDosePerLifetime": "tot een maximum van {{count}} {{unit}} gedurende de levensduur van de patiënt",
-    "maxDosePerAdministration": "tot een maximum van {{count}} {{unit}} per dosis"
+    "maxDosePerLifetime": "up to a maximum of {{count}} {{unit}} for the lifetime of patient",
+    "maxDosePerAdministration": "up to a maximum of {{count}} {{unit}} per dose"
   }
 }
