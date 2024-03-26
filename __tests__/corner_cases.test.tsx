@@ -55,4 +55,19 @@ describe("Corner cases", () => {
     let result = dosageUtils.fromDosageToText(dosage);
     expect(result).toBe("42 ml");
   });
+
+  test("fromFHIRQuantityUnitToString - empty", () => {
+    const dosage: Dosage = {
+      doseAndRate: [
+        {
+          doseQuantity: {
+            value: 42
+          },
+        },
+      ],
+    };
+
+    let result = dosageUtils.fromDosageToText(dosage);
+    expect(result).toBe("42 ");
+  });
 });
