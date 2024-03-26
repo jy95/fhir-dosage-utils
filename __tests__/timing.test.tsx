@@ -163,7 +163,101 @@ describe("Timing common examples", () => {
         },
       },
     },
-    // TODO start from "BID, 30 mins before meal, for next 10 days"
+    {
+      title: "BID, 30 mins before meal, for next 10 days",
+      expected: "2 times every day - 30 minutes before meal - for 10 days",
+      dosage: {
+        timing: {
+          repeat: {
+            frequency: 2,
+            period: 1,
+            periodUnit: "d",
+            when: ["AC"],
+            offset: 30,
+            boundsDuration: {
+              value: 10,
+              code: "d",
+              system: "http://hl7.org/fhir/ValueSet/duration-units",
+            },
+          },
+        },
+      },
+    },
+    {
+      title: "TID, for 14 days",
+      expected: "3 times every day - for 14 days",
+      dosage: {
+        timing: {
+          repeat: {
+            frequency: 3,
+            period: 1,
+            periodUnit: "d",
+            boundsDuration: {
+              value: 14,
+              code: "d",
+              system: "http://hl7.org/fhir/ValueSet/duration-units",
+            },
+          },
+        },
+      },
+    },
+    // TODO add test case "BID, start on 7/1/2015 at 1:00 PM"
+    {
+      title: "Mon, Wed, Fri Morning",
+      expected:
+        "1 time every day - during the morning - on Monday, Wednesday and Friday",
+      dosage: {
+        timing: {
+          repeat: {
+            frequency: 1,
+            period: 1,
+            periodUnit: "d",
+            dayOfWeek: ["mon", "wed", "fri"],
+            when: ["MORN"],
+          },
+        },
+      },
+    },
+    {
+      title: "Every day at 10am",
+      expected: "1 time every day - at 10:00",
+      dosage: {
+        timing: {
+          repeat: {
+            frequency: 1,
+            period: 1,
+            periodUnit: "d",
+            timeOfDay: ["10:00:00"],
+          },
+        },
+      },
+    },
+    {
+      title: "Take once, at any time",
+      expected: "take 1 time",
+      dosage: {
+        timing: {
+          repeat: {
+            count: 1,
+          },
+        },
+      },
+    },
+    {
+      title: "Take every second day, in the morning, until 20 have been taken",
+      expected: "1 time every 2 days - during the morning - take 20 times",
+      dosage: {
+        timing: {
+          repeat: {
+            frequency: 1,
+            period: 2,
+            periodUnit: "d",
+            when: ["MORN"],
+            count: 20,
+          },
+        },
+      },
+    },
   ];
 
   test.each(testCases)("$title", ({ dosage, expected }) => {
