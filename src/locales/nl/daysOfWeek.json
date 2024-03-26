@@ -1,9 +1,9 @@
 {
-  "mon": "maandag",
-  "tue": "dinsdag",
-  "wed": "woensdag",
-  "thu": "donderdag",
-  "fri": "vrijdag",
-  "sat": "zaterdag",
-  "sun": "zondag"
+  "mon": "Monday",
+  "tue": "Tuesday",
+  "wed": "Wednesday",
+  "thu": "Thursday",
+  "fri": "Friday",
+  "sat": "Saturday",
+  "sun": "Sunday"
 }
