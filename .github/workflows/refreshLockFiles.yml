@@ -29,7 +29,7 @@ jobs:
       - name: Install website 💻
         run: |
           cd documentation   
-          npm link docusaurus-json-schema-plugin --save     
+          npm link fhir-dosage-utils --save     
           npm install --prefer-dedupe  
           npm dedupe  
       - name: Create Pull Request 🤖
