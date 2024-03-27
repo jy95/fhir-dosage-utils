@@ -12,7 +12,8 @@
   "exports": {
     ".": {
       "require": "./dist/main.js",
-      "import": "./dist/module.js"
+      "import": "./dist/module.js",
+      "types": "./dist/types.d.ts"
     }
   },
   "scripts": {
