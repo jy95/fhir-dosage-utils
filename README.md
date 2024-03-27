@@ -24,7 +24,7 @@ Read more on :
 
 ## Credits
 
-Special thanks to [NHS England](https://digital.nhs.uk/), the author of [`Implementation guide for interoperable medicines`](https://simplifier.net/guide/ukcoreimplementationguideformedicines/dosetotexttranslation?version=current) document, which this project took some inspirations as a starting base.
+Special thanks to [NHS England](https://digital.nhs.uk/), the author of `Implementation guide for interoperable medicines` documents ( [Dose to text translations](https://simplifier.net/guide/ukcoreimplementationguideformedicines/dosetotexttranslation?version=current) / [Dosage explanations](https://simplifier.net/guide/ukcoreimplementationguideformedicines/elementdosage?version=current) ), which this project took some inspirations as a starting base.
 
 ## Contributors
 
