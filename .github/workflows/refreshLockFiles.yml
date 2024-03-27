@@ -31,7 +31,7 @@ jobs:
           cd documentation   
           npm link fhir-dosage-utils --save     
           npm install --prefer-dedupe  
-          npm dedupe  
+          npm dedupe
       - name: Create Pull Request 🤖
         uses: peter-evans/create-pull-request@v6
         with:

@@ -3,9 +3,9 @@ name: Documentation
 on:
   push:
     paths:
-      - '.github/workflows/documentation.yml'
-      - 'documentation/**'
-      - 'src/**'
+      - ".github/workflows/documentation.yml"
+      - "documentation/**"
+      - "src/**"
   repository_dispatch:
     types: [generate-documentation]
   workflow_dispatch:
@@ -52,7 +52,7 @@ jobs:
           cd documentation   
           npm link fhir-dosage-utils --save    
           npm install --prefer-dedupe  
-          npm dedupe  
+          npm dedupe
       - name: Build website 🤖
         run: |
           cd documentation   

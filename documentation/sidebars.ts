@@ -72,4 +72,4 @@ module.exports = {
     "faq",
     "next-steps",
   ],
-}
+};

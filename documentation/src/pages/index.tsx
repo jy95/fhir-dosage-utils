@@ -1,17 +1,20 @@
-import React from "react"
-import clsx from "clsx"
-import Layout from "@theme/Layout"
-import Link from "@docusaurus/Link"
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext"
-import useBaseUrl from "@docusaurus/useBaseUrl"
-import styles from "./styles.module.css"
+import React from "react";
+import clsx from "clsx";
+import Layout from "@theme/Layout";
+import Link from "@docusaurus/Link";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import styles from "./styles.module.css";
 
 const features = [
   {
     title: "User-Centered Approach",
     imageUrl: "img/undraw_firmware_re_fgdy.svg",
     description: (
-      <>Turn <a href="https://build.fhir.org/dosage.html">FHIR Dosage</a> into human readable text in your wanted language, and much more</> 
+      <>
+        Turn <a href="https://build.fhir.org/dosage.html">FHIR Dosage</a> into
+        human readable text in your wanted language, and much more
+      </>
     ),
   },
   {
@@ -19,10 +22,8 @@ const features = [
     imageUrl: "img/gear-tools.svg",
     description: (
       <>
-        <a href="https://www.i18next.com/">
-          Internationalization
-        </a>
-        , easily adaptable and extendable to accommodate your requirements, ...
+        <a href="https://www.i18next.com/">Internationalization</a>, easily
+        adaptable and extendable to accommodate your requirements, ...
       </>
     ),
   },
@@ -32,17 +33,14 @@ const features = [
     description: (
       <>
         Want to improve this plugin ? We welcome your{" "}
-        <a href="https://github.com/jy95/fhir-dosage-utils">
-          contributions
-        </a>{" "}
-        !
+        <a href="https://github.com/jy95/fhir-dosage-utils">contributions</a> !
       </>
     ),
   },
-]
+];
 
 function Feature({ imageUrl, title, description }) {
-  const imgUrl = useBaseUrl(imageUrl)
+  const imgUrl = useBaseUrl(imageUrl);
   return (
     <div className={clsx("col col--4", styles.feature)}>
       {imgUrl && (
@@ -53,12 +51,12 @@ function Feature({ imageUrl, title, description }) {
       <h3 className="text--center">{title}</h3>
       <p className="text--center">{description}</p>
     </div>
-  )
+  );
 }
 
 function Home() {
-  const context = useDocusaurusContext()
-  const { siteConfig } = context
+  const context = useDocusaurusContext();
+  const { siteConfig } = context;
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
@@ -95,7 +93,7 @@ function Home() {
         )}
       </main>
     </Layout>
-  )
+  );
 }
 
-export default Home
+export default Home;
