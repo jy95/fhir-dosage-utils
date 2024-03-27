@@ -1,0 +1,64 @@
+---
+title: "⚙️ Configuration"
+description: Configuration of fhir-dosage-utils
+sidebar_position: 1
+---
+
+:::info
+
+All options are **optional**. For options not provided, the default values are used.
+
+:::
+
+The top level configuration of fhir-dosage-utils :
+
+```jsx title="main.js"
+const config = {
+    language: "en",
+    displaySeparator: " - ",
+    displayOrder: [
+        "method",
+        "doseQuantity",
+        "doseRange",
+        "rateRatio",
+        "rateQuantity",
+        "rateRange",
+        "durationDurationMax",
+        "frequencyFrequencyMaxPeriodPeriodMax",
+        "offsetWhen",
+        "dayOfWeek",
+        "timeOfDay",
+        "route",
+        "site",
+        "asNeeded",
+        "boundsDuration",
+        "boundsRange",
+        "countCountMax",
+        "event",
+        "code",
+        "maxDosePerPeriod",
+        "maxDosePerAdministration",
+        "maxDosePerLifetime",
+        "additionalInstruction",
+        "patientInstruction"
+    ],
+    dateTimeFormatOptions: {},
+    fromFHIRQuantityUnitToString: undefined,
+    fromCodeableConceptToString: undefined
+}
+```
+
+| Name         | Type         | Default                   | Description                                                            |
+|--------------|--------------|---------------------------|-----------------------------------------------------------------------|
+| `language` | `Language` | `en` | The language for the text generation |
+| `displaySeparator` | `string`  | ` - ` | Separator between each part of "Dosage" |
+| `displaySeparator` | `DisplayOrder[]` | see top-level config | Control the display order used by the algorithm. Useful when you want to turn off/on some rules for some reason |
+| `dateTimeFormatOptions` | [`Intl.DateTimeFormatOptions`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options) | undefined | To control the formatting of dateTime objects. If not provided, will use the defaults according locale e.g. "20/01/2024" | 
+| `fromFHIRQuantityUnitToString` | `(\{ language: string, quantity: Quantity \}) => string` | [defaultFromFHIRQuantityUnitToString](https://github.com/jy95/fhir-dosage-utils/blob/main/src/utils/fromFHIRQuantityUnitToString.ts)  | Function to turn a quantity unit (e.g UCUM "ml") into a string for humans (e.g "militier") The choice to handle plural form or not is thus yours |
+| `fromCodeableConceptToString` | `(\{ language: string, code?: CodeableConcept \}) => string | undefined` | [defaultFromCodeableConceptToString](https://github.com/jy95/fhir-dosage-utils/blob/main/src/utils/fromCodeableConceptToString.ts)  | Function to turn a codeable concept (e.g SNOMED CT "311504000") into a string for humans (e.g "With or after food"). The choice to handle extension, local valueset, ... is thus yours |
+
+:::info
+
+See the types [declaration](https://github.com/jy95/fhir-dosage-utils/blob/main/src/types.ts) for more information.
+
+:::

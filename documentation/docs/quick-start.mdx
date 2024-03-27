@@ -1,0 +1,52 @@
+---
+title: "⚡ Quick Start"
+description: "Getting started with fhir-dosage-utils"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+> Getting started with `fhir-dosage-utils`
+
+## Installation
+
+Install `fhir-dosage-utils` using your desired package manager :
+
+```bash npm2yarn
+npm install fhir-dosage-utils
+```
+
+## Usage
+
+```jsx title="main.js"
+import FhirDosageUtils from "fhir-dosage-utils";
+
+// See https://jy95.github.io/fhir-dosage-utils/docs/api/config for more info about config
+const config = {
+    language: "en"
+}
+
+// A FHIR Dosage example
+const dosage = {
+    timing: {
+          repeat: {
+            frequency: 1,
+            period: 8,
+            periodUnit: "h"
+        }
+    }
+}
+
+let dosageUtils = await FhirDosageUtils.build(config);
+let dosageAsText = dosageUtils.fromDosageToText(dosage);
+// display "1 time every 8 hours"
+console.log(dosageAsText);
+```
+
+## Output examples
+
+:::tip
+
+We have many examples available on [documentation](demo/specs) . Check them to see lib in action 😉
+
+:::
