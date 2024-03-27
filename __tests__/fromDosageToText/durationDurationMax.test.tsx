@@ -14,7 +14,7 @@ describe("fromDosageToText - durationDurationMax", () => {
     });
   });
 
-  test("No countCountMax", () => {
+  test("No durationDurationMax", () => {
     const dosage: Dosage = {
       text: "no durationDurationMax",
     };
