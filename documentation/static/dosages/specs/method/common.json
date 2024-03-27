@@ -1,0 +1,11 @@
+{
+  "method": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/ValueSet/administration-method-codes",
+        "code": "738996007",
+        "display": "Spray"
+      }
+    ]
+  }
+}

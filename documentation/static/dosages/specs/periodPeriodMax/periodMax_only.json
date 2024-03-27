@@ -1,0 +1,8 @@
+{
+  "timing": {
+    "repeat": {
+      "periodMax": 3,
+      "periodUnit": "d"
+    }
+  }
+}

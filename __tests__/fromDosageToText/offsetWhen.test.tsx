@@ -49,7 +49,7 @@ describe("fromDosageToText - offsetWhen", () => {
     expect(result).toBe("1 hour");
   });
 
-  test("offset - hours", () => {
+  test("offset - days", () => {
     const dosage: Dosage = {
       timing: {
         repeat: {
