@@ -1,7 +1,7 @@
 {
-  "name": "fhir-dosage-to-text",
+  "name": "fhir-dosage-utils",
   "version": "0.0.0-development",
-  "description": "Transform FHIR Dosage to human readable text",
+  "description": "Turn FHIR Dosage into human readable text in your wanted language (english, french, dutch, ...) and much more",
   "files": [
     "dist"
   ],
@@ -39,6 +39,17 @@
   },
   "author": "jy95",
   "license": "AGPL-3.0-or-later",
+  "keywords": [
+    "healthcare",
+    "fhir",
+    "hl7",
+    "fhir-r4",
+    "health",
+    "framework",
+    "fhir-parser",
+    "dosage",
+    "timing"
+  ],
   "devDependencies": {
     "@types/fhir": "^0.0.41",
     "@types/jest": "^29.5.12",
