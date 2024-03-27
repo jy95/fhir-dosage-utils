@@ -1,0 +1,11 @@
+{
+  "site": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/ValueSet/approach-site-codes",
+        "code": "1910005",
+        "display": "Entire ear"
+      }
+    ]
+  }
+}
