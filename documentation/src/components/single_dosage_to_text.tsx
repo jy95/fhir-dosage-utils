@@ -55,10 +55,18 @@ export default function SingleDosageToText({
         value={language}
         onChange={(e) => setLanguage(e.target.value as any)}
       >
-        <option value="en" selected={language === "en"} >English</option>
-        <option value="fr" selected={language === "fr"} >French</option>
-        <option value="nl" selected={language === "nl"} >Dutch</option>
-        <option value="de" selected={language === "de"} >German</option>
+        <option value="en" selected={language === "en"}>
+          English
+        </option>
+        <option value="fr" selected={language === "fr"}>
+          French
+        </option>
+        <option value="nl" selected={language === "nl"}>
+          Dutch
+        </option>
+        <option value="de" selected={language === "de"}>
+          German
+        </option>
       </select>
       <button onClick={handleChangeLanguage}>Confirm</button>
     </div>

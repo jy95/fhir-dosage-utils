@@ -1,25 +1,33 @@
-import { mkdirSync, readdirSync, statSync, copyFileSync } from 'fs';
-import { join } from 'path';
+import { mkdir, readdir, stat, copyFile } from "fs/promises";
+import { join } from "path";
 
-const sourceDir = './src/locales';
-const destDir = './dist/locales';
+const sourceDir = "./src/locales";
+const destDir = "./dist/locales";
 
 // Function to recursively copy directories
-function copyDirSync(src, dest) {
-    mkdirSync(dest, { recursive: true });
-    const files = readdirSync(src);
-    files.forEach(file => {
+async function copyDirAsync(src, dest) {
+  try {
+    await mkdir(dest, { recursive: true });
+    const files = await readdir(src);
+    await Promise.all(
+      files.map(async (file) => {
         const srcPath = join(src, file);
         const destPath = join(dest, file);
-        if (statSync(srcPath).isDirectory()) {
-            // Recursively copy subdirectories
-            copyDirSync(srcPath, destPath);
+        const fileStat = await stat(srcPath);
+        if (fileStat.isDirectory()) {
+          // Recursively copy subdirectories
+          await copyDirAsync(srcPath, destPath);
         } else {
-            // Copy files
-            copyFileSync(srcPath, destPath);
+          // Copy files
+          await copyFile(srcPath, destPath);
         }
-    });
+      }),
+    );
+    console.log("JSON files copied successfully!");
+  } catch (error) {
+    console.error("Error copying JSON files:", error);
+  }
 }
 
 // Copy the source directory to the destination directory
-copyDirSync(sourceDir, destDir);
+await copyDirAsync(sourceDir, destDir);
