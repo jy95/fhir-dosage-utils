@@ -19,6 +19,7 @@
   "scripts": {
     "watch": "npx parcel watch",
     "build": "npx parcel build",
+    "copyAssets": "node copyAssets.mjs",
     "test": "npx jest",
     "test:coverage": "npx jest --coverage",
     "lint": "npx prettier --check .",
