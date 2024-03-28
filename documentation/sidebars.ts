@@ -17,7 +17,7 @@ module.exports = {
       label: "💡 Demos",
       link: {
         type: "generated-index",
-        title: "💡 Showcases of the theme plugin",
+        title: "💡 Showcases of the library",
         slug: "/demo",
       },
       items: [
