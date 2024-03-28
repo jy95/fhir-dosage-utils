@@ -7,13 +7,6 @@ import type { Dosage as DosageR5 } from "fhir/r5";
 import type { Params as Config } from "fhir-dosage-utils";
 type Dosage = DosageR4 | DosageR5;
 
-async function dosageToText(dos: Dosage, config: Config) {
-  // Setup instance
-  let dosageUtils = await FhirDosageUtils.build(config);
-
-  return dosageUtils.fromDosageToText(dos);
-}
-
 export default function SingleDosageToText({
   dosage,
   config,
@@ -22,15 +15,52 @@ export default function SingleDosageToText({
   config: Config;
 }): JSX.Element {
   const [dosageText, setDosageText] = useState("");
+  const [language, setLanguage] = useState(config.language || "en");
+  const [dosageUtils, setDosageUtils] = useState<FhirDosageUtils | null>(null);
 
+  // Set up instance
   useEffect(() => {
-    async function fetchDosageText() {
-      const text = await dosageToText(dosage, config);
-      setDosageText(text);
+    async function initializeDosageUtils() {
+      const utils = await FhirDosageUtils.build(config);
+      setDosageUtils(utils);
     }
 
-    fetchDosageText();
-  }, [dosage, config]);
+    initializeDosageUtils();
+  }, [config]);
 
-  return <p>{dosageText}</p>;
+  // Set up translation
+  useEffect(() => {
+    async function fetchDosageText() {
+      if (dosageUtils) {
+        const text = dosageUtils.fromDosageToText(dosage);
+        setDosageText(text);
+      }
+    }
+    fetchDosageText();
+  }, [dosage, dosageUtils]);
+
+  // Change of language
+  const handleChangeLanguage = async () => {
+    if (dosageUtils) {
+      await dosageUtils.changeLanguage(language);
+      const text = dosageUtils.fromDosageToText(dosage);
+      setDosageText(text);
+    }
+  };
+
+  return (
+    <div>
+      <p>{dosageText}</p>
+      <select
+        value={language}
+        onChange={(e) => setLanguage(e.target.value as any)}
+      >
+        <option value="en" selected={language === "en"} >English</option>
+        <option value="fr" selected={language === "fr"} >French</option>
+        <option value="nl" selected={language === "nl"} >Dutch</option>
+        <option value="de" selected={language === "de"} >German</option>
+      </select>
+      <button onClick={handleChangeLanguage}>Confirm</button>
+    </div>
+  );
 }
