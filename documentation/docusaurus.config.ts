@@ -63,8 +63,6 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
-    image: "img/docusaurus-social-card.jpg",
     navbar: {
       title: "FHIR Dosage utils",
       logo: {
@@ -94,6 +92,7 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+      additionalLanguages: ["json"],
     },
   } satisfies Preset.ThemeConfig,
 };

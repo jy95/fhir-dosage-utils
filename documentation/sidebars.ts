@@ -23,10 +23,10 @@ module.exports = {
       items: [
         {
           type: "category",
-          label: "🔎 JSON Schema Viewer",
+          label: "🔎 Specifications",
           link: {
             type: "generated-index",
-            title: "🔎 JSON Schema Viewer showcases",
+            title: "🔎 Specifications showcases",
             slug: "/demo/specs",
           },
           items: [
