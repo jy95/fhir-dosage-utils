@@ -12,10 +12,10 @@ export default function SingleDosageToText({
   config,
 }: {
   dosage: Dosage;
-  config: Config;
+  config?: Config;
 }): JSX.Element {
   const [dosageText, setDosageText] = useState("");
-  const [language, setLanguage] = useState(config.language || "en");
+  const [language, setLanguage] = useState(config?.language || "en");
   const [dosageUtils, setDosageUtils] = useState<FhirDosageUtils | null>(null);
 
   // Set up instance
