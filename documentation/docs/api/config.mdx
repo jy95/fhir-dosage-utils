@@ -48,14 +48,54 @@ const config = {
 };
 ```
 
-| Name                           | Type                                                                                                                                                        | Default                                                                                                                              | Description                                                                                                                                      |
-| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `language`                     | `Language`                                                                                                                                                  | `en`                                                                                                                                 | The language for the text generation                                                                                                             |
-| `displaySeparator`             | `string`                                                                                                                                                    | `-`                                                                                                                                  | Separator between each part of "Dosage"                                                                                                          |
-| `displaySeparator`             | `DisplayOrder[]`                                                                                                                                            | see top-level config                                                                                                                 | Control the display order used by the algorithm. Useful when you want to turn off/on some rules for some reason                                  |
-| `dateTimeFormatOptions`        | [`Intl.DateTimeFormatOptions`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options) | undefined                                                                                                                            | To control the formatting of dateTime objects. If not provided, will use the defaults according locale e.g. "20/01/2024"                         |
-| `fromFHIRQuantityUnitToString` | `(\{ language: string, quantity: Quantity \}) => string`                                                                                                    | [defaultFromFHIRQuantityUnitToString](https://github.com/jy95/fhir-dosage-utils/blob/main/src/utils/fromFHIRQuantityUnitToString.ts) | Function to turn a quantity unit (e.g UCUM "ml") into a string for humans (e.g "militier") The choice to handle plural form or not is thus yours |
-| `fromCodeableConceptToString`  | `(\{ language: string, code?: CodeableConcept \}) => string                                                                                                 | undefined`                                                                                                                           | [defaultFromCodeableConceptToString](https://github.com/jy95/fhir-dosage-utils/blob/main/src/utils/fromCodeableConceptToString.ts)               | Function to turn a codeable concept (e.g SNOMED CT "311504000") into a string for humans (e.g "With or after food"). The choice to handle extension, local valueset, ... is thus yours |
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>language</code></td>
+      <td><code>Language</code></td>
+      <td><code>en</code></td>
+      <td>The language for the text generation</td>
+    </tr>
+    <tr>
+      <td><code>displaySeparator</code></td>
+      <td><code>string</code></td>
+      <td><code>-</code></td>
+      <td>Separator between each part of "Dosage"</td>
+    </tr>
+    <tr>
+      <td><code>displayOrder</code></td>
+      <td><code>DisplayOrder[]</code></td>
+      <td>see top-level config</td>
+      <td>Control the display order used by the algorithm. Useful when you want to turn off/on some rules for some reason</td>
+    </tr>
+    <tr>
+      <td><code>dateTimeFormatOptions</code></td>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options"><code>Intl.DateTimeFormatOptions</code></a></td>
+      <td><code>undefined</code></td>
+      <td>To control the formatting of dateTime objects. If not provided, will use the defaults according locale e.g. "20/01/2024"</td>
+    </tr>
+    <tr>
+      <td><code>fromFHIRQuantityUnitToString</code></td>
+      <td><code>(\{ language: string, quantity: Quantity \}) =&gt; string</code></td>
+      <td><a href="https://github.com/jy95/fhir-dosage-utils/blob/main/src/utils/fromFHIRQuantityUnitToString.ts">defaultFromFHIRQuantityUnitToString</a></td>
+      <td>Function to turn a quantity unit (e.g UCUM "ml") into a string for humans (e.g "milliliter"). The choice to handle plural form or not is thus yours</td>
+    </tr>
+    <tr>
+      <td><code>fromCodeableConceptToString</code></td>
+      <td><code>(\{ language: string, code?: CodeableConcept \}) =&gt; string</code></td>
+      <td><a href="https://github.com/jy95/fhir-dosage-utils/blob/main/src/utils/fromCodeableConceptToString.ts">defaultFromCodeableConceptToString</a></td>
+      <td>Function to turn a codeable concept (e.g SNOMED CT "311504000") into a string for humans (e.g "With or after food"). The choice to handle extension, local valueset, ... is thus yours</td>
+    </tr>
+  </tbody>
+</table>
 
 :::info
 
