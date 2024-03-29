@@ -1,4 +1,5 @@
 import { themes as prismThemes } from "prism-react-renderer";
+import { join as pathJoin } from "path";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 
@@ -32,6 +33,16 @@ const config: Config = {
     defaultLocale: "en",
     locales: ["en"],
   },
+
+  plugins: [
+    [
+      'docusaurus-plugin-typedoc-api',
+      {
+        projectRoot: pathJoin(__dirname, '..'),
+        packages: ['.'],
+      },
+    ],
+  ],
 
   presets: [
     [
@@ -76,7 +87,8 @@ const config: Config = {
           position: "left",
           label: "Tutorial",
         },
-        { to: "/blog", label: "Blog", position: "left" },
+        { to: 'api', label: 'API', position: "left"  },
+        { to: "/blog", label: "Blog", position: "right" },
         {
           href: "https://github.com/facebook/docusaurus",
           label: "GitHub",
