@@ -28,7 +28,14 @@ import {
 } from "./translators";
 
 // Types
-import type { Dosage, Params, Config, Language, DisplayOrder } from "./types";
+import type {
+  Dosage,
+  Params,
+  Config,
+  Language,
+  DisplayOrder,
+  NamespacesLocale,
+} from "./types";
 
 export class FhirDosageUtils {
   // Configuration (Immutability has its advantages ...)
@@ -88,7 +95,7 @@ export class FhirDosageUtils {
         backends: [
           resourcesToBackend(
             async (lng: string, ns: string) =>
-              import(`./locales/${lng}/${ns}.json`),
+              import(`./locales/${lng as Language}/${ns as NamespacesLocale}.json`),
           ),
         ],
       },

@@ -53,6 +53,12 @@ export type DisplayOrder =
   | "additionalInstruction"
   | "patientInstruction";
 
+export type NamespacesLocale =
+  | "common"
+  | "daysOfWeek"
+  | "eventTiming"
+  | "unitsOfTime";
+
 // Parameters
 export interface Params {
   /**
