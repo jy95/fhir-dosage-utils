@@ -37,6 +37,10 @@ import type {
   NamespacesLocale,
 } from "./types";
 
+// backends i18next
+const localeImport = async (lng: Language, ns: NamespacesLocale) =>
+  import(`./locales/${lng}/${ns}.json`);
+
 export class FhirDosageUtils {
   // Configuration (Immutability has its advantages ...)
   config: Config;
@@ -94,8 +98,8 @@ export class FhirDosageUtils {
       backend: {
         backends: [
           resourcesToBackend(
-            async (lng: string, ns: string) =>
-              import(`./locales/${lng as Language}/${ns as NamespacesLocale}.json`),
+            // have to cast the function to be webpack / builder friendly
+            localeImport as any,
           ),
         ],
       },
