@@ -36,10 +36,10 @@ const config: Config = {
 
   plugins: [
     [
-      'docusaurus-plugin-typedoc-api',
+      "docusaurus-plugin-typedoc-api",
       {
-        projectRoot: pathJoin(__dirname, '..'),
-        packages: ['.'],
+        projectRoot: pathJoin(__dirname, ".."),
+        packages: ["."],
       },
     ],
   ],
@@ -87,7 +87,7 @@ const config: Config = {
           position: "left",
           label: "Tutorial",
         },
-        { to: 'api', label: 'API', position: "left"  },
+        { to: "api", label: "API", position: "left" },
         { to: "/blog", label: "Blog", position: "right" },
         {
           href: "https://github.com/facebook/docusaurus",

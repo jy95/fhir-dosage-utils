@@ -46,7 +46,7 @@ export class FhirDosageUtils {
   config: Config;
 
   // Set up lib, according provided parameters
-  constructor(args?: Params) {
+  private constructor(args?: Params) {
     this.config = {
       // default attributes
       language: "en",
