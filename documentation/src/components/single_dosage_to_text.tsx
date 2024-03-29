@@ -84,7 +84,7 @@ export default function SingleDosageToText({
         <button onClick={handleChangeLanguage}>Confirm</button>
       </div>
       <pre style={{ marginTop: "10px" }}>
-        <p>{ decodeHtmlEntities(dosageText) }</p>
+        <p>{decodeHtmlEntities(dosageText)}</p>
       </pre>
     </div>
   );
