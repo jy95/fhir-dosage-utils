@@ -1,0 +1,11 @@
+{
+  "doseAndRate": [
+    {
+      "doseQuantity": {
+        "value": "25",
+        "system": "http://unitsofmeasure.org",
+        "code": "ug"
+      }
+    }
+  ]
+}

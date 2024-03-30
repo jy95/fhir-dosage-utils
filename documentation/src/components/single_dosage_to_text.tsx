@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import FhirDosageUtils from "fhir-dosage-utils";
+import CodeBlock from "@theme/CodeBlock";
 
 // Types
 import type { Dosage as DosageR4 } from "fhir/r4";
@@ -11,6 +12,7 @@ type Dosage = DosageR4 | DosageR5;
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/format#avoid_comparing_formatted_date_values_to_static_values
 function decodeHtmlEntities(text: string): string {
   return text
+    .replace(/&quot;/g, '"')
     .replace(/&#(\d+);/g, function (match, dec) {
       return String.fromCharCode(dec);
     })
@@ -83,9 +85,11 @@ export default function SingleDosageToText({
         </select>
         <button onClick={handleChangeLanguage}>Confirm</button>
       </div>
-      <pre style={{ marginTop: "10px" }}>
-        <p>{decodeHtmlEntities(dosageText)}</p>
-      </pre>
+      <p style={{ marginTop: "10px" }}>
+        <CodeBlock language="markup">
+          {decodeHtmlEntities(dosageText)}
+        </CodeBlock>
+      </p>
     </div>
   );
 }

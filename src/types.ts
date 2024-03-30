@@ -177,12 +177,14 @@ export interface Params {
    * Function to turn a quantity unit (e.g UCUM "ml") into a string for humans (e.g "militier")
    * The choice to handle plural form or not is thus under the hands of people ;)
    * @see [defaultFromFHIRQuantityUnitToString](https://github.com/jy95/fhir-dosage-utils/blob/main/src/utils/fromFHIRQuantityUnitToString.ts) for default implementation
+   * @see [FHIR definition of Quantity](https://build.fhir.org/datatypes.html#Quantity) for more info about the type itself
    */
   fromFHIRQuantityUnitToString?: FromFHIRQuantityUnitToStringFct;
   /**
    * Function to turn a codeable concept (e.g SNOMED CT "311504000") into a string for humans (e.g "With or after food")
    * The choice to handle extension, local valueset, ... is thus under the hands of people ;)
    * @see [defaultFromCodeableConceptToString](https://github.com/jy95/fhir-dosage-utils/blob/main/src/utils/fromCodeableConceptToString.ts) for default implementation
+   * @see [FHIR definition of CodeableConcept](https://build.fhir.org/datatypes.html#CodeableConcept) for more info about the type itself
    */
   fromCodeableConceptToString?: FromCodeableConceptToStringFct;
   /**
