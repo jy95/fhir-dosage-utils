@@ -1,0 +1,9 @@
+# netlify.toml
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[context.deploy-preview]
+  command = "npm install && npm run build && npm link && cd documentation && npm link fhir-dosage-utils --save && npm install --prefer-dedupe && npm run build"
+  environment = { NETLIFY_SITE_ID = "7e54f7df-e32e-4753-a19a-97bb9e15808d" }
+  publish = "documentation/build"
