@@ -1,0 +1,12 @@
+{
+  "doseAndRate": [
+    {
+      "rateRange": {
+        "high": {
+          "value": 5,
+          "unit": "pills"
+        }
+      }
+    }
+  ]
+}

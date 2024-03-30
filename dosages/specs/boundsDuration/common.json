@@ -1,0 +1,11 @@
+{
+  "timing": {
+    "repeat": {
+      "boundsDuration": {
+        "system": "http://hl7.org/fhir/ValueSet/duration-units",
+        "value": 3,
+        "code": "d"
+      }
+    }
+  }
+}

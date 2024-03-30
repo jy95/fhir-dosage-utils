@@ -1,0 +1,9 @@
+{
+  "timing": {
+    "repeat": {
+      "duration": 1,
+      "durationMax": 3,
+      "durationUnit": "d"
+    }
+  }
+}

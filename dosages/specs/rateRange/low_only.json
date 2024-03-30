@@ -1,0 +1,12 @@
+{
+  "doseAndRate": [
+    {
+      "rateRange": {
+        "low": {
+          "value": 3,
+          "unit": "pills"
+        }
+      }
+    }
+  ]
+}

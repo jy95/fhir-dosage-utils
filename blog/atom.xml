@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://jy95.github.io/fhir-dosage-utils/blog</id>
+    <title>FHIR Dosage Utils Blog</title>
+    <updated>2024-03-29T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://jy95.github.io/fhir-dosage-utils/blog"/>
+    <subtitle>FHIR Dosage Utils Blog</subtitle>
+    <icon>https://jy95.github.io/fhir-dosage-utils/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Welcome]]></title>
+        <id>https://jy95.github.io/fhir-dosage-utils/blog/welcome</id>
+        <link href="https://jy95.github.io/fhir-dosage-utils/blog/welcome"/>
+        <updated>2024-03-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Welcome to fhir-dosage-utils.]]></summary>
+        <content type="html"><![CDATA[<p>Welcome to <code>fhir-dosage-utils</code>.<br>
+<!-- -->Key Features:</p>
+<ul>
+<li><strong>Compatible:</strong> Works with <a href="https://hl7.org/fhir/R4/dosage.html" target="_blank" rel="noopener noreferrer">Dosage R4</a> and <a href="https://hl7.org/fhir/R5/dosage.html" target="_blank" rel="noopener noreferrer">Dosage R5</a></li>
+<li><strong>Extensibility</strong> Easily adaptable and extendable to accommodate your requirements</li>
+<li><strong>Internationalization</strong> Seamlessly extendable to other languages with <code>i18next</code></li>
+<li><strong>Integration Ease</strong> Works effortlessly in various environments like the browser, Node.js, ...</li>
+</ul>]]></content>
+        <author>
+            <name>Jacques Yakoub</name>
+            <uri>https://github.com/jy95</uri>
+        </author>
+        <category label="welcome" term="welcome"/>
+    </entry>
+</feed>

@@ -1,0 +1,10 @@
+{
+  "doseAndRate": [
+    {
+      "doseQuantity": {
+        "value": 3,
+        "unit": "pills"
+      }
+    }
+  ]
+}
