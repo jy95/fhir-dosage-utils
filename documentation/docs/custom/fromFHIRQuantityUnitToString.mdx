@@ -28,18 +28,16 @@ import SingleDosageToText from "@site/src/components/single_dosage_to_text";
     <CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
   </TabItem>
   <TabItem value="config" label="Configuration">
-```js
-{
-        fromFHIRQuantityUnitToString: ({quantity, language}) => {
+    ```js
+    {
+        fromFHIRQuantityUnitToString: ({ quantity, language }) => {
             let unit = quantity.code || quantity.unit;
             let system = quantity.system || "";
 
             return `[${language} translation of "${unit}" (${system})]`;
         };
-
-}
-
-```
+    }
+    ```
 
   </TabItem>
 </Tabs>

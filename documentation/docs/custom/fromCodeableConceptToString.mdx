@@ -36,8 +36,8 @@ import SingleDosageToText from "@site/src/components/single_dosage_to_text";
     <CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
   </TabItem>
   <TabItem value="config" label="Configuration">
-```js
-{
+    ```js
+    {
         fromCodeableConceptToString: ({ language, code }) => {
             // If no code, skip it
             if (code === undefined) {
@@ -52,10 +52,8 @@ import SingleDosageToText from "@site/src/components/single_dosage_to_text";
             let firstCode = code.coding[0];
             return `${language} translation of ${firstCode.code} (${firstCode.system})`;
         };
-
-}
-
-```
+    }
+    ```
 
   </TabItem>
 </Tabs>
