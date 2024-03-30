@@ -63,33 +63,37 @@ export type NamespacesLocale =
 export interface Params {
   /**
    * To set up the language
-   * @default "en" (English)
+   * @defaultValue "en" (English)
    */
   language?: Language;
   /**
    * Function to turn a quantity unit (e.g UCUM "ml") into a string for humans (e.g "militier")
    * The choice to handle plural form or not is thus under the hands of people ;)
+   * @see [defaultFromFHIRQuantityUnitToString](https://github.com/jy95/fhir-dosage-utils/blob/main/src/utils/fromFHIRQuantityUnitToString.ts) for default implementation
    */
   fromFHIRQuantityUnitToString?: FromFHIRQuantityUnitToStringFct;
   /**
    * Function to turn a codeable concept (e.g SNOMED CT "311504000") into a string for humans (e.g "With or after food")
    * The choice to handle extension, local valueset, ... is thus under the hands of people ;)
+   * @see [defaultFromCodeableConceptToString](https://github.com/jy95/fhir-dosage-utils/blob/main/src/utils/fromCodeableConceptToString.ts) for default implementation
    */
   fromCodeableConceptToString?: FromCodeableConceptToStringFct;
   /**
    * Control the display order used by the algorithm
    * Useful when you want to turn off some rules for some reason
+   * @defaultValue ["method", "doseQuantity", "doseRange", "rateRatio", "rateQuantity", "rateRange", "durationDurationMax", "frequencyFrequencyMaxPeriodPeriodMax", "offsetWhen", "dayOfWeek", "timeOfDay", "route", "site", "asNeeded", "boundsDuration", "boundsRange", "countCountMax", "event", "code", "maxDosePerPeriod", "maxDosePerAdministration", "maxDosePerLifetime", "additionalInstruction", "patientInstruction"]
    */
   displayOrder?: DisplayOrder[];
   /**
    * Override separator between each part of "Dosage"
-   * @default " - "
+   * @defaultValue " - "
    */
   displaySeparator?: string;
   /**
    * To control the formatting of dateTime objects.
    * If not provided, will use the defaults according locale e.g. "20/01/2024"
-   * @default {}
+   * @defaultValue {}
+   * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options
    */
   dateTimeFormatOptions?: Intl.DateTimeFormatOptions;
 }
