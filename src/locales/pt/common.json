@@ -1,0 +1,71 @@
+{
+  "linkwords": {
+    "and": "and"
+  },
+  "fields": {
+    "doseQuantity": "{{quantity}} {{unit}}",
+    "doseRange": {
+      "lowAndHigh": "{{low}} to {{high}} {{unit}}",
+      "onlyHigh": "up to {{high}} {{unit}}",
+      "onlyLow": "{{low}} {{unit}}"
+    },
+    "rateQuantity": "at a rate of {{quantity}} {{unit}}",
+    "rateRange": {
+      "lowAndHigh": "at a rate of {{low}} to {{high}} {{unit}}",
+      "onlyHigh": "at a rate of {{high}} {{unit}}",
+      "onlyLow": "at a rate of {{low}} {{unit}}"
+    },
+    "rateRatio": {
+      "rateRatio_one": "at a rate of {{quantityNumerator}} {{numeratorUnit}} per {{denominatorUnit}}",
+      "rateRatio_other": "at a rate of {{quantityNumerator}} {{numeratorUnit}} every {{count}} {{denominatorUnit}}"
+    },
+    "duration": "over {{durationText}}",
+    "durationMax": "(maximum {{durationMaxText}})",
+    "frequency": {
+      "onlyFrequency_one": "{{count}} time",
+      "onlyFrequency_other": "{{count}} times",
+      "withfrequencyMax_one": "{{frequency}}-{{count}} time",
+      "withfrequencyMax_other": "{{frequency}}-{{count}} times"
+    },
+    "frequencyMax": {
+      "frequencyMax_one": "up to {{count}} time",
+      "frequencyMax_other": "up to {{count}} times"
+    },
+    "period": {
+      "period_one": "every {{unit}}",
+      "period_other": "every {{count}} {{unit}}"
+    },
+    "periodMax": {
+      "withPeriod": "every {{period}} to {{count}} {{unit}}",
+      "onlyPeriodMax_one": "every {{unit}}",
+      "onlyPeriodMax_other": "every {{count}} {{unit}}"
+    },
+    "dayOfWeek": {
+      "dayOfWeek_one": "on {{dayOfWeek}}",
+      "dayOfWeek_other": "on {{dayOfWeek}}"
+    },
+    "timeOfDay": "at {{timeOfDay}}",
+    "asNeeded": "as required",
+    "asNeededFor": "as required for {{reasons}}",
+    "boundsDuration": "for {{durationText}}",
+    "boundsRange": {
+      "lowAndHigh": "for {{low}} to {{high}} {{unit}}",
+      "onlyHigh": "for up to {{high}} {{unit}}",
+      "onlyLow": "for at least {{low}} {{unit}}"
+    },
+    "count": {
+      "count_one": "take {{count}} time",
+      "count_other": "take {{count}} times"
+    },
+    "countMax": {
+      "countMax_one": "take {{low}} to {{count}} time",
+      "countMax_other": "take {{low}} to {{count}} times"
+    },
+    "event": {
+      "event_one": "on {{event}}",
+      "event_other": "on {{event}}"
+    },
+    "maxDosePerLifetime": "up to a maximum of {{count}} {{unit}} for the lifetime of patient",
+    "maxDosePerAdministration": "up to a maximum of {{count}} {{unit}} per dose"
+  }
+}
