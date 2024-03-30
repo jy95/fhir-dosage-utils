@@ -52,7 +52,7 @@ describe("fromDosageToText - boundsPeriod", () => {
     };
 
     let result = dosageUtils.fromDosageToText(dosage);
-    expect(decodeHtmlEntities(result)).toBe("from 5/23/11 to 5/27/1");
+    expect(decodeHtmlEntities(result)).toBe("from 5/23/11 to 5/27/11");
   });
 
   test("start only", () => {
