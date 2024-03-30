@@ -1,0 +1,23 @@
+---
+description: To control the formatting of dateTime objects
+title: 🎉 dateTimeFormatOptions
+---
+
+import CodeBlock from "@theme/CodeBlock";
+import Schema from "@site/static/dosages/specs/event/single_item.json";
+import Config from "@site/static/dosages/custom/dateTimeFormatOptions.json";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import SingleDosageToText from "@site/src/components/single_dosage_to_text";
+
+<Tabs>
+  <TabItem value="text" label="Human readable text" default>
+    <SingleDosageToText dosage={Schema} config={Config} />
+  </TabItem>
+  <TabItem value="json" label="Dosage">
+    <CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+  </TabItem>
+  <TabItem value="config" label="Configuration">
+    <CodeBlock language="json">{JSON.stringify(Config, null, 2)}</CodeBlock>
+  </TabItem>
+</Tabs>

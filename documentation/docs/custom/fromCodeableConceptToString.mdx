@@ -1,0 +1,59 @@
+---
+description: Function to turn a codeable concept (e.g SNOMED CT "311504000") into a string for humans (e.g "With or after food")
+title: 💻 fromCodeableConceptToString
+---
+
+import CodeBlock from "@theme/CodeBlock";
+import Schema from "@site/static/dosages/specs/method/common.json";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import SingleDosageToText from "@site/src/components/single_dosage_to_text";
+
+<Tabs>
+  <TabItem value="text" label="Human readable text" default>
+    <SingleDosageToText 
+        dosage={Schema} 
+        config={{
+            fromCodeableConceptToString: ({language, code }) => {
+                // If no code, skip it
+                if (code === undefined) {
+                    return undefined;
+                }
+                // If empty code, return text or undefined
+                if (code.coding === undefined || code.coding.length === 0) {
+                    return code.text;
+                }
+
+                // Take first coding
+                let firstCode = code.coding[0];
+                return `${language} translation of ${firstCode.code} (${firstCode.system})`;
+            }
+        }}
+    />
+
+  </TabItem>
+  <TabItem value="json" label="Dosage">
+    <CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+  </TabItem>
+  <TabItem value="config" label="Configuration">
+    ```js
+    {
+        fromCodeableConceptToString: ({ language, code }) => {
+            // If no code, skip it
+            if (code === undefined) {
+                return undefined;
+            }
+            // If empty code, return text or undefined
+            if (code.coding === undefined || code.coding.length === 0) {
+                return code.text;
+            }
+
+            // Do the magic here ;)
+            let firstCode = code.coding[0];
+            return `${language} translation of ${firstCode.code} (${firstCode.system})`;
+        };
+    }
+    ```
+
+  </TabItem>
+</Tabs>

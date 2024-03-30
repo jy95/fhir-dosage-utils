@@ -1,0 +1,6 @@
+{
+  "maxDosePerAdministration": {
+    "value": 3,
+    "unit": "mg"
+  }
+}

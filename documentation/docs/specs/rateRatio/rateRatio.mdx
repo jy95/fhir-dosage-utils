@@ -1,0 +1,25 @@
+---
+description: rateRatio
+title: 📈 rateRatio
+---
+
+import CodeBlock from "@theme/CodeBlock";
+import Schema from "@site/static/dosages/specs/rateRatio/common.json";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import SingleDosageToText from "@site/src/components/single_dosage_to_text";
+
+<Tabs>
+  <TabItem value="text" label="Human readable text" default>
+    <SingleDosageToText dosage={Schema} />
+  </TabItem>
+  <TabItem value="json" label="Dosage">
+    <CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+  </TabItem>
+</Tabs>
+
+:::tip
+
+Don't forget you can use [fromFHIRQuantityUnitToString](/api/interface/Params) option to fit your needs
+
+:::

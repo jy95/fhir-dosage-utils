@@ -1,0 +1,43 @@
+---
+description: Function to turn a quantity unit (e.g UCUM "ml") into a string for humans (e.g "militier")
+title: 📏 fromFHIRQuantityUnitToString
+---
+
+import CodeBlock from "@theme/CodeBlock";
+import Schema from "@site/static/dosages/custom/fromFHIRQuantityUnitToString.json";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import SingleDosageToText from "@site/src/components/single_dosage_to_text";
+
+<Tabs>
+  <TabItem value="text" label="Human readable text" default>
+    <SingleDosageToText 
+        dosage={Schema} 
+        config={{
+            fromFHIRQuantityUnitToString: ({quantity, language}) => {
+                let unit = quantity.code || quantity.unit;
+                let system = quantity.system || "";
+
+                return `[${language} translation of "${unit}" (${system})]`;
+            }
+        }}
+    />
+
+  </TabItem>
+  <TabItem value="json" label="Dosage">
+    <CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+  </TabItem>
+  <TabItem value="config" label="Configuration">
+    ```js
+    {
+        fromFHIRQuantityUnitToString: ({ quantity, language }) => {
+            let unit = quantity.code || quantity.unit;
+            let system = quantity.system || "";
+
+            return `[${language} translation of "${unit}" (${system})]`;
+        };
+    }
+    ```
+
+  </TabItem>
+</Tabs>

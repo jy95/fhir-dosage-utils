@@ -28,14 +28,25 @@ import {
 } from "./translators";
 
 // Types
-import type { Dosage, Params, Config, Language, DisplayOrder } from "./types";
+import type {
+  Dosage,
+  Params,
+  Config,
+  Language,
+  DisplayOrder,
+  NamespacesLocale,
+} from "./types";
+
+// backends i18next
+const localeImport = async (lng: Language, ns: NamespacesLocale) =>
+  import(`./locales/${lng}/${ns}.json`);
 
 export class FhirDosageUtils {
   // Configuration (Immutability has its advantages ...)
   config: Config;
 
   // Set up lib, according provided parameters
-  constructor(args?: Params) {
+  private constructor(args?: Params) {
     this.config = {
       // default attributes
       language: "en",
@@ -87,8 +98,8 @@ export class FhirDosageUtils {
       backend: {
         backends: [
           resourcesToBackend(
-            async (lng: string, ns: string) =>
-              import(`./locales/${lng}/${ns}.json`),
+            // have to cast the function to be webpack / builder friendly
+            localeImport as any,
           ),
         ],
       },

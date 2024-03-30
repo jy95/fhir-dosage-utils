@@ -1,0 +1,11 @@
+{
+  "route": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/ValueSet/route-codes",
+        "code": "26643006",
+        "display": "Oral route"
+      }
+    ]
+  }
+}

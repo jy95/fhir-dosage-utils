@@ -1,0 +1,8 @@
+{
+  "timing": {
+    "repeat": {
+      "offset": 15,
+      "when": ["MORN"]
+    }
+  }
+}

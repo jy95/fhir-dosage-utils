@@ -104,3 +104,6 @@ dist
 .tern-port
 build
 lib
+
+# Parcel js cache
+.parcel-cache
