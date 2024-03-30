@@ -12,8 +12,8 @@ export function transformEventToText(
 ): string | undefined {
   // If empty, return undefined
   if (
-    dos.timing == undefined ||
-    dos.timing.event == undefined ||
+    dos.timing === undefined ||
+    dos.timing.event === undefined ||
     dos.timing.event.length === 0
   ) {
     return undefined;

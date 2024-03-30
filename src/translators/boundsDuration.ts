@@ -26,7 +26,7 @@ export function transformBoundsDurationToText(
   config: Config,
 ): string | undefined {
   // If empty, return undefined
-  if (dos.timing == undefined || dos.timing.repeat == undefined) {
+  if (dos.timing === undefined || dos.timing.repeat === undefined) {
     return undefined;
   }
 

@@ -5,27 +5,7 @@ import resourcesToBackend from "i18next-resources-to-backend";
 // Functions
 import { defaultFromFHIRQuantityUnitToString } from "./utils/fromFHIRQuantityUnitToString";
 import { defaultFromCodeableConceptToString } from "./utils/fromCodeableConceptToString";
-import {
-  transformDoseQuantityToText,
-  transformDoseRangeToText,
-  transformRateQuantityToText,
-  transformRateRangeToText,
-  transformRateRatioToText,
-  transformDurationDurationMaxToText,
-  transformFrequencyFrequencyMaxToText,
-  transformPeriodPeriodMaxToText,
-  transformOffsetWhenToText,
-  transformDayOfWeekToText,
-  transformTimeOfDayToText,
-  transformAsNeededToText,
-  transformBoundsDurationToText,
-  transformBoundsRangeToText,
-  transformCountCountMaxToText,
-  transformEventToText,
-  transformAdditionalInstructionToText,
-  transformMaxDosePerLifetimeToText,
-  transformMaxDosePerAdministrationToText,
-} from "./translators";
+import { fromDisplayOrderToResult } from "./utils/fromDisplayOrderToResult";
 
 // Types
 import type {
@@ -141,79 +121,9 @@ export class FhirDosageUtils {
    */
   fromDosageToText(dos: Dosage): string {
     // iterate on each key and generate a string from each part
-    let parts = this.config.displayOrder
-      .map((entry) => {
-        switch (entry) {
-          case "additionalInstruction":
-            return transformAdditionalInstructionToText(dos, this.config);
-          case "asNeeded":
-            return transformAsNeededToText(dos, this.config);
-          case "boundsDuration":
-            return transformBoundsDurationToText(dos, this.config);
-          // TODO "boundsPeriod" later ?
-          case "boundsRange":
-            return transformBoundsRangeToText(dos, this.config);
-          case "code":
-            return this.config.fromCodeableConceptToString({
-              language: this.config.language,
-              code: dos.timing?.code,
-            });
-          case "countCountMax":
-            return transformCountCountMaxToText(dos);
-          case "dayOfWeek":
-            return transformDayOfWeekToText(dos);
-          case "doseQuantity":
-            return transformDoseQuantityToText(dos, this.config);
-          case "doseRange":
-            return transformDoseRangeToText(dos, this.config);
-          case "durationDurationMax":
-            return transformDurationDurationMaxToText(dos);
-          case "event":
-            return transformEventToText(dos, this.config);
-          case "frequencyFrequencyMax":
-            return transformFrequencyFrequencyMaxToText(dos);
-          case "frequencyFrequencyMaxPeriodPeriodMax":
-            let subParts = [
-              transformFrequencyFrequencyMaxToText(dos),
-              transformPeriodPeriodMaxToText(dos),
-            ].filter((s) => s !== undefined);
-            return subParts.length > 0 ? subParts.join(" ") : undefined;
-          case "maxDosePerAdministration":
-            return transformMaxDosePerAdministrationToText(dos, this.config);
-          // case "maxDosePerPeriod":
-          case "maxDosePerLifetime":
-            return transformMaxDosePerLifetimeToText(dos, this.config);
-          case "method":
-            return this.config.fromCodeableConceptToString({
-              language: this.config.language,
-              code: dos.method,
-            });
-          case "offsetWhen":
-            return transformOffsetWhenToText(dos);
-          case "patientInstruction":
-            return dos.patientInstruction;
-          case "periodPeriodMax":
-            return transformPeriodPeriodMaxToText(dos);
-          case "rateQuantity":
-            return transformRateQuantityToText(dos, this.config);
-          case "rateRange":
-            return transformRateRangeToText(dos, this.config);
-          case "rateRatio":
-            return transformRateRatioToText(dos, this.config);
-          case "route":
-            return this.config.fromCodeableConceptToString({
-              language: this.config.language,
-              code: dos.route,
-            });
-          case "site":
-            return this.config.fromCodeableConceptToString({
-              language: this.config.language,
-              code: dos.site,
-            });
-          case "timeOfDay":
-            return transformTimeOfDayToText(dos);
-        }
-      })
+    let order = this.config.displayOrder;
+    let parts = order
+      .map((entry) => fromDisplayOrderToResult(dos, this.config, entry))
       .filter((s) => s !== undefined);
 
     // Join each part with a separator

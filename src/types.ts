@@ -121,6 +121,10 @@ export enum DisplayOrderEnum {
    */
   boundsDuration = "boundsDuration",
   /**
+   * Display "timing.repeat.boundsPeriod"
+   */
+  boundsPeriod = "boundsPeriod",
+  /**
    * Display "timing.repeat.boundsRange"
    */
   boundsRange = "boundsRange",

@@ -19,3 +19,4 @@ export { transformEventToText } from "./event";
 export { transformAdditionalInstructionToText } from "./additionalInstruction";
 export { transformMaxDosePerLifetimeToText } from "./maxDosePerLifetime";
 export { transformMaxDosePerAdministrationToText } from "./maxDosePerAdministration";
+export { transformBoundsPeriodToText } from "./boundsPeriod";

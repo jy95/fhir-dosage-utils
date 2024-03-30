@@ -9,7 +9,7 @@ import type { Dosage } from "../types";
 // Function to transform dayOfWeek into a string
 export function transformDayOfWeekToText(dos: Dosage): string | undefined {
   // If empty, return undefined
-  if (dos.timing == undefined || dos.timing.repeat == undefined) {
+  if (dos.timing === undefined || dos.timing.repeat === undefined) {
     return undefined;
   }
 
