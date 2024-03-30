@@ -27,7 +27,7 @@ export type { FromFHIRQuantityUnitToStringFct, FromCodeableConceptToStringFct };
 /**
  * Represents supported languages.
  */
-enum LanguageCodes {
+enum LanguageEnum {
   /**
    * English
    */
@@ -43,15 +43,15 @@ enum LanguageCodes {
   /**
    * German
    */
-  de = "de"
+  de = "de",
 }
 
-export type Language = keyof typeof LanguageCodes;
+export type Language = keyof typeof LanguageEnum;
 
 /**
  * Represents the available display orders
  */
-enum DisplayOrderCodes {
+export enum DisplayOrderEnum {
   /**
    * Display "method"
    */
@@ -155,10 +155,10 @@ enum DisplayOrderCodes {
   /**
    * Display "patientInstruction"
    */
-  patientInstruction = "patientInstruction"
+  patientInstruction = "patientInstruction",
 }
 
-export type DisplayOrder = keyof typeof DisplayOrderCodes;
+export type DisplayOrder = keyof typeof DisplayOrderEnum;
 
 export type NamespacesLocale =
   | "common"
