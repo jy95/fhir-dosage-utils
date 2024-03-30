@@ -2,6 +2,7 @@ import i18next from "i18next";
 
 // Functions
 import { fromListToString } from "../utils/fromListToString";
+import { formatDatetimes } from "../utils/formatDatetimes";
 
 // types
 import type { Config, Dosage } from "../types";
@@ -21,15 +22,9 @@ export function transformEventToText(
 
   // Generate the string version of them
   let events = dos.timing.event;
-  const dateTimeFormat = new Intl.DateTimeFormat(
-    config.language,
-    config.dateTimeFormatOptions,
-  );
 
   // List to string
-  let eventList = events.map((dateISO8601) =>
-    dateTimeFormat.format(new Date(dateISO8601)),
-  );
+  let eventList = formatDatetimes({ config, datetimes: events });
   let eventsAsString = fromListToString(eventList);
 
   return i18next.t("fields.event.event", {

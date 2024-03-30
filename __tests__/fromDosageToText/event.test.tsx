@@ -54,7 +54,7 @@ describe("fromDosageToText - event", () => {
     };
 
     let result = dosageUtils.fromDosageToText(dosage);
-    expect(decodeHtmlEntities(result)).toBe("on 1/1/2024");
+    expect(decodeHtmlEntities(result)).toBe("on 01/01/2024");
   });
 
   test("N+1 items", () => {
@@ -71,7 +71,7 @@ describe("fromDosageToText - event", () => {
 
     let result = dosageUtils.fromDosageToText(dosage);
     expect(decodeHtmlEntities(result)).toBe(
-      "on 1/1/2018, 6/1/1973 and 8/23/1905",
+      "on 2018, June 1973 and 08/23/1905",
     );
   });
 });

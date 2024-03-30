@@ -48,6 +48,7 @@ export class FhirDosageUtils {
         "site",
         "asNeeded",
         "boundsDuration",
+        "boundsPeriod",
         "boundsRange",
         "countCountMax",
         "event",
