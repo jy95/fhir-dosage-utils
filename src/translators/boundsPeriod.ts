@@ -1,5 +1,3 @@
-import i18next from "i18next";
-
 // Functions
 import { formatDatetime } from "../utils/formatDatetimes";
 
@@ -9,6 +7,7 @@ import type { DisplayOrderParams } from "../types";
 export function transformBoundsPeriodToText({
   dos,
   config,
+  i18next,
 }: DisplayOrderParams): string | undefined {
   // If empty, return undefined
   if (

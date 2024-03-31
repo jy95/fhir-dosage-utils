@@ -1,5 +1,3 @@
-import i18next from "i18next";
-
 // Functions
 import { fromListToString } from "../utils/fromListToString";
 
@@ -27,6 +25,7 @@ function formatString(time: string): string {
 // Function to transform timeOfDay into a string
 export function transformTimeOfDayToText({
   dos,
+  i18next,
 }: DisplayOrderParams): string | undefined {
   // If empty, return undefined
   if (dos.timing === undefined || dos.timing.repeat === undefined) {

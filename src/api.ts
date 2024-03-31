@@ -131,6 +131,7 @@ export class FhirDosageUtils {
           config: this.config,
           dos: dos,
           entry: entry,
+          i18next: i18next,
         }),
       )
       .filter((s) => s !== undefined);

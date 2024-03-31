@@ -238,5 +238,6 @@ export type Config = Required<Params>;
 export type DisplayOrderParams = {
   dos: Dosage;
   config: Config;
-  i18next?: I18N;
+  i18next: I18N;
 };
+export type { I18N };

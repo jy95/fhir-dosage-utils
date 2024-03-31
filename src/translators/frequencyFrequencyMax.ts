@@ -1,8 +1,8 @@
-import i18next from "i18next";
 import type { DisplayOrderParams } from "../types";
 
 export function transformFrequencyFrequencyMaxToText({
   dos,
+  i18next,
 }: DisplayOrderParams): string | undefined {
   // If empty, return undefined
   if (dos.timing === undefined || dos.timing.repeat === undefined) {
