@@ -1,5 +1,3 @@
-import i18next from "i18next";
-
 // Function
 import { fromListToString } from "../utils/fromListToString";
 
@@ -9,6 +7,7 @@ import type { DisplayOrderParams } from "../types";
 // Function to transform dayOfWeek into a string
 export function transformDayOfWeekToText({
   dos,
+  i18next,
 }: DisplayOrderParams): string | undefined {
   // If empty, return undefined
   if (dos.timing === undefined || dos.timing.repeat === undefined) {
@@ -27,7 +26,7 @@ export function transformDayOfWeekToText({
     const dayOfWeeks = dayOfWeek.map((dayCode) =>
       i18next.t(`daysOfWeek:${dayCode}`),
     );
-    const dayOfWeeksAsString = fromListToString(dayOfWeeks);
+    const dayOfWeeksAsString = fromListToString(i18next, dayOfWeeks);
 
     return i18next.t("fields.dayOfWeek.dayOfWeek", {
       count: dayOfWeek.length,

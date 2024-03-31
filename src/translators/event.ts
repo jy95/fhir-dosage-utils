@@ -1,5 +1,3 @@
-import i18next from "i18next";
-
 // Functions
 import { fromListToString } from "../utils/fromListToString";
 import { formatDatetimes } from "../utils/formatDatetimes";
@@ -10,6 +8,7 @@ import type { DisplayOrderParams } from "../types";
 export function transformEventToText({
   dos,
   config,
+  i18next,
 }: DisplayOrderParams): string | undefined {
   // If empty, return undefined
   if (
@@ -25,7 +24,7 @@ export function transformEventToText({
 
   // List to string
   let eventList = formatDatetimes({ config, datetimes: events });
-  let eventsAsString = fromListToString(eventList);
+  let eventsAsString = fromListToString(i18next, eventList);
 
   return i18next.t("fields.event.event", {
     count: events.length,

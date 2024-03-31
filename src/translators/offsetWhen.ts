@@ -81,7 +81,7 @@ function transformWhen(i18next: I18N, when?: string[]): string | undefined {
   const whens = (when as TimeKeys[]).map((whenCode) =>
     i18next.t(`eventTiming:${whenCode}`),
   );
-  const finalString = fromListToString(whens);
+  const finalString = fromListToString(i18next, whens);
 
   return finalString;
 }

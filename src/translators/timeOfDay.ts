@@ -42,7 +42,7 @@ export function transformTimeOfDayToText({
   } else {
     // Turn it into a string
     const timeOfDays = timeOfDay.map(formatString);
-    const timeOfDaysAsString = fromListToString(timeOfDays);
+    const timeOfDaysAsString = fromListToString(i18next, timeOfDays);
 
     return i18next.t("fields.timeOfDay", {
       timeOfDay: timeOfDaysAsString,
