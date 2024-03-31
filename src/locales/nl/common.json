@@ -48,6 +48,11 @@
     "asNeeded": "indien nodig",
     "asNeededFor": "zoals nodig voor {{reasons}}",
     "boundsDuration": "gedurende {{durationText}}",
+    "boundsPeriod": {
+      "startAndEnd": "van {{start}} tot {{end}}",
+      "onlyStart": "van {{start}}",
+      "onlyEnd": "tot {{end}}"
+    },
     "boundsRange": {
       "lowAndHigh": "gedurende {{low}} tot {{high}} {{unit}}",
       "onlyHigh": "tot {{high}} {{unit}}",

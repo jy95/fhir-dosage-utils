@@ -27,7 +27,7 @@ function formatString(time: string): string {
 // Function to transform timeOfDay into a string
 export function transformTimeOfDayToText(dos: Dosage): string | undefined {
   // If empty, return undefined
-  if (dos.timing == undefined || dos.timing.repeat == undefined) {
+  if (dos.timing === undefined || dos.timing.repeat === undefined) {
     return undefined;
   }
 

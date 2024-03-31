@@ -5,6 +5,18 @@ import FhirDosageUtils from "../src/index";
 // types
 import type { Dosage } from "fhir/r4";
 
+// For the WHY, consult this
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/format#avoid_comparing_formatted_date_values_to_static_values
+function decodeHtmlEntities(text: string): string {
+  return text
+    .replace(/&#(\d+);/g, function (match, dec) {
+      return String.fromCharCode(dec);
+    })
+    .replace(/&#x([0-9A-Fa-f]+);/g, function (match, hex) {
+      return String.fromCharCode(parseInt(hex, 16));
+    });
+}
+
 // Inspired by https://build.fhir.org/datatypes.html#Timing
 describe("Timing common examples", () => {
   let dosageUtils: FhirDosageUtils;
@@ -201,7 +213,22 @@ describe("Timing common examples", () => {
         },
       },
     },
-    // TODO add test case "BID, start on 7/1/2015 at 1:00 PM"
+    {
+      title: "BID, start on 7/1/2015 at 1:00 PM",
+      expected: "2 times every day - from 07/01/2015, 01:00:00 PM",
+      dosage: {
+        timing: {
+          repeat: {
+            frequency: 2,
+            period: 1,
+            periodUnit: "d",
+            boundsPeriod: {
+              start: "2015-07-01T13:00:00",
+            },
+          },
+        },
+      },
+    },
     {
       title: "Mon, Wed, Fri Morning",
       expected:
@@ -262,6 +289,6 @@ describe("Timing common examples", () => {
 
   test.each(testCases)("$title", ({ dosage, expected }) => {
     let result = dosageUtils.fromDosageToText(dosage);
-    expect(result).toBe(expected);
+    expect(decodeHtmlEntities(result)).toBe(expected);
   });
 });

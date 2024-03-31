@@ -2,6 +2,9 @@
 import { expect, test, describe } from "@jest/globals";
 import FhirDosageUtils from "../../src/index";
 
+// types
+import type { Dosage } from "fhir/r4";
+
 // For the WHY, consult this
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/format#avoid_comparing_formatted_date_values_to_static_values
 function decodeHtmlEntities(text: string): string {
@@ -14,64 +17,71 @@ function decodeHtmlEntities(text: string): string {
     });
 }
 
-// types
-import type { Dosage } from "fhir/r4";
-
-describe("fromDosageToText - event", () => {
+describe("fromDosageToText - boundsPeriod", () => {
   let dosageUtils: FhirDosageUtils;
 
   beforeAll(async () => {
     dosageUtils = await FhirDosageUtils.build({
-      displayOrder: ["event"],
+      displayOrder: ["boundsPeriod"],
+      dateTimeFormatOptions: {
+        dateStyle: "short",
+        timeStyle: "short",
+      },
     });
   });
 
-  test("No event", () => {
+  test("No boundsPeriod", () => {
     const dosage: Dosage = {
-      text: "no event",
+      text: "no boundsPeriod",
     };
 
     let result = dosageUtils.fromDosageToText(dosage);
     expect(result).toBe("");
   });
 
-  test("Empty", () => {
+  test("start and end", () => {
     const dosage: Dosage = {
       timing: {
-        event: [],
+        repeat: {
+          boundsPeriod: {
+            start: "2011-05-23",
+            end: "2011-05-27",
+          },
+        },
       },
     };
 
     let result = dosageUtils.fromDosageToText(dosage);
-    expect(result).toBe("");
+    expect(decodeHtmlEntities(result)).toBe("from 5/23/11 to 5/27/11");
   });
 
-  test("1 item", () => {
+  test("start only", () => {
     const dosage: Dosage = {
       timing: {
-        event: ["2024-01-01"],
+        repeat: {
+          boundsPeriod: {
+            start: "2015-02-07T13:28:17",
+          },
+        },
       },
     };
 
     let result = dosageUtils.fromDosageToText(dosage);
-    expect(decodeHtmlEntities(result)).toBe("on 01/01/2024");
+    expect(decodeHtmlEntities(result)).toBe("from 2/7/15, 1:28 PM");
   });
 
-  test("N+1 items", () => {
+  test("end only", () => {
     const dosage: Dosage = {
       timing: {
-        event: [
-          // As explained on https://build.fhir.org/datatypes.html#dateTime
-          "2018",
-          "1973-06",
-          "1905-08-23",
-        ],
+        repeat: {
+          boundsPeriod: {
+            end: "2011-05-27",
+          },
+        },
       },
     };
 
     let result = dosageUtils.fromDosageToText(dosage);
-    expect(decodeHtmlEntities(result)).toBe(
-      "on 2018, June 1973 and 08/23/1905",
-    );
+    expect(decodeHtmlEntities(result)).toBe("to 5/27/11");
   });
 });

@@ -90,7 +90,7 @@ function transformWhen(when?: string[]): string | undefined {
 
 export function transformOffsetWhenToText(dos: Dosage): string | undefined {
   // If empty, return undefined
-  if (dos.timing == undefined || dos.timing.repeat == undefined) {
+  if (dos.timing === undefined || dos.timing.repeat === undefined) {
     return undefined;
   }
 

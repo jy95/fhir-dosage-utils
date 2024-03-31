@@ -48,6 +48,11 @@
     "asNeeded": "si nécessaire",
     "asNeededFor": "si nécessaire pour {{reasons}}",
     "boundsDuration": "pour {{durationText}}",
+    "boundsPeriod": {
+      "startAndEnd": "du {{start}} au {{end}}",
+      "onlyStart": "à partir du {{start}}",
+      "onlyEnd": "jusqu'au {{end}}"
+    },
     "boundsRange": {
       "lowAndHigh": "de {{low}} à {{high}} {{unit}}",
       "onlyHigh": "jusqu'à {{high}} {{unit}}",
