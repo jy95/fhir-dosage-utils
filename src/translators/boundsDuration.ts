@@ -1,10 +1,12 @@
-import i18next from "i18next";
-
 // types
-import type { Config, Dosage, Duration } from "../types";
+import type { Config, Duration, DisplayOrderParams, I18N } from "../types";
 
 // Duration to string
-function transformDurationToString(duration: Duration, config: Config): string {
+function transformDurationToString(
+  i18next: I18N,
+  duration: Duration,
+  config: Config,
+): string {
   let quantity = duration.value!;
 
   // If common units from HL7, do the job
@@ -21,10 +23,11 @@ function transformDurationToString(duration: Duration, config: Config): string {
   }
 }
 
-export function transformBoundsDurationToText(
-  dos: Dosage,
-  config: Config,
-): string | undefined {
+export function transformBoundsDurationToText({
+  dos,
+  config,
+  i18next,
+}: DisplayOrderParams): string | undefined {
   // If empty, return undefined
   if (dos.timing === undefined || dos.timing.repeat === undefined) {
     return undefined;
@@ -38,7 +41,11 @@ export function transformBoundsDurationToText(
   if (boundsDuration === undefined) {
     return undefined;
   } else {
-    let durationText = transformDurationToString(boundsDuration, config);
+    let durationText = transformDurationToString(
+      i18next,
+      boundsDuration,
+      config,
+    );
 
     return i18next.t("fields.boundsDuration", { durationText: durationText });
   }

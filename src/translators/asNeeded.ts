@@ -1,15 +1,19 @@
-import i18next from "i18next";
-
 // Function
 import { fromListToString } from "../utils/fromListToString";
 
 // types
 import type { Dosage as DosageR4 } from "fhir/r4";
 import type { Dosage as DosageR5 } from "fhir/r5";
-import type { Config, Dosage, CodeableConcept } from "../types";
+import type {
+  Config,
+  CodeableConcept,
+  DisplayOrderParams,
+  I18N,
+} from "../types";
 
 // Turn a list of codeable concept into a string
 function fromCodeableConceptArrayToString(
+  i18next: I18N,
   codes: CodeableConcept[],
   config: Config,
 ): string | undefined {
@@ -22,13 +26,14 @@ function fromCodeableConceptArrayToString(
     )
     .filter((s) => s !== undefined);
 
-  return fromListToString(codesAsString as string[]);
+  return fromListToString(i18next, codesAsString as string[]);
 }
 
-export function transformAsNeededToText(
-  dos: Dosage,
-  config: Config,
-): string | undefined {
+export function transformAsNeededToText({
+  dos,
+  config,
+  i18next,
+}: DisplayOrderParams): string | undefined {
   // Pickup the interesting attributes
   let asNeededBoolean = (dos as DosageR4).asNeededBoolean;
   let asNeededCodeableConcept = (dos as DosageR4).asNeededCodeableConcept;
@@ -43,6 +48,7 @@ export function transformAsNeededToText(
   if (codeableList.length > 0) {
     return i18next.t("fields.asNeededFor", {
       reasons: fromCodeableConceptArrayToString(
+        i18next,
         codeableList as CodeableConcept[],
         config,
       ),

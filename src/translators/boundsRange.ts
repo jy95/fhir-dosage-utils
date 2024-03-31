@@ -1,10 +1,9 @@
-import i18next from "i18next";
-
 // types
-import type { Config, Dosage, Quantity } from "../types";
+import type { Config, Quantity, DisplayOrderParams, I18N } from "../types";
 
 // Quantity unit to string
 function transformQuantityUnitToString(
+  i18next: I18N,
   quantity: Quantity,
   config: Config,
 ): string {
@@ -25,10 +24,11 @@ function transformQuantityUnitToString(
   }
 }
 
-export function transformBoundsRangeToText(
-  dos: Dosage,
-  config: Config,
-): string | undefined {
+export function transformBoundsRangeToText({
+  dos,
+  config,
+  i18next,
+}: DisplayOrderParams): string | undefined {
   // If empty, return undefined
   if (dos.timing === undefined || dos.timing.repeat === undefined) {
     return undefined;
@@ -46,7 +46,7 @@ export function transformBoundsRangeToText(
     let high = boundsRange.high;
 
     // quantity unit
-    let unit = transformQuantityUnitToString(high || low!, config);
+    let unit = transformQuantityUnitToString(i18next, high || low!, config);
 
     // Three cases
 

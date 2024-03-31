@@ -23,59 +23,60 @@ import {
 } from "../translators";
 
 // Types
-import type { Dosage, Config, DisplayOrder } from "../types";
-type Args = { dos: Dosage; config: Config };
-type ResultFct = (args: Args) => string | undefined;
+import type {
+  Dosage,
+  Config,
+  DisplayOrder,
+  DisplayOrderParams,
+} from "../types";
+type ResultFct = (args: DisplayOrderParams) => string | undefined;
 
 // Map
 const displayOrders = {
-  additionalInstruction: ({ dos, config }) =>
-    transformAdditionalInstructionToText(dos, config),
-  asNeeded: ({ dos, config }) => transformAsNeededToText(dos, config),
-  boundsDuration: ({ dos, config }) =>
-    transformBoundsDurationToText(dos, config),
-  boundsRange: ({ dos, config }) => transformBoundsRangeToText(dos, config),
-  boundsPeriod: ({ dos, config }) => transformBoundsPeriodToText(dos, config),
+  additionalInstruction: (input) => transformAdditionalInstructionToText(input),
+  asNeeded: (input) => transformAsNeededToText(input),
+  boundsDuration: (input) => transformBoundsDurationToText(input),
+  boundsRange: (input) => transformBoundsRangeToText(input),
+  boundsPeriod: (input) => transformBoundsPeriodToText(input),
   code: ({ dos, config }) =>
     config.fromCodeableConceptToString({
       language: config.language,
       code: dos.timing?.code,
     }),
-  countCountMax: ({ dos }) => transformCountCountMaxToText(dos),
-  dayOfWeek: ({ dos }) => transformDayOfWeekToText(dos),
-  doseQuantity: ({ dos, config }) => transformDoseQuantityToText(dos, config),
-  doseRange: ({ dos, config }) => transformDoseRangeToText(dos, config),
-  durationDurationMax: ({ dos }) => transformDurationDurationMaxToText(dos),
-  event: ({ dos, config }) => transformEventToText(dos, config),
+  countCountMax: (input) => transformCountCountMaxToText(input),
+  dayOfWeek: (input) => transformDayOfWeekToText(input),
+  doseQuantity: (input) => transformDoseQuantityToText(input),
+  doseRange: (input) => transformDoseRangeToText(input),
+  durationDurationMax: (input) => transformDurationDurationMaxToText(input),
+  event: (input) => transformEventToText(input),
   extension: ({ dos, config }) =>
     config.fromExtensionsToString({
       language: config.language,
       extensions: dos.extension,
     }),
-  frequencyFrequencyMax: ({ dos }) => transformFrequencyFrequencyMaxToText(dos),
-  frequencyFrequencyMaxPeriodPeriodMax: ({ dos, config }) => {
+  frequencyFrequencyMax: (input) => transformFrequencyFrequencyMaxToText(input),
+  frequencyFrequencyMaxPeriodPeriodMax: (input) => {
     let subParts = [
-      transformFrequencyFrequencyMaxToText(dos),
-      transformPeriodPeriodMaxToText(dos),
+      transformFrequencyFrequencyMaxToText(input),
+      transformPeriodPeriodMaxToText(input),
     ].filter((s) => s !== undefined);
     return subParts.length > 0 ? subParts.join(" ") : undefined;
   },
-  maxDosePerAdministration: ({ dos, config }) =>
-    transformMaxDosePerAdministrationToText(dos, config),
-  maxDosePerLifetime: ({ dos, config }) =>
-    transformMaxDosePerLifetimeToText(dos, config),
-  maxDosePerPeriod: ({ dos, config }) => undefined,
+  maxDosePerAdministration: (input) =>
+    transformMaxDosePerAdministrationToText(input),
+  maxDosePerLifetime: (input) => transformMaxDosePerLifetimeToText(input),
+  maxDosePerPeriod: () => undefined,
   method: ({ dos, config }) =>
     config.fromCodeableConceptToString({
       language: config.language,
       code: dos.method,
     }),
-  offsetWhen: ({ dos }) => transformOffsetWhenToText(dos),
+  offsetWhen: (input) => transformOffsetWhenToText(input),
   patientInstruction: ({ dos }) => dos.patientInstruction,
-  periodPeriodMax: ({ dos }) => transformPeriodPeriodMaxToText(dos),
-  rateQuantity: ({ dos, config }) => transformRateQuantityToText(dos, config),
-  rateRange: ({ dos, config }) => transformRateRangeToText(dos, config),
-  rateRatio: ({ dos, config }) => transformRateRatioToText(dos, config),
+  periodPeriodMax: (input) => transformPeriodPeriodMaxToText(input),
+  rateQuantity: (input) => transformRateQuantityToText(input),
+  rateRange: (input) => transformRateRangeToText(input),
+  rateRatio: (input) => transformRateRatioToText(input),
   route: ({ dos, config }) =>
     config.fromCodeableConceptToString({
       language: config.language,
@@ -87,17 +88,17 @@ const displayOrders = {
       code: dos.site,
     }),
   text: ({ dos }) => dos.text,
-  timeOfDay: ({ dos }) => transformTimeOfDayToText(dos),
+  timeOfDay: (input) => transformTimeOfDayToText(input),
 } satisfies Record<DisplayOrder, ResultFct>;
 
-export function fromDisplayOrderToResult(
-  dos: Dosage,
-  config: Config,
-  entry: DisplayOrder,
-): string | undefined {
-  // Prepare args
-  const args: Args = { dos: dos, config: config };
+type fromDisplayOrderToResultFct = DisplayOrderParams & {
+  entry: DisplayOrder;
+};
 
+export function fromDisplayOrderToResult({
+  entry,
+  ...args
+}: fromDisplayOrderToResultFct): string | undefined {
   // Use map to provide a result without iterate on each key
   return displayOrders[entry](args);
 }

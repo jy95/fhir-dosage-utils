@@ -1,10 +1,8 @@
-import i18next from "i18next";
-
 // Functions
 import { fromListToString } from "../utils/fromListToString";
 
 // Types
-import type { Dosage } from "../types";
+import type { DisplayOrderParams, I18N } from "../types";
 
 type TimeKeys =
   | "MORN"
@@ -45,7 +43,7 @@ function extractTime(minutes: number) {
 }
 
 // Function to transform offset into a string
-function transformOffset(offset?: number): string | undefined {
+function transformOffset(i18next: I18N, offset?: number): string | undefined {
   if (offset === undefined || offset <= 0) {
     return undefined;
   }
@@ -73,7 +71,7 @@ function transformOffset(offset?: number): string | undefined {
 }
 
 // Function to transform when[] into a string
-function transformWhen(when?: string[]): string | undefined {
+function transformWhen(i18next: I18N, when?: string[]): string | undefined {
   // Only run when array is not empty
   if (when === undefined || when.length === 0) {
     return undefined;
@@ -83,12 +81,15 @@ function transformWhen(when?: string[]): string | undefined {
   const whens = (when as TimeKeys[]).map((whenCode) =>
     i18next.t(`eventTiming:${whenCode}`),
   );
-  const finalString = fromListToString(whens);
+  const finalString = fromListToString(i18next, whens);
 
   return finalString;
 }
 
-export function transformOffsetWhenToText(dos: Dosage): string | undefined {
+export function transformOffsetWhenToText({
+  dos,
+  i18next,
+}: DisplayOrderParams): string | undefined {
   // If empty, return undefined
   if (dos.timing === undefined || dos.timing.repeat === undefined) {
     return undefined;
@@ -106,9 +107,9 @@ export function transformOffsetWhenToText(dos: Dosage): string | undefined {
 
   return [
     // offset part
-    transformOffset(offset),
+    transformOffset(i18next, offset),
     // when part
-    transformWhen(when),
+    transformWhen(i18next, when),
   ]
     .filter((s) => s !== undefined)
     .join(" ");

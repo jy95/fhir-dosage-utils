@@ -1,7 +1,9 @@
-import i18next from "i18next";
-import type { Dosage } from "../types";
+import type { DisplayOrderParams } from "../types";
 
-export function transformCountCountMaxToText(dos: Dosage): string | undefined {
+export function transformCountCountMaxToText({
+  dos,
+  i18next,
+}: DisplayOrderParams): string | undefined {
   // If empty, return undefined
   if (dos.timing === undefined || dos.timing.repeat === undefined) {
     return undefined;

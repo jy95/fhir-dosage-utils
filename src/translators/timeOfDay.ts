@@ -1,10 +1,8 @@
-import i18next from "i18next";
-
 // Functions
 import { fromListToString } from "../utils/fromListToString";
 
 // Types
-import type { Dosage } from "../types";
+import type { DisplayOrderParams } from "../types";
 
 /**
  * time during the day, in the format hh:mm:ss (a subset of [ISO8601] icon).
@@ -25,7 +23,10 @@ function formatString(time: string): string {
 }
 
 // Function to transform timeOfDay into a string
-export function transformTimeOfDayToText(dos: Dosage): string | undefined {
+export function transformTimeOfDayToText({
+  dos,
+  i18next,
+}: DisplayOrderParams): string | undefined {
   // If empty, return undefined
   if (dos.timing === undefined || dos.timing.repeat === undefined) {
     return undefined;
@@ -41,7 +42,7 @@ export function transformTimeOfDayToText(dos: Dosage): string | undefined {
   } else {
     // Turn it into a string
     const timeOfDays = timeOfDay.map(formatString);
-    const timeOfDaysAsString = fromListToString(timeOfDays);
+    const timeOfDaysAsString = fromListToString(i18next, timeOfDays);
 
     return i18next.t("fields.timeOfDay", {
       timeOfDay: timeOfDaysAsString,
