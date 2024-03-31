@@ -16,6 +16,7 @@ import type {
   Language,
   DisplayOrder,
   NamespacesLocale,
+  I18N,
 } from "./types";
 
 // backends i18next
@@ -25,6 +26,9 @@ const localeImport = async (lng: Language, ns: NamespacesLocale) =>
 export class FhirDosageUtils {
   // Configuration (Immutability has its advantages ...)
   config: Config;
+  // i18next instance 
+  // When multiple instances of the class are used, they must act independantly regardless of the others
+  private i18nInstance : I18N;
 
   // Set up lib, according provided parameters
   private constructor(args?: Params) {
@@ -66,13 +70,16 @@ export class FhirDosageUtils {
       // attributes set by user
       ...args,
     };
+    this.i18nInstance = i18next.createInstance();
   }
 
   /**
    * To init i18next properly according requested criteria
    */
   async init() {
-    return await i18next.use(ChainedBackend).init({
+    // You should wait for init to complete (wait for the callback or promise resolution) 
+    // before using the t function!
+    return await this.i18nInstance.use(ChainedBackend).init({
       //debug: true,
       fallbackLng: "en",
       lng: this.config.language,
@@ -106,7 +113,7 @@ export class FhirDosageUtils {
       ...this.config,
       language: lng,
     };
-    return i18next.changeLanguage(lng);
+    return this.i18nInstance.changeLanguage(lng);
   }
 
   /**
@@ -131,7 +138,7 @@ export class FhirDosageUtils {
           config: this.config,
           dos: dos,
           entry: entry,
-          i18next: i18next,
+          i18next: this.i18nInstance,
         }),
       )
       .filter((s) => s !== undefined);
