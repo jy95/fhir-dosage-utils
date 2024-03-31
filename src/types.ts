@@ -160,6 +160,10 @@ export enum DisplayOrderEnum {
    * Display "patientInstruction"
    */
   patientInstruction = "patientInstruction",
+  /**
+   * Display "text"
+   */
+  text = "text",
 }
 
 export type DisplayOrder = keyof typeof DisplayOrderEnum;

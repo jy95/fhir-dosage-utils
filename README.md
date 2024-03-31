@@ -20,7 +20,7 @@ Key Features:
 - **Internationalization** Seamlessly extendable to other languages with `i18next`
 - **Integration Ease** Works effortlessly in various environments like the browser, Node.js, ...
 
-Read more on :
+Read more on : https://jy95.github.io/fhir-dosage-utils/
 
 ## Credits
 
