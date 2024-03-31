@@ -91,14 +91,14 @@ const displayOrders = {
   timeOfDay: (input) => transformTimeOfDayToText(input),
 } satisfies Record<DisplayOrder, ResultFct>;
 
-export function fromDisplayOrderToResult(
-  dos: Dosage,
-  config: Config,
-  entry: DisplayOrder,
-): string | undefined {
-  // Prepare args
-  const args: DisplayOrderParams = { dos: dos, config: config };
+type fromDisplayOrderToResultFct = DisplayOrderParams & {
+  entry: DisplayOrder;
+};
 
+export function fromDisplayOrderToResult({
+  entry,
+  ...args
+}: fromDisplayOrderToResultFct): string | undefined {
   // Use map to provide a result without iterate on each key
   return displayOrders[entry](args);
 }

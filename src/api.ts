@@ -126,7 +126,13 @@ export class FhirDosageUtils {
     // iterate on each key and generate a string from each part
     let order = this.config.displayOrder;
     let parts = order
-      .map((entry) => fromDisplayOrderToResult(dos, this.config, entry))
+      .map((entry) =>
+        fromDisplayOrderToResult({
+          config: this.config,
+          dos: dos,
+          entry: entry,
+        }),
+      )
       .filter((s) => s !== undefined);
 
     // Join each part with a separator
