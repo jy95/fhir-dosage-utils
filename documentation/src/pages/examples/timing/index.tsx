@@ -189,7 +189,21 @@ const scenarios: {
       },
     },
   },
-  // TODO add test case "BID, start on 7/1/2015 at 1:00 PM"
+  {
+    title: "BID, start on 7/1/2015 at 1:00 PM",
+    dosage: {
+      timing: {
+        repeat: {
+          frequency: 2,
+          period: 1,
+          periodUnit: "d",
+          boundsPeriod: {
+            start: "2015-07-01T13:00:00",
+          },
+        },
+      },
+    },
+  },
   {
     title: "Mon, Wed, Fri Morning",
     dosage: {
