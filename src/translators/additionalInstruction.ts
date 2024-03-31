@@ -2,12 +2,12 @@
 import { fromListToString } from "../utils/fromListToString";
 
 // types
-import type { Config, Dosage } from "../types";
+import type { DisplayOrderParams } from "../types";
 
-export function transformAdditionalInstructionToText(
-  dos: Dosage,
-  config: Config,
-): string | undefined {
+export function transformAdditionalInstructionToText({
+  dos,
+  config,
+}: DisplayOrderParams): string | undefined {
   // If empty, return undefined
   if (
     dos.additionalInstruction === undefined ||

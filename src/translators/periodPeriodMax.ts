@@ -1,9 +1,9 @@
 import i18next from "i18next";
-import type { Dosage } from "../types";
+import type { DisplayOrderParams } from "../types";
 
-export function transformPeriodPeriodMaxToText(
-  dos: Dosage,
-): string | undefined {
+export function transformPeriodPeriodMaxToText({
+  dos,
+}: DisplayOrderParams): string | undefined {
   // If empty, return undefined
   if (dos.timing === undefined || dos.timing.repeat === undefined) {
     return undefined;

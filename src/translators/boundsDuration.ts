@@ -1,7 +1,7 @@
 import i18next from "i18next";
 
 // types
-import type { Config, Dosage, Duration } from "../types";
+import type { Config, Duration, DisplayOrderParams } from "../types";
 
 // Duration to string
 function transformDurationToString(duration: Duration, config: Config): string {
@@ -21,10 +21,10 @@ function transformDurationToString(duration: Duration, config: Config): string {
   }
 }
 
-export function transformBoundsDurationToText(
-  dos: Dosage,
-  config: Config,
-): string | undefined {
+export function transformBoundsDurationToText({
+  dos,
+  config,
+}: DisplayOrderParams): string | undefined {
   // If empty, return undefined
   if (dos.timing === undefined || dos.timing.repeat === undefined) {
     return undefined;

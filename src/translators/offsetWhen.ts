@@ -4,7 +4,7 @@ import i18next from "i18next";
 import { fromListToString } from "../utils/fromListToString";
 
 // Types
-import type { Dosage } from "../types";
+import type { DisplayOrderParams } from "../types";
 
 type TimeKeys =
   | "MORN"
@@ -88,7 +88,9 @@ function transformWhen(when?: string[]): string | undefined {
   return finalString;
 }
 
-export function transformOffsetWhenToText(dos: Dosage): string | undefined {
+export function transformOffsetWhenToText({
+  dos,
+}: DisplayOrderParams): string | undefined {
   // If empty, return undefined
   if (dos.timing === undefined || dos.timing.repeat === undefined) {
     return undefined;

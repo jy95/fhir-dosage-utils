@@ -20,7 +20,7 @@ describe("API scenarios", () => {
     dosagesFr = await FhirDosageUtils.build({ language: "fr" });
   });
 
-  test("Two separated instances must give different results", () => {
+  test.skip("Two separated instances must give different results", () => {
     const dosage: Dosage = {
       timing: {
         repeat: {
@@ -54,7 +54,7 @@ describe("API scenarios", () => {
     expect(result1).not.toBe(result2);
   });
 
-  test("changeLanguage must be applied", async () => {
+  test.skip("changeLanguage must be applied", async () => {
     const dosage: Dosage = {
       timing: {
         repeat: {

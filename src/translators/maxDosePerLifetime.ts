@@ -1,12 +1,12 @@
 import i18next from "i18next";
 
 // types
-import type { Config, Dosage } from "../types";
+import type { DisplayOrderParams } from "../types";
 
-export function transformMaxDosePerLifetimeToText(
-  dos: Dosage,
-  config: Config,
-): string | undefined {
+export function transformMaxDosePerLifetimeToText({
+  dos,
+  config,
+}: DisplayOrderParams): string | undefined {
   // If empty, return undefined
   if (dos.maxDosePerLifetime === undefined) {
     return undefined;

@@ -6,7 +6,7 @@ import { fromListToString } from "../utils/fromListToString";
 // types
 import type { Dosage as DosageR4 } from "fhir/r4";
 import type { Dosage as DosageR5 } from "fhir/r5";
-import type { Config, Dosage, CodeableConcept } from "../types";
+import type { Config, CodeableConcept, DisplayOrderParams } from "../types";
 
 // Turn a list of codeable concept into a string
 function fromCodeableConceptArrayToString(
@@ -25,10 +25,10 @@ function fromCodeableConceptArrayToString(
   return fromListToString(codesAsString as string[]);
 }
 
-export function transformAsNeededToText(
-  dos: Dosage,
-  config: Config,
-): string | undefined {
+export function transformAsNeededToText({
+  dos,
+  config,
+}: DisplayOrderParams): string | undefined {
   // Pickup the interesting attributes
   let asNeededBoolean = (dos as DosageR4).asNeededBoolean;
   let asNeededCodeableConcept = (dos as DosageR4).asNeededCodeableConcept;

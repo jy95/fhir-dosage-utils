@@ -4,12 +4,12 @@ import i18next from "i18next";
 import { formatDatetime } from "../utils/formatDatetimes";
 
 // types
-import type { Config, Dosage } from "../types";
+import type { DisplayOrderParams } from "../types";
 
-export function transformBoundsPeriodToText(
-  dos: Dosage,
-  config: Config,
-): string | undefined {
+export function transformBoundsPeriodToText({
+  dos,
+  config,
+}: DisplayOrderParams): string | undefined {
   // If empty, return undefined
   if (
     dos.timing === undefined ||

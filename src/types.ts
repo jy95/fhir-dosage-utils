@@ -3,6 +3,8 @@ import type { FromFHIRQuantityUnitToStringFct } from "./utils/fromFHIRQuantityUn
 import type { FromCodeableConceptToStringFct } from "./utils/fromCodeableConceptToString";
 import type { FromExtensionsToStringFct } from "./utils/fromExtensionsToString";
 
+import type { i18n as I18N } from "i18next";
+
 import type {
   Dosage as DosageR4,
   CodeableConcept as CodeableConceptR4,
@@ -231,3 +233,10 @@ export interface Params {
 
 // Config requires all parameter to be set
 export type Config = Required<Params>;
+
+// Types for translations functions
+export type DisplayOrderParams = {
+  dos: Dosage;
+  config: Config;
+  i18next?: I18N;
+};

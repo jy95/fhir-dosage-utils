@@ -4,10 +4,12 @@ import i18next from "i18next";
 import { fromListToString } from "../utils/fromListToString";
 
 // Types
-import type { Dosage } from "../types";
+import type { DisplayOrderParams } from "../types";
 
 // Function to transform dayOfWeek into a string
-export function transformDayOfWeekToText(dos: Dosage): string | undefined {
+export function transformDayOfWeekToText({
+  dos,
+}: DisplayOrderParams): string | undefined {
   // If empty, return undefined
   if (dos.timing === undefined || dos.timing.repeat === undefined) {
     return undefined;

@@ -1,12 +1,12 @@
 import i18next from "i18next";
 
 // types
-import type { Config, Dosage } from "../types";
+import type { DisplayOrderParams } from "../types";
 
-export function transformRateRangeToText(
-  dos: Dosage,
-  config: Config,
-): string | undefined {
+export function transformRateRangeToText({
+  dos,
+  config,
+}: DisplayOrderParams): string | undefined {
   // If empty, return undefined
   if (dos.doseAndRate === undefined) {
     return undefined;

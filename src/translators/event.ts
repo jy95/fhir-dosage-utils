@@ -5,12 +5,12 @@ import { fromListToString } from "../utils/fromListToString";
 import { formatDatetimes } from "../utils/formatDatetimes";
 
 // types
-import type { Config, Dosage } from "../types";
+import type { DisplayOrderParams } from "../types";
 
-export function transformEventToText(
-  dos: Dosage,
-  config: Config,
-): string | undefined {
+export function transformEventToText({
+  dos,
+  config,
+}: DisplayOrderParams): string | undefined {
   // If empty, return undefined
   if (
     dos.timing === undefined ||
