@@ -47,6 +47,11 @@ const displayOrders = {
   doseRange: ({ dos, config }) => transformDoseRangeToText(dos, config),
   durationDurationMax: ({ dos }) => transformDurationDurationMaxToText(dos),
   event: ({ dos, config }) => transformEventToText(dos, config),
+  extension: ({ dos, config }) =>
+    config.fromExtensionsToString({
+      language: config.language,
+      extensions: dos.extension,
+    }),
   frequencyFrequencyMax: ({ dos }) => transformFrequencyFrequencyMaxToText(dos),
   frequencyFrequencyMaxPeriodPeriodMax: ({ dos, config }) => {
     let subParts = [
