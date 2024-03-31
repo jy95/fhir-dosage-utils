@@ -81,6 +81,7 @@ const displayOrders = {
       language: config.language,
       code: dos.site,
     }),
+  text: ({ dos }) => dos.text,
   timeOfDay: ({ dos }) => transformTimeOfDayToText(dos),
 } satisfies Record<DisplayOrder, ResultFct>;
 
