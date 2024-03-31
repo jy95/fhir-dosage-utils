@@ -11,6 +11,8 @@ type MappedDate = {
 };
 
 // Function to clean up the params for dateStyle situation
+// Note: dateStyle and timeStyle can be used with each other,
+// but not with other date-time component options (e.g. weekday, hour, month, etc.).
 function generateDateStyleFormatOptions(
   options: Intl.DateTimeFormatOptions,
 ): Intl.DateTimeFormatOptions {
@@ -20,6 +22,7 @@ function generateDateStyleFormatOptions(
     month:
       options.dateStyle === undefined ? options.month || "2-digit" : undefined,
     day: options.dateStyle === undefined ? options.day || "2-digit" : undefined,
+    weekday: options.dateStyle === undefined ? options.weekday : undefined,
   };
 }
 

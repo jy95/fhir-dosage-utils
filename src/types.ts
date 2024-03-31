@@ -1,16 +1,19 @@
 // Types
 import type { FromFHIRQuantityUnitToStringFct } from "./utils/fromFHIRQuantityUnitToString";
 import type { FromCodeableConceptToStringFct } from "./utils/fromCodeableConceptToString";
+import type { FromExtensionsToStringFct } from "./utils/fromExtensionsToString";
 
 import type {
   Dosage as DosageR4,
   CodeableConcept as CodeableConceptR4,
+  Extension as ExtensionR4,
   Quantity as QuantityR4,
   Duration as DurationR4,
 } from "fhir/r4";
 import type {
   Dosage as DosageR5,
   CodeableConcept as CodeableConceptR5,
+  Extension as ExtensionR5,
   Quantity as QuantityR5,
   Duration as DurationR5,
 } from "fhir/r5";
@@ -21,6 +24,7 @@ export type Dosage = DosageR4 | DosageR5;
 export type CodeableConcept = CodeableConceptR4 | CodeableConceptR5;
 export type Quantity = QuantityR4 | QuantityR5;
 export type Duration = DurationR4 | DurationR5;
+export type Extension = ExtensionR4 | ExtensionR5;
 
 export type { FromFHIRQuantityUnitToStringFct, FromCodeableConceptToStringFct };
 
@@ -164,6 +168,10 @@ export enum DisplayOrderEnum {
    * Display "text"
    */
   text = "text",
+  /**
+   * Display "extension"
+   */
+  extension = "extension",
 }
 
 export type DisplayOrder = keyof typeof DisplayOrderEnum;
@@ -195,6 +203,11 @@ export interface Params {
    * @see [FHIR definition of CodeableConcept](https://build.fhir.org/datatypes.html#CodeableConcept) for more info about the type itself
    */
   fromCodeableConceptToString?: FromCodeableConceptToStringFct;
+  /**
+   * Function to turn extension(s) into a string for humans.
+   * The choice to handle national extensions, ... is thus under the hands of people ;)
+   */
+  fromExtensionsToString?: FromExtensionsToStringFct;
   /**
    * Control the display order used by the algorithm
    * Useful when you want to turn on / off some specific rules for some reason

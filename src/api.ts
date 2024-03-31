@@ -5,6 +5,7 @@ import resourcesToBackend from "i18next-resources-to-backend";
 // Functions
 import { defaultFromFHIRQuantityUnitToString } from "./utils/fromFHIRQuantityUnitToString";
 import { defaultFromCodeableConceptToString } from "./utils/fromCodeableConceptToString";
+import { defaultFromExtensionsToString } from "./utils/fromExtensionsToString";
 import { fromDisplayOrderToResult } from "./utils/fromDisplayOrderToResult";
 
 // Types
@@ -32,6 +33,7 @@ export class FhirDosageUtils {
       language: "en",
       fromFHIRQuantityUnitToString: defaultFromFHIRQuantityUnitToString,
       fromCodeableConceptToString: defaultFromCodeableConceptToString,
+      fromExtensionsToString: defaultFromExtensionsToString,
       displayOrder: [
         "method",
         "doseQuantity",

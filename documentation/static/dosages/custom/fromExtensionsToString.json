@@ -1,0 +1,14 @@
+{
+  "extension": [
+    {
+      "url": "https://www.ehealth.fgov.be/standards/fhir/medication/StructureDefinition/DosageOverride",
+      "valueBoolean": true
+    },
+    {
+      "url": "https://www.ehealth.fgov.be/standards/fhir/medication/StructureDefinition/DosageOverrideReason",
+      "valueCodeableConcept": {
+        "text": "Respect my authority ! - Eric Cartman"
+      }
+    }
+  ]
+}
