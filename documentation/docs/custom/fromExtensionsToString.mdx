@@ -14,6 +14,7 @@ import SingleDosageToText from "@site/src/components/single_dosage_to_text";
     <SingleDosageToText 
         dosage={Schema} 
         config={{
+            displayOrder: ["extension"],
             fromExtensionsToString: ({extensions, language}) => {
                 // If no extensions, skip it
                 if (extensions === undefined || extensions.length === 0) {
@@ -25,7 +26,7 @@ import SingleDosageToText from "@site/src/components/single_dosage_to_text";
                     switch(extension.url) {
                         case "https://www.ehealth.fgov.be/standards/fhir/medication/StructureDefinition/DosageOverride":
                             let dosageOverride = extension.valueBoolean;
-                            return `[${language} translation of "${JSON.stringify(extension)}" set to "${dosageOverride}"]`;
+                            return `[${language} translation of "dosageOverride" set to "${dosageOverride}"]`;
                         case "https://www.ehealth.fgov.be/standards/fhir/medication/StructureDefinition/DosageOverrideReason":
                             return extension.valueCodeableConcept.text;
                         default:
@@ -45,6 +46,7 @@ import SingleDosageToText from "@site/src/components/single_dosage_to_text";
   <TabItem value="config" label="Configuration">
     ```js
     {
+        displayOrder: ["extension"],
         fromExtensionsToString: ({extensions, language}) => {
             // If no extensions, skip it
             if (extensions === undefined || extensions.length === 0) {
@@ -56,7 +58,7 @@ import SingleDosageToText from "@site/src/components/single_dosage_to_text";
                 switch(extension.url) {
                     case "https://www.ehealth.fgov.be/standards/fhir/medication/StructureDefinition/DosageOverride":
                         let dosageOverride = extension.valueBoolean;
-                        return `[${language} translation of "${JSON.stringify(extension)}" set to "${dosageOverride}"]`;
+                        return `[${language} translation of "dosageOverride" set to "${dosageOverride}"]`;
                     case "https://www.ehealth.fgov.be/standards/fhir/medication/StructureDefinition/DosageOverrideReason":
                         return extension.valueCodeableConcept.text;
                     default:
@@ -65,7 +67,7 @@ import SingleDosageToText from "@site/src/components/single_dosage_to_text";
             });
 
             return parts.join(" | ");
-        };
+        }
     }
     ```
 
