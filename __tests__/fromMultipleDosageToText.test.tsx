@@ -81,6 +81,8 @@ describe("fromMultipleDosageToText", () => {
     ];
 
     let result = dosageUtils.fromMultipleDosageToText(dosages);
-    expect(result).toBe("Instructions 1 then Instructions 2A and Instructions 2B");
+    expect(result).toBe(
+      "Instructions 1 then Instructions 2A and Instructions 2B",
+    );
   });
 });
