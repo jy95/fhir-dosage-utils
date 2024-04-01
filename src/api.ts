@@ -77,7 +77,7 @@ export class FhirDosageUtils {
   /**
    * To init i18next properly according requested criteria
    */
-  async init() {
+  private async init() {
     // You should wait for init to complete (wait for the callback or promise resolution)
     // before using the t function!
     return await this.i18nInstance.use(ChainedBackend).init({
