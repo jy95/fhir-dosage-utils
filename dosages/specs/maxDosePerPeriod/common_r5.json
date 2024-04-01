@@ -1,0 +1,24 @@
+{
+  "maxDosePerPeriod": [
+    {
+      "numerator": {
+        "value": 3,
+        "unit": "pills"
+      },
+      "denominator": {
+        "value": 5,
+        "unit": "hours"
+      }
+    },
+    {
+      "numerator": {
+        "value": 1000,
+        "unit": "mg"
+      },
+      "denominator": {
+        "value": 1,
+        "unit": "hour"
+      }
+    }
+  ]
+}
