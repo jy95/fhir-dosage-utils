@@ -205,7 +205,7 @@ export class FhirDosageUtils {
     let sequentialInstructions: string[] = [...sequences.values()].map(
       (sequence) => {
         let concurrentInstructions = groups[sequence];
-        return fromListToString(i18next, concurrentInstructions, "and");
+        return fromListToString(this.i18nInstance, concurrentInstructions, "and");
       },
     );
 
