@@ -20,6 +20,7 @@ import {
   transformMaxDosePerLifetimeToText,
   transformMaxDosePerAdministrationToText,
   transformBoundsPeriodToText,
+  transformMaxDosePerPeriodToText,
 } from "../translators";
 
 // Types
@@ -65,7 +66,7 @@ const displayOrders = {
   maxDosePerAdministration: (input) =>
     transformMaxDosePerAdministrationToText(input),
   maxDosePerLifetime: (input) => transformMaxDosePerLifetimeToText(input),
-  maxDosePerPeriod: () => undefined,
+  maxDosePerPeriod: (input) => transformMaxDosePerPeriodToText(input),
   method: ({ dos, config }) =>
     config.fromCodeableConceptToString({
       language: config.language,
