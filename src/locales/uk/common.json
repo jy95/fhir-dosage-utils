@@ -71,6 +71,11 @@
       "event_other": "on {{event}}"
     },
     "maxDosePerLifetime": "up to a maximum of {{count}} {{unit}} for the lifetime of patient",
-    "maxDosePerAdministration": "up to a maximum of {{count}} {{unit}} per dose"
+    "maxDosePerAdministration": "up to a maximum of {{count}} {{unit}} per dose",
+    "maxDosePerPeriod": {
+      "general": "up to a maximum of {{maxDosePerPeriodText}}",
+      "maxDosePerPeriod_one": "{{quantityNumerator}} {{numeratorUnit}} per {{denominatorUnit}}",
+      "maxDosePerPeriod_other": "{{quantityNumerator}} {{numeratorUnit}} every {{count}} {{denominatorUnit}}"
+    }
   }
 }
