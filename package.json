@@ -9,7 +9,10 @@
   "main": "dist/main.js",
   "module": "dist/module.js",
   "types": "dist/types.d.ts",
-  "repository": "https://github.com/jy95/fhir-dosage-utils.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jy95/fhir-dosage-utils.git"
+  },
   "homepage": "https://jy95.github.io/fhir-dosage-utils/",
   "exports": {
     ".": {
