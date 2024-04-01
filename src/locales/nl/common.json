@@ -1,6 +1,7 @@
 {
   "linkwords": {
-    "and": "en"
+    "and": "en",
+    "then": "vervolgens"
   },
   "fields": {
     "doseQuantity": "{{quantity}} {{unit}}",
