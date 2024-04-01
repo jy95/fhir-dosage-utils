@@ -24,12 +24,7 @@ import {
 } from "../translators";
 
 // Types
-import type {
-  Dosage,
-  Config,
-  DisplayOrder,
-  DisplayOrderParams,
-} from "../types";
+import type { DisplayOrder, DisplayOrderParams } from "../types";
 type ResultFct = (args: DisplayOrderParams) => string | undefined;
 
 // Map

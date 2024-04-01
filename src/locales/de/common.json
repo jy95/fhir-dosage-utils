@@ -1,6 +1,7 @@
 {
   "linkwords": {
-    "and": "und"
+    "and": "und",
+    "then": "dann"
   },
   "fields": {
     "doseQuantity": "{{quantity}} {{unit}}",

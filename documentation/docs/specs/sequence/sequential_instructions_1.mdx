@@ -1,0 +1,22 @@
+---
+description: Sequential instructions, with sequence
+title: ➡️ sequence (Sequential instructions 1)
+---
+
+import CodeBlock from "@theme/CodeBlock";
+import Schema from "@site/static/dosages/specs/sequence/sequential_instructions_with_sequence.json";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import MultipleDosagesToText from "@site/src/components/multiple_dosage_to_text";
+
+<Tabs>
+  <TabItem value="text" label="Human readable text" default>
+    <MultipleDosagesToText
+      dosages={Schema}
+      config={{ displayOrder: ["text"] }}
+    />
+  </TabItem>
+  <TabItem value="json" label="Dosage">
+    <CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+  </TabItem>
+</Tabs>
