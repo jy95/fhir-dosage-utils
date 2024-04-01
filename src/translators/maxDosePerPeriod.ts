@@ -22,6 +22,11 @@ export function transformMaxDosePerPeriodToText({
     ? maxDosePerPeriod
     : [maxDosePerPeriod];
 
+  // Only consider not empty array
+  if (values.length === 0) {
+    return undefined;
+  }
+
   // Periods are expressed as ratio (like rateRatio)
   const valuesAsString: string[] = values.map((period) => {
     // num / dem
