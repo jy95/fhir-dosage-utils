@@ -26,9 +26,9 @@ const localeImport = async (lng: Language, ns: NamespacesLocale) =>
 export class FhirDosageUtils {
   // Configuration (Immutability has its advantages ...)
   config: Config;
-  // i18next instance 
+  // i18next instance
   // When multiple instances of the class are used, they must act independantly regardless of the others
-  private i18nInstance : I18N;
+  private i18nInstance: I18N;
 
   // Set up lib, according provided parameters
   private constructor(args?: Params) {
@@ -77,7 +77,7 @@ export class FhirDosageUtils {
    * To init i18next properly according requested criteria
    */
   async init() {
-    // You should wait for init to complete (wait for the callback or promise resolution) 
+    // You should wait for init to complete (wait for the callback or promise resolution)
     // before using the t function!
     return await this.i18nInstance.use(ChainedBackend).init({
       //debug: true,
