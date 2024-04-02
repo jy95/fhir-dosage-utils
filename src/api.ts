@@ -176,11 +176,11 @@ export class FhirDosageUtils {
   }
 
   /**
-   * Turn a FHIR Dosage object into text
+   * From a single dosage, extract specific field(s) requested by user.
+   * Some use cases could request to split part of the object for given needs (quantity and timing separately)
    */
-  fromDosageToText(dos: Dosage): string {
+  getFields(dos: Dosage, ...order: DisplayOrder[]): string {
     // iterate on each key and generate a string from each part
-    let order = this.config.displayOrder;
     let parts = order
       .map((entry) =>
         fromDisplayOrderToResult({
@@ -194,6 +194,15 @@ export class FhirDosageUtils {
 
     // Join each part with a separator
     return parts.join(this.config.displaySeparator);
+  }
+
+  /**
+   * Turn a FHIR Dosage object into text
+   */
+  fromDosageToText(dos: Dosage): string {
+    // iterate on each key and generate a string from each part
+    let order = this.config.displayOrder;
+    return this.getFields(dos, ...order);
   }
 
   /**
