@@ -118,12 +118,60 @@ export class FhirDosageUtils {
   }
 
   /**
+   * Get current language
+   */
+  getLanguage() {
+    return this.config.language;
+  }
+
+  /**
    * To change display order
    */
-  changeDisplayOrder(order: DisplayOrder[]): void {
+  changeDisplayOrder(order: DisplayOrder[]) {
     this.config = {
       ...this.config,
       displayOrder: order,
+    };
+  }
+
+  /**
+   * Get display order
+   */
+  getDisplayOrder() {
+    return this.config.displayOrder;
+  }
+
+  /**
+   * Get display separator
+   */
+  getDisplaySeparator() {
+    return this.config.displaySeparator;
+  }
+
+  /**
+   * Set display separator
+   */
+  changeDisplaySeparator(sep: string) {
+    this.config = {
+      ...this.config,
+      displaySeparator: sep,
+    };
+  }
+
+  /**
+   * Get date time format options
+   */
+  getDateTimeFormatOptions() {
+    return this.config.dateTimeFormatOptions;
+  }
+
+  /**
+   * Set date time format options
+   */
+  changeDateTimeFormatOptions(opts: Intl.DateTimeFormatOptions) {
+    this.config = {
+      ...this.config,
+      dateTimeFormatOptions: opts,
     };
   }
 
