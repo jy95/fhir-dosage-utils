@@ -118,9 +118,16 @@ export class FhirDosageUtils {
   }
 
   /**
+   * Get current language
+   */
+  getLanguage() {
+    return this.config.language;
+  }
+
+  /**
    * To change display order
    */
-  changeDisplayOrder(order: DisplayOrder[]): void {
+  changeDisplayOrder(order: DisplayOrder[]) {
     this.config = {
       ...this.config,
       displayOrder: order,
@@ -128,11 +135,52 @@ export class FhirDosageUtils {
   }
 
   /**
-   * Turn a FHIR Dosage object into text
+   * Get display order
    */
-  fromDosageToText(dos: Dosage): string {
+  getDisplayOrder() {
+    return this.config.displayOrder;
+  }
+
+  /**
+   * Get display separator
+   */
+  getDisplaySeparator() {
+    return this.config.displaySeparator;
+  }
+
+  /**
+   * Set display separator
+   */
+  changeDisplaySeparator(sep: string) {
+    this.config = {
+      ...this.config,
+      displaySeparator: sep,
+    };
+  }
+
+  /**
+   * Get date time format options
+   */
+  getDateTimeFormatOptions() {
+    return this.config.dateTimeFormatOptions;
+  }
+
+  /**
+   * Set date time format options
+   */
+  changeDateTimeFormatOptions(opts: Intl.DateTimeFormatOptions) {
+    this.config = {
+      ...this.config,
+      dateTimeFormatOptions: opts,
+    };
+  }
+
+  /**
+   * From a single dosage, extract specific field(s) requested by user.
+   * Some use cases could request to split part of the object for given needs (quantity and timing separately)
+   */
+  getFields(dos: Dosage, ...order: DisplayOrder[]): string {
     // iterate on each key and generate a string from each part
-    let order = this.config.displayOrder;
     let parts = order
       .map((entry) =>
         fromDisplayOrderToResult({
@@ -146,6 +194,15 @@ export class FhirDosageUtils {
 
     // Join each part with a separator
     return parts.join(this.config.displaySeparator);
+  }
+
+  /**
+   * Turn a FHIR Dosage object into text
+   */
+  fromDosageToText(dos: Dosage): string {
+    // iterate on each key and generate a string from each part
+    let order = this.config.displayOrder;
+    return this.getFields(dos, ...order);
   }
 
   /**
