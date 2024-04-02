@@ -74,6 +74,13 @@ const config: Config = {
   ],
 
   themeConfig: {
+    algolia: {
+      // The application ID provided by Algolia
+      appId: "A0H5ESUA6U",
+      // Public API key: it is safe to commit it
+      apiKey: "ed5931b0de2e3754e2da8e0f843443bd",
+      indexName: "jy95io",
+    },
     navbar: {
       title: "FHIR Dosage utils",
       logo: {
@@ -90,7 +97,7 @@ const config: Config = {
         { to: "api", label: "API", position: "left" },
         { to: "/blog", label: "Blog", position: "right" },
         {
-          href: "https://github.com/facebook/docusaurus",
+          href: "https://github.com/jy95/fhir-dosage-utils",
           label: "GitHub",
           position: "right",
         },
