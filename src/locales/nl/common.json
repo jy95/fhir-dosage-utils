@@ -85,10 +85,6 @@
     },
     "maxDosePerLifetime": "tot een maximum van {{count}} {{unit}} gedurende de levensduur van de patiënt",
     "maxDosePerAdministration": "tot een maximum van {{count}} {{unit}} per dosis",
-    "maxDosePerPeriod": {
-      "general": "tot een maximum van {{maxDosePerPeriodText}}",
-      "maxDosePerPeriod_one": "{{quantityNumerator}} {{numeratorUnit}} per {{denominatorUnit}}",
-      "maxDosePerPeriod_other": "{{quantityNumerator}} {{numeratorUnit}} elke {{count}} {{denominatorUnit}}"
-    }
+    "maxDosePerPeriod": "tot een maximum van {{maxDosePerPeriodText}}"
   }
 }

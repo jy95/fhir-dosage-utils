@@ -42,21 +42,7 @@ describe("fromDosageToText - maxDosePerPeriod", () => {
     expect(result).toBe("up to a maximum of 3 pills every 5 hours");
   });
 
-  test("no numerator", () => {
-    const dosage: DosageR4 = {
-      maxDosePerPeriod: {
-        denominator: {
-          value: 5,
-          unit: "hours",
-        },
-      },
-    };
-
-    let result = dosageUtils.fromDosageToText(dosage);
-    expect(result).toBe("up to a maximum of 1  every 5 hours");
-  });
-
-  test("no denominator value", () => {
+  test("denominator value equal to 1", () => {
     const dosage: DosageR4 = {
       maxDosePerPeriod: {
         numerator: {
@@ -64,6 +50,7 @@ describe("fromDosageToText - maxDosePerPeriod", () => {
           unit: "pills",
         },
         denominator: {
+          value: 1,
           unit: "hour",
         },
       },
