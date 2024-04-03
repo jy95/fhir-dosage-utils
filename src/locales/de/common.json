@@ -3,23 +3,39 @@
     "and": "und",
     "then": "dann"
   },
+  "amount": {
+    "range": {
+      "withUnit": {
+        "lowAndHigh": "zwischen {{low}} und {{high}} {{unit}}",
+        "onlyHigh": "bis {{high}} {{unit}}",
+        "onlyLow": "mindestens {{low}} {{unit}}"
+      },
+      "withoutUnit": {
+        "lowAndHigh": "zwischen {{low}} und {{high}}",
+        "onlyHigh": "bis {{high}}",
+        "onlyLow": "mindestens {{low}}"
+      }
+    },
+    "ratio": {
+      "withUnit": {
+        "numerator": "{{count}} {{numeratorUnit}}",
+        "denominator_one": "pro {{denominatorUnit}}",
+        "denominator_other": "jeder {{count}} {{denominatorUnit}}"
+      },
+      "withoutUnit": {
+        "numerator": "{{count}}",
+        "denominator_one": ":{{count}}",
+        "denominator_other": ":{{count}}"
+      }
+    },
+    "quantity": "{{quantity}} {{unit}}"
+  },
   "fields": {
     "doseQuantity": "{{quantity}} {{unit}}",
-    "doseRange": {
-      "lowAndHigh": "zwischen {{low}} und {{high}} {{unit}}",
-      "onlyHigh": "bis {{high}} {{unit}}",
-      "onlyLow": "{{low}} {{unit}}"
-    },
+    "doseRange": "{{rangeText}}",
     "rateQuantity": "mit einem Verhältnis von {{quantity}} {{unit}}",
-    "rateRange": {
-      "lowAndHigh": "mit einem Verhältnis zwischen {{low}} und {{high}} {{unit}}",
-      "onlyHigh": "mit einem Verhältnis von {{high}} {{unit}}",
-      "onlyLow": "mit einem Verhältnis von {{low}} {{unit}}"
-    },
-    "rateRatio": {
-      "rateRatio_one": "mit einem Verhältnis von {{quantityNumerator}} {{numeratorUnit}} pro {{denominatorUnit}}",
-      "rateRatio_other": "mit einem Verhältnis von {{quantityNumerator}} {{numeratorUnit}} jeder {{count}} {{denominatorUnit}}"
-    },
+    "rateRange": "mit einem Verhältnis von {{rangeText}}",
+    "rateRatio": "mit einem Verhältnis von {{ratioText}}",
     "duration": "für {{durationText}}",
     "durationMax": "(maximal {{durationMaxText}})",
     "frequency": {
@@ -54,11 +70,7 @@
       "onlyStart": "ab {{start}}",
       "onlyEnd": "bis {{end}}"
     },
-    "boundsRange": {
-      "lowAndHigh": "für {{low}} bis {{high}} {{unit}}",
-      "onlyHigh": "bis {{high}} {{unit}}",
-      "onlyLow": "für mindestens {{low}} {{unit}}"
-    },
+    "boundsRange": "für {{rangeText}}",
     "count": {
       "count_one": "{{count}} Mal nehmen",
       "count_other": "{{count}} Mal nehmen"
@@ -73,10 +85,6 @@
     },
     "maxDosePerLifetime": "bis zu einer maximalen Menge von {{count}} {{unit}} über die Lebenszeit des Patienten",
     "maxDosePerAdministration": "bis zu einer maximalen Menge von {{count}} {{unit}} pro Dosis",
-    "maxDosePerPeriod": {
-      "general": "bis zu einer maximalen Menge von {{maxDosePerPeriodText}}",
-      "maxDosePerPeriod_one": "{{quantityNumerator}} {{numeratorUnit}} pro {{denominatorUnit}}",
-      "maxDosePerPeriod_other": "{{quantityNumerator}} {{numeratorUnit}} jeder {{count}} {{denominatorUnit}}"
-    }
+    "maxDosePerPeriod": "bis zu einer maximalen Menge von {{maxDosePerPeriodText}}"
   }
 }

@@ -23,6 +23,19 @@ describe("fromDosageToText - boundsRange", () => {
     expect(result).toBe("");
   });
 
+  test("Empty boundsRange", () => {
+    const dosage: Dosage = {
+      timing: {
+        repeat: {
+          boundsRange: {},
+        },
+      },
+    };
+
+    let result = dosageUtils.fromDosageToText(dosage);
+    expect(result).toBe("");
+  });
+
   test("high and low", () => {
     const dosage: Dosage = {
       timing: {

@@ -32,6 +32,19 @@ describe("fromDosageToText - rateRatio", () => {
     expect(result).toBe("");
   });
 
+  test("Empty rateRatio", () => {
+    const dosage: Dosage = {
+      doseAndRate: [
+        {
+          rateRatio: {},
+        },
+      ],
+    };
+
+    let result = dosageUtils.fromDosageToText(dosage);
+    expect(result).toBe("");
+  });
+
   test("numerator and denominator", () => {
     const dosage: Dosage = {
       doseAndRate: [
@@ -69,20 +82,19 @@ describe("fromDosageToText - rateRatio", () => {
     };
 
     let result = dosageUtils.fromDosageToText(dosage);
-    expect(result).toBe("at a rate of 1  every 5 hours");
+    expect(result).toBe("at a rate of every 5 hours");
   });
 
-  test("no denominator value", () => {
+  test("no unit", () => {
     const dosage: Dosage = {
       doseAndRate: [
         {
           rateRatio: {
             numerator: {
-              value: 3,
-              unit: "pills",
+              value: 1,
             },
             denominator: {
-              unit: "hour",
+              value: 128,
             },
           },
         },
@@ -90,6 +102,6 @@ describe("fromDosageToText - rateRatio", () => {
     };
 
     let result = dosageUtils.fromDosageToText(dosage);
-    expect(result).toBe("at a rate of 3 pills per hour");
+    expect(result).toBe("at a rate of 1 :128");
   });
 });

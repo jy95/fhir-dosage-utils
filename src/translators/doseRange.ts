@@ -1,3 +1,6 @@
+// Utility function
+import { fromRangeToString } from "../utils/fromRangeToString";
+
 // types
 import type { DisplayOrderParams } from "../types";
 
@@ -18,44 +21,19 @@ export function transformDoseRangeToText({
     return undefined;
   }
 
-  let low = doseRange.doseRange!.low?.value;
-  let high = doseRange.doseRange!.high?.value;
-
-  let quantityUnit =
-    doseRange.doseRange!.high !== undefined
-      ? doseRange.doseRange!.high
-      : doseRange.doseRange!.low!;
-
-  // quantity unit
-  let unit = config.fromFHIRQuantityUnitToString({
-    language: config.language,
-    quantity: quantityUnit,
+  // Turn range into a text
+  const text = fromRangeToString({
+    range: doseRange.doseRange!,
+    config,
+    i18next,
   });
 
-  // Three cases
-
-  // 1. Both low & high are present
-  if (high !== undefined && low !== undefined) {
-    return i18next.t("fields.doseRange.lowAndHigh", {
-      low: low,
-      high: high,
-      unit: unit,
-    });
+  // Reject if empty
+  if (text === undefined) {
+    return undefined;
   }
 
-  // 2. Only high is present
-  if (high !== undefined) {
-    return i18next.t("fields.doseRange.onlyHigh", {
-      high: high,
-      unit: unit,
-    });
-  }
-
-  // 3. Only low is present
-  // Warning, this case is kind dangerous and clinically unsafe so minimal effort on this ...
-
-  return i18next.t("fields.doseRange.onlyLow", {
-    low: low,
-    unit: unit,
+  return i18next.t("fields.doseRange", {
+    rangeText: text,
   });
 }

@@ -3,23 +3,39 @@
     "and": "en",
     "then": "vervolgens"
   },
+  "amount": {
+    "range": {
+      "withUnit": {
+        "lowAndHigh": "tussen {{low}} en {{high}} {{unit}}",
+        "onlyHigh": "tot {{high}} {{unit}}",
+        "onlyLow": "minstens {{low}} {{unit}}"
+      },
+      "withoutUnit": {
+        "lowAndHigh": "tussen {{low}} en {{high}}",
+        "onlyHigh": "tot {{high}}",
+        "onlyLow": "minstens {{low}}"
+      }
+    },
+    "ratio": {
+      "withUnit": {
+        "numerator": "{{count}} {{numeratorUnit}}",
+        "denominator_one": "per {{denominatorUnit}}",
+        "denominator_other": "elke {{count}} {{denominatorUnit}}"
+      },
+      "withoutUnit": {
+        "numerator": "{{count}}",
+        "denominator_one": ":{{count}}",
+        "denominator_other": ":{{count}}"
+      }
+    },
+    "quantity": "{{quantity}} {{unit}}"
+  },
   "fields": {
     "doseQuantity": "{{quantity}} {{unit}}",
-    "doseRange": {
-      "lowAndHigh": "tussen {{low}} en {{high}} {{unit}}",
-      "onlyHigh": "tot {{high}} {{unit}}",
-      "onlyLow": "{{low}} {{unit}}"
-    },
+    "doseRange": "{{rangeText}}",
     "rateQuantity": "met een verhouding van {{quantity}} {{unit}}",
-    "rateRange": {
-      "lowAndHigh": "met een verhouding tussen {{low}} en {{high}} {{unit}}",
-      "onlyHigh": "met een verhouding van {{high}} {{unit}}",
-      "onlyLow": "met een verhouding van {{low}} {{unit}}"
-    },
-    "rateRatio": {
-      "rateRatio_one": "met een verhouding van {{quantityNumerator}} {{numeratorUnit}} per {{denominatorUnit}}",
-      "rateRatio_other": "met een verhouding van {{quantityNumerator}} {{numeratorUnit}} elke {{count}} {{denominatorUnit}}"
-    },
+    "rateRange": "met een verhouding van {{rangeText}}",
+    "rateRatio": "met een verhouding van {{ratioText}}",
     "duration": "gedurende {{durationText}}",
     "durationMax": "(maximaal {{durationMaxText}})",
     "frequency": {
@@ -54,11 +70,7 @@
       "onlyStart": "van {{start}}",
       "onlyEnd": "tot {{end}}"
     },
-    "boundsRange": {
-      "lowAndHigh": "gedurende {{low}} tot {{high}} {{unit}}",
-      "onlyHigh": "tot {{high}} {{unit}}",
-      "onlyLow": "gedurende minstens {{low}} {{unit}}"
-    },
+    "boundsRange": "gedurende {{rangeText}}",
     "count": {
       "count_one": "{{count}} keer nemen",
       "count_other": "{{count}} keer nemen"
@@ -73,10 +85,6 @@
     },
     "maxDosePerLifetime": "tot een maximum van {{count}} {{unit}} gedurende de levensduur van de patiënt",
     "maxDosePerAdministration": "tot een maximum van {{count}} {{unit}} per dosis",
-    "maxDosePerPeriod": {
-      "general": "tot een maximum van {{maxDosePerPeriodText}}",
-      "maxDosePerPeriod_one": "{{quantityNumerator}} {{numeratorUnit}} per {{denominatorUnit}}",
-      "maxDosePerPeriod_other": "{{quantityNumerator}} {{numeratorUnit}} elke {{count}} {{denominatorUnit}}"
-    }
+    "maxDosePerPeriod": "tot een maximum van {{maxDosePerPeriodText}}"
   }
 }
