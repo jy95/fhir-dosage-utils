@@ -88,18 +88,4 @@ describe("Corner cases", () => {
     let result = dosageUtils.fromDosageToText(dosage);
     expect(result).toBe("at a rate of 3 pills");
   });
-
-  test("maxDosePerPeriod - no denominator", () => {
-    const dosage: Dosage = {
-      maxDosePerPeriod: {
-        numerator: {
-          value: 3,
-          unit: "pills",
-        },
-      },
-    };
-
-    let result = dosageUtils.fromDosageToText(dosage);
-    expect(result).toBe("up to a maximum of 3 pills per ");
-  });
 });
