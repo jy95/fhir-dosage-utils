@@ -106,7 +106,7 @@ const config: Config = {
     footer: {
       style: "dark",
       links: [],
-      copyright: `Copyright © ${new Date().getFullYear()} fhir-dosage-utils. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Jacques Yakoub. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
