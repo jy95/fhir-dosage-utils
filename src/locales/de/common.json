@@ -3,19 +3,37 @@
     "and": "und",
     "then": "dann"
   },
+  "amount": {
+    "range": {
+      "withUnit": {
+        "lowAndHigh": "zwischen {{low}} und {{high}} {{unit}}",
+        "onlyHigh": "bis {{high}} {{unit}}",
+        "onlyLow": "{{low}} {{unit}}"
+      },
+      "withoutUnit": {
+        "lowAndHigh": "zwischen {{low}} und {{high}}",
+        "onlyHigh": "bis {{high}}",
+        "onlyLow": "{{low}}"
+      }
+    },
+    "ratio": {
+      "withUnit": {
+        "numerator": "{{quantityNumerator}} {{numeratorUnit}}",
+        "denominator_one": "pro {{denominatorUnit}}",
+        "denominator_other": "jeder {{count}} {{denominatorUnit}}"
+      },
+      "withoutUnit": {
+        "numerator": "{{quantityNumerator}}",
+        "denominator_one": ":{{count}}",
+        "denominator_other": ":{{count}}"
+      }
+    },
+    "quantity": "{{quantity}} {{unit}}"
+  },
   "fields": {
     "doseQuantity": "{{quantity}} {{unit}}",
-    "doseRange": {
-      "lowAndHigh": "zwischen {{low}} und {{high}} {{unit}}",
-      "onlyHigh": "bis {{high}} {{unit}}",
-      "onlyLow": "{{low}} {{unit}}"
-    },
     "rateQuantity": "mit einem Verhältnis von {{quantity}} {{unit}}",
-    "rateRange": {
-      "lowAndHigh": "mit einem Verhältnis zwischen {{low}} und {{high}} {{unit}}",
-      "onlyHigh": "mit einem Verhältnis von {{high}} {{unit}}",
-      "onlyLow": "mit einem Verhältnis von {{low}} {{unit}}"
-    },
+    "rateRange": "mit einem Verhältnis von {{rangeText}}",
     "rateRatio": {
       "rateRatio_one": "mit einem Verhältnis von {{quantityNumerator}} {{numeratorUnit}} pro {{denominatorUnit}}",
       "rateRatio_other": "mit einem Verhältnis von {{quantityNumerator}} {{numeratorUnit}} jeder {{count}} {{denominatorUnit}}"
@@ -54,11 +72,7 @@
       "onlyStart": "ab {{start}}",
       "onlyEnd": "bis {{end}}"
     },
-    "boundsRange": {
-      "lowAndHigh": "für {{low}} bis {{high}} {{unit}}",
-      "onlyHigh": "bis {{high}} {{unit}}",
-      "onlyLow": "für mindestens {{low}} {{unit}}"
-    },
+    "boundsRange": "für {{rangeText}}",
     "count": {
       "count_one": "{{count}} Mal nehmen",
       "count_other": "{{count}} Mal nehmen"

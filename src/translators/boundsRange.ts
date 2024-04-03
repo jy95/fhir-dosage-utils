@@ -1,28 +1,8 @@
 // types
-import type { Config, Quantity, DisplayOrderParams, I18N } from "../types";
+import type { DisplayOrderParams } from "../types";
 
-// Quantity unit to string
-function transformQuantityUnitToString(
-  i18next: I18N,
-  quantity: Quantity,
-  config: Config,
-): string {
-  let quantityValue = quantity.value!;
-
-  // If common units from HL7, do the job
-  if (quantity.system === "http://hl7.org/fhir/ValueSet/duration-units") {
-    let code = quantity.code! as "s" | "min" | "h" | "d" | "wk" | "mo" | "a";
-    return i18next.t(`unitsOfTime:withoutCount.${code}`, {
-      count: quantityValue,
-    });
-  } else {
-    // otherwise, it is UCUM, ... so let the user do the job
-    return config.fromFHIRQuantityUnitToString({
-      language: config.language,
-      quantity: quantity,
-    });
-  }
-}
+// Utility function
+import { fromRangeToString } from "../utils/fromRangeToString";
 
 export function transformBoundsRangeToText({
   dos,
@@ -42,35 +22,16 @@ export function transformBoundsRangeToText({
   if (boundsRange === undefined) {
     return undefined;
   } else {
-    let low = boundsRange.low;
-    let high = boundsRange.high;
+    // Turn range into a text
+    const rangeText = fromRangeToString({
+      range: boundsRange,
+      config,
+      i18next,
+    });
 
-    // quantity unit
-    let unit = transformQuantityUnitToString(i18next, high || low!, config);
-
-    // Three cases
-
-    // 1. Both low & high are present
-    if (high !== undefined && low !== undefined) {
-      return i18next.t("fields.boundsRange.lowAndHigh", {
-        low: low.value,
-        high: high.value,
-        unit: unit,
-      });
-    }
-
-    // 2. Only high is present
-    if (high !== undefined) {
-      return i18next.t("fields.boundsRange.onlyHigh", {
-        high: high.value,
-        unit: unit,
-      });
-    }
-
-    // 3. Only low is present
-    return i18next.t("fields.boundsRange.onlyLow", {
-      low: low!.value,
-      unit: unit,
+    // return the final string
+    return i18next.t("fields.boundsRange", {
+      rangeText: rangeText,
     });
   }
 }

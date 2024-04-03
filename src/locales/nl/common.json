@@ -3,19 +3,37 @@
     "and": "en",
     "then": "vervolgens"
   },
+  "amount": {
+    "range": {
+      "withUnit": {
+        "lowAndHigh": "tussen {{low}} en {{high}} {{unit}}",
+        "onlyHigh": "tot {{high}} {{unit}}",
+        "onlyLow": "{{low}} {{unit}}"
+      },
+      "withoutUnit": {
+        "lowAndHigh": "tussen {{low}} en {{high}}",
+        "onlyHigh": "tot {{high}}",
+        "onlyLow": "{{low}}"
+      }
+    },
+    "ratio": {
+      "withUnit": {
+        "numerator": "{{quantityNumerator}} {{numeratorUnit}}",
+        "denominator_one": "per {{denominatorUnit}}",
+        "denominator_other": "elke {{count}} {{denominatorUnit}}"
+      },
+      "withoutUnit": {
+        "numerator": "{{quantityNumerator}}",
+        "denominator_one": ":{{count}}",
+        "denominator_other": ":{{count}}"
+      }
+    },
+    "quantity": "{{quantity}} {{unit}}"
+  },
   "fields": {
     "doseQuantity": "{{quantity}} {{unit}}",
-    "doseRange": {
-      "lowAndHigh": "tussen {{low}} en {{high}} {{unit}}",
-      "onlyHigh": "tot {{high}} {{unit}}",
-      "onlyLow": "{{low}} {{unit}}"
-    },
     "rateQuantity": "met een verhouding van {{quantity}} {{unit}}",
-    "rateRange": {
-      "lowAndHigh": "met een verhouding tussen {{low}} en {{high}} {{unit}}",
-      "onlyHigh": "met een verhouding van {{high}} {{unit}}",
-      "onlyLow": "met een verhouding van {{low}} {{unit}}"
-    },
+    "rateRange": "met een verhouding van {{rangeText}}",
     "rateRatio": {
       "rateRatio_one": "met een verhouding van {{quantityNumerator}} {{numeratorUnit}} per {{denominatorUnit}}",
       "rateRatio_other": "met een verhouding van {{quantityNumerator}} {{numeratorUnit}} elke {{count}} {{denominatorUnit}}"
@@ -54,11 +72,7 @@
       "onlyStart": "van {{start}}",
       "onlyEnd": "tot {{end}}"
     },
-    "boundsRange": {
-      "lowAndHigh": "gedurende {{low}} tot {{high}} {{unit}}",
-      "onlyHigh": "tot {{high}} {{unit}}",
-      "onlyLow": "gedurende minstens {{low}} {{unit}}"
-    },
+    "boundsRange": "gedurende {{rangeText}}",
     "count": {
       "count_one": "{{count}} keer nemen",
       "count_other": "{{count}} keer nemen"

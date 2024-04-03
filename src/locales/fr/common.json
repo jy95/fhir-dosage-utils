@@ -3,19 +3,37 @@
     "and": "et",
     "then": "puis"
   },
+  "amount": {
+    "range": {
+      "withUnit": {
+        "lowAndHigh": "{{low}} à {{high}} {{unit}}",
+        "onlyHigh": "jusqu'à {{high}} {{unit}}",
+        "onlyLow": "{{low}} {{unit}}"
+      },
+      "withoutUnit": {
+        "lowAndHigh": "{{low}} à {{high}}",
+        "onlyHigh": "jusqu'à {{high}}",
+        "onlyLow": "{{low}}"
+      }
+    },
+    "ratio": {
+      "withUnit": {
+        "numerator": "{{quantityNumerator}} {{numeratorUnit}}",
+        "denominator_one": "par {{denominatorUnit}}",
+        "denominator_other": "chaque {{count}} {{denominatorUnit}}"
+      },
+      "withoutUnit": {
+        "numerator": "{{quantityNumerator}}",
+        "denominator_one": ":{{count}}",
+        "denominator_other": ":{{count}}"
+      }
+    },
+    "quantity": "{{quantity}} {{unit}}"
+  },
   "fields": {
     "doseQuantity": "{{quantity}} {{unit}}",
-    "doseRange": {
-      "lowAndHigh": "{{low}} à {{high}} {{unit}}",
-      "onlyHigh": "jusqu'à {{high}} {{unit}}",
-      "onlyLow": "{{low}} {{unit}}"
-    },
     "rateQuantity": "au taux de {{quantity}} {{unit}}",
-    "rateRange": {
-      "lowAndHigh": "au taux de {{low}} à {{high}} {{unit}}",
-      "onlyHigh": "au taux de {{high}} {{unit}}",
-      "onlyLow": "au taux de {{low}} {{unit}}"
-    },
+    "rateRange": "au taux de {{rangeText}}",
     "rateRatio": {
       "rateRatio_one": "au taux de {{quantityNumerator}} {{numeratorUnit}} par {{denominatorUnit}}",
       "rateRatio_other": "au taux de {{quantityNumerator}} {{numeratorUnit}} chaque {{count}} {{denominatorUnit}}"
@@ -54,11 +72,7 @@
       "onlyStart": "à partir du {{start}}",
       "onlyEnd": "jusqu'au {{end}}"
     },
-    "boundsRange": {
-      "lowAndHigh": "de {{low}} à {{high}} {{unit}}",
-      "onlyHigh": "jusqu'à {{high}} {{unit}}",
-      "onlyLow": "pour au moins {{low}} {{unit}}"
-    },
+    "boundsRange": "pour {{rangeText}}",
     "count": {
       "count_one": "prendre {{count}} fois",
       "count_other": "prendre {{count}} fois"

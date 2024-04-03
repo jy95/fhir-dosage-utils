@@ -1,3 +1,6 @@
+// Utility function
+import { fromRangeToString } from "../utils/fromRangeToString";
+
 // types
 import type { DisplayOrderParams } from "../types";
 
@@ -18,43 +21,11 @@ export function transformRateRangeToText({
     return undefined;
   }
 
-  // low / high
-  let low = rateRange.rateRange!.low;
-  let high = rateRange.rateRange!.high;
+  // Turn range into a text
+  const rangeText = fromRangeToString({ range: rateRange, config, i18next });
 
-  let quantityLow = low?.value;
-  let quantityHigh = high?.value;
-
-  // quantity unit
-  let unit = config.fromFHIRQuantityUnitToString({
-    language: config.language,
-    quantity: high || low!,
-  });
-
-  // Three cases
-
-  // 1. Both low & high are present
-  if (quantityHigh !== undefined && quantityLow !== undefined) {
-    return i18next.t("fields.rateRange.lowAndHigh", {
-      low: quantityLow,
-      high: quantityHigh,
-      unit: unit,
-    });
-  }
-
-  // 2. Only high is present
-  if (quantityHigh !== undefined) {
-    return i18next.t("fields.rateRange.onlyHigh", {
-      high: quantityHigh,
-      unit: unit,
-    });
-  }
-
-  // 3. Only low is present
-  // Warning, this case is kind dangerous and clinically unsafe so minimal effort on this ...
-
-  return i18next.t("fields.rateRange.onlyLow", {
-    low: quantityLow,
-    unit: unit,
+  // return the final string
+  return i18next.t("fields.rateRange", {
+    rangeText: rangeText,
   });
 }
