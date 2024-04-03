@@ -12,6 +12,7 @@ import type {
   Quantity as QuantityR4,
   Duration as DurationR4,
   Range as RangeR4,
+  Ratio as RatioR4,
 } from "fhir/r4";
 import type {
   Dosage as DosageR5,
@@ -20,6 +21,7 @@ import type {
   Quantity as QuantityR5,
   Duration as DurationR5,
   Range as RangeR5,
+  Ratio as RatioR5,
 } from "fhir/r5";
 
 // Exported types
@@ -30,6 +32,7 @@ export type Quantity = QuantityR4 | QuantityR5;
 export type Duration = DurationR4 | DurationR5;
 export type Extension = ExtensionR4 | ExtensionR5;
 export type Range = RangeR4 | RangeR5;
+export type Ratio = RatioR4 | RatioR5;
 
 export type { FromFHIRQuantityUnitToStringFct, FromCodeableConceptToStringFct };
 
@@ -248,6 +251,12 @@ export type { I18N };
 // Types for amount functions
 export type RangeParams = {
   range: Range;
+  config: Config;
+  i18next: I18N;
+};
+
+export type RatioParams = {
+  ratio: Ratio;
   config: Config;
   i18next: I18N;
 };

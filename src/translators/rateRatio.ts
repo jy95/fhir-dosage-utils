@@ -1,3 +1,5 @@
+import { fromRatioToString } from "../utils/fromRatioToString";
+
 // types
 import type { DisplayOrderParams } from "../types";
 
@@ -11,41 +13,25 @@ export function transformRateRatioToText({
     return undefined;
   }
   // Find the first entry that match criteria
-  let rateRatio = dos.doseAndRate.find((s) => s.rateRatio !== undefined);
+  let doseAndRate = dos.doseAndRate.find((s) => s.rateRatio !== undefined);
 
   // If not found, skip
-  if (rateRatio === undefined) {
+  if (doseAndRate === undefined) {
     return undefined;
   }
 
-  // num / dem
-  let numerator = rateRatio.rateRatio!.numerator;
-  let denominator = rateRatio.rateRatio!.denominator;
+  // Turn ratio to text
+  const ratioText = fromRatioToString({
+    config,
+    i18next,
+    ratio: doseAndRate.rateRatio!,
+  });
 
-  let quantityNum = numerator?.value || 1;
-  let quantityDenom = denominator?.value || 1;
+  if (ratioText === undefined) {
+    return undefined;
+  }
 
-  // units as text
-  let numeratorUnit =
-    numerator !== undefined
-      ? config.fromFHIRQuantityUnitToString({
-          language: config.language,
-          quantity: numerator,
-        })
-      : "";
-
-  let denominatorUnit =
-    denominator !== undefined
-      ? config.fromFHIRQuantityUnitToString({
-          language: config.language,
-          quantity: denominator,
-        })
-      : "";
-
-  return i18next.t("fields.rateRatio.rateRatio", {
-    count: quantityDenom,
-    quantityNumerator: quantityNum,
-    numeratorUnit: numeratorUnit,
-    denominatorUnit: denominatorUnit,
+  return i18next.t("fields.rateRatio", {
+    ratioText: ratioText,
   });
 }

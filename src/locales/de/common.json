@@ -18,12 +18,12 @@
     },
     "ratio": {
       "withUnit": {
-        "numerator": "{{quantityNumerator}} {{numeratorUnit}}",
+        "numerator": "{{count}} {{numeratorUnit}}",
         "denominator_one": "pro {{denominatorUnit}}",
         "denominator_other": "jeder {{count}} {{denominatorUnit}}"
       },
       "withoutUnit": {
-        "numerator": "{{quantityNumerator}}",
+        "numerator": "{{count}}",
         "denominator_one": ":{{count}}",
         "denominator_other": ":{{count}}"
       }
@@ -35,10 +35,7 @@
     "doseRange": "{{rangeText}}",
     "rateQuantity": "mit einem Verhältnis von {{quantity}} {{unit}}",
     "rateRange": "mit einem Verhältnis von {{rangeText}}",
-    "rateRatio": {
-      "rateRatio_one": "mit einem Verhältnis von {{quantityNumerator}} {{numeratorUnit}} pro {{denominatorUnit}}",
-      "rateRatio_other": "mit einem Verhältnis von {{quantityNumerator}} {{numeratorUnit}} jeder {{count}} {{denominatorUnit}}"
-    },
+    "rateRatio": "mit einem Verhältnis von {{ratioText}}",
     "duration": "für {{durationText}}",
     "durationMax": "(maximal {{durationMaxText}})",
     "frequency": {
