@@ -111,6 +111,6 @@ describe("fromDosageToText - doseRange", () => {
     };
 
     let result = dosageUtils.fromDosageToText(dosage);
-    expect(result).toBe("3 to 5 ");
+    expect(result).toBe("3 to 5");
   });
 });
