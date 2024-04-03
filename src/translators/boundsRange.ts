@@ -29,6 +29,11 @@ export function transformBoundsRangeToText({
       i18next,
     });
 
+    // Reject if empty
+    if (rangeText === undefined) {
+      return undefined;
+    }
+
     // return the final string
     return i18next.t("fields.boundsRange", {
       rangeText: rangeText,

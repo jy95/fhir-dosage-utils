@@ -8,12 +8,12 @@
       "withUnit": {
         "lowAndHigh": "{{low}} to {{high}} {{unit}}",
         "onlyHigh": "up to {{high}} {{unit}}",
-        "onlyLow": "{{low}} {{unit}}"
+        "onlyLow": "at least {{low}} {{unit}}"
       },
       "withoutUnit": {
         "lowAndHigh": "{{low}} to {{high}}",
         "onlyHigh": "up to {{high}}",
-        "onlyLow": "{{low}}"
+        "onlyLow": "at least {{low}}"
       }
     },
     "ratio": {
@@ -32,6 +32,7 @@
   },
   "fields": {
     "doseQuantity": "{{quantity}} {{unit}}",
+    "doseRange": "{{rangeText}}",
     "rateQuantity": "at a rate of {{quantity}} {{unit}}",
     "rateRange": "at a rate of {{rangeText}}",
     "rateRatio": {

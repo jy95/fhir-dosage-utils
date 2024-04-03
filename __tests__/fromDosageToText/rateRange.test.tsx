@@ -60,7 +60,7 @@ describe("fromDosageToText - rateRange", () => {
     };
 
     let result = dosageUtils.fromDosageToText(dosage);
-    expect(result).toBe("at a rate of 5 pills");
+    expect(result).toBe("at a rate of up to 5 pills");
   });
 
   test("low only", () => {
@@ -78,6 +78,6 @@ describe("fromDosageToText - rateRange", () => {
     };
 
     let result = dosageUtils.fromDosageToText(dosage);
-    expect(result).toBe("at a rate of 3 pills");
+    expect(result).toBe("at a rate of at least 3 pills");
   });
 });

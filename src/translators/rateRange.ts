@@ -14,15 +14,24 @@ export function transformRateRangeToText({
     return undefined;
   }
   // Find the first entry that match criteria
-  let rateRange = dos.doseAndRate.find((s) => s.rateRange !== undefined);
+  let doseAndRate = dos.doseAndRate.find((s) => s.rateRange !== undefined);
 
   // If not found, skip
-  if (rateRange === undefined) {
+  if (doseAndRate === undefined) {
     return undefined;
   }
 
   // Turn range into a text
-  const rangeText = fromRangeToString({ range: rateRange, config, i18next });
+  const rangeText = fromRangeToString({
+    range: doseAndRate.rateRange!,
+    config,
+    i18next,
+  });
+
+  // Reject if empty
+  if (rangeText === undefined) {
+    return undefined;
+  }
 
   // return the final string
   return i18next.t("fields.rateRange", {

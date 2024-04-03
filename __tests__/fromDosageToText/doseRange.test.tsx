@@ -78,6 +78,6 @@ describe("fromDosageToText - doseRange", () => {
     };
 
     let result = dosageUtils.fromDosageToText(dosage);
-    expect(result).toBe("3 pills");
+    expect(result).toBe("at least 3 pills");
   });
 });

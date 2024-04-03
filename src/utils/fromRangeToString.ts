@@ -29,7 +29,7 @@ export function fromRangeToString({
   range,
   config,
   i18next,
-}: RangeParams): string {
+}: RangeParams): string | undefined {
   // Extract params
   const { low, high } = range;
   const lowValue = low?.value;
@@ -37,9 +37,9 @@ export function fromRangeToString({
 
   // Four cases
 
-  // 1. If we have a empty object, return a empty string
+  // 1. If we have a empty object, return undefined
   if (lowValue === undefined && highValue === undefined) {
-    return "";
+    return undefined;
   }
 
   // quantity unit
@@ -71,7 +71,7 @@ export function fromRangeToString({
 
   // 4. Only low is present
   // Warning, this case is kind dangerous and clinically unsafe so minimal effort on this ...
-  return i18next.t(`amount.range.${technicalKey}.onlyHigh`, {
+  return i18next.t(`amount.range.${technicalKey}.onlyLow`, {
     low: lowValue,
     unit: unit,
   });

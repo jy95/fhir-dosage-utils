@@ -22,5 +22,18 @@ export function transformDoseRangeToText({
   }
 
   // Turn range into a text
-  return fromRangeToString({ range: doseRange, config, i18next });
+  const text = fromRangeToString({
+    range: doseRange.doseRange!,
+    config,
+    i18next,
+  });
+
+  // Reject if empty
+  if (text === undefined) {
+    return undefined;
+  }
+
+  return i18next.t("fields.doseRange", {
+    rangeText: text,
+  });
 }
