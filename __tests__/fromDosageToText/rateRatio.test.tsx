@@ -32,6 +32,19 @@ describe("fromDosageToText - rateRatio", () => {
     expect(result).toBe("");
   });
 
+  test("Empty rateRatio", () => {
+    const dosage: Dosage = {
+      doseAndRate: [
+        {
+          rateRatio: {},
+        },
+      ],
+    };
+
+    let result = dosageUtils.fromDosageToText(dosage);
+    expect(result).toBe("");
+  });
+
   test("numerator and denominator", () => {
     const dosage: Dosage = {
       doseAndRate: [
