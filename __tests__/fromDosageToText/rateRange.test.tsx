@@ -23,6 +23,19 @@ describe("fromDosageToText - rateRange", () => {
     expect(result).toBe("");
   });
 
+  test("Empty rateRange", () => {
+    const dosage: Dosage = {
+      doseAndRate: [
+        {
+          rateRange: {},
+        },
+      ],
+    };
+
+    let result = dosageUtils.fromDosageToText(dosage);
+    expect(result).toBe("");
+  });
+
   test("high and low", () => {
     const dosage: Dosage = {
       doseAndRate: [

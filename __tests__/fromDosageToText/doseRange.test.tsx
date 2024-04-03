@@ -23,6 +23,19 @@ describe("fromDosageToText - doseRange", () => {
     expect(result).toBe("");
   });
 
+  test("Empty doseRange", () => {
+    const dosage: Dosage = {
+      doseAndRate: [
+        {
+          doseRange: {},
+        },
+      ],
+    };
+
+    let result = dosageUtils.fromDosageToText(dosage);
+    expect(result).toBe("");
+  });
+
   test("high and low", () => {
     const dosage: Dosage = {
       doseAndRate: [
@@ -79,5 +92,25 @@ describe("fromDosageToText - doseRange", () => {
 
     let result = dosageUtils.fromDosageToText(dosage);
     expect(result).toBe("at least 3 pills");
+  });
+
+  test("No units", () => {
+    const dosage: Dosage = {
+      doseAndRate: [
+        {
+          doseRange: {
+            low: {
+              value: 3,
+            },
+            high: {
+              value: 5,
+            },
+          },
+        },
+      ],
+    };
+
+    let result = dosageUtils.fromDosageToText(dosage);
+    expect(result).toBe("3 to 5 ");
   });
 });
