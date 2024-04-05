@@ -227,7 +227,44 @@ export class FhirDosageUtils {
   }
 
   /**
-   * Turn multiple FHIR Dosage object into text
+   * Turn this array of Dosage objects into a data structure useful to handle "sequential" and "concurrent" instructions (cf. "sequence" property).
+   * @returns {Dosage[][]} - A two-dimensional array where each inner array contains Dosage objects belonging to the same sequence numberr.
+   */
+  groupBySequence(dosages: Dosage[]) {
+    // Prepare variables
+    let groups: Record<number, Dosage[]> = {};
+    let sequences = new Set<number>();
+
+    for (let idx = 0; idx < dosages.length; idx++) {
+      // Get dosage object
+      const dosage = dosages[idx];
+
+      // Get the sequence number (normally, in real world, it should be present in this case)
+      // If no sequence number, assume it is idx + 1
+      let sequenceNr = dosage.sequence || idx + 1;
+
+      // Retrieve of create previous entries for this sequence number
+      let localGroup = groups[sequenceNr] || [];
+
+      // Add entry
+      localGroup.push(dosage);
+
+      // Pushback result
+      groups[sequenceNr] = localGroup;
+
+      // For reminder of the parsed sequence
+      sequences.add(sequenceNr);
+    }
+
+    // By using the Set values, we are sure it is returned in the way Dosages were written
+    return [...sequences.values()].map((sequence) => {
+      let concurrentInstructions = groups[sequence];
+      return concurrentInstructions;
+    });
+  }
+
+  /**
+   * Turn multiple FHIR Dosage objects into text
    */
   fromMultipleDosageToText(dosages: Dosage[]): string {
     // As we can have concurrent / sequential instructions, we need a generic algorithm to do the job
@@ -240,41 +277,18 @@ export class FhirDosageUtils {
       return fromListToString(this.i18nInstance, dosagesAsText, "then");
     }
 
-    // 1. We have both "sequential" and "concurrent" instructions - time to see what is the configuration
-    let groups: Record<number, string[]> = {};
-    let sequences = new Set<number>();
+    // We have both "sequential" and "concurrent" instructions - time to see what is the configuration
+    let sortedDosages = this.groupBySequence(dosages);
 
-    for (let idx = 0; idx < dosages.length; idx++) {
-      // Get dosage object
-      const dosage = dosages[idx];
-
-      // Get the sequence number (normally, in real world, it should be present in this case)
-      // If no sequence number, assume it is idx + 1
-      let sequenceNr = dosage.sequence || idx + 1;
-
-      // Generate the text version
-      let dosageAsText = this.fromDosageToText(dosage);
-
-      // Retrieve of create previous entries for this sequence number
-      let localGroup = groups[sequenceNr] || [];
-
-      // Add entry
-      localGroup.push(dosageAsText);
-
-      // Pushback result
-      groups[sequenceNr] = localGroup;
-
-      // For reminder of the parsed sequence
-      sequences.add(sequenceNr);
-    }
-
-    // 2. Now that data structures are filled, it is a piece of cake to generate the result
-    let sequentialInstructions: string[] = [...sequences.values()].map(
-      (sequence) => {
-        let concurrentInstructions = groups[sequence];
+    // Now that data structures are filled, it is a piece of cake to generate the result
+    let sequentialInstructions: string[] = sortedDosages.map(
+      (concurrentInstructions) => {
+        let concurrentInstructionsAsString = concurrentInstructions.map(
+          (dosage) => this.fromDosageToText(dosage),
+        );
         return fromListToString(
           this.i18nInstance,
-          concurrentInstructions,
+          concurrentInstructionsAsString,
           "and",
         );
       },
