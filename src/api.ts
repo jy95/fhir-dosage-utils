@@ -206,11 +206,9 @@ export class FhirDosageUtils {
   }
 
   /**
-   * Turn multiple FHIR Dosage object into text
+   * Does this array of Dosage objects contains only "sequential" instructions ?
    */
-  fromMultipleDosageToText(dosages: Dosage[]): string {
-    // As we can have concurrent / sequential instructions, we need a generic algorithm to do the job
-
+  containsOnlySequentialInstructions(dosages: Dosage[]): boolean {
     // 1. Collect all sequences number
     let sequencesNumbers = dosages
       .map((d) => d.sequence)
@@ -222,15 +220,27 @@ export class FhirDosageUtils {
     // 3. We have a "sequential" situation in two cases
     // A) No sequence number were provided
     // B) All sequence numbers are different
-    if (
+    return (
       encounteredSequenceNumbers.size === 0 ||
       encounteredSequenceNumbers.size === dosages.length
-    ) {
+    );
+  }
+
+  /**
+   * Turn multiple FHIR Dosage object into text
+   */
+  fromMultipleDosageToText(dosages: Dosage[]): string {
+    // As we can have concurrent / sequential instructions, we need a generic algorithm to do the job
+    const hasOnlySequentialInstructions =
+      this.containsOnlySequentialInstructions(dosages);
+
+    // Sequential instructions
+    if (hasOnlySequentialInstructions) {
       const dosagesAsText = dosages.map((d) => this.fromDosageToText(d));
       return fromListToString(this.i18nInstance, dosagesAsText, "then");
     }
 
-    // 4. We have both "sequential" and "concurrent" instructions - time to see what is the configuration
+    // 1. We have both "sequential" and "concurrent" instructions - time to see what is the configuration
     let groups: Record<number, string[]> = {};
     let sequences = new Set<number>();
 
@@ -258,7 +268,7 @@ export class FhirDosageUtils {
       sequences.add(sequenceNr);
     }
 
-    // 5. Now that data structures are filled, it is a piece of cake to generate the result
+    // 2. Now that data structures are filled, it is a piece of cake to generate the result
     let sequentialInstructions: string[] = [...sequences.values()].map(
       (sequence) => {
         let concurrentInstructions = groups[sequence];
