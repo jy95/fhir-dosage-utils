@@ -1,4 +1,5 @@
 import { fromRatioToString } from "../utils/fromRatioToString";
+import { extractMatchingDoseAndRateFirstEntry } from "../internal/extractMatchingDoseAndRateFirstEntry";
 
 // types
 import type { DisplayOrderParams } from "../types";
@@ -8,15 +9,10 @@ export function transformRateRatioToText({
   config,
   i18next,
 }: DisplayOrderParams): string | undefined {
-  // If empty, return undefined
-  if (dos.doseAndRate === undefined) {
-    return undefined;
-  }
-  // Find the first entry that match criteria
-  let doseAndRate = dos.doseAndRate.find((s) => s.rateRatio !== undefined);
+  let rateRatio = extractMatchingDoseAndRateFirstEntry(dos, "rateRatio");
 
   // If not found, skip
-  if (doseAndRate === undefined) {
+  if (rateRatio === undefined) {
     return undefined;
   }
 
@@ -24,7 +20,7 @@ export function transformRateRatioToText({
   const ratioText = fromRatioToString({
     config,
     i18next,
-    ratio: doseAndRate.rateRatio!,
+    ratio: rateRatio,
   });
 
   if (ratioText === undefined) {

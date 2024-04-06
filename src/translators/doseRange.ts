@@ -1,5 +1,6 @@
 // Utility function
 import { fromRangeToString } from "../utils/fromRangeToString";
+import { extractMatchingDoseAndRateFirstEntry } from "../internal/extractMatchingDoseAndRateFirstEntry";
 
 // types
 import type { DisplayOrderParams } from "../types";
@@ -9,12 +10,7 @@ export function transformDoseRangeToText({
   config,
   i18next,
 }: DisplayOrderParams): string | undefined {
-  // If empty, return undefined
-  if (dos.doseAndRate === undefined) {
-    return undefined;
-  }
-  // Find the first entry that match criteria
-  let doseRange = dos.doseAndRate.find((s) => s.doseRange !== undefined);
+  let doseRange = extractMatchingDoseAndRateFirstEntry(dos, "doseRange");
 
   // If not found, skip
   if (doseRange === undefined) {
@@ -23,7 +19,7 @@ export function transformDoseRangeToText({
 
   // Turn range into a text
   const text = fromRangeToString({
-    range: doseRange.doseRange!,
+    range: doseRange,
     config,
     i18next,
   });
