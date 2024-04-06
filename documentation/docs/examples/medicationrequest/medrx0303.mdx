@@ -17,10 +17,7 @@ Source: [HL7](https://www.hl7.org/fhir/medicationrequest0303.html) - "Order for 
 
 <Tabs>
   <TabItem value="text" label="Human readable text" default>
-    <MultipleDosagesToText
-      dosages={Schema}
-      config={{  }}
-    />
+    <MultipleDosagesToText dosages={Schema} config={{}} />
   </TabItem>
   <TabItem value="json" label="Dosage">
     <CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
