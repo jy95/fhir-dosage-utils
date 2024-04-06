@@ -3,19 +3,21 @@ import type { DisplayOrderParams } from "../types";
 
 // Utility function
 import { fromRangeToString } from "../utils/fromRangeToString";
+import { extractTimingRepeat } from "../internal/extractTimingRepeat";
 
 export function transformBoundsRangeToText({
   dos,
   config,
   i18next,
 }: DisplayOrderParams): string | undefined {
+  let repeat = extractTimingRepeat(dos);
+
   // If empty, return undefined
-  if (dos.timing === undefined || dos.timing.repeat === undefined) {
+  if (repeat === undefined) {
     return undefined;
   }
 
   // Pickup the repeat interesting attributes
-  let repeat = dos.timing.repeat;
   let boundsRange = repeat.boundsRange;
 
   // Do nothing if no boundsRange, I am not a wizard

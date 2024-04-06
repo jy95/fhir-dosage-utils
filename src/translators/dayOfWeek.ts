@@ -1,5 +1,6 @@
 // Function
 import { fromListToString } from "../utils/fromListToString";
+import { extractTimingRepeat } from "../internal/extractTimingRepeat";
 
 // Types
 import type { DisplayOrderParams } from "../types";
@@ -9,13 +10,14 @@ export function transformDayOfWeekToText({
   dos,
   i18next,
 }: DisplayOrderParams): string | undefined {
+  let repeat = extractTimingRepeat(dos);
+
   // If empty, return undefined
-  if (dos.timing === undefined || dos.timing.repeat === undefined) {
+  if (repeat === undefined) {
     return undefined;
   }
 
   // Pickup the repeat interesting attributes
-  let repeat = dos.timing.repeat;
   let dayOfWeek = repeat.dayOfWeek;
 
   // If empty, skip it

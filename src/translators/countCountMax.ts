@@ -1,16 +1,19 @@
+import { extractTimingRepeat } from "../internal/extractTimingRepeat";
+
 import type { DisplayOrderParams } from "../types";
 
 export function transformCountCountMaxToText({
   dos,
   i18next,
 }: DisplayOrderParams): string | undefined {
+  let repeat = extractTimingRepeat(dos);
+
   // If empty, return undefined
-  if (dos.timing === undefined || dos.timing.repeat === undefined) {
+  if (repeat === undefined) {
     return undefined;
   }
 
   // Pickup the repeat interesting attributes
-  let repeat = dos.timing.repeat;
   let count = repeat.count;
   let countMax = repeat.countMax;
 
