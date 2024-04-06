@@ -1,3 +1,5 @@
+import { extractMatchingDoseAndRateFirstEntry } from "../internal/extractMatchingDoseAndRateFirstEntry";
+
 // types
 import type { DisplayOrderParams } from "../types";
 
@@ -6,22 +8,17 @@ export function transformDoseQuantityToText({
   dos,
   i18next,
 }: DisplayOrderParams): string | undefined {
-  // If empty, return undefined
-  if (dos.doseAndRate === undefined) {
-    return undefined;
-  }
-  // Find the first entry that match criteria
-  let doseQuantity = dos.doseAndRate.find((s) => s.doseQuantity !== undefined);
+  let doseQuantity = extractMatchingDoseAndRateFirstEntry(dos, "doseQuantity");
 
   // If not found, skip
   if (doseQuantity === undefined) {
     return undefined;
   }
 
-  let quantity = doseQuantity.doseQuantity!.value || 1;
+  let quantity = doseQuantity.value || 1;
   let unit = config.fromFHIRQuantityUnitToString({
     language: config.language,
-    quantity: doseQuantity.doseQuantity!,
+    quantity: doseQuantity,
   });
 
   return i18next.t("fields.doseQuantity", {
