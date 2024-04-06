@@ -1,3 +1,6 @@
+// Functions
+import { extractTimingRepeat } from "../internal/extractTimingRepeat";
+
 // types
 import type { Config, Duration, DisplayOrderParams, I18N } from "../types";
 
@@ -28,13 +31,14 @@ export function transformBoundsDurationToText({
   config,
   i18next,
 }: DisplayOrderParams): string | undefined {
+  let repeat = extractTimingRepeat(dos);
+
   // If empty, return undefined
-  if (dos.timing === undefined || dos.timing.repeat === undefined) {
+  if (repeat === undefined) {
     return undefined;
   }
 
   // Pickup the repeat interesting attributes
-  let repeat = dos.timing.repeat;
   let boundsDuration = repeat.boundsDuration;
 
   // Do nothing if no boundsDuration, I am not a wizard

@@ -1,5 +1,6 @@
 // Functions
 import { fromListToString } from "../utils/fromListToString";
+import { extractTimingRepeat } from "../internal/extractTimingRepeat";
 
 // Types
 import type { DisplayOrderParams, I18N } from "../types";
@@ -90,13 +91,14 @@ export function transformOffsetWhenToText({
   dos,
   i18next,
 }: DisplayOrderParams): string | undefined {
+  let repeat = extractTimingRepeat(dos);
+
   // If empty, return undefined
-  if (dos.timing === undefined || dos.timing.repeat === undefined) {
+  if (repeat === undefined) {
     return undefined;
   }
 
   // Pickup the repeat interesting attributes
-  let repeat = dos.timing.repeat;
   let offset = repeat.offset;
   let when = repeat.when;
 
