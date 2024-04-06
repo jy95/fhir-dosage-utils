@@ -79,7 +79,7 @@ module.exports = {
                   dirName: "examples/medicationrequest",
                 },
               ],
-            }
+            },
           ],
         },
       ],
