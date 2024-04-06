@@ -1,0 +1,25 @@
+---
+description: Order for as needed (PRN) dosage - Vicodin - completed with dosageInstruction with additionalInstruction (coded) and as needed with reason, dispenseRequest and substitution
+title: medrx0308
+---
+
+import CodeBlock from "@theme/CodeBlock";
+import Schema from "@site/static/dosages/examples/medicationrequest/medrx0308.json";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import MultipleDosagesToText from "@site/src/components/multiple_dosage_to_text";
+
+:::info
+
+Source: [HL7](https://www.hl7.org/fhir/medicationrequest0308.html) - "Order for as needed (PRN) dosage - Vicodin - completed with dosageInstruction with additionalInstruction (coded) and as needed with reason, dispenseRequest and substitution"
+
+:::
+
+<Tabs>
+  <TabItem value="text" label="Human readable text" default>
+    <MultipleDosagesToText dosages={Schema} config={{}} />
+  </TabItem>
+  <TabItem value="json" label="Dosage">
+    <CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+  </TabItem>
+</Tabs>

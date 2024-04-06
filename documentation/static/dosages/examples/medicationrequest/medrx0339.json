@@ -1,0 +1,100 @@
+[
+  {
+    "sequence": 1,
+    "text": "Insert one suppository into the vagina daily at bedtime",
+    "timing": {
+      "repeat": {
+        "boundsPeriod": {
+          "start": "2015-01-16",
+          "end": "2015-01-18"
+        },
+        "frequency": 1,
+        "period": 1,
+        "periodUnit": "d"
+      }
+    },
+    "route": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "16857009",
+          "display": "Vaginal Route"
+        }
+      ]
+    },
+    "method": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "421257003",
+          "display": "Insert"
+        }
+      ]
+    },
+    "doseAndRate": [
+      {
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+              "code": "ordered",
+              "display": "Ordered"
+            }
+          ]
+        },
+        "doseQuantity": {
+          "value": 1,
+          "unit": "VAGTAB",
+          "system": "http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm",
+          "code": "VAGTAB"
+        }
+      }
+    ]
+  },
+  {
+    "sequence": 1,
+    "text": "Apply to vaginal area topically once daily",
+    "timing": {
+      "repeat": {
+        "boundsPeriod": {
+          "start": "2015-01-16",
+          "end": "2015-01-18"
+        },
+        "frequency": 1,
+        "period": 1,
+        "periodUnit": "d"
+      }
+    },
+    "route": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "6064005",
+          "display": "Topical Route"
+        }
+      ]
+    },
+    "method": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "417924000",
+          "display": "Apply - dosing instruction imperative (qualifier value)"
+        }
+      ]
+    },
+    "doseAndRate": [
+      {
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+              "code": "ordered",
+              "display": "Ordered"
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

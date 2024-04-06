@@ -1,0 +1,28 @@
+---
+description: Order for a medication that includes the dosage of a prescription in text
+title: medrx002
+---
+
+import CodeBlock from "@theme/CodeBlock";
+import Schema from "@site/static/dosages/examples/medicationrequest/medrx002.json";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import MultipleDosagesToText from "@site/src/components/multiple_dosage_to_text";
+
+:::info
+
+Source: [HL7](https://www.hl7.org/fhir/medicationrequestexample2.html) - "Order for a medication that includes the dosage of a prescription in text"
+
+:::
+
+<Tabs>
+  <TabItem value="text" label="Human readable text" default>
+    <MultipleDosagesToText
+      dosages={Schema}
+      config={{ displayOrder: ["text"] }}
+    />
+  </TabItem>
+  <TabItem value="json" label="Dosage">
+    <CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+  </TabItem>
+</Tabs>

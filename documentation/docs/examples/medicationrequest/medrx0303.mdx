@@ -1,0 +1,25 @@
+---
+description: Order for Tapering Dose - Prednisone - active with note and multiple DosageInstructions with boundsPeriod
+title: medrx0303
+---
+
+import CodeBlock from "@theme/CodeBlock";
+import Schema from "@site/static/dosages/examples/medicationrequest/medrx0303.json";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import MultipleDosagesToText from "@site/src/components/multiple_dosage_to_text";
+
+:::info
+
+Source: [HL7](https://www.hl7.org/fhir/medicationrequest0303.html) - "Order for Tapering Dose - Prednisone - active with note and multiple DosageInstructions with boundsPeriod"
+
+:::
+
+<Tabs>
+  <TabItem value="text" label="Human readable text" default>
+    <MultipleDosagesToText dosages={Schema} config={{}} />
+  </TabItem>
+  <TabItem value="json" label="Dosage">
+    <CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+  </TabItem>
+</Tabs>

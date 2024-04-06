@@ -1,0 +1,104 @@
+[
+  {
+    "sequence": 2,
+    "text": "inject 10 units subcut 10 minutes before breakfast",
+    "timing": {
+      "repeat": {
+        "frequency": 1,
+        "period": 1,
+        "periodUnit": "d",
+        "when": ["ACM"],
+        "offset": 10
+      }
+    },
+    "doseAndRate": [
+      {
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+              "code": "ordered",
+              "display": "Ordered"
+            }
+          ]
+        },
+        "doseQuantity": {
+          "value": 10,
+          "unit": "U",
+          "system": "http://unitsofmeasure.org",
+          "code": "U"
+        }
+      }
+    ]
+  },
+  {
+    "sequence": 2,
+    "text": "15 units before lunch",
+    "additionalInstruction": [
+      {
+        "text": "Before Lunch"
+      }
+    ],
+    "timing": {
+      "repeat": {
+        "frequency": 1,
+        "period": 1,
+        "periodUnit": "d"
+      }
+    },
+    "doseAndRate": [
+      {
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+              "code": "ordered",
+              "display": "Ordered"
+            }
+          ]
+        },
+        "doseQuantity": {
+          "value": 15,
+          "unit": "U",
+          "system": "http://unitsofmeasure.org",
+          "code": "U"
+        }
+      }
+    ]
+  },
+  {
+    "sequence": 1,
+    "text": "20 units before dinner",
+    "additionalInstruction": [
+      {
+        "text": "Before Dinner"
+      }
+    ],
+    "timing": {
+      "repeat": {
+        "frequency": 1,
+        "period": 1,
+        "periodUnit": "d"
+      }
+    },
+    "doseAndRate": [
+      {
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+              "code": "ordered",
+              "display": "Ordered"
+            }
+          ]
+        },
+        "doseQuantity": {
+          "value": 20,
+          "unit": "U",
+          "system": "http://unitsofmeasure.org",
+          "code": "U"
+        }
+      }
+    ]
+  }
+]
