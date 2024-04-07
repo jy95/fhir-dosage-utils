@@ -13,6 +13,13 @@ Any contribution is welcome! Read more [here](contributing).
 </details>
 
 <details>
+<summary>How can I customize the default behavior of the library ?</summary>
+
+The library was built with that in mind. Read more [here](demo/custom).
+
+</details>
+
+<details>
 <summary>Compatibility Matrix</summary>
 
 | Version              | FHIR        |
@@ -22,9 +29,25 @@ Any contribution is welcome! Read more [here](contributing).
 </details>
 
 <details>
+<summary>Why the minimal FHIR version is R4 ?</summary>
+
+Several reasons :
+
+- FHIR version R4 is the most widely used version of FHIR, as stated by [many actors like HAPI FHIR creators](https://smilecdr.com/docs/fhir_repository/fhir_versions.html)
+- Many tools don't care anymore for older versions
+- It fits my needs when I designed this project
+
+:::tip
+
+You can migrate your dosages from R3 to R4 quick easily, as it is just a matter to putting `dose[x]` / `rate[x]` under `doseAndRate`.
+
+:::
+
+</details>
+
+<details>
 <summary>How to support my own language ?</summary>
 
-Simply make a pull request on the repository.  
-You can use [English files](https://github.com/jy95/fhir-dosage-utils/tree/main/src/locales/en) for reference.
+Simply make a pull request on the repository. You can use [English files](https://github.com/jy95/fhir-dosage-utils/tree/main/src/locales/en) for reference.
 
 </details>

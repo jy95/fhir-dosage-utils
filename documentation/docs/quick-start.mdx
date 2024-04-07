@@ -37,10 +37,30 @@ const dosage = {
   },
 };
 
+// Prepare utility class
 let dosageUtils = await FhirDosageUtils.build(config);
-let dosageAsText = dosageUtils.fromDosageToText(dosage);
+
+// 1. You can turn dosage(s) to text
 // display "1 time every 8 hours"
-console.log(dosageAsText);
+console.log(dosageUtils.fromDosageToText(dosage));
+console.log(dosageUtils.fromMultipleDosageToText([dosage]));
+
+// 2. You can extract part(s) of dosage, to your liking
+// display "every 8 hours"
+console.log(
+  dosageUtils.getFields(dosage, "periodPeriodMax" /*, other parameters*/),
+);
+
+// 3. You can detect if Dosage objects contains only "sequential" instructions
+// display "true"
+console.log(dosageUtils.containsOnlySequentialInstructions([dosage]));
+
+// 4. Turn this array of Dosage objects into a data structure useful to handle "sequential" and "concurrent" instructions (cf. "sequence" property).
+// Display "[ [dosage] ]"
+console.log(dosageUtils.groupBySequence([dosage]));
+
+// ... And many things
+// Read https://jy95.github.io/fhir-dosage-utils/api/class/default for more info
 ```
 
 ## Output examples
