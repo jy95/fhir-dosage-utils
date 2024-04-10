@@ -1,8 +1,8 @@
 import React from "react";
 import BrowserOnly from "@docusaurus/BrowserOnly";
 
-import PlaygroundSetup from "@site/src/components/PlaygroundSetup";
-import OutputVisualizer from "@site/src/components/OutputVisualizer";
+import PlaygroundSetup from "@site/src/components/playground/PlaygroundSetup";
+import OutputVisualizer from "@site/src/components/playground/OutputVisualizer";
 
 import { PlaygroundContextProvider } from "@site/src/contexts/PlaygroundContext";
 
@@ -42,7 +42,8 @@ function StateProvider(): JSX.Element {
   const [state, setState] = React.useState({
     inputSchema: InputSchema,
     configSchema: ConfigSchema,
-    data: JSON.stringify(SamplePayload),
+    data: JSON.stringify(SamplePayload, null, "\t"),
+    config: "{}",
   } as PlaygroundState);
 
   // define a function to update the state

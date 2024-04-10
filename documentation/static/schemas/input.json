@@ -6,7 +6,8 @@
       "type": "array",
       "items": {
         "$ref": "#/definitions/Entry"
-      }
+      },
+      "$id": "Input"
     },
     "Entry": {
       "$ref": "#/definitions/Dosage"

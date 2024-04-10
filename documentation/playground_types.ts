@@ -8,6 +8,9 @@ import type { Params } from "fhir-dosage-utils";
 // ts-json-schema-generator can't do at the moment union with
 export type Entry = DosageR4; //| DosageR5;
 
+/**
+ * @id Input
+ */
 export type PlaygroundInput = Entry[];
 
 // No need to enable all extensions
@@ -25,4 +28,7 @@ type LighterConfig = DeepExclude<
   | "fromExtensionsToString"
 >;
 
+/**
+ * @id Config
+ */
 export type Config = LighterConfig;

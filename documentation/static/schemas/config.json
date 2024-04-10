@@ -91,7 +91,8 @@
           "additionalProperties": false
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "$id": "Config"
     }
   }
 }

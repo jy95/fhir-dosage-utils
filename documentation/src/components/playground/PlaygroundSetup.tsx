@@ -9,16 +9,14 @@ import Details from "@theme/Details";
 // Context
 import { usePlaygroundContext } from "@site/src/contexts/PlaygroundContext";
 
-// Type I need for useRef
-import type { MonacoEditorTypes } from "@theme/MonacoEditor";
+// Common stringify of the JSON
+const STRINGIFY_JSON = (json: unknown) => JSON.stringify(json, null, "\t");
 
 function PlaygroundSetupInner(): JSX.Element {
   const {
     state: {
       data,
       config,
-      configSchemaRef,
-      inputSchemaRef,
       configSchema,
       inputSchema,
     },
@@ -47,20 +45,24 @@ function PlaygroundSetupInner(): JSX.Element {
         <JSONSchemaEditor
           value={data}
           schema={inputSchema}
+          height={"70vh"}
           theme={colorMode === "dark" ? "vs-dark" : "vs"}
           editorDidMount={(editor) => {
             updateState({ inputSchemaRef: editor });
           }}
+          key={STRINGIFY_JSON(inputSchema)}
         />
       </Details>
       <Details summary={<summary>Config</summary>} open={false}>
         <JSONSchemaEditor
           value={config}
           schema={configSchema}
+          height={"70vh"}
           theme={colorMode === "dark" ? "vs-dark" : "vs"}
           editorDidMount={(editor) => {
             updateState({ configSchemaRef: editor });
           }}
+          key={STRINGIFY_JSON(configSchema)}
         />
       </Details>
     </div>
