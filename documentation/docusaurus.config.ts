@@ -73,6 +73,8 @@ const config: Config = {
     ],
   ],
 
+  // Allows use of @theme/JSONSchemaEditor or @theme/JSONSchemaViewer
+  themes: ["docusaurus-json-schema-plugin"],
   themeConfig: {
     algolia: {
       // The application ID provided by Algolia
