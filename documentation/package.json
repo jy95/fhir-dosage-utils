@@ -12,7 +12,8 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "generateSchema": "node generateSchemas.cjs"
   },
   "dependencies": {
     "@docusaurus/core": "3.1.1",
@@ -20,10 +21,12 @@
     "@docusaurus/remark-plugin-npm2yarn": "^3.1.1",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
+    "docusaurus-json-schema-plugin": "^1.12.0",
     "fhir-dosage-utils": "file:..",
     "prism-react-renderer": "^2.3.0",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "ts-json-schema-generator": "^1.5.1"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.1.1",
