@@ -46,5 +46,5 @@ async function generateConfigSchema() {
 // Call the async functions sequentially (or use Promise.all for parallel execution)
 (async () => {
   await generateInputSchema();
-  //await generateConfigSchema();
+  await generateConfigSchema();
 })();

@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/Config",
+  "definitions": {
+    "Config": {
+      "type": "object",
+      "properties": {
+        "language": {
+          "type": "object",
+          "additionalProperties": false
+        },
+        "fromFHIRQuantityUnitToString": {
+          "type": "object",
+          "additionalProperties": false
+        },
+        "fromCodeableConceptToString": {
+          "type": "object",
+          "additionalProperties": false
+        },
+        "fromExtensionsToString": {
+          "type": "object",
+          "additionalProperties": false
+        },
+        "displayOrder": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false
+          }
+        },
+        "displaySeparator": {
+          "type": "object",
+          "additionalProperties": false
+        },
+        "dateTimeFormatOptions": {
+          "type": "object",
+          "properties": {
+            "localeMatcher": {
+              "type": "object",
+              "additionalProperties": false
+            },
+            "weekday": {
+              "type": "object",
+              "additionalProperties": false
+            },
+            "era": {
+              "type": "object",
+              "additionalProperties": false
+            },
+            "year": {
+              "type": "object",
+              "additionalProperties": false
+            },
+            "month": {
+              "type": "object",
+              "additionalProperties": false
+            },
+            "day": {
+              "type": "object",
+              "additionalProperties": false
+            },
+            "hour": {
+              "type": "object",
+              "additionalProperties": false
+            },
+            "minute": {
+              "type": "object",
+              "additionalProperties": false
+            },
+            "second": {
+              "type": "object",
+              "additionalProperties": false
+            },
+            "timeZoneName": {
+              "type": "object",
+              "additionalProperties": false
+            },
+            "formatMatcher": {
+              "type": "object",
+              "additionalProperties": false
+            },
+            "hour12": {
+              "type": "object",
+              "additionalProperties": false
+            },
+            "timeZone": {
+              "type": "object",
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

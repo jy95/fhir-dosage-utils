@@ -10,9 +10,19 @@ export type Entry = DosageR4; //| DosageR5;
 
 export type PlaygroundInput = Entry[];
 
-export type Config = Exclude<
+// No need to enable all extensions
+// https://github.com/vega/ts-json-schema-generator/issues/568
+type DeepExclude<T, A> = T extends A
+  ? never
+  : T extends Record<string, never> | Array<any>
+    ? { [K in keyof T]: DeepExclude<T[K], A> }
+    : T;
+
+type LighterConfig = DeepExclude<
   Params,
   | "fromFHIRQuantityUnitToString"
   | "fromCodeableConceptToString"
   | "fromExtensionsToString"
 >;
+
+export type Config = LighterConfig;
