@@ -26,9 +26,6 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "modifierExtension": {
           "type": "array",
           "items": {
@@ -46,9 +43,6 @@
         "asNeededBoolean": {
           "type": "boolean",
           "description": "Can express \"as needed\" without a reason by setting the Boolean = True.  In this case the CodeableConcept is not populated.  Or you can express \"as needed\" with a reason by including the CodeableConcept.  In this case the Boolean is assumed to be True.  If you set the Boolean to False, then the dose is given according to the schedule and is not \"prn\" or \"as needed\"."
-        },
-        "_asNeededBoolean": {
-          "$ref": "#/definitions/Element"
         },
         "asNeededCodeableConcept": {
           "$ref": "#/definitions/CodeableConcept",
@@ -81,9 +75,6 @@
           "type": "string",
           "description": "Instructions in terms that are understood by the patient or consumer."
         },
-        "_patientInstruction": {
-          "$ref": "#/definitions/Element"
-        },
         "route": {
           "$ref": "#/definitions/CodeableConcept",
           "description": "How drug should enter body."
@@ -99,9 +90,6 @@
         "text": {
           "type": "string",
           "description": "Free text dosage instructions e.g. SIG."
-        },
-        "_text": {
-          "$ref": "#/definitions/Element"
         },
         "timing": {
           "$ref": "#/definitions/Timing",
@@ -125,57 +113,33 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "url": {
           "type": "string",
           "description": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension."
-        },
-        "_url": {
-          "$ref": "#/definitions/Element"
         },
         "valueBase64Binary": {
           "type": "string",
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."
         },
-        "_valueBase64Binary": {
-          "$ref": "#/definitions/Element"
-        },
         "valueBoolean": {
           "type": "boolean",
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."
-        },
-        "_valueBoolean": {
-          "$ref": "#/definitions/Element"
         },
         "valueCanonical": {
           "type": "string",
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."
         },
-        "_valueCanonical": {
-          "$ref": "#/definitions/Element"
-        },
         "valueCode": {
           "type": "string",
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."
-        },
-        "_valueCode": {
-          "$ref": "#/definitions/Element"
         },
         "valueDate": {
           "type": "string",
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."
         },
-        "_valueDate": {
-          "$ref": "#/definitions/Element"
-        },
         "valueDateTime": {
           "type": "string",
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."
-        },
-        "_valueDateTime": {
-          "$ref": "#/definitions/Element"
         },
         "valueDecimal": {
           "type": "number",
@@ -185,15 +149,9 @@
           "type": "string",
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."
         },
-        "_valueId": {
-          "$ref": "#/definitions/Element"
-        },
         "valueInstant": {
           "type": "string",
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."
-        },
-        "_valueInstant": {
-          "$ref": "#/definitions/Element"
         },
         "valueInteger": {
           "type": "number",
@@ -203,15 +161,9 @@
           "type": "string",
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."
         },
-        "_valueMarkdown": {
-          "$ref": "#/definitions/Element"
-        },
         "valueOid": {
           "type": "string",
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."
-        },
-        "_valueOid": {
-          "$ref": "#/definitions/Element"
         },
         "valuePositiveInt": {
           "type": "number",
@@ -221,15 +173,9 @@
           "type": "string",
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."
         },
-        "_valueString": {
-          "$ref": "#/definitions/Element"
-        },
         "valueTime": {
           "type": "string",
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."
-        },
-        "_valueTime": {
-          "$ref": "#/definitions/Element"
         },
         "valueUnsignedInt": {
           "type": "number",
@@ -239,22 +185,13 @@
           "type": "string",
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."
         },
-        "_valueUri": {
-          "$ref": "#/definitions/Element"
-        },
         "valueUrl": {
           "type": "string",
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."
         },
-        "_valueUrl": {
-          "$ref": "#/definitions/Element"
-        },
         "valueUuid": {
           "type": "string",
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."
-        },
-        "_valueUuid": {
-          "$ref": "#/definitions/Element"
         },
         "valueAddress": {
           "$ref": "#/definitions/Address",
@@ -381,7 +318,9 @@
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."
         }
       },
-      "required": ["url"],
+      "required": [
+        "url"
+      ],
       "additionalProperties": false,
       "description": "Optional Extension Element - found in all resources."
     },
@@ -398,9 +337,6 @@
         "id": {
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
-        },
-        "_id": {
-          "$ref": "#/definitions/Element"
         }
       },
       "additionalProperties": false,
@@ -420,29 +356,17 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "city": {
           "type": "string",
           "description": "The name of the city, town, suburb, village or other community or delivery center."
-        },
-        "_city": {
-          "$ref": "#/definitions/Element"
         },
         "country": {
           "type": "string",
           "description": "ISO 3166 3 letter codes can be used in place of a human readable country name."
         },
-        "_country": {
-          "$ref": "#/definitions/Element"
-        },
         "district": {
           "type": "string",
           "description": "District is sometimes known as county, but in some regions 'county' is used in place of city (municipality), so county name should be conveyed in city instead."
-        },
-        "_district": {
-          "$ref": "#/definitions/Element"
         },
         "line": {
           "type": "array",
@@ -450,12 +374,6 @@
             "type": "string"
           },
           "description": "This component contains the house number, apartment number, street name, street direction,  P.O. Box number, delivery hints, and similar address information."
-        },
-        "_line": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Element"
-          }
         },
         "period": {
           "$ref": "#/definitions/Period",
@@ -465,38 +383,33 @@
           "type": "string",
           "description": "A postal code designating a region defined by the postal service."
         },
-        "_postalCode": {
-          "$ref": "#/definitions/Element"
-        },
         "state": {
           "type": "string",
           "description": "Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (e.g. US 2 letter state codes)."
-        },
-        "_state": {
-          "$ref": "#/definitions/Element"
         },
         "text": {
           "type": "string",
           "description": "Can provide both a text representation and parts. Applications updating an address SHALL ensure that  when both text and parts are present,  no content is included in the text that isn't found in a part."
         },
-        "_text": {
-          "$ref": "#/definitions/Element"
-        },
         "type": {
           "type": "string",
-          "enum": ["postal", "physical", "both"],
+          "enum": [
+            "postal",
+            "physical",
+            "both"
+          ],
           "description": "The definition of Address states that \"address is intended to describe postal addresses, not physical locations\". However, many applications track whether an address has a dual purpose of being a location that can be visited as well as being a valid delivery destination, and Postal addresses are often used as proxies for physical locations (also see the [Location](location.html#) resource)."
-        },
-        "_type": {
-          "$ref": "#/definitions/Element"
         },
         "use": {
           "type": "string",
-          "enum": ["home", "work", "temp", "old", "billing"],
+          "enum": [
+            "home",
+            "work",
+            "temp",
+            "old",
+            "billing"
+          ],
           "description": "Applications can assume that an address is current unless it explicitly says that it is temporary or old."
-        },
-        "_use": {
-          "$ref": "#/definitions/Element"
         }
       },
       "additionalProperties": false,
@@ -516,22 +429,13 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "end": {
           "type": "string",
           "description": "The high value includes any matching date/time. i.e. 2012-02-03T10:00:00 is in a period that has an end value of 2012-02-03."
         },
-        "_end": {
-          "$ref": "#/definitions/Element"
-        },
         "start": {
           "type": "string",
           "description": "If the low element is missing, the meaning is that the low boundary is not known."
-        },
-        "_start": {
-          "$ref": "#/definitions/Element"
         }
       },
       "additionalProperties": false,
@@ -552,37 +456,27 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "code": {
           "type": "string",
           "description": "The preferred system is UCUM, but SNOMED CT can also be used (for customary units) or ISO 4217 for currency.  The context of use may additionally require a code from a particular system."
         },
-        "_code": {
-          "$ref": "#/definitions/Element"
-        },
         "comparator": {
           "type": "string",
-          "enum": ["<", "<=", ">=", ">"],
+          "enum": [
+            "<",
+            "<=",
+            ">=",
+            ">"
+          ],
           "description": "How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is \"<\" , then the real value is < stated value."
-        },
-        "_comparator": {
-          "$ref": "#/definitions/Element"
         },
         "system": {
           "type": "string",
           "description": "The identification of the system that provides the coded form of the unit."
         },
-        "_system": {
-          "$ref": "#/definitions/Element"
-        },
         "unit": {
           "type": "string",
           "description": "A human-readable form of the unit."
-        },
-        "_unit": {
-          "$ref": "#/definitions/Element"
         },
         "value": {
           "type": "number",
@@ -605,9 +499,6 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "authorReference": {
           "$ref": "#/definitions/Reference",
           "description": "Organization is used when there's no need for specific attribution as to who made the comment."
@@ -616,25 +507,18 @@
           "type": "string",
           "description": "Organization is used when there's no need for specific attribution as to who made the comment."
         },
-        "_authorString": {
-          "$ref": "#/definitions/Element"
-        },
         "text": {
           "type": "string",
           "description": "The text of the annotation in markdown format."
         },
-        "_text": {
-          "$ref": "#/definitions/Element"
-        },
         "time": {
           "type": "string",
           "description": "Indicates when this particular annotation was made."
-        },
-        "_time": {
-          "$ref": "#/definitions/Element"
         }
       },
-      "required": ["text"],
+      "required": [
+        "text"
+      ],
       "additionalProperties": false,
       "description": "A  text note which also  contains information about who made the statement and when."
     },
@@ -652,15 +536,9 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "display": {
           "type": "string",
           "description": "This is generally not the same as the Resource.text of the referenced resource.  The purpose is to identify what's being referenced, not to fully describe it."
-        },
-        "_display": {
-          "$ref": "#/definitions/Element"
         },
         "identifier": {
           "$ref": "#/definitions/Identifier",
@@ -670,15 +548,9 @@
           "type": "string",
           "description": "Using absolute URLs provides a stable scalable approach suitable for a cloud/web context, while using relative/logical references provides a flexible approach suitable for use when trading across closed eco-system boundaries.   Absolute URLs do not need to point to a FHIR RESTful server, though this is the preferred approach. If the URL conforms to the structure \"/[type]/[id]\" then it should be assumed that the reference is to a FHIR RESTful server."
         },
-        "_reference": {
-          "$ref": "#/definitions/Element"
-        },
         "type": {
           "type": "string",
           "description": "This element is used to indicate the type of  the target of the reference. This may be used which ever of the other elements are populated (or not). In some cases, the type of the target may be determined by inspection of the reference (e.g. a RESTful URL) or by resolving the target of the reference; if both the type and a reference is provided, the reference SHALL resolve to a resource of the same type as that specified."
-        },
-        "_type": {
-          "$ref": "#/definitions/Element"
         }
       },
       "additionalProperties": false,
@@ -698,9 +570,6 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "assigner": {
           "$ref": "#/definitions/Reference",
           "description": "The Identifier.assigner may omit the .reference element and only contain a .display element reflecting the name or other textual information about the assigning organization."
@@ -713,27 +582,24 @@
           "type": "string",
           "description": "Identifier.system is always case sensitive."
         },
-        "_system": {
-          "$ref": "#/definitions/Element"
-        },
         "type": {
           "$ref": "#/definitions/CodeableConcept",
           "description": "This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage.   Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type."
         },
         "use": {
           "type": "string",
-          "enum": ["usual", "official", "temp", "secondary", "old"],
+          "enum": [
+            "usual",
+            "official",
+            "temp",
+            "secondary",
+            "old"
+          ],
           "description": "Applications can assume that an identifier is permanent unless it explicitly says that it is temporary."
-        },
-        "_use": {
-          "$ref": "#/definitions/Element"
         },
         "value": {
           "type": "string",
           "description": "If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.  The value's primary purpose is computational mapping.  As a result, it may be normalized for comparison purposes (e.g. removing non-significant whitespace, dashes, etc.)  A value formatted for human display can be conveyed using the [Rendered Value extension](extension-rendered-value.html). Identifier.value is to be treated as case sensitive unless knowledge of the Identifier.system allows the processer to be confident that non-case-sensitive processing is safe."
-        },
-        "_value": {
-          "$ref": "#/definitions/Element"
         }
       },
       "additionalProperties": false,
@@ -753,9 +619,6 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "coding": {
           "type": "array",
           "items": {
@@ -766,9 +629,6 @@
         "text": {
           "type": "string",
           "description": "Very often the text is the same as a displayName of one of the codings."
-        },
-        "_text": {
-          "$ref": "#/definitions/Element"
         }
       },
       "additionalProperties": false,
@@ -788,43 +648,25 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "code": {
           "type": "string",
           "description": "A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination)."
-        },
-        "_code": {
-          "$ref": "#/definitions/Element"
         },
         "display": {
           "type": "string",
           "description": "A representation of the meaning of the code in the system, following the rules of the system."
         },
-        "_display": {
-          "$ref": "#/definitions/Element"
-        },
         "system": {
           "type": "string",
           "description": "The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SHALL be references to the HL7 OID registry. Otherwise, the URI should come from HL7's list of FHIR defined special URIs or it should reference to some definition that establishes the system clearly and unambiguously."
-        },
-        "_system": {
-          "$ref": "#/definitions/Element"
         },
         "userSelected": {
           "type": "boolean",
           "description": "Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations. There is some ambiguity about what exactly 'directly chosen' implies, and trading partner agreement may be needed to clarify the use of this element and its consequences more completely."
         },
-        "_userSelected": {
-          "$ref": "#/definitions/Element"
-        },
         "version": {
           "type": "string",
           "description": "Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date."
-        },
-        "_version": {
-          "$ref": "#/definitions/Element"
         }
       },
       "additionalProperties": false,
@@ -844,43 +686,25 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "contentType": {
           "type": "string",
           "description": "Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate."
-        },
-        "_contentType": {
-          "$ref": "#/definitions/Element"
         },
         "creation": {
           "type": "string",
           "description": "The date that the attachment was first created."
         },
-        "_creation": {
-          "$ref": "#/definitions/Element"
-        },
         "data": {
           "type": "string",
           "description": "The base64-encoded data SHALL be expressed in the same character set as the base resource XML or JSON."
-        },
-        "_data": {
-          "$ref": "#/definitions/Element"
         },
         "hash": {
           "type": "string",
           "description": "The hash is calculated on the data prior to base64 encoding, if the data is based64 encoded. The hash is not intended to support digital signatures. Where protection against malicious threats a digital signature should be considered, see [Provenance.signature](provenance-definitions.html#Provenance.signature) for mechanism to protect a resource with a digital signature."
         },
-        "_hash": {
-          "$ref": "#/definitions/Element"
-        },
         "language": {
           "type": "string",
           "description": "The human language of the content. The value can be any valid value according to BCP 47."
-        },
-        "_language": {
-          "$ref": "#/definitions/Element"
         },
         "size": {
           "type": "number",
@@ -890,15 +714,9 @@
           "type": "string",
           "description": "A label or set of text to display in place of the data."
         },
-        "_title": {
-          "$ref": "#/definitions/Element"
-        },
         "url": {
           "type": "string",
           "description": "If both data and url are provided, the url SHALL point to the same content as the data contains. Urls may be relative references or may reference transient locations such as a wrapping envelope using cid: though this has ramifications for using signatures. Relative URLs are interpreted relative to the service url, like a resource reference, rather than relative to the resource itself. If a URL is provided, it SHALL resolve to actual data."
-        },
-        "_url": {
-          "$ref": "#/definitions/Element"
         }
       },
       "additionalProperties": false,
@@ -918,9 +736,6 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "period": {
           "$ref": "#/definitions/Period",
           "description": "Time period when the contact point was/is in use."
@@ -931,26 +746,31 @@
         },
         "system": {
           "type": "string",
-          "enum": ["phone", "fax", "email", "pager", "url", "sms", "other"],
+          "enum": [
+            "phone",
+            "fax",
+            "email",
+            "pager",
+            "url",
+            "sms",
+            "other"
+          ],
           "description": "Telecommunications form for contact point - what communications system is required to make use of the contact."
-        },
-        "_system": {
-          "$ref": "#/definitions/Element"
         },
         "use": {
           "type": "string",
-          "enum": ["home", "work", "temp", "old", "mobile"],
+          "enum": [
+            "home",
+            "work",
+            "temp",
+            "old",
+            "mobile"
+          ],
           "description": "Applications can assume that a contact is current unless it explicitly says that it is temporary or old."
-        },
-        "_use": {
-          "$ref": "#/definitions/Element"
         },
         "value": {
           "type": "string",
           "description": "Additional text data such as phone extension numbers, or notes about use of the contact are sometimes included in the value."
-        },
-        "_value": {
-          "$ref": "#/definitions/Element"
         }
       },
       "additionalProperties": false,
@@ -971,37 +791,27 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "code": {
           "type": "string",
           "description": "The preferred system is UCUM, but SNOMED CT can also be used (for customary units) or ISO 4217 for currency.  The context of use may additionally require a code from a particular system."
         },
-        "_code": {
-          "$ref": "#/definitions/Element"
-        },
         "comparator": {
           "type": "string",
-          "enum": ["<", "<=", ">=", ">"],
+          "enum": [
+            "<",
+            "<=",
+            ">=",
+            ">"
+          ],
           "description": "How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is \"<\" , then the real value is < stated value."
-        },
-        "_comparator": {
-          "$ref": "#/definitions/Element"
         },
         "system": {
           "type": "string",
           "description": "The identification of the system that provides the coded form of the unit."
         },
-        "_system": {
-          "$ref": "#/definitions/Element"
-        },
         "unit": {
           "type": "string",
           "description": "A human-readable form of the unit."
-        },
-        "_unit": {
-          "$ref": "#/definitions/Element"
         },
         "value": {
           "type": "number",
@@ -1025,37 +835,27 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "code": {
           "type": "string",
           "description": "The preferred system is UCUM, but SNOMED CT can also be used (for customary units) or ISO 4217 for currency.  The context of use may additionally require a code from a particular system."
         },
-        "_code": {
-          "$ref": "#/definitions/Element"
-        },
         "comparator": {
           "type": "string",
-          "enum": ["<", "<=", ">=", ">"],
+          "enum": [
+            "<",
+            "<=",
+            ">=",
+            ">"
+          ],
           "description": "How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is \"<\" , then the real value is < stated value."
-        },
-        "_comparator": {
-          "$ref": "#/definitions/Element"
         },
         "system": {
           "type": "string",
           "description": "The identification of the system that provides the coded form of the unit."
         },
-        "_system": {
-          "$ref": "#/definitions/Element"
-        },
         "unit": {
           "type": "string",
           "description": "A human-readable form of the unit."
-        },
-        "_unit": {
-          "$ref": "#/definitions/Element"
         },
         "value": {
           "type": "number",
@@ -1079,37 +879,27 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "code": {
           "type": "string",
           "description": "The preferred system is UCUM, but SNOMED CT can also be used (for customary units) or ISO 4217 for currency.  The context of use may additionally require a code from a particular system."
         },
-        "_code": {
-          "$ref": "#/definitions/Element"
-        },
         "comparator": {
           "type": "string",
-          "enum": ["<", "<=", ">=", ">"],
+          "enum": [
+            "<",
+            "<=",
+            ">=",
+            ">"
+          ],
           "description": "How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is \"<\" , then the real value is < stated value."
-        },
-        "_comparator": {
-          "$ref": "#/definitions/Element"
         },
         "system": {
           "type": "string",
           "description": "The identification of the system that provides the coded form of the unit."
         },
-        "_system": {
-          "$ref": "#/definitions/Element"
-        },
         "unit": {
           "type": "string",
           "description": "A human-readable form of the unit."
-        },
-        "_unit": {
-          "$ref": "#/definitions/Element"
         },
         "value": {
           "type": "number",
@@ -1132,15 +922,9 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "family": {
           "type": "string",
           "description": "Family Name may be decomposed into specific parts using extensions (de, nl, es related cultures)."
-        },
-        "_family": {
-          "$ref": "#/definitions/Element"
         },
         "given": {
           "type": "array",
@@ -1148,12 +932,6 @@
             "type": "string"
           },
           "description": "If only initials are recorded, they may be used in place of the full name parts. Initials may be separated into multiple given names but often aren't due to paractical limitations.  This element is not called \"first name\" since given names do not always come first."
-        },
-        "_given": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Element"
-          }
         },
         "period": {
           "$ref": "#/definitions/Period",
@@ -1166,12 +944,6 @@
           },
           "description": "Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the start of the name."
         },
-        "_prefix": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Element"
-          }
-        },
         "suffix": {
           "type": "array",
           "items": {
@@ -1179,18 +951,9 @@
           },
           "description": "Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the end of the name."
         },
-        "_suffix": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Element"
-          }
-        },
         "text": {
           "type": "string",
           "description": "Can provide both a text representation and parts. Applications updating a name SHALL ensure that when both text and parts are present,  no content is included in the text that isn't found in a part."
-        },
-        "_text": {
-          "$ref": "#/definitions/Element"
         },
         "use": {
           "type": "string",
@@ -1204,9 +967,6 @@
             "maiden"
           ],
           "description": "Applications can assume that a name is current unless it explicitly says that it is temporary or old."
-        },
-        "_use": {
-          "$ref": "#/definitions/Element"
         }
       },
       "additionalProperties": false,
@@ -1226,15 +986,9 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "currency": {
           "type": "string",
           "description": "ISO 4217 Currency Code."
-        },
-        "_currency": {
-          "$ref": "#/definitions/Element"
         },
         "value": {
           "type": "number",
@@ -1258,37 +1012,27 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "code": {
           "type": "string",
           "description": "The preferred system is UCUM, but SNOMED CT can also be used (for customary units) or ISO 4217 for currency.  The context of use may additionally require a code from a particular system."
         },
-        "_code": {
-          "$ref": "#/definitions/Element"
-        },
         "comparator": {
           "type": "string",
-          "enum": ["<", "<=", ">=", ">"],
+          "enum": [
+            "<",
+            "<=",
+            ">=",
+            ">"
+          ],
           "description": "How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is \"<\" , then the real value is < stated value."
-        },
-        "_comparator": {
-          "$ref": "#/definitions/Element"
         },
         "system": {
           "type": "string",
           "description": "The identification of the system that provides the coded form of the unit."
         },
-        "_system": {
-          "$ref": "#/definitions/Element"
-        },
         "unit": {
           "type": "string",
           "description": "A human-readable form of the unit."
-        },
-        "_unit": {
-          "$ref": "#/definitions/Element"
         },
         "value": {
           "type": "number",
@@ -1311,9 +1055,6 @@
         "id": {
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
-        },
-        "_id": {
-          "$ref": "#/definitions/Element"
         },
         "high": {
           "$ref": "#/definitions/Quantity",
@@ -1341,9 +1082,6 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "denominator": {
           "$ref": "#/definitions/Quantity",
           "description": "The value of the denominator."
@@ -1370,15 +1108,9 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "data": {
           "type": "string",
           "description": "Data may be missing if it is omitted for summarization purposes. In general, data is required for any actual use of a SampledData."
-        },
-        "_data": {
-          "$ref": "#/definitions/Element"
         },
         "dimensions": {
           "type": "number",
@@ -1405,7 +1137,11 @@
           "description": "The upper limit of detection of the measured points. This is needed if any of the data points have the value \"U\" (higher than detection limit)."
         }
       },
-      "required": ["dimensions", "origin", "period"],
+      "required": [
+        "dimensions",
+        "origin",
+        "period"
+      ],
       "additionalProperties": false,
       "description": "A series of measurements taken by a device, with upper and lower limits. There may be more than one dimension in the data."
     },
@@ -1423,15 +1159,9 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "data": {
           "type": "string",
           "description": "Where the signature type is an XML DigSig, the signed content is a FHIR Resource(s), the signature is of the XML form of the Resource(s) using  XML-Signature (XMLDIG) \"Detached Signature\" form."
-        },
-        "_data": {
-          "$ref": "#/definitions/Element"
         },
         "onBehalfOf": {
           "$ref": "#/definitions/Reference",
@@ -1441,15 +1171,9 @@
           "type": "string",
           "description": "A mime type that indicates the technical format of the signature. Important mime types are application/signature+xml for X ML DigSig, application/jose for JWS, and image/* for a graphical image of a signature, etc."
         },
-        "_sigFormat": {
-          "$ref": "#/definitions/Element"
-        },
         "targetFormat": {
           "type": "string",
           "description": "\"xml\", \"json\" and \"ttl\" are allowed, which describe the simple encodings described in the specification (and imply appropriate bundle support). Otherwise, mime types are legal here."
-        },
-        "_targetFormat": {
-          "$ref": "#/definitions/Element"
         },
         "type": {
           "type": "array",
@@ -1462,15 +1186,16 @@
           "type": "string",
           "description": "This should agree with the information in the signature."
         },
-        "_when": {
-          "$ref": "#/definitions/Element"
-        },
         "who": {
           "$ref": "#/definitions/Reference",
           "description": "This should agree with the information in the signature."
         }
       },
-      "required": ["type", "when", "who"],
+      "required": [
+        "type",
+        "when",
+        "who"
+      ],
       "additionalProperties": false,
       "description": "A signature along with supporting context. The signature may be a digital signature that is cryptographic in nature, or some other signature acceptable to the domain. This other signature may be as simple as a graphical image representing a hand-written signature, or a signature ceremony Different signature approaches have different utilities."
     },
@@ -1487,9 +1212,6 @@
         "id": {
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
-        },
-        "_id": {
-          "$ref": "#/definitions/Element"
         },
         "modifierExtension": {
           "type": "array",
@@ -1508,12 +1230,6 @@
             "type": "string"
           },
           "description": "Identifies specific times when the event occurs."
-        },
-        "_event": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Element"
-          }
         },
         "repeat": {
           "$ref": "#/definitions/TimingRepeat",
@@ -1536,9 +1252,6 @@
         "id": {
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
-        },
-        "_id": {
-          "$ref": "#/definitions/Element"
         },
         "boundsDuration": {
           "$ref": "#/definitions/Duration",
@@ -1564,15 +1277,17 @@
           "type": "array",
           "items": {
             "type": "string",
-            "enum": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
+            "enum": [
+              "mon",
+              "tue",
+              "wed",
+              "thu",
+              "fri",
+              "sat",
+              "sun"
+            ]
           },
           "description": "If no days are specified, the action is assumed to happen every day as otherwise specified. The elements frequency and period cannot be used as well as dayOfWeek."
-        },
-        "_dayOfWeek": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Element"
-          }
         },
         "duration": {
           "type": "number",
@@ -1584,11 +1299,16 @@
         },
         "durationUnit": {
           "type": "string",
-          "enum": ["s", "min", "h", "d", "wk", "mo", "a"],
+          "enum": [
+            "s",
+            "min",
+            "h",
+            "d",
+            "wk",
+            "mo",
+            "a"
+          ],
           "description": "The units of time for the duration, in UCUM units."
-        },
-        "_durationUnit": {
-          "$ref": "#/definitions/Element"
         },
         "frequency": {
           "type": "number",
@@ -1612,11 +1332,16 @@
         },
         "periodUnit": {
           "type": "string",
-          "enum": ["s", "min", "h", "d", "wk", "mo", "a"],
+          "enum": [
+            "s",
+            "min",
+            "h",
+            "d",
+            "wk",
+            "mo",
+            "a"
+          ],
           "description": "The units of time for the period in UCUM units."
-        },
-        "_periodUnit": {
-          "$ref": "#/definitions/Element"
         },
         "timeOfDay": {
           "type": "array",
@@ -1625,24 +1350,12 @@
           },
           "description": "When time of day is specified, it is inferred that the action happens every day (as filtered by dayofWeek) on the specified times. The elements when, frequency and period cannot be used as well as timeOfDay."
         },
-        "_timeOfDay": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Element"
-          }
-        },
         "when": {
           "type": "array",
           "items": {
             "type": "string"
           },
           "description": "When more than one event is listed, the event is tied to the union of the specified events."
-        },
-        "_when": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Element"
-          }
         }
       },
       "additionalProperties": false,
@@ -1662,15 +1375,9 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "name": {
           "type": "string",
           "description": "If there is no named individual, the telecom information is for the organization as a whole."
-        },
-        "_name": {
-          "$ref": "#/definitions/Element"
         },
         "telecom": {
           "type": "array",
@@ -1697,9 +1404,6 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "contact": {
           "type": "array",
           "items": {
@@ -1711,19 +1415,21 @@
           "type": "string",
           "description": "The name of the individual or organization responsible for the contribution."
         },
-        "_name": {
-          "$ref": "#/definitions/Element"
-        },
         "type": {
           "type": "string",
-          "enum": ["author", "editor", "reviewer", "endorser"],
+          "enum": [
+            "author",
+            "editor",
+            "reviewer",
+            "endorser"
+          ],
           "description": "The type of contributor."
-        },
-        "_type": {
-          "$ref": "#/definitions/Element"
         }
       },
-      "required": ["name", "type"],
+      "required": [
+        "name",
+        "type"
+      ],
       "additionalProperties": false,
       "description": "A contributor to the content of a knowledge asset, including authors, editors, reviewers, and endorsers."
     },
@@ -1740,9 +1446,6 @@
         "id": {
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
-        },
-        "_id": {
-          "$ref": "#/definitions/Element"
         },
         "codeFilter": {
           "type": "array",
@@ -1769,24 +1472,12 @@
           },
           "description": "Indicates that specific elements of the type are referenced by the knowledge module and must be supported by the consumer in order to obtain an effective evaluation. This does not mean that a value is required for this element, only that the consuming system must understand the element and be able to provide values for it if they are available. The value of mustSupport SHALL be a FHIRPath resolveable on the type of the DataRequirement. The path SHALL consist only of identifiers, constant indexers, and .resolve() (see the [Simple FHIRPath Profile](fhirpath.html#simple) for full details)."
         },
-        "_mustSupport": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Element"
-          }
-        },
         "profile": {
           "type": "array",
           "items": {
             "type": "string"
           },
           "description": "The profile of the required data, specified as the uri of the profile definition."
-        },
-        "_profile": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Element"
-          }
         },
         "sort": {
           "type": "array",
@@ -1806,12 +1497,11 @@
         "type": {
           "type": "string",
           "description": "The type of the required data, specified as the type name of a resource. For profiles, this value is set to the type of the base resource of the profile."
-        },
-        "_type": {
-          "$ref": "#/definitions/Element"
         }
       },
-      "required": ["type"],
+      "required": [
+        "type"
+      ],
       "additionalProperties": false,
       "description": "Describes a required data item for evaluation in terms of the type of data, and optional code or date-based filters of the data."
     },
@@ -1829,9 +1519,6 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "code": {
           "type": "array",
           "items": {
@@ -1843,22 +1530,13 @@
           "type": "string",
           "description": "The path attribute contains a [Simple FHIRPath Subset](fhirpath.html#simple) that allows path traversal, but not calculation."
         },
-        "_path": {
-          "$ref": "#/definitions/Element"
-        },
         "searchParam": {
           "type": "string",
           "description": "A token parameter that refers to a search parameter defined on the specified type of the DataRequirement, and which searches on elements of type code, Coding, or CodeableConcept."
         },
-        "_searchParam": {
-          "$ref": "#/definitions/Element"
-        },
         "valueSet": {
           "type": "string",
           "description": "The valueset for the code filter. The valueSet and code elements are additive. If valueSet is specified, the filter will return only those data items for which the value of the code-valued element specified in the path is a member of the specified valueset."
-        },
-        "_valueSet": {
-          "$ref": "#/definitions/Element"
         }
       },
       "additionalProperties": false,
@@ -1878,29 +1556,17 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "path": {
           "type": "string",
           "description": "The path attribute contains a [Simple FHIR Subset](fhirpath.html#simple) that allows path traversal, but not calculation."
-        },
-        "_path": {
-          "$ref": "#/definitions/Element"
         },
         "searchParam": {
           "type": "string",
           "description": "A date parameter that refers to a search parameter defined on the specified type of the DataRequirement, and which searches on elements of type date, dateTime, Period, Schedule, or Timing."
         },
-        "_searchParam": {
-          "$ref": "#/definitions/Element"
-        },
         "valueDateTime": {
           "type": "string",
           "description": "The value of the filter. If period is specified, the filter will return only those data items that fall within the bounds determined by the Period, inclusive of the period boundaries. If dateTime is specified, the filter will return only those data items that are equal to the specified dateTime. If a Duration is specified, the filter will return only those data items that fall within Duration before now."
-        },
-        "_valueDateTime": {
-          "$ref": "#/definitions/Element"
         },
         "valuePeriod": {
           "$ref": "#/definitions/Period",
@@ -1928,26 +1594,23 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "direction": {
           "type": "string",
-          "enum": ["ascending", "descending"],
+          "enum": [
+            "ascending",
+            "descending"
+          ],
           "description": "The direction of the sort, ascending or descending."
-        },
-        "_direction": {
-          "$ref": "#/definitions/Element"
         },
         "path": {
           "type": "string",
           "description": "The attribute of the sort. The specified path must be resolvable from the type of the required data. The path is allowed to contain qualifiers (.) to traverse sub-elements, as well as indexers ([x]) to traverse multiple-cardinality sub-elements. Note that the index must be an integer constant."
-        },
-        "_path": {
-          "$ref": "#/definitions/Element"
         }
       },
-      "required": ["direction", "path"],
+      "required": [
+        "direction",
+        "path"
+      ],
       "additionalProperties": false,
       "description": "This element can be used in combination with the sort element to specify quota requirements such as \"the most recent 5\" or \"the highest 5\". When multiple sorts are specified, they are applied in the order they appear in the resource."
     },
@@ -1965,46 +1628,30 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "description": {
           "type": "string",
           "description": "A brief, natural language description of the condition that effectively communicates the intended semantics."
-        },
-        "_description": {
-          "$ref": "#/definitions/Element"
         },
         "expression": {
           "type": "string",
           "description": "An expression in the specified language that returns a value."
         },
-        "_expression": {
-          "$ref": "#/definitions/Element"
-        },
         "language": {
           "type": "string",
           "description": "The media type of the language for the expression."
-        },
-        "_language": {
-          "$ref": "#/definitions/Element"
         },
         "name": {
           "type": "string",
           "description": "A short name assigned to the expression to allow for multiple reuse of the expression in the context where it is defined."
         },
-        "_name": {
-          "$ref": "#/definitions/Element"
-        },
         "reference": {
           "type": "string",
           "description": "If both a reference and an expression is found, the reference SHALL point to the same expression."
-        },
-        "_reference": {
-          "$ref": "#/definitions/Element"
         }
       },
-      "required": ["language"],
+      "required": [
+        "language"
+      ],
       "additionalProperties": false,
       "description": "A expression that is evaluated in a specified context and returns a value. The context of use of the expression must specify the context in which the expression is evaluated, and how the result of the expression is used."
     },
@@ -2022,22 +1669,13 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "documentation": {
           "type": "string",
           "description": "A brief discussion of what the parameter is for and how it is used by the module."
         },
-        "_documentation": {
-          "$ref": "#/definitions/Element"
-        },
         "max": {
           "type": "string",
           "description": "The maximum number of times this element is permitted to appear in the request or response."
-        },
-        "_max": {
-          "$ref": "#/definitions/Element"
         },
         "min": {
           "type": "number",
@@ -2047,33 +1685,27 @@
           "type": "string",
           "description": "The name of the parameter used to allow access to the value of the parameter in evaluation contexts."
         },
-        "_name": {
-          "$ref": "#/definitions/Element"
-        },
         "profile": {
           "type": "string",
           "description": "If specified, this indicates a profile that the input data must conform to, or that the output data will conform to."
-        },
-        "_profile": {
-          "$ref": "#/definitions/Element"
         },
         "type": {
           "type": "string",
           "description": "The type of the parameter."
         },
-        "_type": {
-          "$ref": "#/definitions/Element"
-        },
         "use": {
           "type": "string",
-          "enum": ["in", "out"],
+          "enum": [
+            "in",
+            "out"
+          ],
           "description": "Whether the parameter is input or output for the module."
-        },
-        "_use": {
-          "$ref": "#/definitions/Element"
         }
       },
-      "required": ["type", "use"],
+      "required": [
+        "type",
+        "use"
+      ],
       "additionalProperties": false,
       "description": "The parameters to the module. This collection specifies both the input and output parameters. Input parameters are provided by the caller as part of the $evaluate operation. Output parameters are included in the GuidanceResponse."
     },
@@ -2091,22 +1723,13 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "citation": {
           "type": "string",
           "description": "Additional structured information about citations should be captured as extensions."
         },
-        "_citation": {
-          "$ref": "#/definitions/Element"
-        },
         "display": {
           "type": "string",
           "description": "A brief description of the document or knowledge resource being referenced, suitable for display to a consumer."
-        },
-        "_display": {
-          "$ref": "#/definitions/Element"
         },
         "document": {
           "$ref": "#/definitions/Attachment",
@@ -2116,15 +1739,9 @@
           "type": "string",
           "description": "A short label that can be used to reference the citation from elsewhere in the containing artifact, such as a footnote index."
         },
-        "_label": {
-          "$ref": "#/definitions/Element"
-        },
         "resource": {
           "type": "string",
           "description": "If the type is predecessor, this is a reference to the succeeding knowledge resource. If the type is successor, this is a reference to the prior knowledge resource."
-        },
-        "_resource": {
-          "$ref": "#/definitions/Element"
         },
         "type": {
           "type": "string",
@@ -2140,18 +1757,14 @@
           ],
           "description": "The type of relationship to the related artifact."
         },
-        "_type": {
-          "$ref": "#/definitions/Element"
-        },
         "url": {
           "type": "string",
           "description": "If a document or resource element is present, this element SHALL NOT be provided (use the url or reference in the Attachment or resource reference)."
-        },
-        "_url": {
-          "$ref": "#/definitions/Element"
         }
       },
-      "required": ["type"],
+      "required": [
+        "type"
+      ],
       "additionalProperties": false,
       "description": "Related artifacts such as additional documentation, justification, or bibliographic references."
     },
@@ -2169,9 +1782,6 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "condition": {
           "$ref": "#/definitions/Expression",
           "description": "This element can be only be specified for data type triggers and provides additional semantics for the trigger. The context available within the condition is based on the type of data event. For all events, the current resource will be available as context. In addition, for modification events, the previous resource will also be available. The expression may be inlined, or may be a simple absolute URI, which is a reference to a named expression within a logic library referenced by a library element or extension within the containing resource. If the expression is a FHIR Path expression, it evaluates in the context of a resource of one of the type identified in the data requirement, and may also refer to the variable %previous for delta comparisons on events of type data-changed, data-modified, and data-deleted which will always have the same type."
@@ -2187,9 +1797,6 @@
           "type": "string",
           "description": "An event name can be provided for all event types, but is required for named events. If a name is provided for a type other than named events, it is considered to be a shorthand for the semantics described by the formal description of the event."
         },
-        "_name": {
-          "$ref": "#/definitions/Element"
-        },
         "timingTiming": {
           "$ref": "#/definitions/Timing",
           "description": "The timing of the event (if this is a periodic trigger)."
@@ -2202,15 +1809,9 @@
           "type": "string",
           "description": "The timing of the event (if this is a periodic trigger)."
         },
-        "_timingDate": {
-          "$ref": "#/definitions/Element"
-        },
         "timingDateTime": {
           "type": "string",
           "description": "The timing of the event (if this is a periodic trigger)."
-        },
-        "_timingDateTime": {
-          "$ref": "#/definitions/Element"
         },
         "type": {
           "type": "string",
@@ -2225,12 +1826,11 @@
             "data-access-ended"
           ],
           "description": "The type of triggering event."
-        },
-        "_type": {
-          "$ref": "#/definitions/Element"
         }
       },
-      "required": ["type"],
+      "required": [
+        "type"
+      ],
       "additionalProperties": false,
       "description": "A description of a triggering event. Triggering events can be named events, data events, or periodic, as determined by the type element."
     },
@@ -2247,9 +1847,6 @@
         "id": {
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
-        },
-        "_id": {
-          "$ref": "#/definitions/Element"
         },
         "code": {
           "$ref": "#/definitions/Coding",
@@ -2272,7 +1869,9 @@
           "description": "A value that defines the context specified in this context of use. The interpretation of the value is defined by the code."
         }
       },
-      "required": ["code"],
+      "required": [
+        "code"
+      ],
       "additionalProperties": false,
       "description": "Specifies clinical/business/etc. metadata that can be used to retrieve, index and/or categorize an artifact. This metadata can either be specific to the applicable population (e.g., age category, DRG) or the specific context of care (e.g., venue, care setting, provider of care)."
     },
@@ -2290,15 +1889,9 @@
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
         },
-        "_id": {
-          "$ref": "#/definitions/Element"
-        },
         "lastUpdated": {
           "type": "string",
           "description": "This value is always populated except when the resource is first being created. The server / resource manager sets this value; what a client provides is irrelevant. This is equivalent to the HTTP Last-Modified and SHOULD have the same value on a [read](http.html#read) interaction."
-        },
-        "_lastUpdated": {
-          "$ref": "#/definitions/Element"
         },
         "profile": {
           "type": "array",
@@ -2306,12 +1899,6 @@
             "type": "string"
           },
           "description": "It is up to the server and/or other infrastructure of policy to determine whether/how these claims are verified and/or updated over time.  The list of profile URLs is a set."
-        },
-        "_profile": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Element"
-          }
         },
         "security": {
           "type": "array",
@@ -2324,9 +1911,6 @@
           "type": "string",
           "description": "In the provenance resource, this corresponds to Provenance.entity.what[x]. The exact use of the source (and the implied Provenance.entity.role) is left to implementer discretion. Only one nominated source is allowed; for additional provenance details, a full Provenance resource should be used. This element can be used to indicate where the current master source of a resource that has a canonical URL if the resource is no longer hosted at the canonical URL."
         },
-        "_source": {
-          "$ref": "#/definitions/Element"
-        },
         "tag": {
           "type": "array",
           "items": {
@@ -2337,9 +1921,6 @@
         "versionId": {
           "type": "string",
           "description": "The server assigns this value, and ignores what the client specifies, except in the case that the server is imposing version integrity on updates/deletes."
-        },
-        "_versionId": {
-          "$ref": "#/definitions/Element"
         }
       },
       "additionalProperties": false,
@@ -2358,9 +1939,6 @@
         "id": {
           "type": "string",
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
-        },
-        "_id": {
-          "$ref": "#/definitions/Element"
         },
         "doseRange": {
           "$ref": "#/definitions/Range",

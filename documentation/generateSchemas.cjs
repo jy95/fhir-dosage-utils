@@ -1,6 +1,22 @@
 const tsj = require("ts-json-schema-generator");
 const fs = require("fs").promises; // Use fs.promises for async/await
 
+function removeUnderscoreProperties(obj) {
+  for (var prop in obj) {
+      if (prop.startsWith('_')) {
+          delete obj[prop];
+      } else if (typeof obj[prop] === 'object') {
+          removeUnderscoreProperties(obj[prop]);
+      }
+  }
+}
+
+function stringifyWithoutUnderscore(obj) {
+  var newObj = {... obj};
+  removeUnderscoreProperties(newObj);
+  return JSON.stringify(newObj, null, 2);
+}
+
 // 1. Input (async function with error handling)
 async function generateInputSchema() {
   try {
@@ -15,7 +31,7 @@ async function generateInputSchema() {
 
     const generator = tsj.createGenerator(config);
     const schema = await generator.createSchema(config.type);
-    const schemaString = JSON.stringify(schema, null, 2);
+    const schemaString = stringifyWithoutUnderscore(schema);
 
     await fs.writeFile(outputPath, schemaString);
   } catch (err) {
