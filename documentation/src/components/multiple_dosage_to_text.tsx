@@ -77,11 +77,11 @@ export default function MultipleDosagesToText({
         </select>
         <button onClick={handleChangeLanguage}>Confirm</button>
       </div>
-      <p style={{ marginTop: "10px" }}>
+      <div style={{ marginTop: "10px" }}>
         <CodeBlock language="markup">
           {decodeHtmlEntities(dosageText)}
         </CodeBlock>
-      </p>
+      </div>
     </div>
   );
 }

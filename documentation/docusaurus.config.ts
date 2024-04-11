@@ -42,6 +42,7 @@ const config: Config = {
         packages: ["."],
       },
     ],
+    "./src/plugins/monacco.ts",
   ],
 
   presets: [
@@ -72,7 +73,6 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
-
   themeConfig: {
     algolia: {
       // The application ID provided by Algolia
@@ -95,6 +95,7 @@ const config: Config = {
           label: "Tutorial",
         },
         { to: "api", label: "API", position: "left" },
+        { to: "playground", label: "Playground", position: "left" },
         { to: "/blog", label: "Blog", position: "right" },
         {
           href: "https://github.com/jy95/fhir-dosage-utils",

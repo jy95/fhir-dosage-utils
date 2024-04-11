@@ -12,7 +12,8 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "generateSchema": "node generateSchemas.cjs"
   },
   "dependencies": {
     "@docusaurus/core": "3.1.1",
@@ -21,9 +22,12 @@
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
     "fhir-dosage-utils": "file:..",
+    "monaco-editor-webpack-plugin": "^7.1.0",
     "prism-react-renderer": "^2.3.0",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "react-monaco-editor": "^0.55.0",
+    "ts-json-schema-generator": "^1.5.1"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.1.1",
@@ -31,6 +35,7 @@
     "@docusaurus/types": "3.1.1",
     "@types/fhir": "^0.0.41",
     "docusaurus-plugin-typedoc-api": "^4.2.0",
+    "json-schema-typed": "^8.0.1",
     "typescript": "~5.2.2"
   },
   "browserslist": {
