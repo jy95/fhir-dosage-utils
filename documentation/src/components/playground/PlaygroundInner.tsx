@@ -6,6 +6,9 @@ import OutputVisualizer from "@site/src/components/playground/OutputVisualizer";
 
 import { PlaygroundContextProvider } from "@site/src/contexts/PlaygroundContext";
 
+// Context
+import { usePlaygroundContext } from "@site/src/contexts/PlaygroundContext";
+
 // JSON
 import SamplePayload from "@site/static/playgroundDemo.json";
 
@@ -13,6 +16,10 @@ import SamplePayload from "@site/static/playgroundDemo.json";
 import type { State as PlaygroundState } from "@site/src/contexts/PlaygroundContext";
 
 function PlaygroundInner(): JSX.Element {
+  const {
+    state: { config, data },
+  } = usePlaygroundContext();
+
   return (
     <div
       style={{
@@ -30,7 +37,7 @@ function PlaygroundInner(): JSX.Element {
         }}
       >
         <PlaygroundSetup />
-        <OutputVisualizer />
+        <OutputVisualizer key={config + data} />
       </div>
     </div>
   );

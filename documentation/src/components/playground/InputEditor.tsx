@@ -26,6 +26,9 @@ function InputEditorInner(): JSX.Element {
           updateState({ inputSchemaRef: editor });
         }}
         uri={({ Uri }) => Uri.parse("input-editor")}
+        onChange={(newValue) => {
+          updateState({ data: newValue });
+        }}
       />
     </Details>
   );

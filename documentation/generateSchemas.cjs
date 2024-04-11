@@ -3,16 +3,16 @@ const fs = require("fs").promises; // Use fs.promises for async/await
 
 function removeUnderscoreProperties(obj) {
   for (var prop in obj) {
-      if (prop.startsWith('_')) {
-          delete obj[prop];
-      } else if (typeof obj[prop] === 'object') {
-          removeUnderscoreProperties(obj[prop]);
-      }
+    if (prop.startsWith("_")) {
+      delete obj[prop];
+    } else if (typeof obj[prop] === "object") {
+      removeUnderscoreProperties(obj[prop]);
+    }
   }
 }
 
 function stringifyWithoutUnderscore(obj) {
-  var newObj = {... obj};
+  var newObj = { ...obj };
   removeUnderscoreProperties(newObj);
   return JSON.stringify(newObj, null, 2);
 }

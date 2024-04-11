@@ -95,6 +95,7 @@ const config: Config = {
           label: "Tutorial",
         },
         { to: "api", label: "API", position: "left" },
+        { to: "playground", label: "Playground", position: "left" },
         { to: "/blog", label: "Blog", position: "right" },
         {
           href: "https://github.com/jy95/fhir-dosage-utils",

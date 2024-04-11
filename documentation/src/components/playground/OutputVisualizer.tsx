@@ -23,6 +23,48 @@ function turnStringToData<T>(stringifiedJson: string, defaultValue: T): T {
   }
 }
 
+function LoadingAnimation(): JSX.Element {
+  const styles = `
+    .loading-animation {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid #ccc;
+      border-top-color: #333;
+      border-radius: 50%;
+      animation: spin 1s infinite linear; /* Infinite animation */
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  `;
+
+  React.useLayoutEffect(() => {
+    const styleElement = document.createElement("style");
+    styleElement.innerHTML = styles;
+    document.head.appendChild(styleElement);
+    return () => {
+      document.head.removeChild(styleElement);
+    };
+  }, []);
+
+  return (
+    <div className="loading-animation">
+      <div className="spinner"></div>
+      <p>Loading...</p>
+    </div>
+  );
+}
+
 function OutputVisualizerInner(): JSX.Element {
   const {
     state: { data: dataString, config: configString },
@@ -54,6 +96,7 @@ function OutputVisualizerInner(): JSX.Element {
             <MultipleDosagesToText dosages={data} config={config} />
           </>
         )}
+        {data.length === 0 && <LoadingAnimation />}
       </div>
     </div>
   );

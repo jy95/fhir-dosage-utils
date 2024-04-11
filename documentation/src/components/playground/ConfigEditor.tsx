@@ -26,6 +26,9 @@ function ConfigEditorInner(): JSX.Element {
         editorDidMount={(editor) => {
           updateState({ configSchemaRef: editor });
         }}
+        onChange={(newValue) => {
+          updateState({ config: newValue });
+        }}
       />
     </Details>
   );
