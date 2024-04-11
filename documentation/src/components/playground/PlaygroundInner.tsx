@@ -8,8 +8,6 @@ import { PlaygroundContextProvider } from "@site/src/contexts/PlaygroundContext"
 
 // JSON
 import SamplePayload from "@site/static/playgroundDemo.json";
-import InputSchema from "@site/static/schemas/input.json";
-import ConfigSchema from "@site/static/schemas/config.json";
 
 // Type I need for useRef
 import type { State as PlaygroundState } from "@site/src/contexts/PlaygroundContext";
@@ -40,8 +38,6 @@ function PlaygroundInner(): JSX.Element {
 
 function StateProvider(): JSX.Element {
   const [state, setState] = React.useState({
-    inputSchema: InputSchema,
-    configSchema: ConfigSchema,
     data: JSON.stringify(SamplePayload, null, "\t"),
     config: "{}",
   } as PlaygroundState);

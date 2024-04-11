@@ -1,13 +1,9 @@
 import { useContext, createContext } from "react";
 
 // Type I need for useRef
-import type { MonacoEditorTypes } from "@theme/MonacoEditor";
+import type * as MonacoEditorTypes from "monaco-editor/esm/vs/editor/editor.api";
 
 export type State = {
-  // The Input schema
-  inputSchema: unknown;
-  // The Config schema
-  configSchema: unknown;
   // Data editor ref
   inputSchemaRef: undefined | MonacoEditorTypes.IStandaloneCodeEditor;
   // Config editor ref
@@ -29,8 +25,6 @@ export type Playground = {
 
 export const PlaygroundContext = createContext<Playground>({
   state: {
-    inputSchema: {},
-    configSchema: {},
     data: "{}",
     config: "{}",
     inputSchemaRef: undefined,

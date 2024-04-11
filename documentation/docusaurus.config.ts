@@ -42,6 +42,7 @@ const config: Config = {
         packages: ["."],
       },
     ],
+    "./src/plugins/monacco.ts",
   ],
 
   presets: [
@@ -72,9 +73,6 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
-
-  // Allows use of @theme/JSONSchemaEditor or @theme/JSONSchemaViewer
-  themes: ["docusaurus-json-schema-plugin"],
   themeConfig: {
     algolia: {
       // The application ID provided by Algolia

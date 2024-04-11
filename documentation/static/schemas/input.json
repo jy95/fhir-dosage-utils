@@ -381,9 +381,7 @@
           "description": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list)."
         }
       },
-      "required": [
-        "url"
-      ],
+      "required": ["url"],
       "additionalProperties": false,
       "description": "Optional Extension Element - found in all resources."
     },
@@ -486,11 +484,7 @@
         },
         "type": {
           "type": "string",
-          "enum": [
-            "postal",
-            "physical",
-            "both"
-          ],
+          "enum": ["postal", "physical", "both"],
           "description": "The definition of Address states that \"address is intended to describe postal addresses, not physical locations\". However, many applications track whether an address has a dual purpose of being a location that can be visited as well as being a valid delivery destination, and Postal addresses are often used as proxies for physical locations (also see the [Location](location.html#) resource)."
         },
         "_type": {
@@ -498,13 +492,7 @@
         },
         "use": {
           "type": "string",
-          "enum": [
-            "home",
-            "work",
-            "temp",
-            "old",
-            "billing"
-          ],
+          "enum": ["home", "work", "temp", "old", "billing"],
           "description": "Applications can assume that an address is current unless it explicitly says that it is temporary or old."
         },
         "_use": {
@@ -576,12 +564,7 @@
         },
         "comparator": {
           "type": "string",
-          "enum": [
-            "<",
-            "<=",
-            ">=",
-            ">"
-          ],
+          "enum": ["<", "<=", ">=", ">"],
           "description": "How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is \"<\" , then the real value is < stated value."
         },
         "_comparator": {
@@ -651,9 +634,7 @@
           "$ref": "#/definitions/Element"
         }
       },
-      "required": [
-        "text"
-      ],
+      "required": ["text"],
       "additionalProperties": false,
       "description": "A  text note which also  contains information about who made the statement and when."
     },
@@ -741,13 +722,7 @@
         },
         "use": {
           "type": "string",
-          "enum": [
-            "usual",
-            "official",
-            "temp",
-            "secondary",
-            "old"
-          ],
+          "enum": ["usual", "official", "temp", "secondary", "old"],
           "description": "Applications can assume that an identifier is permanent unless it explicitly says that it is temporary."
         },
         "_use": {
@@ -956,15 +931,7 @@
         },
         "system": {
           "type": "string",
-          "enum": [
-            "phone",
-            "fax",
-            "email",
-            "pager",
-            "url",
-            "sms",
-            "other"
-          ],
+          "enum": ["phone", "fax", "email", "pager", "url", "sms", "other"],
           "description": "Telecommunications form for contact point - what communications system is required to make use of the contact."
         },
         "_system": {
@@ -972,13 +939,7 @@
         },
         "use": {
           "type": "string",
-          "enum": [
-            "home",
-            "work",
-            "temp",
-            "old",
-            "mobile"
-          ],
+          "enum": ["home", "work", "temp", "old", "mobile"],
           "description": "Applications can assume that a contact is current unless it explicitly says that it is temporary or old."
         },
         "_use": {
@@ -1022,12 +983,7 @@
         },
         "comparator": {
           "type": "string",
-          "enum": [
-            "<",
-            "<=",
-            ">=",
-            ">"
-          ],
+          "enum": ["<", "<=", ">=", ">"],
           "description": "How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is \"<\" , then the real value is < stated value."
         },
         "_comparator": {
@@ -1081,12 +1037,7 @@
         },
         "comparator": {
           "type": "string",
-          "enum": [
-            "<",
-            "<=",
-            ">=",
-            ">"
-          ],
+          "enum": ["<", "<=", ">=", ">"],
           "description": "How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is \"<\" , then the real value is < stated value."
         },
         "_comparator": {
@@ -1140,12 +1091,7 @@
         },
         "comparator": {
           "type": "string",
-          "enum": [
-            "<",
-            "<=",
-            ">=",
-            ">"
-          ],
+          "enum": ["<", "<=", ">=", ">"],
           "description": "How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is \"<\" , then the real value is < stated value."
         },
         "_comparator": {
@@ -1324,12 +1270,7 @@
         },
         "comparator": {
           "type": "string",
-          "enum": [
-            "<",
-            "<=",
-            ">=",
-            ">"
-          ],
+          "enum": ["<", "<=", ">=", ">"],
           "description": "How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is \"<\" , then the real value is < stated value."
         },
         "_comparator": {
@@ -1464,11 +1405,7 @@
           "description": "The upper limit of detection of the measured points. This is needed if any of the data points have the value \"U\" (higher than detection limit)."
         }
       },
-      "required": [
-        "dimensions",
-        "origin",
-        "period"
-      ],
+      "required": ["dimensions", "origin", "period"],
       "additionalProperties": false,
       "description": "A series of measurements taken by a device, with upper and lower limits. There may be more than one dimension in the data."
     },
@@ -1533,11 +1470,7 @@
           "description": "This should agree with the information in the signature."
         }
       },
-      "required": [
-        "type",
-        "when",
-        "who"
-      ],
+      "required": ["type", "when", "who"],
       "additionalProperties": false,
       "description": "A signature along with supporting context. The signature may be a digital signature that is cryptographic in nature, or some other signature acceptable to the domain. This other signature may be as simple as a graphical image representing a hand-written signature, or a signature ceremony Different signature approaches have different utilities."
     },
@@ -1631,15 +1564,7 @@
           "type": "array",
           "items": {
             "type": "string",
-            "enum": [
-              "mon",
-              "tue",
-              "wed",
-              "thu",
-              "fri",
-              "sat",
-              "sun"
-            ]
+            "enum": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
           },
           "description": "If no days are specified, the action is assumed to happen every day as otherwise specified. The elements frequency and period cannot be used as well as dayOfWeek."
         },
@@ -1659,15 +1584,7 @@
         },
         "durationUnit": {
           "type": "string",
-          "enum": [
-            "s",
-            "min",
-            "h",
-            "d",
-            "wk",
-            "mo",
-            "a"
-          ],
+          "enum": ["s", "min", "h", "d", "wk", "mo", "a"],
           "description": "The units of time for the duration, in UCUM units."
         },
         "_durationUnit": {
@@ -1695,15 +1612,7 @@
         },
         "periodUnit": {
           "type": "string",
-          "enum": [
-            "s",
-            "min",
-            "h",
-            "d",
-            "wk",
-            "mo",
-            "a"
-          ],
+          "enum": ["s", "min", "h", "d", "wk", "mo", "a"],
           "description": "The units of time for the period in UCUM units."
         },
         "_periodUnit": {
@@ -1807,22 +1716,14 @@
         },
         "type": {
           "type": "string",
-          "enum": [
-            "author",
-            "editor",
-            "reviewer",
-            "endorser"
-          ],
+          "enum": ["author", "editor", "reviewer", "endorser"],
           "description": "The type of contributor."
         },
         "_type": {
           "$ref": "#/definitions/Element"
         }
       },
-      "required": [
-        "name",
-        "type"
-      ],
+      "required": ["name", "type"],
       "additionalProperties": false,
       "description": "A contributor to the content of a knowledge asset, including authors, editors, reviewers, and endorsers."
     },
@@ -1910,9 +1811,7 @@
           "$ref": "#/definitions/Element"
         }
       },
-      "required": [
-        "type"
-      ],
+      "required": ["type"],
       "additionalProperties": false,
       "description": "Describes a required data item for evaluation in terms of the type of data, and optional code or date-based filters of the data."
     },
@@ -2034,10 +1933,7 @@
         },
         "direction": {
           "type": "string",
-          "enum": [
-            "ascending",
-            "descending"
-          ],
+          "enum": ["ascending", "descending"],
           "description": "The direction of the sort, ascending or descending."
         },
         "_direction": {
@@ -2051,10 +1947,7 @@
           "$ref": "#/definitions/Element"
         }
       },
-      "required": [
-        "direction",
-        "path"
-      ],
+      "required": ["direction", "path"],
       "additionalProperties": false,
       "description": "This element can be used in combination with the sort element to specify quota requirements such as \"the most recent 5\" or \"the highest 5\". When multiple sorts are specified, they are applied in the order they appear in the resource."
     },
@@ -2111,9 +2004,7 @@
           "$ref": "#/definitions/Element"
         }
       },
-      "required": [
-        "language"
-      ],
+      "required": ["language"],
       "additionalProperties": false,
       "description": "A expression that is evaluated in a specified context and returns a value. The context of use of the expression must specify the context in which the expression is evaluated, and how the result of the expression is used."
     },
@@ -2175,20 +2066,14 @@
         },
         "use": {
           "type": "string",
-          "enum": [
-            "in",
-            "out"
-          ],
+          "enum": ["in", "out"],
           "description": "Whether the parameter is input or output for the module."
         },
         "_use": {
           "$ref": "#/definitions/Element"
         }
       },
-      "required": [
-        "type",
-        "use"
-      ],
+      "required": ["type", "use"],
       "additionalProperties": false,
       "description": "The parameters to the module. This collection specifies both the input and output parameters. Input parameters are provided by the caller as part of the $evaluate operation. Output parameters are included in the GuidanceResponse."
     },
@@ -2266,9 +2151,7 @@
           "$ref": "#/definitions/Element"
         }
       },
-      "required": [
-        "type"
-      ],
+      "required": ["type"],
       "additionalProperties": false,
       "description": "Related artifacts such as additional documentation, justification, or bibliographic references."
     },
@@ -2347,9 +2230,7 @@
           "$ref": "#/definitions/Element"
         }
       },
-      "required": [
-        "type"
-      ],
+      "required": ["type"],
       "additionalProperties": false,
       "description": "A description of a triggering event. Triggering events can be named events, data events, or periodic, as determined by the type element."
     },
@@ -2391,9 +2272,7 @@
           "description": "A value that defines the context specified in this context of use. The interpretation of the value is defined by the code."
         }
       },
-      "required": [
-        "code"
-      ],
+      "required": ["code"],
       "additionalProperties": false,
       "description": "Specifies clinical/business/etc. metadata that can be used to retrieve, index and/or categorize an artifact. This metadata can either be specific to the applicable population (e.g., age category, DRG) or the specific context of care (e.g., venue, care setting, provider of care)."
     },

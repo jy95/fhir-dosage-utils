@@ -8,6 +8,7 @@ async function generateInputSchema() {
       path: "playground_types.ts",
       tsconfig: "tsconfig.json",
       type: "PlaygroundInput",
+      id: "Input",
     };
 
     const outputPath = "static/schemas/input.json";
@@ -29,6 +30,7 @@ async function generateConfigSchema() {
       path: "playground_types.ts",
       tsconfig: "tsconfig.json",
       type: "Config",
+      id: "Config",
     };
 
     const outputPath2 = "static/schemas/config.json";
