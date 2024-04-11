@@ -11,6 +11,7 @@ import { usePlaygroundContext } from "@site/src/contexts/PlaygroundContext";
 
 // JSON
 import SamplePayload from "@site/static/playgroundDemo.json";
+import SampleConfig from "@site/static/playgroundConfig.json";
 
 // Type I need for useRef
 import type { State as PlaygroundState } from "@site/src/contexts/PlaygroundContext";
@@ -46,7 +47,7 @@ function PlaygroundInner(): JSX.Element {
 function StateProvider(): JSX.Element {
   const [state, setState] = React.useState({
     data: JSON.stringify(SamplePayload, null, "\t"),
-    config: "{}",
+    config: JSON.stringify(SampleConfig, null, "\t"),
   } as PlaygroundState);
 
   // define a function to update the state
