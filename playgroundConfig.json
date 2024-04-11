@@ -1,0 +1,31 @@
+{
+  "dateTimeFormatOptions": {},
+  "displayOrder": [
+    "method",
+    "doseQuantity",
+    "doseRange",
+    "rateRatio",
+    "rateQuantity",
+    "rateRange",
+    "durationDurationMax",
+    "frequencyFrequencyMaxPeriodPeriodMax",
+    "offsetWhen",
+    "dayOfWeek",
+    "timeOfDay",
+    "route",
+    "site",
+    "asNeeded",
+    "boundsDuration",
+    "boundsPeriod",
+    "boundsRange",
+    "countCountMax",
+    "event",
+    "code",
+    "maxDosePerPeriod",
+    "maxDosePerAdministration",
+    "maxDosePerLifetime",
+    "additionalInstruction",
+    "patientInstruction"
+  ],
+  "displaySeparator": " - "
+}

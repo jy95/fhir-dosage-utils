@@ -1,0 +1,127 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/Config",
+  "definitions": {
+    "Config": {
+      "type": "object",
+      "properties": {
+        "language": {
+          "type": "string",
+          "enum": ["en", "fr", "nl", "de"],
+          "description": "To set up the language"
+        },
+        "displayOrder": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "method",
+              "doseQuantity",
+              "doseRange",
+              "rateRatio",
+              "rateQuantity",
+              "rateRange",
+              "durationDurationMax",
+              "frequencyFrequencyMax",
+              "periodPeriodMax",
+              "frequencyFrequencyMaxPeriodPeriodMax",
+              "offsetWhen",
+              "dayOfWeek",
+              "timeOfDay",
+              "route",
+              "site",
+              "asNeeded",
+              "boundsDuration",
+              "boundsPeriod",
+              "boundsRange",
+              "countCountMax",
+              "event",
+              "code",
+              "maxDosePerPeriod",
+              "maxDosePerAdministration",
+              "maxDosePerLifetime",
+              "additionalInstruction",
+              "patientInstruction",
+              "text",
+              "extension"
+            ]
+          },
+          "description": "Control the display order used by the algorithm Useful when you want to turn on / off some specific rules for some reason"
+        },
+        "displaySeparator": {
+          "type": "string",
+          "description": "Override separator between each part of \"Dosage\""
+        },
+        "dateTimeFormatOptions": {
+          "$ref": "#/definitions/Intl.DateTimeFormatOptions",
+          "description": "To control the formatting of dateTime objects. If not provided, will use the defaults according locale e.g. \"20/01/2024\""
+        }
+      },
+      "additionalProperties": false,
+      "$id": "Config"
+    },
+    "Intl.DateTimeFormatOptions": {
+      "type": "object",
+      "properties": {
+        "localeMatcher": {
+          "type": "string",
+          "enum": ["best fit", "lookup"]
+        },
+        "weekday": {
+          "type": "string",
+          "enum": ["long", "short", "narrow"]
+        },
+        "era": {
+          "type": "string",
+          "enum": ["long", "short", "narrow"]
+        },
+        "year": {
+          "type": "string",
+          "enum": ["numeric", "2-digit"]
+        },
+        "month": {
+          "type": "string",
+          "enum": ["numeric", "2-digit", "long", "short", "narrow"]
+        },
+        "day": {
+          "type": "string",
+          "enum": ["numeric", "2-digit"]
+        },
+        "hour": {
+          "type": "string",
+          "enum": ["numeric", "2-digit"]
+        },
+        "minute": {
+          "type": "string",
+          "enum": ["numeric", "2-digit"]
+        },
+        "second": {
+          "type": "string",
+          "enum": ["numeric", "2-digit"]
+        },
+        "timeZoneName": {
+          "type": "string",
+          "enum": [
+            "short",
+            "long",
+            "shortOffset",
+            "longOffset",
+            "shortGeneric",
+            "longGeneric"
+          ]
+        },
+        "formatMatcher": {
+          "type": "string",
+          "enum": ["best fit", "basic"]
+        },
+        "hour12": {
+          "type": "boolean"
+        },
+        "timeZone": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
