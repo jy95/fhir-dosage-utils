@@ -89,6 +89,7 @@ export class FhirDosageUtils {
             async (lng: Language, ns: NamespacesLocale) =>
               import(
                 /* webpackMode: "lazy-once" */
+                /* webpackPrefetch: true */
                 `./locales/${lng}/${ns}.json`
               ),
           ),
