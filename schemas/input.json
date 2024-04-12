@@ -1262,7 +1262,36 @@
         "when": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "MORN",
+              "MORN.early",
+              "MORN.late",
+              "NOON",
+              "AFT",
+              "AFT.early",
+              "AFT.late",
+              "EVE",
+              "EVE.early",
+              "EVE.late",
+              "NIGHT",
+              "PHS",
+              "IMD",
+              "HS",
+              "WAKE",
+              "C",
+              "CM",
+              "CD",
+              "CV",
+              "AC",
+              "ACM",
+              "ACD",
+              "ACV",
+              "PC",
+              "PCM",
+              "PCD",
+              "PCV"
+            ]
           },
           "description": "When more than one event is listed, the event is tied to the union of the specified events."
         }
