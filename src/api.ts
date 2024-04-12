@@ -85,9 +85,12 @@ export class FhirDosageUtils {
       backend: {
         backends: [
           resourcesToBackend(
-            // have to cast the function to be webpack / builder friendly
+            // https://webpack.js.org/api/module-methods/#webpackmode
             async (lng: Language, ns: NamespacesLocale) =>
-              import(`./locales/${lng}/${ns}.json`),
+              import(
+                /* webpackMode: "lazy-once" */
+                `./locales/${lng}/${ns}.json`
+              ),
           ),
         ],
       },
