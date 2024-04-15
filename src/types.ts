@@ -217,6 +217,8 @@ export interface Params {
   /**
    * Function to turn extension(s) into a string for humans.
    * The choice to handle national extensions, ... is thus under the hands of people ;)
+   * @see [defaultFromExtensionsToString](https://github.com/jy95/fhir-dosage-utils/blob/main/src/utils/fromExtensionsToString.ts) for default implementation
+   * @see [FHIR definition of Extension](https://build.fhir.org/extensibility.html#Extension) for more info about the type itself
    */
   fromExtensionsToString?: FromExtensionsToStringFct;
   /**
