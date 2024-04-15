@@ -3,11 +3,11 @@ import ChainedBackend from "i18next-chained-backend";
 import resourcesToBackend from "i18next-resources-to-backend";
 
 // Functions
-import { defaultFromFHIRQuantityUnitToString } from "./utils/fromFHIRQuantityUnitToString";
-import { defaultFromCodeableConceptToString } from "./utils/fromCodeableConceptToString";
-import { defaultFromExtensionsToString } from "./utils/fromExtensionsToString";
 import { fromDisplayOrderToResult } from "./utils/fromDisplayOrderToResult";
 import { fromListToString } from "./utils/fromListToString";
+
+// Default values
+import { defaultAttributes } from "./internal/defaultAttributes";
 
 // Types
 import type {
@@ -31,39 +31,7 @@ export class FhirDosageUtils {
   private constructor(args?: Params) {
     this.config = {
       // default attributes
-      language: "en",
-      fromFHIRQuantityUnitToString: defaultFromFHIRQuantityUnitToString,
-      fromCodeableConceptToString: defaultFromCodeableConceptToString,
-      fromExtensionsToString: defaultFromExtensionsToString,
-      displayOrder: [
-        "method",
-        "doseQuantity",
-        "doseRange",
-        "rateRatio",
-        "rateQuantity",
-        "rateRange",
-        "durationDurationMax",
-        "frequencyFrequencyMaxPeriodPeriodMax",
-        "offsetWhen",
-        "dayOfWeek",
-        "timeOfDay",
-        "route",
-        "site",
-        "asNeeded",
-        "boundsDuration",
-        "boundsPeriod",
-        "boundsRange",
-        "countCountMax",
-        "event",
-        "code",
-        "maxDosePerPeriod",
-        "maxDosePerAdministration",
-        "maxDosePerLifetime",
-        "additionalInstruction",
-        "patientInstruction",
-      ],
-      displaySeparator: " - ",
-      dateTimeFormatOptions: {},
+      ...defaultAttributes,
       // attributes set by user
       ...args,
     };
