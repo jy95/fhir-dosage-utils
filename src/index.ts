@@ -1,4 +1,4 @@
-import { FhirDosageUtils } from "./api";
+import { FhirDosageUtils } from "./classes";
 import type { Params, DisplayOrderEnum } from "./types";
 
 // Default export to make it user-friendly
