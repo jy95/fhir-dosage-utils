@@ -1,5 +1,5 @@
 // Classe(s)
-import { Configurator } from "./index";
+import { Configurator } from "./Configurator";
 
 // Functions
 import { fromDisplayOrderToResult } from "../utils/fromDisplayOrderToResult";
@@ -8,12 +8,12 @@ import { fromListToString } from "../utils/fromListToString";
 // Types
 import type { Params, Dosage, DisplayOrder } from "../types";
 
-export class API extends Configurator {
+export class FhirDosageUtils extends Configurator {
   /**
    * Factory to create a fine-tuned instance of the utility class
    */
   static async build(args?: Params) {
-    const instance = new API(args);
+    const instance = new FhirDosageUtils(args);
     await instance.init();
     return instance;
   }
