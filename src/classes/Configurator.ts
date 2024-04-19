@@ -23,7 +23,7 @@ export class Configurator {
   protected i18nInstance: I18N;
 
   // Set up lib, according provided parameters
-  constructor(args?: Params) {
+  protected constructor(args?: Params) {
     this.config = {
       // default attributes
       ...defaultAttributes,
