@@ -1,12 +1,12 @@
 // Classe(s)
-import { Configurator } from "./Configurator";
+import { Configurator } from "./classes/Configurator";
 
 // Functions
-import { fromDisplayOrderToResult } from "../utils/fromDisplayOrderToResult";
-import { fromListToString } from "../utils/fromListToString";
+import { fromDisplayOrderToResult } from "./utils/fromDisplayOrderToResult";
+import { fromListToString } from "./utils/fromListToString";
 
 // Types
-import type { Params, Dosage, DisplayOrder } from "../types";
+import type { Params, Dosage, DisplayOrder } from "./types";
 
 export class FhirDosageUtils extends Configurator {
   /**
