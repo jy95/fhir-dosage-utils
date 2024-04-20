@@ -252,6 +252,10 @@ export type DisplayOrderParams = {
   i18next: I18N;
 };
 export type { I18N, InitOptions };
+/**
+ * Options for the i18next instances
+ * @see https://www.i18next.com/overview/configuration-options for more info
+ */
 export type I18InitOptions = Exclude<InitOptions, "lng" | "ns" | "defaultNS">;
 
 // Types for amount functions
