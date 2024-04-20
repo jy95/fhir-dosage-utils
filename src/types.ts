@@ -3,7 +3,7 @@ import type { FromFHIRQuantityUnitToStringFct } from "./utils/fromFHIRQuantityUn
 import type { FromCodeableConceptToStringFct } from "./utils/fromCodeableConceptToString";
 import type { FromExtensionsToStringFct } from "./utils/fromExtensionsToString";
 
-import type { i18n as I18N } from "i18next";
+import type { i18n as I18N, InitOptions } from "i18next";
 
 import type {
   Dosage as DosageR4,
@@ -251,7 +251,8 @@ export type DisplayOrderParams = {
   config: Config;
   i18next: I18N;
 };
-export type { I18N };
+export type { I18N, InitOptions };
+export type I18InitOptions = Exclude<InitOptions, "lng" | "ns" | "defaultNS">;
 
 // Types for amount functions
 export type RangeParams = {

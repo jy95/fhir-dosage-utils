@@ -6,14 +6,38 @@ import { fromDisplayOrderToResult } from "./utils/fromDisplayOrderToResult";
 import { fromListToString } from "./utils/fromListToString";
 
 // Types
-import type { Params, Dosage, DisplayOrder } from "./types";
+import type {
+  Params,
+  Dosage,
+  DisplayOrder,
+  I18InitOptions,
+  Language,
+  NamespacesLocale,
+} from "./types";
+
+// I18n default config
+import resourcesToBackend from "i18next-resources-to-backend";
+const defaultI18NConfig: I18InitOptions = {
+  backend: {
+    backends: [
+      resourcesToBackend(
+        // have to cast the function to be webpack / builder friendly
+        async (lng: Language, ns: NamespacesLocale) =>
+          import(`./locales/${lng}/${ns}.json`),
+      ),
+    ],
+  },
+};
 
 export class FhirDosageUtils extends Configurator {
   /**
    * Factory to create a fine-tuned instance of the utility class
    */
-  static async build(args?: Params) {
-    const instance = new FhirDosageUtils(args);
+  static async build(
+    userConfig?: Params,
+    i18nConfig: I18InitOptions = defaultI18NConfig,
+  ) {
+    const instance = new FhirDosageUtils(userConfig, i18nConfig);
     await instance.init();
     return instance;
   }

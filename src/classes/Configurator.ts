@@ -1,6 +1,5 @@
 import i18next from "i18next";
 import ChainedBackend from "i18next-chained-backend";
-import resourcesToBackend from "i18next-resources-to-backend";
 
 // Default values
 import { defaultAttributes } from "../internal/defaultAttributes";
@@ -11,24 +10,38 @@ import type {
   DisplayOrder,
   I18N,
   Language,
-  NamespacesLocale,
   Params,
+  InitOptions,
+  I18InitOptions,
 } from "../types";
 
 export class Configurator {
-  // Configuration (Immutability has its advantages ...)
+  // User Configuration
   protected config: Config;
+  // i18next config
+  protected i18nConfig: InitOptions;
   // i18next instance
   // When multiple instances of the class are used, they must act independantly regardless of the others
   protected i18nInstance: I18N;
 
   // Set up lib, according provided parameters
-  protected constructor(args?: Params) {
+  protected constructor(userConfig?: Params, i18nConfig?: I18InitOptions) {
+    // User config
     this.config = {
       // default attributes
       ...defaultAttributes,
       // attributes set by user
-      ...args,
+      ...userConfig,
+    };
+    // I18N config
+    this.i18nConfig = {
+      // default attributes
+      fallbackLng: "en",
+      lng: this.config.language,
+      ns: ["common", "daysOfWeek", "eventTiming", "unitsOfTime"],
+      defaultNS: "common",
+      // attributes set by user
+      ...i18nConfig,
     };
     this.i18nInstance = i18next.createInstance();
   }
@@ -39,22 +52,7 @@ export class Configurator {
   protected async init() {
     // You should wait for init to complete (wait for the callback or promise resolution)
     // before using the t function!
-    return await this.i18nInstance.use(ChainedBackend).init({
-      //debug: true,
-      fallbackLng: "en",
-      lng: this.config.language,
-      ns: ["common", "daysOfWeek", "eventTiming", "unitsOfTime"],
-      defaultNS: "common",
-      backend: {
-        backends: [
-          resourcesToBackend(
-            // have to cast the function to be webpack / builder friendly
-            async (lng: Language, ns: NamespacesLocale) =>
-              import(`./locales/${lng}/${ns}.json`),
-          ),
-        ],
-      },
-    });
+    return await this.i18nInstance.use(ChainedBackend).init(this.i18nConfig);
   }
 
   /**
