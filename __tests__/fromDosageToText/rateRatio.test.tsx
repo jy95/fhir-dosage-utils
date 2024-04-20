@@ -102,6 +102,6 @@ describe("fromDosageToText - rateRatio", () => {
     };
 
     let result = dosageUtils.fromDosageToText(dosage);
-    expect(result).toBe("at a rate of 1 :128");
+    expect(result).toBe("at a rate of 1:128");
   });
 });

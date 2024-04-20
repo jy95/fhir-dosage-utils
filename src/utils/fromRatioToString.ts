@@ -34,8 +34,10 @@ export function fromRatioToString({
   let quantityNumerator = numerator?.value;
   let quantityDenominator = denominator?.value;
 
-  // Collect
+  // Collect results
   const parts: string[] = [];
+  let noUnits = numeratorUnit === undefined && denominatorUnit === undefined;
+  let separator = noUnits ? "" : " ";
 
   // Deal with numerator first
   if (quantityNumerator !== undefined) {
@@ -69,6 +71,6 @@ export function fromRatioToString({
   if (parts.length === 0) {
     return undefined;
   } else {
-    return parts.join(" ");
+    return parts.join(separator);
   }
 }
