@@ -4,10 +4,26 @@
         <title>FHIR Dosage Utils Blog</title>
         <link>https://jy95.github.io/fhir-dosage-utils/blog</link>
         <description>FHIR Dosage Utils Blog</description>
-        <lastBuildDate>Fri, 29 Mar 2024 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 20 Apr 2024 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Customizing i18next Configuration in Our Library]]></title>
+            <link>https://jy95.github.io/fhir-dosage-utils/blog/empowerment</link>
+            <guid>https://jy95.github.io/fhir-dosage-utils/blog/empowerment</guid>
+            <pubDate>Sat, 20 Apr 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[We're thrilled to announce a new feature in our library that empowers users to tailor i18next configuration to their preferences.]]></description>
+            <content:encoded><![CDATA[<p>We're thrilled to announce a new feature in our library that empowers users to tailor i18next configuration to their preferences.
+i18next, the internationalization framework, plays a crucial role in facilitating multilingual support. Now, with this enhancement, users have greater control over how i18next behaves within our system.</p>
+<p>Benefits :</p>
+<ul>
+<li><strong>Flexibility</strong> : Users can adapt i18next settings to suit their project's needs, ensuring a seamless internationalization experience.</li>
+<li><strong>Customization</strong> : Fine-tune language-related functionalities, such as pluralization rules or date formatting, to match project specifications.</li>
+<li><strong>Ease of Integration</strong> : Our library seamlessly integrates with existing i18next workflows, minimizing implementation hurdles.</li>
+</ul>]]></content:encoded>
+            <category>features</category>
+        </item>
         <item>
             <title><![CDATA[Welcome]]></title>
             <link>https://jy95.github.io/fhir-dosage-utils/blog/welcome</link>
