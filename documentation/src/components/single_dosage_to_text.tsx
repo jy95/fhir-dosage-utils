@@ -5,7 +5,7 @@ import CodeBlock from "@theme/CodeBlock";
 // Types
 import type { Dosage as DosageR4 } from "fhir/r4";
 import type { Dosage as DosageR5 } from "fhir/r5";
-import type { Params as Config } from "fhir-dosage-utils";
+import type { Params as Config, I18InitOptions } from "fhir-dosage-utils";
 type Dosage = DosageR4 | DosageR5;
 
 // For the WHY, consult this
@@ -24,9 +24,11 @@ function decodeHtmlEntities(text: string): string {
 export default function SingleDosageToText({
   dosage,
   config,
+  i18nConfig,
 }: {
   dosage: Dosage;
   config?: Config;
+  i18nConfig?: I18InitOptions;
 }): JSX.Element {
   const [dosageText, setDosageText] = useState("");
   const [language, setLanguage] = useState(config?.language || "en");
@@ -35,7 +37,7 @@ export default function SingleDosageToText({
   // Set up instance
   useEffect(() => {
     async function initializeDosageUtils() {
-      const utils = await FhirDosageUtils.build(config);
+      const utils = await FhirDosageUtils.build(config, i18nConfig);
       setDosageUtils(utils);
     }
 

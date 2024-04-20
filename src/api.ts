@@ -1,173 +1,45 @@
-import i18next from "i18next";
-import ChainedBackend from "i18next-chained-backend";
-import resourcesToBackend from "i18next-resources-to-backend";
+// Classe(s)
+import { Configurator } from "./classes/Configurator";
 
 // Functions
 import { fromDisplayOrderToResult } from "./utils/fromDisplayOrderToResult";
 import { fromListToString } from "./utils/fromListToString";
 
-// Default values
-import { defaultAttributes } from "./internal/defaultAttributes";
-
 // Types
 import type {
-  Dosage,
   Params,
-  Config,
-  Language,
+  Dosage,
   DisplayOrder,
+  I18InitOptions,
+  Language,
   NamespacesLocale,
-  I18N,
 } from "./types";
 
-export class FhirDosageUtils {
-  // Configuration (Immutability has its advantages ...)
-  config: Config;
-  // i18next instance
-  // When multiple instances of the class are used, they must act independantly regardless of the others
-  private i18nInstance: I18N;
+// I18n default config
+import resourcesToBackend from "i18next-resources-to-backend";
+const defaultI18NConfig: I18InitOptions = {
+  backend: {
+    backends: [
+      resourcesToBackend(
+        // have to cast the function to be webpack / builder friendly
+        async (lng: Language, ns: NamespacesLocale) =>
+          import(`./locales/${lng}/${ns}.json`),
+      ),
+    ],
+  },
+};
 
-  // Set up lib, according provided parameters
-  private constructor(args?: Params) {
-    this.config = {
-      // default attributes
-      ...defaultAttributes,
-      // attributes set by user
-      ...args,
-    };
-    this.i18nInstance = i18next.createInstance();
-  }
-
-  /**
-   * To init i18next properly according requested criteria
-   */
-  private async init() {
-    // You should wait for init to complete (wait for the callback or promise resolution)
-    // before using the t function!
-    return await this.i18nInstance.use(ChainedBackend).init({
-      //debug: true,
-      fallbackLng: "en",
-      lng: this.config.language,
-      ns: ["common", "daysOfWeek", "eventTiming", "unitsOfTime"],
-      defaultNS: "common",
-      backend: {
-        backends: [
-          resourcesToBackend(
-            // have to cast the function to be webpack / builder friendly
-            async (lng: Language, ns: NamespacesLocale) =>
-              import(`./locales/${lng}/${ns}.json`),
-          ),
-        ],
-      },
-    });
-  }
-
+export class FhirDosageUtils extends Configurator {
   /**
    * Factory to create a fine-tuned instance of the utility class
    */
-  static async build(args?: Params) {
-    const instance = new FhirDosageUtils(args);
+  static async build(
+    userConfig?: Params,
+    i18nConfig: I18InitOptions = defaultI18NConfig,
+  ) {
+    const instance = new FhirDosageUtils(userConfig, i18nConfig);
     await instance.init();
     return instance;
-  }
-
-  /**
-   * To change language
-   */
-  async changeLanguage(lng: Language) {
-    this.config = {
-      ...this.config,
-      language: lng,
-    };
-    return this.i18nInstance.changeLanguage(lng);
-  }
-
-  /**
-   * Get current language
-   */
-  getLanguage() {
-    return this.config.language;
-  }
-
-  /**
-   * To change display order
-   */
-  changeDisplayOrder(order: DisplayOrder[]) {
-    this.config = {
-      ...this.config,
-      displayOrder: order,
-    };
-  }
-
-  /**
-   * Get display order
-   */
-  getDisplayOrder() {
-    return this.config.displayOrder;
-  }
-
-  /**
-   * Get display separator
-   */
-  getDisplaySeparator() {
-    return this.config.displaySeparator;
-  }
-
-  /**
-   * Set display separator
-   */
-  changeDisplaySeparator(sep: string) {
-    this.config = {
-      ...this.config,
-      displaySeparator: sep,
-    };
-  }
-
-  /**
-   * Get date time format options
-   */
-  getDateTimeFormatOptions() {
-    return this.config.dateTimeFormatOptions;
-  }
-
-  /**
-   * Set date time format options
-   */
-  changeDateTimeFormatOptions(opts: Intl.DateTimeFormatOptions) {
-    this.config = {
-      ...this.config,
-      dateTimeFormatOptions: opts,
-    };
-  }
-
-  /**
-   * From a single dosage, extract specific field(s) requested by user.
-   * Some use cases could request to split part of the object for given needs (quantity and timing separately)
-   */
-  getFields(dos: Dosage, ...order: DisplayOrder[]): string {
-    // iterate on each key and generate a string from each part
-    let parts = order
-      .map((entry) =>
-        fromDisplayOrderToResult({
-          config: this.config,
-          dos: dos,
-          entry: entry,
-          i18next: this.i18nInstance,
-        }),
-      )
-      .filter((s) => s !== undefined);
-
-    // Join each part with a separator
-    return parts.join(this.config.displaySeparator);
-  }
-
-  /**
-   * Turn a FHIR Dosage object into text
-   */
-  fromDosageToText(dos: Dosage): string {
-    // iterate on each key and generate a string from each part
-    let order = this.config.displayOrder;
-    return this.getFields(dos, ...order);
   }
 
   /**
@@ -226,6 +98,36 @@ export class FhirDosageUtils {
       let concurrentInstructions = groups[sequence];
       return concurrentInstructions;
     });
+  }
+
+  /**
+   * From a single dosage, extract specific field(s) requested by user.
+   * Some use cases could request to split part of the object for given needs (quantity and timing separately)
+   */
+  getFields(dos: Dosage, ...order: DisplayOrder[]): string {
+    // iterate on each key and generate a string from each part
+    let parts = order
+      .map((entry) =>
+        fromDisplayOrderToResult({
+          config: this.config,
+          dos: dos,
+          entry: entry,
+          i18next: this.i18nInstance,
+        }),
+      )
+      .filter((s) => s !== undefined);
+
+    // Join each part with a separator
+    return parts.join(this.config.displaySeparator);
+  }
+
+  /**
+   * Turn a FHIR Dosage object into text
+   */
+  fromDosageToText(dos: Dosage): string {
+    // iterate on each key and generate a string from each part
+    let order = this.config.displayOrder;
+    return this.getFields(dos, ...order);
   }
 
   /**
