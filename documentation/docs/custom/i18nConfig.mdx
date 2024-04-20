@@ -1,0 +1,48 @@
+---
+description: Options for the i18next instances
+title: 🌐 i18nConfig
+---
+
+import CodeBlock from "@theme/CodeBlock";
+import Schema from "@site/static/dosages/specs/boundsDuration/common.json";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import SingleDosageToText from "@site/src/components/single_dosage_to_text";
+
+<Tabs>
+  <TabItem value="text" label="Human readable text" default>
+    <SingleDosageToText 
+        dosage={Schema} 
+    />
+
+  </TabItem>
+  <TabItem value="json" label="Dosage">
+    <CodeBlock language="json">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+  </TabItem>
+<TabItem value="config" label="i18nConfig">
+    ```js
+    import LocalStorageBackend from 'i18next-localstorage-backend'; // load from local storage
+    import HttpApi from 'i18next-http-backend'; // have a own http fallback
+
+    {
+        backend: {
+            backends: [
+                LocalStorageBackend,  // primary
+                HttpApi  // fallback
+            ],
+            backendOptions: [{
+                projectId: 'myLocizeProjectId'
+            }, {
+                loadPath: '/locales/{{lng}}/{{ns}}.json' // http api load path for my own fallback
+            }],
+            // cacheHitMode: 'none' // (default)
+            // cacheHitMode: 'refresh' // tries to refresh the cache by loading from the next backend and updates the cache
+            // cacheHitMode: 'refreshAndUpdateStore' // tries to refresh the cache by loading from the next backend, updates the cache and also update the i18next resource store
+            // reloadInterval: 60 * 60 * 1000 // can be used to reload resources in a specific interval (useful in server environments)
+            // refreshExpirationTime: 7 * 24 * 60 * 60 * 1000 // In case of caching with 'refresh' or 'refreshAndUpdateStore', it will only fetch from the next backend if the cached namespace is expired. Only supported if the backend returns the saved timestamp, like i18next-fs-backend, i18next-localstorage-backend
+        }
+    }
+    ```
+
+</TabItem>
+</Tabs>
