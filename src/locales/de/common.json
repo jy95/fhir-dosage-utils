@@ -18,12 +18,12 @@
     },
     "ratio": {
       "withUnit": {
-        "numerator": "{{count}} {{numeratorUnit}}",
+        "numerator": "{{quantityNumerator}} {{numeratorUnit}}",
         "denominator_one": "pro {{denominatorUnit}}",
         "denominator_other": "jeder {{count}} {{denominatorUnit}}"
       },
       "withoutUnit": {
-        "numerator": "{{count}}",
+        "numerator": "{{quantityNumerator}}",
         "denominator_one": ":{{count}}",
         "denominator_other": ":{{count}}"
       }
