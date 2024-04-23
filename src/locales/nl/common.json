@@ -18,12 +18,12 @@
     },
     "ratio": {
       "withUnit": {
-        "numerator": "{{count}} {{numeratorUnit}}",
+        "numerator": "{{quantityNumerator}} {{numeratorUnit}}",
         "denominator_one": "per {{denominatorUnit}}",
         "denominator_other": "elke {{count}} {{denominatorUnit}}"
       },
       "withoutUnit": {
-        "numerator": "{{count}}",
+        "numerator": "{{quantityNumerator}}",
         "denominator_one": ":{{count}}",
         "denominator_other": ":{{count}}"
       }
