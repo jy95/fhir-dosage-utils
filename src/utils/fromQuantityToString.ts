@@ -15,15 +15,16 @@ export function fromQuantityToString({
 
   // Compute the result
   let unit = fromFHIRQuantityUnitToString({ language, quantity });
+  let value = quantity.value || 1;
 
   // If no unit is present (in other words ""), we don't put it
   if (unit.length === 0) {
     return i18next.t("amount.quantity.withoutUnit", {
-      quantity: quantity.value,
+      quantity: value,
     });
   } else {
     return i18next.t("amount.quantity.withUnit", {
-      quantity: quantity.value,
+      quantity: value,
       unit: unit,
     });
   }

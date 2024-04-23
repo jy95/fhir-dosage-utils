@@ -68,7 +68,7 @@ describe("Corner cases", () => {
     };
 
     let result = dosageUtils.fromDosageToText(dosage);
-    expect(result).toBe("42 ");
+    expect(result).toBe("42");
   });
 
   test("rateRatio - no denominator", () => {
