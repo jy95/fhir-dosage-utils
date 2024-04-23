@@ -1,4 +1,6 @@
+// Functions
 import { extractMatchingDoseAndRateFirstEntry } from "../internal/extractMatchingDoseAndRateFirstEntry";
+import { fromQuantityToString } from "../utils/fromQuantityToString";
 
 // types
 import type { DisplayOrderParams } from "../types";
@@ -15,17 +17,11 @@ export function transformRateQuantityToText({
     return undefined;
   }
 
-  // information from rate
-  let value = rateQuantity.value || 1;
-
-  // quantity unit
-  let unit = config.fromFHIRQuantityUnitToString({
-    language: config.language,
-    quantity: rateQuantity,
-  });
-
   return i18next.t("fields.rateQuantity", {
-    quantity: value,
-    unit: unit,
+    quantityText: fromQuantityToString({
+      quantity: rateQuantity,
+      config,
+      i18next,
+    }),
   });
 }

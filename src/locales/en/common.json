@@ -28,12 +28,15 @@
         "denominator_other": ":{{count}}"
       }
     },
-    "quantity": "{{quantity}} {{unit}}"
+    "quantity": {
+      "withUnit": "{{quantity}} {{unit}}",
+      "withoutUnit": "{{quantity}}"
+    }
   },
   "fields": {
-    "doseQuantity": "{{quantity}} {{unit}}",
+    "doseQuantity": "{{quantityText}}",
     "doseRange": "{{rangeText}}",
-    "rateQuantity": "at a rate of {{quantity}} {{unit}}",
+    "rateQuantity": "at a rate of {{quantityText}}",
     "rateRange": "at a rate of {{rangeText}}",
     "rateRatio": "at a rate of {{ratioText}}",
     "duration": "over {{durationText}}",
@@ -83,8 +86,8 @@
       "event_one": "on {{event}}",
       "event_other": "on {{event}}"
     },
-    "maxDosePerLifetime": "up to a maximum of {{count}} {{unit}} for the lifetime of patient",
-    "maxDosePerAdministration": "up to a maximum of {{count}} {{unit}} per dose",
+    "maxDosePerLifetime": "up to a maximum of {{quantityText}} for the lifetime of patient",
+    "maxDosePerAdministration": "up to a maximum of {{quantityText}} per dose",
     "maxDosePerPeriod": "up to a maximum of {{maxDosePerPeriodText}}"
   }
 }
