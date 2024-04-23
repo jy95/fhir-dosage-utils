@@ -8,22 +8,22 @@
       "withUnit": {
         "lowAndHigh": "{{low}} to {{high}} {{unit}}",
         "onlyHigh": "up to {{high}} {{unit}}",
-        "onlyLow": "at least {{low}} {{unit}}"
+        "onlyLow": "{{low}} {{unit}}"
       },
       "withoutUnit": {
         "lowAndHigh": "{{low}} to {{high}}",
         "onlyHigh": "up to {{high}}",
-        "onlyLow": "at least {{low}}"
+        "onlyLow": "{{low}}"
       }
     },
     "ratio": {
       "withUnit": {
-        "numerator": "{{count}} {{numeratorUnit}}",
+        "numerator": "{{quantityNumerator}} {{numeratorUnit}}",
         "denominator_one": "per {{denominatorUnit}}",
         "denominator_other": "every {{count}} {{denominatorUnit}}"
       },
       "withoutUnit": {
-        "numerator": "{{count}}",
+        "numerator": "{{quantityNumerator}}",
         "denominator_one": ":{{count}}",
         "denominator_other": ":{{count}}"
       }
