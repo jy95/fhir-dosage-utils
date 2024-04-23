@@ -258,7 +258,7 @@ export type { I18N, InitOptions };
  */
 export type I18InitOptions = Exclude<InitOptions, "lng" | "ns" | "defaultNS">;
 
-// Types for amount functions
+// Types for translation functions
 export type RangeParams = {
   range: Range;
   config: Config;
@@ -267,6 +267,12 @@ export type RangeParams = {
 
 export type RatioParams = {
   ratio: Ratio;
+  config: Config;
+  i18next: I18N;
+};
+
+export type QuantityParams = {
+  quantity: Quantity;
   config: Config;
   i18next: I18N;
 };

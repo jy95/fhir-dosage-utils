@@ -1,3 +1,6 @@
+// Functions
+import { fromQuantityToString } from "../utils/fromQuantityToString";
+
 // types
 import type { DisplayOrderParams } from "../types";
 
@@ -12,13 +15,12 @@ export function transformMaxDosePerLifetimeToText({
   }
 
   const maxDosePerLifetime = dos.maxDosePerLifetime;
-  let unit = config.fromFHIRQuantityUnitToString({
-    language: config.language,
-    quantity: maxDosePerLifetime,
-  });
 
   return i18next.t("fields.maxDosePerLifetime", {
-    count: maxDosePerLifetime.value || 1,
-    unit: unit,
+    quantityText: fromQuantityToString({
+      quantity: maxDosePerLifetime,
+      config,
+      i18next,
+    }),
   });
 }
