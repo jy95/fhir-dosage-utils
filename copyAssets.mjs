@@ -1,8 +1,20 @@
-import { mkdir, readdir, stat, copyFile } from "fs/promises";
-import { join } from "path";
+import {
+  mkdir,
+  readdir,
+  stat,
+  copyFile,
+  writeFile,
+  readFile,
+} from "fs/promises";
+import { join, extname } from "path";
 
 const sourceDir = "./src/locales";
 const destDir = "./dist/locales";
+
+// Function to minify JSON content
+function minifyJSON(content) {
+  return JSON.stringify(JSON.parse(content));
+}
 
 // Function to recursively copy directories
 async function copyDirAsync(src, dest) {
@@ -18,8 +30,18 @@ async function copyDirAsync(src, dest) {
           // Recursively copy subdirectories
           await copyDirAsync(srcPath, destPath);
         } else {
-          // Copy files
-          await copyFile(srcPath, destPath);
+          // Check if it's a JSON file
+          if (extname(file) === ".json") {
+            // Read JSON content
+            const content = await readFile(srcPath, "utf-8");
+            // Minify JSON content
+            const minifiedContent = minifyJSON(content);
+            // Write minified JSON to destination
+            await writeFile(destPath, minifiedContent);
+          } else {
+            // Copy files
+            await copyFile(srcPath, destPath);
+          }
         }
       }),
     );
