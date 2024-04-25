@@ -68,3 +68,19 @@ You can use [English files](https://github.com/jy95/fhir-dosage-utils/tree/main/
 4. "de" (German)
 
 </details>
+
+<details>
+<summary>Which FHIR extensions should you support ?</summary>
+
+- Your country extensions (e.g. [Belgian ones](https://www.ehealth.fgov.be/standards/fhir/))
+- [FHIR Extensions Pack](https://hl7.org/fhir/extensions/artifacts.html) (for international and interoperability reasons)
+
+Currently, 5 extensions are known to have impacts with Dosage / Timing with [FHIR Extensions Pack](https://hl7.org/fhir/extensions/artifacts.html) :
+
+- [Conditions](https://hl7.org/fhir/extensions/StructureDefinition-dosage-conditions.html)
+- [Days of cycle](https://hl7.org/fhir/extensions/StructureDefinition-timing-daysOfCycle.html)
+- [Timing day of month](https://hl7.org/fhir/extensions/StructureDefinition-timing-dayOfMonth.html)
+- [Timing Exact](https://hl7.org/fhir/extensions/StructureDefinition-timing-exact.html)
+- [Minimum Gap Between Doses](https://hl7.org/fhir/extensions/StructureDefinition-dosage-minimumGapBetweenDose.html)
+
+</details>
