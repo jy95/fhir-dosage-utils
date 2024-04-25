@@ -68,3 +68,40 @@ You can use [English files](https://github.com/jy95/fhir-dosage-utils/tree/main/
 4. "de" (German)
 
 </details>
+
+<details>
+<summary>Which FHIR extensions should you support ?</summary>
+
+- Your country extensions (e.g. [Belgian ones](https://www.ehealth.fgov.be/standards/fhir/))
+- [FHIR Extensions Pack](https://hl7.org/fhir/extensions/artifacts.html) (for international and interoperability reasons)
+
+Currently, 5 extensions are known to have impacts with Dosage / Timing with [FHIR Extensions Pack](https://hl7.org/fhir/extensions/artifacts.html) :
+
+- [Conditions](https://hl7.org/fhir/extensions/StructureDefinition-dosage-conditions.html)
+- [Days of cycle](https://hl7.org/fhir/extensions/StructureDefinition-timing-daysOfCycle.html)
+- [Timing day of month](https://hl7.org/fhir/extensions/StructureDefinition-timing-dayOfMonth.html)
+- [Timing Exact](https://hl7.org/fhir/extensions/StructureDefinition-timing-exact.html)
+- [Minimum Gap Between Doses](https://hl7.org/fhir/extensions/StructureDefinition-dosage-minimumGapBetweenDose.html)
+
+</details>
+
+<details>
+<summary>Explanations about the choice of license ?</summary>
+
+The library is licensed under the AGPL 3.0 license to ensure everyone benefits from improvements and keeps the project collaborative and open. Here's a simplified breakdown:
+
+| Feature                                                                                                                    | Permitted | Not Permitted |
+| -------------------------------------------------------------------------------------------------------------------------- | --------- | ------------- |
+| Use the library in your project (commercial/non-commercial)                                                                | ✔        |               |
+| Follow open closed principle                                                                                               | ✔        |               |
+| Distribute a modified version publicly and keep your changes closed-source                                                 |           | ✔            |
+| Create derivative works (e.g., new libraries based on this code) and distribute them under a different license (if public) |           | ✔            |
+
+</details>
+
+<details>
+<summary>I still have a question ...</summary>
+
+Create a ticket to speak about it on our discussions space on [Github](https://github.com/jy95/fhir-dosage-utils/discussions)
+
+</details>
