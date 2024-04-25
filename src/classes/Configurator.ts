@@ -9,7 +9,6 @@ import type {
   Config,
   DisplayOrder,
   I18N,
-  Language,
   Params,
   InitOptions,
   I18InitOptions,
@@ -58,7 +57,7 @@ export class Configurator {
   /**
    * To change language
    */
-  async changeLanguage(lng: Language) {
+  async changeLanguage(lng: string) {
     this.config = {
       ...this.config,
       language: lng,

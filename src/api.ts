@@ -11,7 +11,6 @@ import type {
   Dosage,
   DisplayOrder,
   I18InitOptions,
-  Language,
   NamespacesLocale,
 } from "./types";
 
@@ -22,7 +21,7 @@ const defaultI18NConfig: I18InitOptions = {
     backends: [
       resourcesToBackend(
         // have to cast the function to be webpack / builder friendly
-        async (lng: Language, ns: NamespacesLocale) =>
+        async (lng: string, ns: NamespacesLocale) =>
           import(`./locales/${lng}/${ns}.json`),
       ),
     ],
