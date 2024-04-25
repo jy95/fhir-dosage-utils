@@ -40,30 +40,6 @@ export type DoseAndRate = DoseAndRateR4 | DoseAndRateR5;
 export type { FromFHIRQuantityUnitToStringFct, FromCodeableConceptToStringFct };
 
 /**
- * Represents supported languages.
- */
-enum LanguageEnum {
-  /**
-   * English
-   */
-  en = "en",
-  /**
-   * French
-   */
-  fr = "fr",
-  /**
-   * Dutch
-   */
-  nl = "nl",
-  /**
-   * German
-   */
-  de = "de",
-}
-
-export type Language = keyof typeof LanguageEnum;
-
-/**
  * Represents the available display orders
  */
 export enum DisplayOrderEnum {
@@ -196,10 +172,12 @@ export type NamespacesLocale =
 // Parameters
 export interface Params {
   /**
-   * To set up the language
+   * BCP 47 language code to setup the library with
    * @defaultValue "en" (English)
+   * @see [FAQ](https://jy95.github.io/fhir-dosage-utils/docs/faq) for the built-in languages
+   * @see [I18next documentation](https://www.i18next.com/how-to/faq#how-should-the-language-codes-be-formatted) for the reasons behind BCP 47
    */
-  language?: Language;
+  language?: string;
   /**
    * Function to turn a quantity unit (e.g UCUM "ml") into a string for humans (e.g "militier")
    * The choice to handle plural form or not is thus under the hands of people ;)

@@ -33,7 +33,9 @@ import SingleDosageToText from "@site/src/components/single_dosage_to_text";
             backendOptions: [{
                 projectId: 'myLocizeProjectId'
             }, {
-                loadPath: '/locales/{{lng}}/{{ns}}.json' // http api load path for my own fallback
+                // http api load path for my own fallback
+                // Check https://github.com/jy95/fhir-dosage-utils/tree/main/src/locales/en for more info
+                loadPath: '/locales/{{lng}}/{{ns}}.json'
             }],
             // cacheHitMode: 'none' // (default)
             // cacheHitMode: 'refresh' // tries to refresh the cache by loading from the next backend and updates the cache
