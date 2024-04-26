@@ -14,7 +14,7 @@ import SingleDosageToText from "@site/src/components/single_dosage_to_text";
     <SingleDosageToText 
         dosage={Schema} 
         config={{
-            displayOrder: ["extension"],
+            displayOrder: ["extension", "timingExtension"],
             fromExtensionsToString: ({extensions, language}) => {
                 // If no extensions, skip it
                 if (extensions === undefined || extensions.length === 0) {
@@ -46,7 +46,7 @@ import SingleDosageToText from "@site/src/components/single_dosage_to_text";
   <TabItem value="config" label="Configuration">
     ```js
     {
-        displayOrder: ["extension"],
+        displayOrder: ["extension", "timingExtension"],
         fromExtensionsToString: ({extensions, language}) => {
             // If no extensions, skip it
             if (extensions === undefined || extensions.length === 0) {

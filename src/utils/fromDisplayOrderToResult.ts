@@ -85,6 +85,11 @@ const displayOrders = {
     }),
   text: ({ dos }) => dos.text,
   timeOfDay: (input) => transformTimeOfDayToText(input),
+  timingExtension: ({ dos, config }) =>
+    config.fromExtensionsToString({
+      language: config.language,
+      extensions: dos.timing?.extension,
+    }),
 } satisfies Record<DisplayOrder, ResultFct>;
 
 type fromDisplayOrderToResultFct = DisplayOrderParams & {
