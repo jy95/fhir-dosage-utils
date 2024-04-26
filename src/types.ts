@@ -159,6 +159,10 @@ export enum DisplayOrderEnum {
    * Display "extension"
    */
   extension = "extension",
+  /**
+   * Display "timing.extension"
+   */
+  timingExtension = "timingExtension",
 }
 
 export type DisplayOrder = keyof typeof DisplayOrderEnum;
