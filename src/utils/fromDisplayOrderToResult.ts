@@ -90,6 +90,11 @@ const displayOrders = {
       language: config.language,
       extensions: dos.timing?.extension,
     }),
+  timingRepeatExtension: ({ dos, config }) =>
+    config.fromExtensionsToString({
+      language: config.language,
+      extensions: dos.timing?.repeat?.extension,
+    }),
 } satisfies Record<DisplayOrder, ResultFct>;
 
 type fromDisplayOrderToResultFct = DisplayOrderParams & {
