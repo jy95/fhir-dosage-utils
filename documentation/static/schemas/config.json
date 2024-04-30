@@ -7,8 +7,7 @@
       "properties": {
         "language": {
           "type": "string",
-          "enum": ["en", "fr", "nl", "de"],
-          "description": "To set up the language"
+          "description": "BCP 47 language code to setup the library with"
         },
         "displayOrder": {
           "type": "array",
@@ -43,7 +42,11 @@
               "additionalInstruction",
               "patientInstruction",
               "text",
-              "extension"
+              "extension",
+              "timingExtension",
+              "timingRepeatExtension",
+              "modifierExtension",
+              "timingModifierExtension"
             ]
           },
           "description": "Control the display order used by the algorithm Useful when you want to turn on / off some specific rules for some reason"
