@@ -9,7 +9,7 @@
 
 
 <link rel="search" type="application/opensearchdescription+xml" title="FHIR Dosage Utils" href="/fhir-dosage-utils/opensearch.xml"><link rel="stylesheet" href="/fhir-dosage-utils/assets/css/styles.877146d0.css">
-<script src="/fhir-dosage-utils/assets/js/runtime~main.140521c2.js" defer="defer"></script>
+<script src="/fhir-dosage-utils/assets/js/runtime~main.b37a0363.js" defer="defer"></script>
 <script src="/fhir-dosage-utils/assets/js/main.8f7d01ed.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -27,7 +27,12 @@
 <details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary>How can I customize or add my own language ?</summary><div><div class="collapsibleContent_i85q"><p>You can choose your preferred way :</p><ol>
 <li>Make a pull request on the repository : simply add translations files <a href="https://github.com/jy95/fhir-dosage-utils/tree/main/src/locales" target="_blank" rel="noopener noreferrer">for your locale</a>.</li>
 <li>Use a <a href="https://www.i18next.com/overview/plugins-and-utils#backends" target="_blank" rel="noopener noreferrer">i18next backend</a> like <a href="/fhir-dosage-utils/docs/custom/i18nConfig">showcast in documentation</a></li>
-</ol><p>You can use <a href="https://github.com/jy95/fhir-dosage-utils/tree/main/src/locales/en" target="_blank" rel="noopener noreferrer">English files</a> for reference.</p></div></div></details>
+</ol><p>You can use <a href="https://github.com/jy95/fhir-dosage-utils/tree/main/src/locales/en" target="_blank" rel="noopener noreferrer">English files</a> for reference. Each file has a single responsibility :</p><ul>
+<li><a href="https://github.com/jy95/fhir-dosage-utils/blob/main/src/locales/en/common.json" target="_blank" rel="noopener noreferrer">common</a> : Anything that isn&#x27;t related to a specific ValueSet</li>
+<li><a href="https://github.com/jy95/fhir-dosage-utils/blob/main/src/locales/en/daysOfWeek.json" target="_blank" rel="noopener noreferrer">daysOfWeek</a> : Codes related to <a href="https://build.fhir.org/valueset-days-of-week.html" target="_blank" rel="noopener noreferrer">Days Of Week</a> ValueSet</li>
+<li><a href="https://github.com/jy95/fhir-dosage-utils/blob/main/src/locales/en/eventTiming.json" target="_blank" rel="noopener noreferrer">eventTiming</a> : Codes related to <a href="https://build.fhir.org/valueset-event-timing.html" target="_blank" rel="noopener noreferrer">EventTiming</a> ValueSet</li>
+<li><a href="https://github.com/jy95/fhir-dosage-utils/blob/main/src/locales/en/unitsOfTime.json" target="_blank" rel="noopener noreferrer">unitsOfTime</a> : Codes related to <a href="https://build.fhir.org/valueset-units-of-time.html" target="_blank" rel="noopener noreferrer">UnitsOfTime</a> ValueSet</li>
+</ul></div></div></details>
 <details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary>Which languages are currently built-in ?</summary><div><div class="collapsibleContent_i85q"><p>4 <a href="https://github.com/jy95/fhir-dosage-utils/tree/main/src/locales" target="_blank" rel="noopener noreferrer">locales</a> are currently implemented :</p><ol>
 <li>&quot;en&quot; (English)</li>
 <li>&quot;fr&quot; (French)</li>
