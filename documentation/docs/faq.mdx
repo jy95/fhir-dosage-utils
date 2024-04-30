@@ -53,7 +53,12 @@ You can choose your preferred way :
 1. Make a pull request on the repository : simply add translations files [for your locale](https://github.com/jy95/fhir-dosage-utils/tree/main/src/locales).
 2. Use a [i18next backend](https://www.i18next.com/overview/plugins-and-utils#backends) like [showcast in documentation](custom/i18nConfig)
 
-You can use [English files](https://github.com/jy95/fhir-dosage-utils/tree/main/src/locales/en) for reference.
+You can use [English files](https://github.com/jy95/fhir-dosage-utils/tree/main/src/locales/en) for reference. Each file has a single responsibility :
+
+- [common](https://github.com/jy95/fhir-dosage-utils/blob/main/src/locales/en/common.json) : Anything that isn't related to a specific ValueSet
+- [daysOfWeek](https://github.com/jy95/fhir-dosage-utils/blob/main/src/locales/en/daysOfWeek.json) : Codes related to [Days Of Week](https://build.fhir.org/valueset-days-of-week.html) ValueSet
+- [eventTiming](https://github.com/jy95/fhir-dosage-utils/blob/main/src/locales/en/eventTiming.json) : Codes related to [EventTiming](https://build.fhir.org/valueset-event-timing.html) ValueSet
+- [unitsOfTime](https://github.com/jy95/fhir-dosage-utils/blob/main/src/locales/en/unitsOfTime.json) : Codes related to [UnitsOfTime](https://build.fhir.org/valueset-units-of-time.html) ValueSet
 
 </details>
 
