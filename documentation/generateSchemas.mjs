@@ -1,5 +1,6 @@
-const tsj = require("ts-json-schema-generator");
-const fs = require("fs").promises; // Use fs.promises for async/await
+import { createGenerator } from "ts-json-schema-generator";
+// Use fs.promises for async/await
+import { writeFile } from "fs/promises";
 
 function removeUnderscoreProperties(obj) {
   for (var prop in obj) {
@@ -29,11 +30,11 @@ async function generateInputSchema() {
 
     const outputPath = "static/schemas/input.json";
 
-    const generator = tsj.createGenerator(config);
+    const generator = createGenerator(config);
     const schema = await generator.createSchema(config.type);
     const schemaString = stringifyWithoutUnderscore(schema);
 
-    await fs.writeFile(outputPath, schemaString);
+    await writeFile(outputPath, schemaString);
   } catch (err) {
     console.error("Error generating input schema:", err);
   }
@@ -51,11 +52,11 @@ async function generateConfigSchema() {
 
     const outputPath2 = "static/schemas/config.json";
 
-    const generator = tsj.createGenerator(config2);
+    const generator = createGenerator(config2);
     const schema2 = await generator.createSchema(config2.type);
     const schemaString2 = JSON.stringify(schema2, null, 2);
 
-    await fs.writeFile(outputPath2, schemaString2);
+    await writeFile(outputPath2, schemaString2);
   } catch (err) {
     console.error("Error generating config schema:", err);
   }
