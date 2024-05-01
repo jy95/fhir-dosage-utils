@@ -1,5 +1,8 @@
+// Functions
 import { extractTimingRepeat } from "../internal/extractTimingRepeat";
+import { isNotUndefined } from "../internal/isNotUndefined";
 
+// Types
 import type { DisplayOrderParams } from "../types";
 
 export function transformDurationDurationMaxToText({
@@ -25,14 +28,14 @@ export function transformDurationDurationMaxToText({
 
   return [
     // duration
-    duration !== undefined &&
+    isNotUndefined([duration]) &&
       i18next.t("fields.duration", {
         durationText: i18next.t(`unitsOfTime:withCount.${unit}`, {
           count: duration,
         }),
       }),
     // durationMax
-    max !== undefined &&
+    isNotUndefined([max]) &&
       i18next.t("fields.durationMax", {
         durationMaxText: i18next.t(`unitsOfTime:withCount.${unit}`, {
           count: max,

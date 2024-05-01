@@ -1,5 +1,8 @@
+// Functions
 import { extractTimingRepeat } from "../internal/extractTimingRepeat";
+import { isNotUndefined } from "../internal/isNotUndefined";
 
+// Types
 import type { DisplayOrderParams } from "../types";
 
 export function transformFrequencyFrequencyMaxToText({
@@ -25,7 +28,7 @@ export function transformFrequencyFrequencyMaxToText({
   // Three cases
 
   // 1. Frequency and frequencyMax are present
-  if (frequency !== undefined && max !== undefined) {
+  if (isNotUndefined([frequency, max])) {
     return i18next.t("fields.frequency.withfrequencyMax", {
       count: max,
       frequency: frequency,
@@ -33,7 +36,7 @@ export function transformFrequencyFrequencyMaxToText({
   }
 
   // 2. Only frequencyMax is present
-  if (max !== undefined) {
+  if (isNotUndefined([max])) {
     return i18next.t("fields.frequencyMax.frequencyMax", { count: max });
   }
 

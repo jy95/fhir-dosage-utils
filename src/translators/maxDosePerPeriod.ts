@@ -33,7 +33,7 @@ export function transformMaxDosePerPeriodToText({
     .map((period) => {
       return fromRatioToString({ config, i18next, ratio: period });
     })
-    .filter((s) => s !== undefined) as string[];
+    .filter((s) => s !== undefined);
 
   const maxDosePerPeriodText = fromListToString(i18next, valuesAsString);
 

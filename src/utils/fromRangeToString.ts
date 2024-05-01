@@ -1,5 +1,6 @@
 // Functions
 import { hasUnit } from "../internal/hasUnit";
+import { isNotUndefined } from "../internal/isNotUndefined";
 
 // Types
 import type { RangeParams, Config, Quantity, I18N } from "../types";
@@ -59,7 +60,7 @@ export function fromRangeToString({
     : "withoutUnit";
 
   // 2. Both low & high are present
-  if (lowValue !== undefined && highValue !== undefined) {
+  if (isNotUndefined([lowValue, highValue])) {
     return i18next.t(`amount.range.${technicalKey}.lowAndHigh`, {
       low: lowValue,
       high: highValue,
@@ -68,7 +69,7 @@ export function fromRangeToString({
   }
 
   // 3. Only high is present
-  if (highValue !== undefined) {
+  if (isNotUndefined([highValue])) {
     return i18next.t(`amount.range.${technicalKey}.onlyHigh`, {
       high: highValue,
       unit: unit,

@@ -1,5 +1,6 @@
 // Functions
 import { formatDatetime } from "../utils/formatDatetimes";
+import { isNotUndefined } from "../internal/isNotUndefined";
 
 // types
 import type { DisplayOrderParams } from "../types";
@@ -23,7 +24,7 @@ export function transformBoundsPeriodToText({
   // Three cases
 
   // 1. Both start and end are present
-  if (start !== undefined && end !== undefined) {
+  if (isNotUndefined([start, end])) {
     return i18next.t("fields.boundsPeriod.startAndEnd", {
       start: start,
       end: end,
@@ -31,7 +32,7 @@ export function transformBoundsPeriodToText({
   }
 
   // 2. Only start is present
-  if (start !== undefined) {
+  if (isNotUndefined([start])) {
     return i18next.t("fields.boundsPeriod.onlyStart", {
       start: start,
     });

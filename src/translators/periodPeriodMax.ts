@@ -1,5 +1,8 @@
+// Functions
 import { extractTimingRepeat } from "../internal/extractTimingRepeat";
+import { isNotUndefined } from "../internal/isNotUndefined";
 
+// Types
 import type { DisplayOrderParams } from "../types";
 
 export function transformPeriodPeriodMaxToText({
@@ -26,7 +29,7 @@ export function transformPeriodPeriodMaxToText({
   // Three cases
 
   // 1. period and periodMax are present
-  if (period !== undefined && max !== undefined) {
+  if (isNotUndefined([period, max])) {
     return i18next.t("fields.periodMax.withPeriod", {
       period: period,
       count: max,
@@ -35,7 +38,7 @@ export function transformPeriodPeriodMaxToText({
   }
 
   // 2. Only periodMax is present
-  if (max !== undefined) {
+  if (isNotUndefined([max])) {
     return i18next.t("fields.periodMax.onlyPeriodMax", {
       count: max,
       unit: i18next.t(`unitsOfTime:withoutCount.${unit}`, { count: max }),
