@@ -2,11 +2,43 @@
 import { fromQuantityToString } from "../utils/fromQuantityToString";
 
 // Type
-import type { RatioParams, Quantity } from "../types";
+import type { RatioParams, Quantity, QuantityParams } from "../types";
 
 // Quantity has an unit ?
 function hasUnit(quantity?: Quantity): boolean {
   return (quantity?.unit || quantity?.code) !== undefined;
+}
+
+// To cover all nasty cases of denominator
+function fromDenominatorToString({
+  config,
+  i18next,
+  quantity,
+}: QuantityParams): string {
+  let hasUnitDenominator = hasUnit(quantity);
+  let value = quantity.value!;
+
+  // If no unit, it is quite simple
+  if (!hasUnitDenominator) {
+    return `${value}`;
+  } else {
+    // Get correct linkword (depending of the quantity value)
+    let linkword = i18next.t("amount.ratio.denominatorLinkword", {
+      count: value,
+    });
+
+    // Get quantity text (depending of the quantity value)
+    let quantityText =
+      value !== 1
+        ? fromQuantityToString({ quantity, config, i18next })
+        : config.fromFHIRQuantityUnitToString({
+            quantity,
+            language: config.language,
+          });
+
+    // Concatenate all computed parts
+    return `${linkword} ${quantityText}`;
+  }
 }
 
 // To cover all nasty cases of Ratio, only once
@@ -19,22 +51,14 @@ export function fromRatioToString({
   // Extract params
   const { denominator, numerator } = ratio;
 
-  // units as text
-  let denominatorUnit = hasUnit(denominator)
-    ? config.fromFHIRQuantityUnitToString({
-        language: config.language,
-        quantity: denominator!,
-      })
-    : undefined;
-
   // quantity
   let quantityNumerator = numerator?.value;
   let quantityDenominator = denominator?.value;
 
   // Collect results
   const parts: string[] = [];
-  let noUnits = !hasUnit(numerator) && denominatorUnit === undefined;
-  let separator = noUnits ? "" : " ";
+  let noUnits = !hasUnit(numerator) && !hasUnit(denominator);
+  let separator = noUnits ? ":" : " ";
 
   // Deal with numerator first
   if (quantityNumerator !== undefined) {
@@ -49,15 +73,12 @@ export function fromRatioToString({
 
   // Deal with denominator
   if (quantityDenominator !== undefined) {
-    let technicalKey: "withUnit" | "withoutUnit" =
-      denominatorUnit !== undefined ? "withUnit" : "withoutUnit";
-    const denominatorString = i18next.t(
-      `amount.ratio.${technicalKey}.denominator`,
-      {
-        count: quantityDenominator,
-        denominatorUnit: denominatorUnit,
-      },
-    );
+    // Several cases exist for that, let use a proper function for that
+    const denominatorString = fromDenominatorToString({
+      config,
+      i18next,
+      quantity: denominator!,
+    });
     parts.push(denominatorString);
   }
 

@@ -17,14 +17,8 @@
       }
     },
     "ratio": {
-      "withUnit": {
-        "denominator_one": "per {{denominatorUnit}}",
-        "denominator_other": "every {{count}} {{denominatorUnit}}"
-      },
-      "withoutUnit": {
-        "denominator_one": ":{{count}}",
-        "denominator_other": ":{{count}}"
-      }
+      "denominatorLinkword_one": "per",
+      "denominatorLinkword_other": "every"
     },
     "quantity": {
       "withUnit": "{{quantity}} {{unit}}",
