@@ -20,7 +20,7 @@ function fromDenominatorToString({
 
   // If no unit, it is quite simple
   if (!hasUnitDenominator) {
-    return `${value}`;
+    return `:${value}`;
   } else {
     // Get correct linkword (depending of the quantity value)
     let linkword = i18next.t("amount.ratio.denominatorLinkword", {
@@ -37,7 +37,8 @@ function fromDenominatorToString({
           });
 
     // Concatenate all computed parts
-    return `${linkword} ${quantityText}`;
+    // The space before is intentional so that numerator and denominator are well printed regardless of situation
+    return ` ${linkword} ${quantityText}`;
   }
 }
 
@@ -57,8 +58,6 @@ export function fromRatioToString({
 
   // Collect results
   const parts: string[] = [];
-  let noUnits = !hasUnit(numerator) && !hasUnit(denominator);
-  let separator = noUnits ? ":" : " ";
 
   // Deal with numerator first
   if (quantityNumerator !== undefined) {
@@ -86,6 +85,6 @@ export function fromRatioToString({
   if (parts.length === 0) {
     return undefined;
   } else {
-    return parts.join(separator);
+    return parts.join("");
   }
 }
