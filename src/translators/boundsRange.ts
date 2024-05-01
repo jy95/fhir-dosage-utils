@@ -23,22 +23,22 @@ export function transformBoundsRangeToText({
   // Do nothing if no boundsRange, I am not a wizard
   if (boundsRange === undefined) {
     return undefined;
-  } else {
-    // Turn range into a text
-    const rangeText = fromRangeToString({
-      range: boundsRange,
-      config,
-      i18next,
-    });
-
-    // Reject if empty
-    if (rangeText === undefined) {
-      return undefined;
-    }
-
-    // return the final string
-    return i18next.t("fields.boundsRange", {
-      rangeText: rangeText,
-    });
   }
+
+  // Turn range into a text
+  const rangeText = fromRangeToString({
+    range: boundsRange,
+    config,
+    i18next,
+  });
+
+  // Reject if empty
+  if (rangeText === undefined) {
+    return undefined;
+  }
+
+  // return the final string
+  return i18next.t("fields.boundsRange", {
+    rangeText: rangeText,
+  });
 }
