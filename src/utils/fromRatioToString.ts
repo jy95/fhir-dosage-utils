@@ -6,7 +6,7 @@ import type { RatioParams, Quantity, QuantityParams } from "../types";
 
 // Quantity has an unit ?
 function hasUnit(quantity?: Quantity): boolean {
-  return (quantity?.unit || quantity?.code) !== undefined;
+  return [quantity?.unit, quantity?.code].some((field) => field !== undefined);
 }
 
 // To cover all nasty cases of denominator
