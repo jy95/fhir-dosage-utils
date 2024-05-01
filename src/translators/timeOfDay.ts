@@ -41,14 +41,14 @@ export function transformTimeOfDayToText({
   // If empty, skip it
   if (timeOfDay === undefined || timeOfDay.length === 0) {
     return undefined;
-  } else {
-    // Turn it into a string
-    const timeOfDays = timeOfDay.map(formatString);
-    const timeOfDaysAsString = fromListToString(i18next, timeOfDays);
-
-    return i18next.t("fields.timeOfDay", {
-      timeOfDay: timeOfDaysAsString,
-      count: timeOfDays.length,
-    });
   }
+
+  // Turn it into a string
+  const timeOfDays = timeOfDay.map(formatString);
+  const timeOfDaysAsString = fromListToString(i18next, timeOfDays);
+
+  return i18next.t("fields.timeOfDay", {
+    timeOfDay: timeOfDaysAsString,
+    count: timeOfDays.length,
+  });
 }

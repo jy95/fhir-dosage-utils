@@ -23,16 +23,16 @@ export function transformDayOfWeekToText({
   // If empty, skip it
   if (dayOfWeek === undefined || dayOfWeek.length === 0) {
     return undefined;
-  } else {
-    // Turn it into a string
-    const dayOfWeeks = dayOfWeek.map((dayCode) =>
-      i18next.t(`daysOfWeek:${dayCode}`),
-    );
-    const dayOfWeeksAsString = fromListToString(i18next, dayOfWeeks);
-
-    return i18next.t("fields.dayOfWeek.dayOfWeek", {
-      count: dayOfWeek.length,
-      dayOfWeek: dayOfWeeksAsString,
-    });
   }
+
+  // Turn it into a string
+  const dayOfWeeks = dayOfWeek.map((dayCode) =>
+    i18next.t(`daysOfWeek:${dayCode}`),
+  );
+  const dayOfWeeksAsString = fromListToString(i18next, dayOfWeeks);
+
+  return i18next.t("fields.dayOfWeek.dayOfWeek", {
+    count: dayOfWeek.length,
+    dayOfWeek: dayOfWeeksAsString,
+  });
 }
