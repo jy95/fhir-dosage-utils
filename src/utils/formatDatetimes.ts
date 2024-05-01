@@ -17,7 +17,9 @@ function generateDateStyleFormatOptions(
   options: Intl.DateTimeFormatOptions,
 ): Intl.DateTimeFormatOptions {
   if (options.dateStyle !== undefined) {
-    return options;
+    return {
+      dateStyle: options.dateStyle,
+    };
   }
 
   const defaults: Intl.DateTimeFormatOptions = {
@@ -37,7 +39,9 @@ function generateTimeStyleFormatOptions(
   options: Intl.DateTimeFormatOptions,
 ): Intl.DateTimeFormatOptions {
   if (options.timeStyle !== undefined) {
-    return options;
+    return {
+      timeStyle: options.timeStyle,
+    };
   }
 
   const defaults: Intl.DateTimeFormatOptions = {
@@ -101,8 +105,7 @@ export function formatDatetimes({ config, datetimes }: Args): string[] {
     if (!hasTimePart) {
       let df3 = new Intl.DateTimeFormat(config.language, {
         // retrieve value from user
-        dateStyle: options.dateStyle,
-        // fallback if dateStyle is not defined
+        // and fallback if dateStyle is not defined
         ...generateDateStyleFormatOptions(options),
       });
       return df3.format(date);
@@ -111,9 +114,7 @@ export function formatDatetimes({ config, datetimes }: Args): string[] {
     // Otherwise, we have a full datetime
     let df4 = new Intl.DateTimeFormat(config.language, {
       // retrieve value from user
-      dateStyle: options.dateStyle,
-      timeStyle: options.timeStyle,
-      // fallback if dateStyle / timeStyle is not defined
+      // and fallback if dateStyle / timeStyle is not defined
       ...generateDateStyleFormatOptions(options),
       ...generateTimeStyleFormatOptions(options),
     });
