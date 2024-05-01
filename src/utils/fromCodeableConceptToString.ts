@@ -1,3 +1,7 @@
+// Functions
+import { isArrayEmpty } from "../internal/isEmptyArray";
+
+// Types
 import type { CodeableConcept } from "../types";
 
 /**
@@ -27,7 +31,7 @@ export function defaultFromCodeableConceptToString({
   }
 
   // If empty, skip it
-  if (code.coding === undefined || code.coding.length === 0) {
+  if (isArrayEmpty(code.coding)) {
     return undefined;
   }
 

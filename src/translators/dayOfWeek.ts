@@ -1,6 +1,7 @@
 // Function
 import { fromListToString } from "../utils/fromListToString";
 import { extractTimingRepeat } from "../internal/extractTimingRepeat";
+import { isArrayEmpty } from "../internal/isEmptyArray";
 
 // Types
 import type { DisplayOrderParams } from "../types";
@@ -21,7 +22,7 @@ export function transformDayOfWeekToText({
   let dayOfWeek = repeat.dayOfWeek;
 
   // If empty, skip it
-  if (dayOfWeek === undefined || dayOfWeek.length === 0) {
+  if (isArrayEmpty(dayOfWeek)) {
     return undefined;
   }
 

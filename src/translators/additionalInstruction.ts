@@ -1,5 +1,6 @@
 // Function
 import { fromListToString } from "../utils/fromListToString";
+import { isArrayEmpty } from "../internal/isEmptyArray";
 
 // types
 import type { DisplayOrderParams } from "../types";
@@ -10,10 +11,7 @@ export function transformAdditionalInstructionToText({
   i18next,
 }: DisplayOrderParams): string | undefined {
   // If empty, return undefined
-  if (
-    dos.additionalInstruction === undefined ||
-    dos.additionalInstruction.length === 0
-  ) {
+  if (isArrayEmpty(dos.additionalInstruction)) {
     return undefined;
   }
 

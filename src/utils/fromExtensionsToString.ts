@@ -1,3 +1,7 @@
+// Functions
+import { isArrayEmpty } from "../internal/isEmptyArray";
+
+// Types
 import type { Extension } from "../types";
 
 /**
@@ -17,7 +21,7 @@ export function defaultFromExtensionsToString({
   extensions,
 }: FromExtensionsToStringArgs) {
   // If no extensions, skip it
-  if (extensions === undefined || extensions.length === 0) {
+  if (isArrayEmpty(extensions)) {
     return undefined;
   }
 

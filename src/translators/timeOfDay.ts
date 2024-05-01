@@ -1,6 +1,7 @@
 // Functions
 import { fromListToString } from "../utils/fromListToString";
 import { extractTimingRepeat } from "../internal/extractTimingRepeat";
+import { isArrayEmpty } from "../internal/isEmptyArray";
 
 // Types
 import type { DisplayOrderParams } from "../types";
@@ -39,7 +40,7 @@ export function transformTimeOfDayToText({
   let timeOfDay = repeat.timeOfDay;
 
   // If empty, skip it
-  if (timeOfDay === undefined || timeOfDay.length === 0) {
+  if (isArrayEmpty(timeOfDay)) {
     return undefined;
   }
 
