@@ -1,3 +1,7 @@
+// Functions
+import { fromQuantityToString } from "../utils/fromQuantityToString";
+
+// Type
 import type { RatioParams, Quantity } from "../types";
 
 // Quantity has an unit ?
@@ -16,13 +20,6 @@ export function fromRatioToString({
   const { denominator, numerator } = ratio;
 
   // units as text
-  let numeratorUnit = hasUnit(numerator)
-    ? config.fromFHIRQuantityUnitToString({
-        language: config.language,
-        quantity: numerator!,
-      })
-    : undefined;
-
   let denominatorUnit = hasUnit(denominator)
     ? config.fromFHIRQuantityUnitToString({
         language: config.language,
@@ -36,20 +33,17 @@ export function fromRatioToString({
 
   // Collect results
   const parts: string[] = [];
-  let noUnits = numeratorUnit === undefined && denominatorUnit === undefined;
+  let noUnits = !hasUnit(numerator) && denominatorUnit === undefined;
   let separator = noUnits ? "" : " ";
 
   // Deal with numerator first
   if (quantityNumerator !== undefined) {
-    let technicalKey: "withUnit" | "withoutUnit" =
-      numeratorUnit !== undefined ? "withUnit" : "withoutUnit";
-    const numeratorString = i18next.t(
-      `amount.ratio.${technicalKey}.numerator`,
-      {
-        count: quantityNumerator,
-        numeratorUnit: numeratorUnit,
-      },
-    );
+    // Reuse the quantity to string translation
+    const numeratorString = fromQuantityToString({
+      quantity: numerator!,
+      config,
+      i18next,
+    });
     parts.push(numeratorString);
   }
 

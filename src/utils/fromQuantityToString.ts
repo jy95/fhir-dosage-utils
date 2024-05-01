@@ -9,7 +9,7 @@ export function fromQuantityToString({
   quantity,
   config,
   i18next,
-}: QuantityParams): string | undefined {
+}: QuantityParams): string {
   // extract function for the unit display from config
   const { fromFHIRQuantityUnitToString, language } = config;
 

@@ -75,7 +75,7 @@ describe("fromDosageToText - rateRatio", () => {
             numerator: {
               value: 3,
               unit: "pills",
-              comparator: "<"
+              comparator: "<",
             },
             denominator: {
               value: 5,
@@ -87,7 +87,7 @@ describe("fromDosageToText - rateRatio", () => {
     };
 
     let result = dosageUtils.fromDosageToText(dosage);
-    expect(result).toBe("at a rate of < 3 pills every 5 hours");
+    expect(result).toBe("at a rate of &lt; 3 pills every 5 hours");
   });
 
   test("no numerator", () => {

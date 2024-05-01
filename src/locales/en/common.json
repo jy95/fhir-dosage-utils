@@ -18,12 +18,10 @@
     },
     "ratio": {
       "withUnit": {
-        "numerator": "{{count}} {{numeratorUnit}}",
         "denominator_one": "per {{denominatorUnit}}",
         "denominator_other": "every {{count}} {{denominatorUnit}}"
       },
       "withoutUnit": {
-        "numerator": "{{count}}",
         "denominator_one": ":{{count}}",
         "denominator_other": ":{{count}}"
       }
