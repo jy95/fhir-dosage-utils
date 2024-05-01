@@ -18,14 +18,28 @@ export function fromQuantityToString({
   let value = quantity.value || 1;
 
   // If no unit is present (in other words ""), we don't put it
-  if (unit.length === 0) {
-    return i18next.t("amount.quantity.withoutUnit", {
-      quantity: value,
-    });
+  let quantityString =
+    unit.length === 0
+      ? i18next.t("amount.quantity.withoutUnit", {
+          quantity: value,
+        })
+      : i18next.t("amount.quantity.withUnit", {
+          quantity: value,
+          unit: unit,
+        });
+
+  // Compute the comparator
+  let comparatorCode = quantity.comparator;
+  let comparatorString =
+    comparatorCode !== undefined
+      ? i18next.t(`quantityComparator:${comparatorCode}`)
+      : undefined;
+
+  // If no comparator, print it
+  if (comparatorString === undefined) {
+    return quantityString;
   } else {
-    return i18next.t("amount.quantity.withUnit", {
-      quantity: value,
-      unit: unit,
-    });
+    // concatenate comparator and quantity
+    return `${comparatorString} ${quantityString}`;
   }
 }
