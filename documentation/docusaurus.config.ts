@@ -75,6 +75,8 @@ const config: Config = {
   ],
   themeConfig: {
     algolia: {
+      // https://docusaurus.io/docs/search#contextual-search
+      contextualSearch: false,
       // The application ID provided by Algolia
       appId: "A0H5ESUA6U",
       // Public API key: it is safe to commit it
