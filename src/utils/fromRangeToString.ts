@@ -14,13 +14,13 @@ function transformQuantityUnitToString(
     return i18next.t(`unitsOfTime:withoutCount.${code}`, {
       count: quantityValue,
     });
-  } else {
-    // otherwise, it is UCUM, ... so let the user do the job
-    return config.fromFHIRQuantityUnitToString({
-      language: config.language,
-      quantity: quantity,
-    });
   }
+
+  // otherwise, it is UCUM, ... so let the user do the job
+  return config.fromFHIRQuantityUnitToString({
+    language: config.language,
+    quantity: quantity,
+  });
 }
 
 // To cover all nasty cases of Range, only once

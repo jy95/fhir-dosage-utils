@@ -16,13 +16,19 @@ type MappedDate = {
 function generateDateStyleFormatOptions(
   options: Intl.DateTimeFormatOptions,
 ): Intl.DateTimeFormatOptions {
+  if (options.dateStyle !== undefined) {
+    return options;
+  }
+
+  const defaults: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  };
+
   return {
-    year:
-      options.dateStyle === undefined ? options.year || "numeric" : undefined,
-    month:
-      options.dateStyle === undefined ? options.month || "2-digit" : undefined,
-    day: options.dateStyle === undefined ? options.day || "2-digit" : undefined,
-    weekday: options.dateStyle === undefined ? options.weekday : undefined,
+    ...options,
+    ...defaults,
   };
 }
 
@@ -30,13 +36,19 @@ function generateDateStyleFormatOptions(
 function generateTimeStyleFormatOptions(
   options: Intl.DateTimeFormatOptions,
 ): Intl.DateTimeFormatOptions {
+  if (options.timeStyle !== undefined) {
+    return options;
+  }
+
+  const defaults: Intl.DateTimeFormatOptions = {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  };
+
   return {
-    hour:
-      options.timeStyle === undefined ? options.hour || "2-digit" : undefined,
-    minute:
-      options.timeStyle === undefined ? options.minute || "2-digit" : undefined,
-    second:
-      options.timeStyle === undefined ? options.second || "2-digit" : undefined,
+    ...options,
+    ...defaults,
   };
 }
 
