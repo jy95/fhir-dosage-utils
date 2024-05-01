@@ -19,27 +19,25 @@ function fromDenominatorToString({
   let value = quantity.value!;
 
   // If no unit, it is quite simple
-  if (!hasUnitDenominator) {
-    return `:${value}`;
-  } else {
-    // Get correct linkword (depending of the quantity value)
-    let linkword = i18next.t("amount.ratio.denominatorLinkword", {
-      count: value,
-    });
+  if (!hasUnitDenominator) return `:${value}`;
 
-    // Get quantity text (depending of the quantity value)
-    let quantityText =
-      value !== 1
-        ? fromQuantityToString({ quantity, config, i18next })
-        : config.fromFHIRQuantityUnitToString({
-            quantity,
-            language: config.language,
-          });
+  // Get correct linkword (depending of the quantity value)
+  let linkword = i18next.t("amount.ratio.denominatorLinkword", {
+    count: value,
+  });
 
-    // Concatenate all computed parts
-    // The space before is intentional so that numerator and denominator are well printed regardless of situation
-    return ` ${linkword} ${quantityText}`;
-  }
+  // Get quantity text (depending of the quantity value)
+  let quantityText =
+    value !== 1
+      ? fromQuantityToString({ quantity, config, i18next })
+      : config.fromFHIRQuantityUnitToString({
+          quantity,
+          language: config.language,
+        });
+
+  // Concatenate all computed parts
+  // The space before is intentional so that numerator and denominator are well printed regardless of situation
+  return ` ${linkword} ${quantityText}`;
 }
 
 // To cover all nasty cases of Ratio, only once
