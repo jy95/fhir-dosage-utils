@@ -1,3 +1,7 @@
+// Functions
+import { hasUnit } from "../internal/hasUnit";
+
+// Types
 import type { RangeParams, Config, Quantity, I18N } from "../types";
 
 // Quantity unit to string
@@ -37,8 +41,7 @@ export function fromRangeToString({
 
   // prepare unit display
   let quantityUnit = high || low;
-  let hasUnit =
-    quantityUnit?.unit !== undefined || quantityUnit?.code !== undefined;
+  let hasQuantityUnit = hasUnit(quantityUnit);
 
   // Four cases
 
@@ -48,10 +51,10 @@ export function fromRangeToString({
   }
 
   // quantity unit
-  let unit = hasUnit
+  let unit = hasQuantityUnit
     ? transformQuantityUnitToString(i18next, quantityUnit!, config)
     : "";
-  let technicalKey: "withUnit" | "withoutUnit" = hasUnit
+  let technicalKey: "withUnit" | "withoutUnit" = hasQuantityUnit
     ? "withUnit"
     : "withoutUnit";
 

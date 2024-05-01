@@ -1,13 +1,9 @@
 // Functions
 import { fromQuantityToString } from "../utils/fromQuantityToString";
+import { hasUnit } from "../internal/hasUnit";
 
 // Type
-import type { RatioParams, Quantity, QuantityParams } from "../types";
-
-// Quantity has an unit ?
-function hasUnit(quantity?: Quantity): boolean {
-  return [quantity?.unit, quantity?.code].some((field) => field !== undefined);
-}
+import type { RatioParams, QuantityParams } from "../types";
 
 // To cover all nasty cases of denominator
 function fromDenominatorToString({
