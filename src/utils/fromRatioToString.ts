@@ -82,9 +82,5 @@ export function fromRatioToString({
   }
 
   // Concatenate the result
-  if (parts.length === 0) {
-    return undefined;
-  } else {
-    return parts.join("");
-  }
+  return parts.length > 0 ? parts.join("") : undefined;
 }
