@@ -1,6 +1,7 @@
 // Functions
 import { fromListToString } from "../utils/fromListToString";
 import { formatDatetimes } from "../utils/formatDatetimes";
+import { isArrayEmpty } from "../internal/isEmptyArray";
 
 // types
 import type { DisplayOrderParams } from "../types";
@@ -11,16 +12,10 @@ export function transformEventToText({
   i18next,
 }: DisplayOrderParams): string | undefined {
   // If empty, return undefined
-  if (
-    dos.timing === undefined ||
-    dos.timing.event === undefined ||
-    dos.timing.event.length === 0
-  ) {
+  let events = dos.timing?.event;
+  if (isArrayEmpty(events)) {
     return undefined;
   }
-
-  // Generate the string version of them
-  let events = dos.timing.event;
 
   // List to string
   let eventList = formatDatetimes({ config, datetimes: events });

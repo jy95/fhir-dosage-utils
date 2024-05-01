@@ -1,6 +1,7 @@
 // Functions
 import { fromListToString } from "../utils/fromListToString";
 import { extractTimingRepeat } from "../internal/extractTimingRepeat";
+import { isArrayEmpty } from "../internal/isEmptyArray";
 
 // Types
 import type { DisplayOrderParams, I18N } from "../types";
@@ -74,7 +75,7 @@ function transformOffset(i18next: I18N, offset?: number): string | undefined {
 // Function to transform when[] into a string
 function transformWhen(i18next: I18N, when?: string[]): string | undefined {
   // Only run when array is not empty
-  if (when === undefined || when.length === 0) {
+  if (isArrayEmpty(when)) {
     return undefined;
   }
 
@@ -82,9 +83,7 @@ function transformWhen(i18next: I18N, when?: string[]): string | undefined {
   const whens = (when as TimeKeys[]).map((whenCode) =>
     i18next.t(`eventTiming:${whenCode}`),
   );
-  const finalString = fromListToString(i18next, whens);
-
-  return finalString;
+  return fromListToString(i18next, whens);
 }
 
 export function transformOffsetWhenToText({

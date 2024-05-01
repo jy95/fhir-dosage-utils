@@ -17,16 +17,8 @@
       }
     },
     "ratio": {
-      "withUnit": {
-        "numerator": "{{count}} {{numeratorUnit}}",
-        "denominator_one": "per {{denominatorUnit}}",
-        "denominator_other": "elke {{count}} {{denominatorUnit}}"
-      },
-      "withoutUnit": {
-        "numerator": "{{count}}",
-        "denominator_one": ":{{count}}",
-        "denominator_other": ":{{count}}"
-      }
+      "denominatorLinkword_one": "per",
+      "denominatorLinkword_other": "elke"
     },
     "quantity": {
       "withUnit": "{{quantity}} {{unit}}",

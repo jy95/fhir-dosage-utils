@@ -21,30 +21,30 @@ export function transformPeriodPeriodMaxToText({
   // Do nothing if no unit, I am not a wizard
   if (unit === undefined) {
     return undefined;
-  } else {
-    // Three cases
+  }
 
-    // 1. period and periodMax are present
-    if (period !== undefined && max !== undefined) {
-      return i18next.t("fields.periodMax.withPeriod", {
-        period: period,
-        count: max,
-        unit: i18next.t(`unitsOfTime:withoutCount.${unit}`, { count: max }),
-      });
-    }
+  // Three cases
 
-    // 2. Only periodMax is present
-    if (max !== undefined) {
-      return i18next.t("fields.periodMax.onlyPeriodMax", {
-        count: max,
-        unit: i18next.t(`unitsOfTime:withoutCount.${unit}`, { count: max }),
-      });
-    }
-
-    // 3. Only period present
-    return i18next.t("fields.period.period", {
-      count: period,
-      unit: i18next.t(`unitsOfTime:withoutCount.${unit}`, { count: period }),
+  // 1. period and periodMax are present
+  if (period !== undefined && max !== undefined) {
+    return i18next.t("fields.periodMax.withPeriod", {
+      period: period,
+      count: max,
+      unit: i18next.t(`unitsOfTime:withoutCount.${unit}`, { count: max }),
     });
   }
+
+  // 2. Only periodMax is present
+  if (max !== undefined) {
+    return i18next.t("fields.periodMax.onlyPeriodMax", {
+      count: max,
+      unit: i18next.t(`unitsOfTime:withoutCount.${unit}`, { count: max }),
+    });
+  }
+
+  // 3. Only period present
+  return i18next.t("fields.period.period", {
+    count: period,
+    unit: i18next.t(`unitsOfTime:withoutCount.${unit}`, { count: period }),
+  });
 }

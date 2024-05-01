@@ -44,13 +44,9 @@ export function transformBoundsDurationToText({
   // Do nothing if no boundsDuration, I am not a wizard
   if (boundsDuration === undefined) {
     return undefined;
-  } else {
-    let durationText = transformDurationToString(
-      i18next,
-      boundsDuration,
-      config,
-    );
-
-    return i18next.t("fields.boundsDuration", { durationText: durationText });
   }
+
+  let durationText = transformDurationToString(i18next, boundsDuration, config);
+
+  return i18next.t("fields.boundsDuration", { durationText: durationText });
 }

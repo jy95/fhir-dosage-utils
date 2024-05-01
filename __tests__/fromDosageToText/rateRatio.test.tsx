@@ -67,6 +67,29 @@ describe("fromDosageToText - rateRatio", () => {
     expect(result).toBe("at a rate of 3 pills every 5 hours");
   });
 
+  test("numerator (with comparator) and denominator", () => {
+    const dosage: Dosage = {
+      doseAndRate: [
+        {
+          rateRatio: {
+            numerator: {
+              value: 3,
+              unit: "pills",
+              comparator: "<",
+            },
+            denominator: {
+              value: 5,
+              unit: "hours",
+            },
+          },
+        },
+      ],
+    };
+
+    let result = dosageUtils.fromDosageToText(dosage);
+    expect(result).toBe("at a rate of &lt; 3 pills every 5 hours");
+  });
+
   test("no numerator", () => {
     const dosage: Dosage = {
       doseAndRate: [
@@ -82,7 +105,9 @@ describe("fromDosageToText - rateRatio", () => {
     };
 
     let result = dosageUtils.fromDosageToText(dosage);
-    expect(result).toBe("at a rate of every 5 hours");
+    // From FHIR https://build.fhir.org/datatypes.html#Ratio
+    // "A proper ratio has both a numerator and a denominator; however, these are not mandatory in order to allow an invalid ratio with an extension with further information"
+    expect(result).toBe("at a rate of  every 5 hours");
   });
 
   test("no unit", () => {

@@ -1,6 +1,7 @@
 // Function
 import { fromListToString } from "../utils/fromListToString";
 import { extractTimingRepeat } from "../internal/extractTimingRepeat";
+import { isArrayEmpty } from "../internal/isEmptyArray";
 
 // Types
 import type { DisplayOrderParams } from "../types";
@@ -21,18 +22,18 @@ export function transformDayOfWeekToText({
   let dayOfWeek = repeat.dayOfWeek;
 
   // If empty, skip it
-  if (dayOfWeek === undefined || dayOfWeek.length === 0) {
+  if (isArrayEmpty(dayOfWeek)) {
     return undefined;
-  } else {
-    // Turn it into a string
-    const dayOfWeeks = dayOfWeek.map((dayCode) =>
-      i18next.t(`daysOfWeek:${dayCode}`),
-    );
-    const dayOfWeeksAsString = fromListToString(i18next, dayOfWeeks);
-
-    return i18next.t("fields.dayOfWeek.dayOfWeek", {
-      count: dayOfWeek.length,
-      dayOfWeek: dayOfWeeksAsString,
-    });
   }
+
+  // Turn it into a string
+  const dayOfWeeks = dayOfWeek.map((dayCode) =>
+    i18next.t(`daysOfWeek:${dayCode}`),
+  );
+  const dayOfWeeksAsString = fromListToString(i18next, dayOfWeeks);
+
+  return i18next.t("fields.dayOfWeek.dayOfWeek", {
+    count: dayOfWeek.length,
+    dayOfWeek: dayOfWeeksAsString,
+  });
 }

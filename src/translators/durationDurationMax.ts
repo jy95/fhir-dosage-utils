@@ -21,24 +21,24 @@ export function transformDurationDurationMaxToText({
   // Do nothing if no unit, I am not a wizard
   if (unit === undefined) {
     return undefined;
-  } else {
-    return [
-      // duration
-      duration !== undefined &&
-        i18next.t("fields.duration", {
-          durationText: i18next.t(`unitsOfTime:withCount.${unit}`, {
-            count: duration,
-          }),
-        }),
-      // durationMax
-      max !== undefined &&
-        i18next.t("fields.durationMax", {
-          durationMaxText: i18next.t(`unitsOfTime:withCount.${unit}`, {
-            count: max,
-          }),
-        }),
-    ]
-      .filter((s) => s !== false)
-      .join(" ");
   }
+
+  return [
+    // duration
+    duration !== undefined &&
+      i18next.t("fields.duration", {
+        durationText: i18next.t(`unitsOfTime:withCount.${unit}`, {
+          count: duration,
+        }),
+      }),
+    // durationMax
+    max !== undefined &&
+      i18next.t("fields.durationMax", {
+        durationMaxText: i18next.t(`unitsOfTime:withCount.${unit}`, {
+          count: max,
+        }),
+      }),
+  ]
+    .filter((s) => s !== false)
+    .join(" ");
 }

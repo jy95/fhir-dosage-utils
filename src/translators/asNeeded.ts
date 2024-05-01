@@ -53,14 +53,10 @@ export function transformAsNeededToText({
         config,
       ),
     });
-  } else {
-    // merge boolean to make it simpler
-    let booleanValue = asNeededBoolean || asNeeded || false;
-
-    if (booleanValue) {
-      return i18next.t("fields.asNeeded");
-    } else {
-      return undefined;
-    }
   }
+
+  // merge boolean to make it simpler
+  let booleanValue = [asNeededBoolean, asNeeded].includes(true);
+
+  return booleanValue ? i18next.t("fields.asNeeded") : undefined;
 }

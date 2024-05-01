@@ -37,7 +37,13 @@ export class Configurator {
       // default attributes
       fallbackLng: "en",
       lng: this.config.language,
-      ns: ["common", "daysOfWeek", "eventTiming", "unitsOfTime"],
+      ns: [
+        "common",
+        "daysOfWeek",
+        "eventTiming",
+        "unitsOfTime",
+        "quantityComparator",
+      ],
       defaultNS: "common",
       // attributes set by user
       ...i18nConfig,

@@ -16,13 +16,21 @@ type MappedDate = {
 function generateDateStyleFormatOptions(
   options: Intl.DateTimeFormatOptions,
 ): Intl.DateTimeFormatOptions {
+  if (options.dateStyle !== undefined) {
+    return {
+      dateStyle: options.dateStyle,
+    };
+  }
+
+  const defaults: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  };
+
   return {
-    year:
-      options.dateStyle === undefined ? options.year || "numeric" : undefined,
-    month:
-      options.dateStyle === undefined ? options.month || "2-digit" : undefined,
-    day: options.dateStyle === undefined ? options.day || "2-digit" : undefined,
-    weekday: options.dateStyle === undefined ? options.weekday : undefined,
+    ...options,
+    ...defaults,
   };
 }
 
@@ -30,13 +38,21 @@ function generateDateStyleFormatOptions(
 function generateTimeStyleFormatOptions(
   options: Intl.DateTimeFormatOptions,
 ): Intl.DateTimeFormatOptions {
+  if (options.timeStyle !== undefined) {
+    return {
+      timeStyle: options.timeStyle,
+    };
+  }
+
+  const defaults: Intl.DateTimeFormatOptions = {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  };
+
   return {
-    hour:
-      options.timeStyle === undefined ? options.hour || "2-digit" : undefined,
-    minute:
-      options.timeStyle === undefined ? options.minute || "2-digit" : undefined,
-    second:
-      options.timeStyle === undefined ? options.second || "2-digit" : undefined,
+    ...options,
+    ...defaults,
   };
 }
 
@@ -89,8 +105,7 @@ export function formatDatetimes({ config, datetimes }: Args): string[] {
     if (!hasTimePart) {
       let df3 = new Intl.DateTimeFormat(config.language, {
         // retrieve value from user
-        dateStyle: options.dateStyle,
-        // fallback if dateStyle is not defined
+        // and fallback if dateStyle is not defined
         ...generateDateStyleFormatOptions(options),
       });
       return df3.format(date);
@@ -99,9 +114,7 @@ export function formatDatetimes({ config, datetimes }: Args): string[] {
     // Otherwise, we have a full datetime
     let df4 = new Intl.DateTimeFormat(config.language, {
       // retrieve value from user
-      dateStyle: options.dateStyle,
-      timeStyle: options.timeStyle,
-      // fallback if dateStyle / timeStyle is not defined
+      // and fallback if dateStyle / timeStyle is not defined
       ...generateDateStyleFormatOptions(options),
       ...generateTimeStyleFormatOptions(options),
     });
