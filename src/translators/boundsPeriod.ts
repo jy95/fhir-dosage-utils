@@ -10,11 +10,7 @@ export function transformBoundsPeriodToText({
   i18next,
 }: DisplayOrderParams): string | undefined {
   // If empty, return undefined
-  if (
-    dos.timing === undefined ||
-    dos.timing.repeat === undefined ||
-    dos.timing.repeat.boundsPeriod === undefined
-  ) {
+  if (dos.timing?.repeat?.boundsPeriod === undefined) {
     return undefined;
   }
 
