@@ -18,8 +18,6 @@ export function transformCountCountMaxToText({
     return undefined;
   }
 
-  // Three cases
-
   // 1. Both count & countMax are present
   if (noUndefinedInArray(count, countMax)) {
     return i18next.t("fields.countMax.countMax", {

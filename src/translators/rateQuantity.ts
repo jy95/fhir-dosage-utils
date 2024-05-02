@@ -11,7 +11,6 @@ export function transformRateQuantityToText({
 }: DisplayOrderParams): string | undefined {
   let rateQuantity = extractMatchingDoseAndRateFirstEntry(dos, "rateQuantity");
 
-  // If not found, skip
   if (!isNotUndefined(rateQuantity)) {
     return undefined;
   }

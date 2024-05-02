@@ -21,8 +21,6 @@ export function transformBoundsPeriodToText({
   let start = formatDatetime({ config, datetime: boundsPeriod.start });
   let end = formatDatetime({ config, datetime: boundsPeriod.end });
 
-  // Three cases
-
   // 1. Both start and end are present
   if (noUndefinedInArray(start, end)) {
     return i18next.t("fields.boundsPeriod.startAndEnd", {

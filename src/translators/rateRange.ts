@@ -12,7 +12,6 @@ export function transformRateRangeToText({
 }: DisplayOrderParams): string | undefined {
   let rateRange = extractMatchingDoseAndRateFirstEntry(dos, "rateRange");
 
-  // If not found, skip
   if (!isNotUndefined(rateRange)) {
     return undefined;
   }
@@ -24,12 +23,10 @@ export function transformRateRangeToText({
     i18next,
   });
 
-  // Reject if empty
   if (!isNotUndefined(rangeText)) {
     return undefined;
   }
 
-  // return the final string
   return i18next.t("fields.rateRange", {
     rangeText: rangeText,
   });

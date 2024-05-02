@@ -11,7 +11,6 @@ export function transformDoseRangeToText({
 }: DisplayOrderParams): string | undefined {
   let doseRange = extractMatchingDoseAndRateFirstEntry(dos, "doseRange");
 
-  // If not found, skip
   if (!isNotUndefined(doseRange)) {
     return undefined;
   }
@@ -23,7 +22,6 @@ export function transformDoseRangeToText({
     i18next,
   });
 
-  // Reject if empty
   if (!isNotUndefined(text)) {
     return undefined;
   }

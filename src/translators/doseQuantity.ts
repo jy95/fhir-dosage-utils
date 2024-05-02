@@ -11,12 +11,10 @@ export function transformDoseQuantityToText({
 }: DisplayOrderParams): string | undefined {
   let doseQuantity = extractMatchingDoseAndRateFirstEntry(dos, "doseQuantity");
 
-  // If not found, skip
   if (!isNotUndefined(doseQuantity)) {
     return undefined;
   }
 
-  // Otherwise rendering it
   return i18next.t("fields.doseQuantity", {
     quantityText: fromQuantityToString({
       quantity: doseQuantity,

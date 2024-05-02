@@ -18,7 +18,6 @@ export function transformPeriodPeriodMaxToText({
     return undefined;
   }
 
-  // Three cases
   // 1. period and periodMax are present
   if (noUndefinedInArray(period, max)) {
     return i18next.t("fields.periodMax.withPeriod", {
