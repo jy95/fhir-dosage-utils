@@ -1,3 +1,4 @@
+import { isNotUndefined } from "../internal/undefinedChecks";
 // types
 import type { Config } from "../types";
 
@@ -129,8 +130,7 @@ export function formatDatetime({
   config,
   datetime,
 }: Args2): string | undefined {
-  // Can't do magic ;)
-  if (datetime === undefined) {
+  if (!isNotUndefined(datetime)) {
     return undefined;
   }
 

@@ -1,6 +1,7 @@
 // Utility function
 import { fromRangeToString } from "../utils/fromRangeToString";
 import { extractMatchingDoseAndRateFirstEntry } from "../internal/extractMatchingDoseAndRateFirstEntry";
+import { isNotUndefined } from "../internal/undefinedChecks";
 
 // types
 import type { DisplayOrderParams } from "../types";
@@ -13,7 +14,7 @@ export function transformRateRangeToText({
   let rateRange = extractMatchingDoseAndRateFirstEntry(dos, "rateRange");
 
   // If not found, skip
-  if (rateRange === undefined) {
+  if (!isNotUndefined(rateRange)) {
     return undefined;
   }
 
@@ -25,7 +26,7 @@ export function transformRateRangeToText({
   });
 
   // Reject if empty
-  if (rangeText === undefined) {
+  if (!isNotUndefined(rangeText)) {
     return undefined;
   }
 

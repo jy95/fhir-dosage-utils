@@ -1,3 +1,4 @@
+import { isNotUndefined } from "./undefinedChecks";
 export function isArrayEmpty(array?: any[]): array is undefined | [] {
-  return array === undefined || array.length === 0;
+  return !isNotUndefined(array) || array.length === 0;
 }

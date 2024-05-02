@@ -4,6 +4,7 @@ import type { DisplayOrderParams } from "../types";
 // Utility function
 import { fromRangeToString } from "../utils/fromRangeToString";
 import { extractTimingRepeat } from "../internal/extractTimingRepeat";
+import { isNotUndefined } from "../internal/undefinedChecks";
 
 export function transformBoundsRangeToText({
   dos,
@@ -13,7 +14,7 @@ export function transformBoundsRangeToText({
   let repeat = extractTimingRepeat(dos);
 
   // If empty, return undefined
-  if (repeat === undefined) {
+  if (!isNotUndefined(repeat)) {
     return undefined;
   }
 
@@ -21,7 +22,7 @@ export function transformBoundsRangeToText({
   let boundsRange = repeat.boundsRange;
 
   // Do nothing if no boundsRange, I am not a wizard
-  if (boundsRange === undefined) {
+  if (!isNotUndefined(boundsRange)) {
     return undefined;
   }
 
@@ -33,7 +34,7 @@ export function transformBoundsRangeToText({
   });
 
   // Reject if empty
-  if (rangeText === undefined) {
+  if (!isNotUndefined(rangeText)) {
     return undefined;
   }
 

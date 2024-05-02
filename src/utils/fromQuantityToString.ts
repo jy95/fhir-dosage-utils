@@ -1,4 +1,5 @@
 // Function
+import { isNotUndefined } from "../internal/undefinedChecks";
 
 // Type
 import type { QuantityParams } from "../types";
@@ -36,10 +37,10 @@ export function fromQuantityToString({
       : undefined;
 
   // If no comparator, print it
-  if (comparatorString === undefined) {
+  if (!isNotUndefined(comparatorString)) {
     return quantityString;
-  } else {
-    // concatenate comparator and quantity
-    return `${comparatorString} ${quantityString}`;
   }
+
+  // concatenate comparator and quantity
+  return `${comparatorString} ${quantityString}`;
 }

@@ -1,5 +1,6 @@
 // Functions
 import { isArrayEmpty } from "../internal/isEmptyArray";
+import { isNotUndefined } from "../internal/undefinedChecks";
 
 // Types
 import type { CodeableConcept } from "../types";
@@ -21,12 +22,12 @@ export function defaultFromCodeableConceptToString({
   code,
 }: FromCodeableConceptToStringArgs) {
   // If no code, skip it
-  if (code === undefined) {
+  if (!isNotUndefined(code)) {
     return undefined;
   }
 
   // Take text first
-  if (code.text !== undefined) {
+  if (isNotUndefined(code.text)) {
     return code.text;
   }
 

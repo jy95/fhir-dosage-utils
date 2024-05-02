@@ -1,5 +1,6 @@
 import { fromRatioToString } from "../utils/fromRatioToString";
 import { extractMatchingDoseAndRateFirstEntry } from "../internal/extractMatchingDoseAndRateFirstEntry";
+import { isNotUndefined } from "../internal/undefinedChecks";
 
 // types
 import type { DisplayOrderParams } from "../types";
@@ -12,7 +13,7 @@ export function transformRateRatioToText({
   let rateRatio = extractMatchingDoseAndRateFirstEntry(dos, "rateRatio");
 
   // If not found, skip
-  if (rateRatio === undefined) {
+  if (!isNotUndefined(rateRatio)) {
     return undefined;
   }
 
@@ -23,7 +24,7 @@ export function transformRateRatioToText({
     ratio: rateRatio,
   });
 
-  if (ratioText === undefined) {
+  if (!isNotUndefined(ratioText)) {
     return undefined;
   }
 

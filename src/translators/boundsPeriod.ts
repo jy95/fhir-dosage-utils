@@ -1,6 +1,9 @@
 // Functions
 import { formatDatetime } from "../utils/formatDatetimes";
-import { isNotUndefined } from "../internal/isNotUndefined";
+import {
+  isNotUndefined,
+  noUndefinedInArray,
+} from "../internal/undefinedChecks";
 
 // types
 import type { DisplayOrderParams } from "../types";
@@ -11,7 +14,7 @@ export function transformBoundsPeriodToText({
   i18next,
 }: DisplayOrderParams): string | undefined {
   // If empty, return undefined
-  if (dos.timing?.repeat?.boundsPeriod === undefined) {
+  if (!isNotUndefined(dos.timing?.repeat?.boundsPeriod)) {
     return undefined;
   }
 
@@ -24,7 +27,7 @@ export function transformBoundsPeriodToText({
   // Three cases
 
   // 1. Both start and end are present
-  if (isNotUndefined([start, end])) {
+  if (noUndefinedInArray(start, end)) {
     return i18next.t("fields.boundsPeriod.startAndEnd", {
       start: start,
       end: end,
@@ -32,7 +35,7 @@ export function transformBoundsPeriodToText({
   }
 
   // 2. Only start is present
-  if (isNotUndefined([start])) {
+  if (isNotUndefined(start)) {
     return i18next.t("fields.boundsPeriod.onlyStart", {
       start: start,
     });

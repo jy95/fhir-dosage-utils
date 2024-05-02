@@ -2,6 +2,7 @@
 import { fromListToString } from "../utils/fromListToString";
 import { extractTimingRepeat } from "../internal/extractTimingRepeat";
 import { isArrayEmpty } from "../internal/isEmptyArray";
+import { isNotUndefined } from "../internal/undefinedChecks";
 
 // Types
 import type { DisplayOrderParams } from "../types";
@@ -14,7 +15,7 @@ export function transformDayOfWeekToText({
   let repeat = extractTimingRepeat(dos);
 
   // If empty, return undefined
-  if (repeat === undefined) {
+  if (!isNotUndefined(repeat)) {
     return undefined;
   }
 

@@ -1,6 +1,9 @@
 // Functions
 import { extractTimingRepeat } from "../internal/extractTimingRepeat";
-import { isNotUndefined } from "../internal/isNotUndefined";
+import {
+  isNotUndefined,
+  noUndefinedInArray,
+} from "../internal/undefinedChecks";
 
 // Types
 import type { DisplayOrderParams } from "../types";
@@ -12,7 +15,7 @@ export function transformCountCountMaxToText({
   let repeat = extractTimingRepeat(dos);
 
   // If empty, return undefined
-  if (repeat === undefined) {
+  if (!isNotUndefined(repeat)) {
     return undefined;
   }
 
@@ -28,7 +31,7 @@ export function transformCountCountMaxToText({
   // Three cases
 
   // 1. Both count & countMax are present
-  if (isNotUndefined([count, countMax])) {
+  if (noUndefinedInArray(count, countMax)) {
     return i18next.t("fields.countMax.countMax", {
       count: countMax,
       low: count,
@@ -36,7 +39,7 @@ export function transformCountCountMaxToText({
   }
 
   // 2. Only countMax is present
-  if (isNotUndefined([countMax])) {
+  if (isNotUndefined(countMax)) {
     return i18next.t("fields.count.count", { count: countMax });
   }
 

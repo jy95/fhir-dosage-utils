@@ -1,3 +1,6 @@
+// Functions
+import { isNotUndefined } from "../internal/undefinedChecks";
+
 // Types
 import type { Dosage, DoseAndRate } from "../types";
 type KeyType = keyof DoseAndRate;
@@ -7,7 +10,7 @@ export function extractMatchingDoseAndRateFirstEntry<T extends KeyType>(
   key: T,
 ): DoseAndRate[T] | undefined {
   // If empty, return undefined
-  if (dos.doseAndRate === undefined) {
+  if (!isNotUndefined(dos.doseAndRate)) {
     return undefined;
   }
 
@@ -15,7 +18,7 @@ export function extractMatchingDoseAndRateFirstEntry<T extends KeyType>(
   let doseAndRate = dos.doseAndRate.find((s) => s[key] !== undefined);
 
   // If not found, skip
-  if (doseAndRate === undefined) {
+  if (!isNotUndefined(doseAndRate)) {
     return undefined;
   }
 

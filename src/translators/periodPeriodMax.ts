@@ -1,6 +1,9 @@
 // Functions
 import { extractTimingRepeat } from "../internal/extractTimingRepeat";
-import { isNotUndefined } from "../internal/isNotUndefined";
+import {
+  isNotUndefined,
+  noUndefinedInArray,
+} from "../internal/undefinedChecks";
 
 // Types
 import type { DisplayOrderParams } from "../types";
@@ -12,7 +15,7 @@ export function transformPeriodPeriodMaxToText({
   let repeat = extractTimingRepeat(dos);
 
   // If empty, return undefined
-  if (repeat === undefined) {
+  if (!isNotUndefined(repeat)) {
     return undefined;
   }
 
@@ -22,14 +25,14 @@ export function transformPeriodPeriodMaxToText({
   let unit = repeat.periodUnit;
 
   // Do nothing if no unit, I am not a wizard
-  if (unit === undefined) {
+  if (!isNotUndefined(unit)) {
     return undefined;
   }
 
   // Three cases
 
   // 1. period and periodMax are present
-  if (isNotUndefined([period, max])) {
+  if (noUndefinedInArray(period, max)) {
     return i18next.t("fields.periodMax.withPeriod", {
       period: period,
       count: max,
@@ -38,7 +41,7 @@ export function transformPeriodPeriodMaxToText({
   }
 
   // 2. Only periodMax is present
-  if (isNotUndefined([max])) {
+  if (isNotUndefined(max)) {
     return i18next.t("fields.periodMax.onlyPeriodMax", {
       count: max,
       unit: i18next.t(`unitsOfTime:withoutCount.${unit}`, { count: max }),

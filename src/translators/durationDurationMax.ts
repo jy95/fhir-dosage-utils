@@ -1,6 +1,6 @@
 // Functions
 import { extractTimingRepeat } from "../internal/extractTimingRepeat";
-import { isNotUndefined } from "../internal/isNotUndefined";
+import { isNotUndefined } from "../internal/undefinedChecks";
 
 // Types
 import type { DisplayOrderParams } from "../types";
@@ -12,7 +12,7 @@ export function transformDurationDurationMaxToText({
   let repeat = extractTimingRepeat(dos);
 
   // If empty, return undefined
-  if (repeat === undefined) {
+  if (!isNotUndefined(repeat)) {
     return undefined;
   }
 
@@ -22,20 +22,20 @@ export function transformDurationDurationMaxToText({
   let unit = repeat.durationUnit;
 
   // Do nothing if no unit, I am not a wizard
-  if (unit === undefined) {
+  if (!isNotUndefined(unit)) {
     return undefined;
   }
 
   return [
     // duration
-    isNotUndefined([duration]) &&
+    isNotUndefined(duration) &&
       i18next.t("fields.duration", {
         durationText: i18next.t(`unitsOfTime:withCount.${unit}`, {
           count: duration,
         }),
       }),
     // durationMax
-    isNotUndefined([max]) &&
+    isNotUndefined(max) &&
       i18next.t("fields.durationMax", {
         durationMaxText: i18next.t(`unitsOfTime:withCount.${unit}`, {
           count: max,

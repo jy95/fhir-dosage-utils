@@ -1,5 +1,6 @@
 import { fromListToString } from "../utils/fromListToString";
 import { fromRatioToString } from "../utils/fromRatioToString";
+import { isNotUndefined } from "../internal/undefinedChecks";
 
 // types
 import type { DisplayOrderParams } from "../types";
@@ -10,7 +11,7 @@ export function transformMaxDosePerPeriodToText({
   i18next,
 }: DisplayOrderParams): string | undefined {
   // If empty, return undefined
-  if (dos.maxDosePerPeriod === undefined) {
+  if (!isNotUndefined(dos.maxDosePerPeriod)) {
     return undefined;
   }
 
