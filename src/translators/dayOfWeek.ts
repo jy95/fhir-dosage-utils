@@ -1,8 +1,7 @@
 // Function
 import { fromListToString } from "../utils/fromListToString";
-import { extractTimingRepeat } from "../internal/extractTimingRepeat";
+import { extractMatchingTimeRepeatField } from "../internal/extractMatchingTimingRepeat";
 import { isArrayEmpty } from "../internal/isEmptyArray";
-import { isNotUndefined } from "../internal/undefinedChecks";
 
 // Types
 import type { DisplayOrderParams } from "../types";
@@ -12,15 +11,7 @@ export function transformDayOfWeekToText({
   dos,
   i18next,
 }: DisplayOrderParams): string | undefined {
-  let repeat = extractTimingRepeat(dos);
-
-  // If empty, return undefined
-  if (!isNotUndefined(repeat)) {
-    return undefined;
-  }
-
-  // Pickup the repeat interesting attributes
-  let dayOfWeek = repeat.dayOfWeek;
+  let dayOfWeek = extractMatchingTimeRepeatField(dos, "dayOfWeek");
 
   // If empty, skip it
   if (isArrayEmpty(dayOfWeek)) {

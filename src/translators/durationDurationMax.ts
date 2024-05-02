@@ -1,5 +1,5 @@
 // Functions
-import { extractTimingRepeat } from "../internal/extractTimingRepeat";
+import { extractMatchingTimeRepeatField } from "../internal/extractMatchingTimingRepeat";
 import { isNotUndefined } from "../internal/undefinedChecks";
 
 // Types
@@ -9,17 +9,10 @@ export function transformDurationDurationMaxToText({
   dos,
   i18next,
 }: DisplayOrderParams): string | undefined {
-  let repeat = extractTimingRepeat(dos);
-
-  // If empty, return undefined
-  if (!isNotUndefined(repeat)) {
-    return undefined;
-  }
-
   // Pickup the repeat interesting attributes
-  let duration = repeat.duration;
-  let max = repeat.durationMax;
-  let unit = repeat.durationUnit;
+  let duration = extractMatchingTimeRepeatField(dos, "duration");
+  let max = extractMatchingTimeRepeatField(dos, "durationMax");
+  let unit = extractMatchingTimeRepeatField(dos, "durationUnit");
 
   // Do nothing if no unit, I am not a wizard
   if (!isNotUndefined(unit)) {

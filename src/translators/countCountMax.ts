@@ -1,5 +1,5 @@
 // Functions
-import { extractTimingRepeat } from "../internal/extractTimingRepeat";
+import { extractMatchingTimeRepeatField } from "../internal/extractMatchingTimingRepeat";
 import {
   isNotUndefined,
   noUndefinedInArray,
@@ -13,16 +13,9 @@ export function transformCountCountMaxToText({
   dos,
   i18next,
 }: DisplayOrderParams): string | undefined {
-  let repeat = extractTimingRepeat(dos);
-
-  // If empty, return undefined
-  if (!isNotUndefined(repeat)) {
-    return undefined;
-  }
-
   // Pickup the repeat interesting attributes
-  let count = repeat.count;
-  let countMax = repeat.countMax;
+  let count = extractMatchingTimeRepeatField(dos, "count");
+  let countMax = extractMatchingTimeRepeatField(dos, "countMax");
 
   // Do nothing if no count, I am not a wizard
   if (allUndefinedInArray(count, countMax)) {

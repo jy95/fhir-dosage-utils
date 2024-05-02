@@ -1,5 +1,5 @@
 // Functions
-import { extractTimingRepeat } from "../internal/extractTimingRepeat";
+import { extractMatchingTimeRepeatField } from "../internal/extractMatchingTimingRepeat";
 import { isNotUndefined } from "../internal/undefinedChecks";
 
 // types
@@ -32,15 +32,7 @@ export function transformBoundsDurationToText({
   config,
   i18next,
 }: DisplayOrderParams): string | undefined {
-  let repeat = extractTimingRepeat(dos);
-
-  // If empty, return undefined
-  if (!isNotUndefined(repeat)) {
-    return undefined;
-  }
-
-  // Pickup the repeat interesting attributes
-  let boundsDuration = repeat.boundsDuration;
+  let boundsDuration = extractMatchingTimeRepeatField(dos, "boundsDuration");
 
   // Do nothing if no boundsDuration, I am not a wizard
   if (!isNotUndefined(boundsDuration)) {

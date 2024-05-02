@@ -14,6 +14,7 @@ import type {
   Range as RangeR4,
   Ratio as RatioR4,
   DosageDoseAndRate as DoseAndRateR4,
+  TimingRepeat as TimingRepeatR4,
 } from "fhir/r4";
 import type {
   Dosage as DosageR5,
@@ -24,6 +25,7 @@ import type {
   Range as RangeR5,
   Ratio as RatioR5,
   DosageDoseAndRate as DoseAndRateR5,
+  TimingRepeat as TimingRepeatR5,
 } from "fhir/r5";
 
 // Exported types
@@ -36,6 +38,7 @@ export type Extension = ExtensionR4 | ExtensionR5;
 export type Range = RangeR4 | RangeR5;
 export type Ratio = RatioR4 | RatioR5;
 export type DoseAndRate = DoseAndRateR4 | DoseAndRateR5;
+export type TimingRepeat = TimingRepeatR4 | TimingRepeatR5;
 
 export type { FromFHIRQuantityUnitToStringFct, FromCodeableConceptToStringFct };
 

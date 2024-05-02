@@ -1,6 +1,6 @@
 // Functions
 import { fromListToString } from "../utils/fromListToString";
-import { extractTimingRepeat } from "../internal/extractTimingRepeat";
+import { extractMatchingTimeRepeatField } from "../internal/extractMatchingTimingRepeat";
 import { isArrayEmpty } from "../internal/isEmptyArray";
 import {
   isNotUndefined,
@@ -69,16 +69,8 @@ export function transformOffsetWhenToText({
   dos,
   i18next,
 }: DisplayOrderParams): string | undefined {
-  let repeat = extractTimingRepeat(dos);
-
-  // If empty, return undefined
-  if (!isNotUndefined(repeat)) {
-    return undefined;
-  }
-
-  // Pickup the repeat interesting attributes
-  let offset = repeat.offset;
-  let when = repeat.when;
+  let offset = extractMatchingTimeRepeatField(dos, "offset");
+  let when = extractMatchingTimeRepeatField(dos, "when");
 
   // If both are undefined, don't do anything
   if (allUndefinedInArray(offset, when)) {

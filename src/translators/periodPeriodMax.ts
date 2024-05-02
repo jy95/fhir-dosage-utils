@@ -1,5 +1,5 @@
 // Functions
-import { extractTimingRepeat } from "../internal/extractTimingRepeat";
+import { extractMatchingTimeRepeatField } from "../internal/extractMatchingTimingRepeat";
 import {
   isNotUndefined,
   noUndefinedInArray,
@@ -12,17 +12,10 @@ export function transformPeriodPeriodMaxToText({
   dos,
   i18next,
 }: DisplayOrderParams): string | undefined {
-  let repeat = extractTimingRepeat(dos);
-
-  // If empty, return undefined
-  if (!isNotUndefined(repeat)) {
-    return undefined;
-  }
-
   // Pickup the repeat interesting attributes
-  let period = repeat.period;
-  let max = repeat.periodMax;
-  let unit = repeat.periodUnit;
+  let period = extractMatchingTimeRepeatField(dos, "period");
+  let max = extractMatchingTimeRepeatField(dos, "periodMax");
+  let unit = extractMatchingTimeRepeatField(dos, "periodUnit");
 
   // Do nothing if no unit, I am not a wizard
   if (!isNotUndefined(unit)) {
