@@ -1,4 +1,3 @@
-// Classe(s)
 import { Configurator } from "./classes/Configurator";
 
 import { fromDisplayOrderToResult } from "./utils/fromDisplayOrderToResult";
@@ -13,13 +12,11 @@ import type {
   NamespacesLocale,
 } from "./types";
 
-// I18n default config
 import resourcesToBackend from "i18next-resources-to-backend";
 const defaultI18NConfig: I18InitOptions = {
   backend: {
     backends: [
       resourcesToBackend(
-        // have to cast the function to be webpack / builder friendly
         async (lng: string, ns: NamespacesLocale) =>
           import(`./locales/${lng}/${ns}.json`),
       ),
@@ -44,12 +41,10 @@ export class FhirDosageUtils extends Configurator {
    * Does this array of Dosage objects contains only "sequential" instructions ?
    */
   containsOnlySequentialInstructions(dosages: Dosage[]): boolean {
-    // 1. Collect all sequences number
     let sequencesNumbers = dosages
       .map((d) => d.sequence)
       .filter(isNotUndefined);
 
-    // 2. Convert it to a Set
     let encounteredSequenceNumbers = new Set(sequencesNumbers);
 
     // 3. We have a "sequential" situation in two cases
@@ -66,12 +61,10 @@ export class FhirDosageUtils extends Configurator {
    * @returns {Dosage[][]} - A two-dimensional array where each inner array contains Dosage objects belonging to the same sequence numberr.
    */
   groupBySequence(dosages: Dosage[]) {
-    // Prepare variables
     let groups: Record<number, Dosage[]> = {};
     let sequences = new Set<number>();
 
     for (let idx = 0; idx < dosages.length; idx++) {
-      // Get dosage object
       const dosage = dosages[idx];
 
       // Get the sequence number (normally, in real world, it should be present in this case)
@@ -81,10 +74,7 @@ export class FhirDosageUtils extends Configurator {
       // Retrieve of create previous entries for this sequence number
       let localGroup = groups[sequenceNr] || [];
 
-      // Add entry
       localGroup.push(dosage);
-
-      // Pushback result
       groups[sequenceNr] = localGroup;
 
       // For reminder of the parsed sequence
@@ -103,7 +93,6 @@ export class FhirDosageUtils extends Configurator {
    * Some use cases could request to split part of the object for given needs (quantity and timing separately)
    */
   getFields(dos: Dosage, ...order: DisplayOrder[]): string {
-    // iterate on each key and generate a string from each part
     let parts = order
       .map((entry) =>
         fromDisplayOrderToResult({
@@ -115,7 +104,6 @@ export class FhirDosageUtils extends Configurator {
       )
       .filter(isNotUndefined);
 
-    // Join each part with a separator
     return parts.join(this.config.displaySeparator);
   }
 

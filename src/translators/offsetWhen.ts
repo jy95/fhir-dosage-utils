@@ -30,7 +30,6 @@ function transformOffset(i18next: I18N, offset?: number): string | undefined {
   // extract days / hours / minutes from it
   let time = extractTime(offset);
 
-  // generate part
   let subParts = [
     // days
     time.days > 0

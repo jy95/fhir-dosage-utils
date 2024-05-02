@@ -14,7 +14,6 @@ export function transformFrequencyFrequencyMaxToText({
   let frequency = extractMatchingTimeRepeatField(dos, "frequency");
   let max = extractMatchingTimeRepeatField(dos, "frequencyMax");
 
-  // Do nothing if no frequency / frequencyMax, I am not a wizard
   if (allUndefinedInArray(frequency, max)) {
     return undefined;
   }

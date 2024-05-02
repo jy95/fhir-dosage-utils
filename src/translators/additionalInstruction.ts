@@ -1,4 +1,3 @@
-// Function
 import { fromListToString } from "../utils/fromListToString";
 import { isArrayEmpty } from "../internal/isEmptyArray";
 import { isNotUndefined } from "../internal/undefinedChecks";

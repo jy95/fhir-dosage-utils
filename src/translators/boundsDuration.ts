@@ -32,7 +32,6 @@ export function transformBoundsDurationToText({
 }: DisplayOrderParams): string | undefined {
   let boundsDuration = extractMatchingTimeRepeatField(dos, "boundsDuration");
 
-  // Do nothing if no boundsDuration, I am not a wizard
   if (!isNotUndefined(boundsDuration)) {
     return undefined;
   }

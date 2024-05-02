@@ -11,11 +11,9 @@ export function transformCountCountMaxToText({
   dos,
   i18next,
 }: DisplayOrderParams): string | undefined {
-  // Pickup the repeat interesting attributes
   let count = extractMatchingTimeRepeatField(dos, "count");
   let countMax = extractMatchingTimeRepeatField(dos, "countMax");
 
-  // Do nothing if no count, I am not a wizard
   if (allUndefinedInArray(count, countMax)) {
     return undefined;
   }

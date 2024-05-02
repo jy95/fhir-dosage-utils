@@ -4,7 +4,6 @@ import { defaultFromFHIRQuantityUnitToString } from "../utils/fromFHIRQuantityUn
 import { defaultFromCodeableConceptToString } from "../utils/fromCodeableConceptToString";
 import { defaultFromExtensionsToString } from "../utils/fromExtensionsToString";
 
-// default attributes
 export const defaultAttributes: Config = {
   language: "en",
   fromFHIRQuantityUnitToString: defaultFromFHIRQuantityUnitToString,

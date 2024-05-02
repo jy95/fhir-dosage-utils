@@ -27,8 +27,6 @@ import type {
   TimingRepeat as TimingRepeatR5,
 } from "fhir/r5";
 
-// Exported types
-
 export type Dosage = DosageR4 | DosageR5;
 export type CodeableConcept = CodeableConceptR4 | CodeableConceptR5;
 export type Quantity = QuantityR4 | QuantityR5;
@@ -187,7 +185,6 @@ export type NamespacesLocale =
   | "eventTiming"
   | "unitsOfTime";
 
-// Parameters
 export interface Params {
   /**
    * BCP 47 language code to setup the library with

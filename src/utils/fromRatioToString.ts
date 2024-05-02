@@ -2,7 +2,6 @@ import { fromQuantityToString } from "../utils/fromQuantityToString";
 import { hasUnit } from "../internal/hasUnit";
 import { isNotUndefined } from "../internal/undefinedChecks";
 
-// Type
 import type { RatioParams, QuantityParams } from "../types";
 
 // To cover all nasty cases of denominator
@@ -43,10 +42,8 @@ export function fromRatioToString({
   config,
   i18next,
 }: RatioParams): string | undefined {
-  // Extract params
   const { denominator, numerator } = ratio;
 
-  // quantity
   let quantityNumerator = numerator?.value;
   let quantityDenominator = denominator?.value;
 
@@ -75,6 +72,5 @@ export function fromRatioToString({
     parts.push(denominatorString);
   }
 
-  // Concatenate the result
   return parts.length > 0 ? parts.join("") : undefined;
 }

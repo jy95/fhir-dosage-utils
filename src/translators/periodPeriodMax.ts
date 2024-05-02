@@ -10,18 +10,15 @@ export function transformPeriodPeriodMaxToText({
   dos,
   i18next,
 }: DisplayOrderParams): string | undefined {
-  // Pickup the repeat interesting attributes
   let period = extractMatchingTimeRepeatField(dos, "period");
   let max = extractMatchingTimeRepeatField(dos, "periodMax");
   let unit = extractMatchingTimeRepeatField(dos, "periodUnit");
 
-  // Do nothing if no unit, I am not a wizard
   if (!isNotUndefined(unit)) {
     return undefined;
   }
 
   // Three cases
-
   // 1. period and periodMax are present
   if (noUndefinedInArray(period, max)) {
     return i18next.t("fields.periodMax.withPeriod", {

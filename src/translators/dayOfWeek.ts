@@ -1,4 +1,3 @@
-// Function
 import { fromListToString } from "../utils/fromListToString";
 import { extractMatchingTimeRepeatField } from "../internal/extractMatchingTimingRepeat";
 import { isArrayEmpty } from "../internal/isEmptyArray";

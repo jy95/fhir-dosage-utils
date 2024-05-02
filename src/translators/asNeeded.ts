@@ -1,4 +1,3 @@
-// Function
 import { fromListToString } from "../utils/fromListToString";
 import { isNotUndefined } from "../internal/undefinedChecks";
 
@@ -34,7 +33,6 @@ export function transformAsNeededToText({
   config,
   i18next,
 }: DisplayOrderParams): string | undefined {
-  // Pickup the interesting attributes
   let asNeededBoolean = (dos as DosageR4).asNeededBoolean;
   let asNeededCodeableConcept = (dos as DosageR4).asNeededCodeableConcept;
   let asNeededFor = (dos as DosageR5).asNeededFor;

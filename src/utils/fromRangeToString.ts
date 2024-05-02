@@ -37,7 +37,6 @@ export function fromRangeToString({
   config,
   i18next,
 }: RangeParams): string | undefined {
-  // Extract params
   const { low, high } = range;
   const lowValue = low?.value;
   const highValue = high?.value;

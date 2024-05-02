@@ -1,6 +1,5 @@
 import { isNotUndefined } from "./undefinedChecks";
 
-// Type
 import type { Quantity } from "../types";
 
 // Quantity has an unit ?
