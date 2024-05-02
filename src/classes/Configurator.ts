@@ -4,7 +4,6 @@ import ChainedBackend from "i18next-chained-backend";
 // Default values
 import { defaultAttributes } from "../internal/defaultAttributes";
 
-// Types
 import type {
   Config,
   DisplayOrder,

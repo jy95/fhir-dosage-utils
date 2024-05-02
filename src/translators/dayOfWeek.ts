@@ -3,7 +3,6 @@ import { fromListToString } from "../utils/fromListToString";
 import { extractMatchingTimeRepeatField } from "../internal/extractMatchingTimingRepeat";
 import { isArrayEmpty } from "../internal/isEmptyArray";
 
-// Types
 import type { DisplayOrderParams } from "../types";
 
 // Function to transform dayOfWeek into a string

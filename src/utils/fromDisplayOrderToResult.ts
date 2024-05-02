@@ -24,7 +24,6 @@ import {
 } from "../translators";
 import { isNotUndefined } from "../internal/undefinedChecks";
 
-// Types
 import type { DisplayOrder, DisplayOrderParams } from "../types";
 type ResultFct = (args: DisplayOrderParams) => string | undefined;
 

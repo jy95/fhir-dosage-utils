@@ -1,12 +1,10 @@
 // Classe(s)
 import { Configurator } from "./classes/Configurator";
 
-// Functions
 import { fromDisplayOrderToResult } from "./utils/fromDisplayOrderToResult";
 import { fromListToString } from "./utils/fromListToString";
 import { isNotUndefined } from "./internal/undefinedChecks";
 
-// Types
 import type {
   Params,
   Dosage,

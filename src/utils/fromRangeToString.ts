@@ -1,4 +1,3 @@
-// Functions
 import { hasUnit } from "../internal/hasUnit";
 import {
   isNotUndefined,
@@ -6,7 +5,6 @@ import {
   allUndefinedInArray,
 } from "../internal/undefinedChecks";
 
-// Types
 import type { RangeParams, Config, Quantity, I18N } from "../types";
 
 // Quantity unit to string

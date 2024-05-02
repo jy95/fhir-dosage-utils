@@ -1,8 +1,6 @@
-// Functions
 import { fromQuantityToString } from "../utils/fromQuantityToString";
 import { isNotUndefined } from "../internal/undefinedChecks";
 
-// types
 import type { DisplayOrderParams } from "../types";
 
 export function transformMaxDosePerAdministrationToText({
@@ -10,7 +8,6 @@ export function transformMaxDosePerAdministrationToText({
   config,
   i18next,
 }: DisplayOrderParams): string | undefined {
-  // If empty, return undefined
   if (!isNotUndefined(dos.maxDosePerAdministration)) {
     return undefined;
   }

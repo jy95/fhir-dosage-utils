@@ -3,7 +3,6 @@ import { fromListToString } from "../utils/fromListToString";
 import { isArrayEmpty } from "../internal/isEmptyArray";
 import { isNotUndefined } from "../internal/undefinedChecks";
 
-// types
 import type { DisplayOrderParams } from "../types";
 
 export function transformAdditionalInstructionToText({
@@ -11,7 +10,6 @@ export function transformAdditionalInstructionToText({
   config,
   i18next,
 }: DisplayOrderParams): string | undefined {
-  // If empty, return undefined
   if (isArrayEmpty(dos.additionalInstruction)) {
     return undefined;
   }

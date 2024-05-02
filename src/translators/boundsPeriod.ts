@@ -1,11 +1,9 @@
-// Functions
 import { formatDatetime } from "../utils/formatDatetimes";
 import {
   isNotUndefined,
   noUndefinedInArray,
 } from "../internal/undefinedChecks";
 
-// types
 import type { DisplayOrderParams } from "../types";
 
 export function transformBoundsPeriodToText({
@@ -13,7 +11,6 @@ export function transformBoundsPeriodToText({
   config,
   i18next,
 }: DisplayOrderParams): string | undefined {
-  // If empty, return undefined
   if (!isNotUndefined(dos.timing?.repeat?.boundsPeriod)) {
     return undefined;
   }

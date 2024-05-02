@@ -2,7 +2,6 @@
 import { fromListToString } from "../utils/fromListToString";
 import { isNotUndefined } from "../internal/undefinedChecks";
 
-// types
 import type { Dosage as DosageR4 } from "fhir/r4";
 import type { Dosage as DosageR5 } from "fhir/r5";
 import type {

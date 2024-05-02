@@ -1,4 +1,3 @@
-// Functions
 import { fromListToString } from "../utils/fromListToString";
 import { extractMatchingTimeRepeatField } from "../internal/extractMatchingTimingRepeat";
 import { isArrayEmpty } from "../internal/isEmptyArray";
@@ -7,7 +6,6 @@ import {
   allUndefinedInArray,
 } from "../internal/undefinedChecks";
 
-// Types
 import type {
   DisplayOrderParams,
   I18N,

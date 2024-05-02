@@ -1,7 +1,5 @@
-// Functions
 import { isArrayEmpty } from "../internal/isEmptyArray";
 
-// Types
 import type { Extension } from "../types";
 
 /**

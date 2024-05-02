@@ -1,9 +1,7 @@
-// Functions
 import { extractMatchingDoseAndRateFirstEntry } from "../internal/extractMatchingDoseAndRateFirstEntry";
 import { fromQuantityToString } from "../utils/fromQuantityToString";
 import { isNotUndefined } from "../internal/undefinedChecks";
 
-// types
 import type { DisplayOrderParams } from "../types";
 
 export function transformRateQuantityToText({

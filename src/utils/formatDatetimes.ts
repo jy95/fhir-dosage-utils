@@ -1,5 +1,5 @@
 import { isNotUndefined } from "../internal/undefinedChecks";
-// types
+
 import type { Config } from "../types";
 
 type Args = { config: Config; datetimes: string[] };

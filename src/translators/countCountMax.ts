@@ -1,4 +1,3 @@
-// Functions
 import { extractMatchingTimeRepeatField } from "../internal/extractMatchingTimingRepeat";
 import {
   isNotUndefined,
@@ -6,7 +5,6 @@ import {
   allUndefinedInArray,
 } from "../internal/undefinedChecks";
 
-// Types
 import type { DisplayOrderParams } from "../types";
 
 export function transformCountCountMaxToText({

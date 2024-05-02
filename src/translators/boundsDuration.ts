@@ -1,8 +1,6 @@
-// Functions
 import { extractMatchingTimeRepeatField } from "../internal/extractMatchingTimingRepeat";
 import { isNotUndefined } from "../internal/undefinedChecks";
 
-// types
 import type { Config, Duration, DisplayOrderParams, I18N } from "../types";
 
 // Duration to string

@@ -2,7 +2,6 @@ import { fromRatioToString } from "../utils/fromRatioToString";
 import { extractMatchingDoseAndRateFirstEntry } from "../internal/extractMatchingDoseAndRateFirstEntry";
 import { isNotUndefined } from "../internal/undefinedChecks";
 
-// types
 import type { DisplayOrderParams } from "../types";
 
 export function transformRateRatioToText({

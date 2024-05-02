@@ -1,8 +1,6 @@
-// Functions
 import { extractMatchingTimeRepeatField } from "../internal/extractMatchingTimingRepeat";
 import { isNotUndefined } from "../internal/undefinedChecks";
 
-// Types
 import type { DisplayOrderParams } from "../types";
 
 export function transformDurationDurationMaxToText({

@@ -3,7 +3,6 @@ import { fromRangeToString } from "../utils/fromRangeToString";
 import { extractMatchingDoseAndRateFirstEntry } from "../internal/extractMatchingDoseAndRateFirstEntry";
 import { isNotUndefined } from "../internal/undefinedChecks";
 
-// types
 import type { DisplayOrderParams } from "../types";
 
 export function transformDoseRangeToText({

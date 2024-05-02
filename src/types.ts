@@ -1,4 +1,3 @@
-// Types
 import type { FromFHIRQuantityUnitToStringFct } from "./utils/fromFHIRQuantityUnitToString";
 import type { FromCodeableConceptToStringFct } from "./utils/fromCodeableConceptToString";
 import type { FromExtensionsToStringFct } from "./utils/fromExtensionsToString";

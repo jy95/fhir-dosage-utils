@@ -1,11 +1,9 @@
-// Functions
 import { extractMatchingTimeRepeatField } from "../internal/extractMatchingTimingRepeat";
 import {
   isNotUndefined,
   noUndefinedInArray,
 } from "../internal/undefinedChecks";
 
-// Types
 import type { DisplayOrderParams } from "../types";
 
 export function transformPeriodPeriodMaxToText({

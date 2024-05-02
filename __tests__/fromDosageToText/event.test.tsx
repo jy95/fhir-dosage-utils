@@ -14,7 +14,6 @@ function decodeHtmlEntities(text: string): string {
     });
 }
 
-// types
 import type { Dosage } from "fhir/r4";
 
 describe("fromDosageToText - event", () => {

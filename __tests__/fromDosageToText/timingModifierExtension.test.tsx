@@ -2,7 +2,6 @@
 import { expect, test, describe } from "@jest/globals";
 import FhirDosageUtils from "../../src/index";
 
-// types
 import type { Dosage } from "fhir/r4";
 
 describe("fromDosageToText - timingModifierExtension", () => {

@@ -1,4 +1,3 @@
-// Types
 import type { Config } from "../types";
 
 import { defaultFromFHIRQuantityUnitToString } from "../utils/fromFHIRQuantityUnitToString";

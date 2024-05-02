@@ -1,8 +1,6 @@
-// Functions
 import { isArrayEmpty } from "../internal/isEmptyArray";
 import { isNotUndefined } from "../internal/undefinedChecks";
 
-// Types
 import type { CodeableConcept } from "../types";
 
 /**

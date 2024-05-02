@@ -1,4 +1,3 @@
-// types
 import type { DisplayOrderParams } from "../types";
 
 // Utility function

@@ -7,7 +7,6 @@ export function extractMatchingTimeRepeatField<T extends KeyType>(
   dos: Dosage,
   key: T,
 ): TimingRepeat[T] | undefined {
-  // If empty, return undefined
   if (!isNotUndefined(dos.timing?.repeat)) {
     return undefined;
   }

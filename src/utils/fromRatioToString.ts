@@ -1,4 +1,3 @@
-// Functions
 import { fromQuantityToString } from "../utils/fromQuantityToString";
 import { hasUnit } from "../internal/hasUnit";
 import { isNotUndefined } from "../internal/undefinedChecks";
