@@ -3,6 +3,7 @@ import { extractTimingRepeat } from "../internal/extractTimingRepeat";
 import {
   isNotUndefined,
   noUndefinedInArray,
+  allUndefinedInArray,
 } from "../internal/undefinedChecks";
 
 // Types
@@ -24,7 +25,7 @@ export function transformCountCountMaxToText({
   let countMax = repeat.countMax;
 
   // Do nothing if no count, I am not a wizard
-  if (count === undefined && countMax === undefined) {
+  if (allUndefinedInArray(count, countMax)) {
     return undefined;
   }
 

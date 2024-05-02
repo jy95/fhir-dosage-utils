@@ -3,6 +3,7 @@ import { extractTimingRepeat } from "../internal/extractTimingRepeat";
 import {
   isNotUndefined,
   noUndefinedInArray,
+  allUndefinedInArray,
 } from "../internal/undefinedChecks";
 
 // Types
@@ -24,7 +25,7 @@ export function transformFrequencyFrequencyMaxToText({
   let max = repeat.frequencyMax;
 
   // Do nothing if no frequency / frequencyMax, I am not a wizard
-  if (frequency === undefined && max === undefined) {
+  if (allUndefinedInArray(frequency, max)) {
     return undefined;
   }
 

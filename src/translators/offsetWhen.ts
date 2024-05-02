@@ -2,6 +2,7 @@
 import { fromListToString } from "../utils/fromListToString";
 import { extractTimingRepeat } from "../internal/extractTimingRepeat";
 import { isArrayEmpty } from "../internal/isEmptyArray";
+import { isNotUndefined } from "../internal/undefinedChecks";
 
 // Types
 import type { DisplayOrderParams, I18N } from "../types";
@@ -46,7 +47,7 @@ function extractTime(minutes: number) {
 
 // Function to transform offset into a string
 function transformOffset(i18next: I18N, offset?: number): string | undefined {
-  if (offset === undefined || offset <= 0) {
+  if (!isNotUndefined(offset) || offset <= 0) {
     return undefined;
   }
 
@@ -93,7 +94,7 @@ export function transformOffsetWhenToText({
   let repeat = extractTimingRepeat(dos);
 
   // If empty, return undefined
-  if (repeat === undefined) {
+  if (!isNotUndefined(repeat)) {
     return undefined;
   }
 
