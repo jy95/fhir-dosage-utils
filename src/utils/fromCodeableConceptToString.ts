@@ -3,9 +3,6 @@ import { isNotUndefined } from "../internal/undefinedChecks";
 
 import type { CodeableConcept } from "../types";
 
-/**
- * Function to turn codeable concept (e.g SNOMED CT "311504000") into a string for humans (e.g "With or after food")
- */
 export type FromCodeableConceptToStringArgs = {
   language: string;
   code?: CodeableConcept;
@@ -14,8 +11,6 @@ export type FromCodeableConceptToStringFct = (
   input: FromCodeableConceptToStringArgs,
 ) => string | undefined;
 
-// Default fromCodeableConceptToString
-// End-users can create their own version to fit their needs
 export function defaultFromCodeableConceptToString({
   code,
 }: FromCodeableConceptToStringArgs) {

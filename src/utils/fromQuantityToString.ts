@@ -2,7 +2,7 @@ import { isNotUndefined } from "../internal/undefinedChecks";
 
 import type { QuantityParams } from "../types";
 
-// To cover all nasty cases of Quantity, only once
+// To cover all nasty cases of Quantity
 // https://build.fhir.org/datatypes.html#Quantity
 export function fromQuantityToString({
   quantity,
@@ -13,7 +13,6 @@ export function fromQuantityToString({
   let unit = fromFHIRQuantityUnitToString({ language, quantity });
   let value = quantity.value || 1;
 
-  // If no unit is present (in other words ""), we don't put it
   let quantityString =
     unit.length === 0
       ? i18next.t("amount.quantity.withoutUnit", {

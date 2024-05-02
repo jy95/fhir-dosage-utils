@@ -3,7 +3,6 @@ import { isNotUndefined } from "../internal/undefinedChecks";
 
 import type { Config, Duration, DisplayOrderParams, I18N } from "../types";
 
-// Duration to string
 function transformDurationToString(
   i18next: I18N,
   duration: Duration,

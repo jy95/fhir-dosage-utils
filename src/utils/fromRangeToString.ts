@@ -7,7 +7,6 @@ import {
 
 import type { RangeParams, Config, Quantity, I18N } from "../types";
 
-// Quantity unit to string
 function transformQuantityUnitToString(
   i18next: I18N,
   quantity: Quantity,
@@ -15,7 +14,6 @@ function transformQuantityUnitToString(
 ): string {
   let quantityValue = quantity.value!;
 
-  // If common units from HL7, do the job
   if (quantity.system === "http://hl7.org/fhir/ValueSet/duration-units") {
     let code = quantity.code! as "s" | "min" | "h" | "d" | "wk" | "mo" | "a";
     return i18next.t(`unitsOfTime:withoutCount.${code}`, {
@@ -23,14 +21,13 @@ function transformQuantityUnitToString(
     });
   }
 
-  // otherwise, it is UCUM, ... so let the user do the job
   return config.fromFHIRQuantityUnitToString({
     language: config.language,
     quantity: quantity,
   });
 }
 
-// To cover all nasty cases of Range, only once
+// To cover all nasty cases of Range
 // https://build.fhir.org/datatypes.html#Range
 export function fromRangeToString({
   range,
@@ -49,7 +46,6 @@ export function fromRangeToString({
     return undefined;
   }
 
-  // quantity unit
   let unit = hasQuantityUnit
     ? transformQuantityUnitToString(i18next, quantityUnit!, config)
     : "";
@@ -75,7 +71,6 @@ export function fromRangeToString({
   }
 
   // 4. Only low is present
-  // Warning, this case is kind dangerous and clinically unsafe so minimal effort on this ...
   return i18next.t(`amount.range.${technicalKey}.onlyLow`, {
     low: lowValue,
     unit: unit,

@@ -113,6 +113,5 @@ export function fromDisplayOrderToResult({
   entry,
   ...args
 }: fromDisplayOrderToResultFct): string | undefined {
-  // Use map to provide a result without iterate on each key
   return displayOrders[entry](args);
 }

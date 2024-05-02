@@ -21,7 +21,6 @@ function extractTime(minutes: number) {
   return { days, hours, minutes: remainingMinutes };
 }
 
-// Function to transform offset into a string
 function transformOffset(i18next: I18N, offset?: number): string | undefined {
   if (!isNotUndefined(offset) || offset <= 0) {
     return undefined;
@@ -44,7 +43,6 @@ function transformOffset(i18next: I18N, offset?: number): string | undefined {
   return subParts.join(" ");
 }
 
-// Function to transform when[] into a string
 function transformWhen(i18next: I18N, when?: string[]): string | undefined {
   if (isArrayEmpty(when)) {
     return undefined;
@@ -63,17 +61,11 @@ export function transformOffsetWhenToText({
   let offset = extractMatchingTimeRepeatField(dos, "offset");
   let when = extractMatchingTimeRepeatField(dos, "when");
 
-  // If both are undefined, don't do anything
   if (allUndefinedInArray(offset, when)) {
     return undefined;
   }
 
-  return [
-    // offset part
-    transformOffset(i18next, offset),
-    // when part
-    transformWhen(i18next, when),
-  ]
+  return [transformOffset(i18next, offset), transformWhen(i18next, when)]
     .filter(isNotUndefined)
     .join(" ");
 }

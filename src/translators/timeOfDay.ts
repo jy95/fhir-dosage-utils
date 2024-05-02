@@ -19,7 +19,6 @@ function formatString(time: string): string {
   return parts.join(":");
 }
 
-// Function to transform timeOfDay into a string
 export function transformTimeOfDayToText({
   dos,
   i18next,

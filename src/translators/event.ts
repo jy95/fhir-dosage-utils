@@ -14,7 +14,6 @@ export function transformEventToText({
     return undefined;
   }
 
-  // List to string
   let eventList = formatDatetimes({ config, datetimes: events });
   let eventsAsString = fromListToString(i18next, eventList);
 

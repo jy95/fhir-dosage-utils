@@ -102,8 +102,6 @@ export function formatDatetimes({ config, datetimes }: Args): string[] {
     // If only year / month and days are defined, print it according
     if (!hasTimePart) {
       let df3 = new Intl.DateTimeFormat(config.language, {
-        // retrieve value from user
-        // and fallback if dateStyle is not defined
         ...generateDateStyleFormatOptions(options),
       });
       return df3.format(date);
@@ -111,8 +109,6 @@ export function formatDatetimes({ config, datetimes }: Args): string[] {
 
     // Otherwise, we have a full datetime
     let df4 = new Intl.DateTimeFormat(config.language, {
-      // retrieve value from user
-      // and fallback if dateStyle / timeStyle is not defined
       ...generateDateStyleFormatOptions(options),
       ...generateTimeStyleFormatOptions(options),
     });
@@ -122,7 +118,6 @@ export function formatDatetimes({ config, datetimes }: Args): string[] {
   return result;
 }
 
-// Function to invoke only one formatDatetimes, with the addition condition that object could be undefined
 export function formatDatetime({
   config,
   datetime,
