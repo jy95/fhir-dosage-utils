@@ -32,7 +32,7 @@ export function fromQuantityToString({
   // Compute the comparator
   let comparatorCode = quantity.comparator;
   let comparatorString =
-    comparatorCode !== undefined
+    isNotUndefined(comparatorCode)
       ? i18next.t(`quantityComparator:${comparatorCode}`)
       : undefined;
 

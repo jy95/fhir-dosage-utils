@@ -1,3 +1,4 @@
+import { isNotUndefined } from "../internal/undefinedChecks";
 import type { Quantity } from "../types";
 
 /**
@@ -16,11 +17,11 @@ export type FromFHIRQuantityUnitToStringFct = (
 export function defaultFromFHIRQuantityUnitToString({
   quantity,
 }: FromFHIRQuantityUnitToStringArgs) {
-  if (quantity.code !== undefined) {
+  if (isNotUndefined(quantity.code)) {
     return quantity.code;
   }
 
-  if (quantity.unit !== undefined) {
+  if (isNotUndefined(quantity.unit)) {
     return quantity.unit;
   }
 

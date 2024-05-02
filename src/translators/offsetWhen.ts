@@ -2,39 +2,17 @@
 import { fromListToString } from "../utils/fromListToString";
 import { extractTimingRepeat } from "../internal/extractTimingRepeat";
 import { isArrayEmpty } from "../internal/isEmptyArray";
-import { isNotUndefined } from "../internal/undefinedChecks";
+import {
+  isNotUndefined,
+  allUndefinedInArray,
+} from "../internal/undefinedChecks";
 
 // Types
-import type { DisplayOrderParams, I18N } from "../types";
-
-type TimeKeys =
-  | "MORN"
-  | "MORN.early"
-  | "MORN.late"
-  | "NOON"
-  | "AFT"
-  | "AFT.early"
-  | "AFT.late"
-  | "EVE"
-  | "EVE.early"
-  | "EVE.late"
-  | "NIGHT"
-  | "PHS"
-  | "IMD"
-  | "HS"
-  | "WAKE"
-  | "C"
-  | "CM"
-  | "CD"
-  | "CV"
-  | "AC"
-  | "ACM"
-  | "ACD"
-  | "ACV"
-  | "PC"
-  | "PCM"
-  | "PCD"
-  | "PCV";
+import type {
+  DisplayOrderParams,
+  I18N,
+  WhenTimeKeys as TimeKeys,
+} from "../types";
 
 // Function to extract times
 function extractTime(minutes: number) {
@@ -68,7 +46,7 @@ function transformOffset(i18next: I18N, offset?: number): string | undefined {
     time.minutes > 0
       ? i18next.t("unitsOfTime:withCount.min", { count: time.minutes })
       : undefined,
-  ].filter((s) => s !== undefined);
+  ].filter(isNotUndefined);
 
   return subParts.join(" ");
 }
@@ -103,7 +81,7 @@ export function transformOffsetWhenToText({
   let when = repeat.when;
 
   // If both are undefined, don't do anything
-  if (offset === undefined && when === undefined) {
+  if (allUndefinedInArray(offset, when)) {
     return undefined;
   }
 

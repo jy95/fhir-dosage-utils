@@ -1,6 +1,7 @@
 // Functions
 import { fromQuantityToString } from "../utils/fromQuantityToString";
 import { hasUnit } from "../internal/hasUnit";
+import { isNotUndefined } from "../internal/undefinedChecks";
 
 // Type
 import type { RatioParams, QuantityParams } from "../types";
@@ -54,7 +55,7 @@ export function fromRatioToString({
   const parts: string[] = [];
 
   // Deal with numerator first
-  if (quantityNumerator !== undefined) {
+  if (isNotUndefined(quantityNumerator)) {
     // Reuse the quantity to string translation
     const numeratorString = fromQuantityToString({
       quantity: numerator!,
@@ -65,7 +66,7 @@ export function fromRatioToString({
   }
 
   // Deal with denominator
-  if (quantityDenominator !== undefined) {
+  if (isNotUndefined(quantityDenominator)) {
     // Several cases exist for that, let use a proper function for that
     const denominatorString = fromDenominatorToString({
       config,

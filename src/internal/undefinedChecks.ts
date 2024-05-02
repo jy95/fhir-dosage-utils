@@ -6,6 +6,6 @@ export function noUndefinedInArray<T>(...args: (T | undefined)[]) {
   return args.every(isNotUndefined);
 }
 
-export function allUndefinedInArray<T>(...args: (T | undefined)[]) {
+export function allUndefinedInArray<T>(...args: (T | any | undefined)[]) {
   return !args.some(isNotUndefined);
 }

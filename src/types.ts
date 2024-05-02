@@ -270,3 +270,32 @@ export type QuantityParams = {
   config: Config;
   i18next: I18N;
 };
+
+export type WhenTimeKeys =
+  | "MORN"
+  | "MORN.early"
+  | "MORN.late"
+  | "NOON"
+  | "AFT"
+  | "AFT.early"
+  | "AFT.late"
+  | "EVE"
+  | "EVE.early"
+  | "EVE.late"
+  | "NIGHT"
+  | "PHS"
+  | "IMD"
+  | "HS"
+  | "WAKE"
+  | "C"
+  | "CM"
+  | "CD"
+  | "CV"
+  | "AC"
+  | "ACM"
+  | "ACD"
+  | "ACV"
+  | "PC"
+  | "PCM"
+  | "PCD"
+  | "PCV";
