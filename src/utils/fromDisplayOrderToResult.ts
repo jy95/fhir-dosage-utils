@@ -22,6 +22,7 @@ import {
   transformBoundsPeriodToText,
   transformMaxDosePerPeriodToText,
 } from "../translators";
+import { isNotUndefined } from "../internal/undefinedChecks";
 
 // Types
 import type { DisplayOrder, DisplayOrderParams } from "../types";
@@ -55,7 +56,7 @@ const displayOrders = {
     let subParts = [
       transformFrequencyFrequencyMaxToText(input),
       transformPeriodPeriodMaxToText(input),
-    ].filter((s) => s !== undefined);
+    ].filter(isNotUndefined);
     return subParts.length > 0 ? subParts.join(" ") : undefined;
   },
   maxDosePerAdministration: (input) =>

@@ -17,7 +17,7 @@ type MappedDate = {
 function generateDateStyleFormatOptions(
   options: Intl.DateTimeFormatOptions,
 ): Intl.DateTimeFormatOptions {
-  if (options.dateStyle !== undefined) {
+  if (isNotUndefined(options.dateStyle)) {
     return {
       dateStyle: options.dateStyle,
     };
@@ -39,7 +39,7 @@ function generateDateStyleFormatOptions(
 function generateTimeStyleFormatOptions(
   options: Intl.DateTimeFormatOptions,
 ): Intl.DateTimeFormatOptions {
-  if (options.timeStyle !== undefined) {
+  if (isNotUndefined(options.timeStyle)) {
     return {
       timeStyle: options.timeStyle,
     };

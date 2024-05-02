@@ -4,6 +4,7 @@ import { Configurator } from "./classes/Configurator";
 // Functions
 import { fromDisplayOrderToResult } from "./utils/fromDisplayOrderToResult";
 import { fromListToString } from "./utils/fromListToString";
+import { isNotUndefined } from "./internal/undefinedChecks";
 
 // Types
 import type {
@@ -48,7 +49,7 @@ export class FhirDosageUtils extends Configurator {
     // 1. Collect all sequences number
     let sequencesNumbers = dosages
       .map((d) => d.sequence)
-      .filter((s) => s !== undefined);
+      .filter(isNotUndefined);
 
     // 2. Convert it to a Set
     let encounteredSequenceNumbers = new Set(sequencesNumbers);
@@ -114,7 +115,7 @@ export class FhirDosageUtils extends Configurator {
           i18next: this.i18nInstance,
         }),
       )
-      .filter((s) => s !== undefined);
+      .filter(isNotUndefined);
 
     // Join each part with a separator
     return parts.join(this.config.displaySeparator);

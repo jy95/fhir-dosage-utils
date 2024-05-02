@@ -1,5 +1,6 @@
 // Function
 import { fromListToString } from "../utils/fromListToString";
+import { isNotUndefined } from "../internal/undefinedChecks";
 
 // types
 import type { Dosage as DosageR4 } from "fhir/r4";
@@ -24,7 +25,7 @@ function fromCodeableConceptArrayToString(
         language: config.language,
       }),
     )
-    .filter((s) => s !== undefined);
+    .filter(isNotUndefined);
 
   return fromListToString(i18next, codesAsString as string[]);
 }

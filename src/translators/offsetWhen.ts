@@ -91,6 +91,6 @@ export function transformOffsetWhenToText({
     // when part
     transformWhen(i18next, when),
   ]
-    .filter((s) => s !== undefined)
+    .filter(isNotUndefined)
     .join(" ");
 }

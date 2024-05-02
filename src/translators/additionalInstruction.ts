@@ -1,6 +1,7 @@
 // Function
 import { fromListToString } from "../utils/fromListToString";
 import { isArrayEmpty } from "../internal/isEmptyArray";
+import { isNotUndefined } from "../internal/undefinedChecks";
 
 // types
 import type { DisplayOrderParams } from "../types";
@@ -23,7 +24,7 @@ export function transformAdditionalInstructionToText({
         language: config.language,
       }),
     )
-    .filter((s) => s !== undefined);
+    .filter(isNotUndefined);
 
   return fromListToString(i18next, additionalInstructions as string[]);
 }
