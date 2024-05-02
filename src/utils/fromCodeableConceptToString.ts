@@ -19,22 +19,18 @@ export type FromCodeableConceptToStringFct = (
 export function defaultFromCodeableConceptToString({
   code,
 }: FromCodeableConceptToStringArgs) {
-  // If no code, skip it
   if (!isNotUndefined(code)) {
     return undefined;
   }
 
-  // Take text first
   if (isNotUndefined(code.text)) {
     return code.text;
   }
 
-  // If empty, skip it
   if (isArrayEmpty(code.coding)) {
     return undefined;
   }
 
-  // Take first coding; display first then code
   let firstCode = code.coding[0];
   return firstCode.display || firstCode.code;
 }

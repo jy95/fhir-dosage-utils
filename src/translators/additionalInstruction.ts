@@ -13,7 +13,6 @@ export function transformAdditionalInstructionToText({
     return undefined;
   }
 
-  // Turn it into strings
   let additionalInstructions = dos.additionalInstruction
     .map((instruction) =>
       config.fromCodeableConceptToString({

@@ -1,7 +1,5 @@
-// Function
 import { isNotUndefined } from "../internal/undefinedChecks";
 
-// Type
 import type { QuantityParams } from "../types";
 
 // To cover all nasty cases of Quantity, only once
@@ -11,10 +9,7 @@ export function fromQuantityToString({
   config,
   i18next,
 }: QuantityParams): string {
-  // extract function for the unit display from config
   const { fromFHIRQuantityUnitToString, language } = config;
-
-  // Compute the result
   let unit = fromFHIRQuantityUnitToString({ language, quantity });
   let value = quantity.value || 1;
 
@@ -29,17 +24,14 @@ export function fromQuantityToString({
           unit: unit,
         });
 
-  // Compute the comparator
   let comparatorCode = quantity.comparator;
   let comparatorString = isNotUndefined(comparatorCode)
     ? i18next.t(`quantityComparator:${comparatorCode}`)
     : undefined;
 
-  // If no comparator, print it
   if (!isNotUndefined(comparatorString)) {
     return quantityString;
   }
 
-  // concatenate comparator and quantity
   return `${comparatorString} ${quantityString}`;
 }

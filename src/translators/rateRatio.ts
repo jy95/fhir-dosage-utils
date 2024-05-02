@@ -15,7 +15,6 @@ export function transformRateRatioToText({
     return undefined;
   }
 
-  // Turn ratio to text
   const ratioText = fromRatioToString({
     config,
     i18next,

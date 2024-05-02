@@ -10,15 +10,12 @@ import type { DisplayOrderParams } from "../types";
  * and may be ignored at receiver discretion
  */
 function formatString(time: string): string {
-  // Split the time string by ":"
   var parts = time.split(":");
 
-  // Check if the last part (seconds) is "00", if so, remove it
   if (parts.length > 2 && parts[2] === "00") {
     parts.pop();
   }
 
-  // Join the remaining parts with ":"
   return parts.join(":");
 }
 

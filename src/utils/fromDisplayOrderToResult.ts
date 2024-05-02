@@ -1,4 +1,3 @@
-// translators
 import {
   transformDoseQuantityToText,
   transformDoseRangeToText,
@@ -27,7 +26,6 @@ import { isNotUndefined } from "../internal/undefinedChecks";
 import type { DisplayOrder, DisplayOrderParams } from "../types";
 type ResultFct = (args: DisplayOrderParams) => string | undefined;
 
-// Map
 const displayOrders = {
   additionalInstruction: (input) => transformAdditionalInstructionToText(input),
   asNeeded: (input) => transformAsNeededToText(input),

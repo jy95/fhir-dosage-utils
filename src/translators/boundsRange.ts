@@ -15,7 +15,6 @@ export function transformBoundsRangeToText({
     return undefined;
   }
 
-  // Turn range into a text
   const rangeText = fromRangeToString({
     range: boundsRange,
     config,

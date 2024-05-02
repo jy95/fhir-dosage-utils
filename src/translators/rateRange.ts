@@ -1,4 +1,3 @@
-// Utility function
 import { fromRangeToString } from "../utils/fromRangeToString";
 import { extractMatchingDoseAndRateFirstEntry } from "../internal/extractMatchingDoseAndRateFirstEntry";
 import { isNotUndefined } from "../internal/undefinedChecks";
@@ -16,7 +15,6 @@ export function transformRateRangeToText({
     return undefined;
   }
 
-  // Turn range into a text
   const rangeText = fromRangeToString({
     range: rateRange,
     config,

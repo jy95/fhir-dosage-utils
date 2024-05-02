@@ -15,8 +15,7 @@ export function transformMaxDosePerPeriodToText({
 
   const maxDosePerPeriod = dos.maxDosePerPeriod;
 
-  // In R4, it was a single object
-  // In R5, it is an array
+  // In R4, it was a single object / In R5, it is an array
   // So better to have a generic approach
   const values = Array.isArray(maxDosePerPeriod)
     ? maxDosePerPeriod

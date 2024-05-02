@@ -41,11 +41,8 @@ export function fromRangeToString({
   const lowValue = low?.value;
   const highValue = high?.value;
 
-  // prepare unit display
   let quantityUnit = high || low;
   let hasQuantityUnit = hasUnit(quantityUnit);
-
-  // Four cases
 
   // 1. If we have a empty object, return undefined
   if (allUndefinedInArray(lowValue, highValue)) {

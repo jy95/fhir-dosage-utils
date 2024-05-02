@@ -16,7 +16,6 @@ export function transformDayOfWeekToText({
     return undefined;
   }
 
-  // Turn it into a string
   const dayOfWeeks = dayOfWeek.map((dayCode) =>
     i18next.t(`daysOfWeek:${dayCode}`),
   );

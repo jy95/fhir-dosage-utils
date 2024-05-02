@@ -53,7 +53,6 @@ export function transformAsNeededToText({
     });
   }
 
-  // merge boolean to make it simpler
   let booleanValue = [asNeededBoolean, asNeeded].includes(true);
 
   return booleanValue ? i18next.t("fields.asNeeded") : undefined;

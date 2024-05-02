@@ -64,12 +64,9 @@ function generateTimeStyleFormatOptions(
 export function formatDatetimes({ config, datetimes }: Args): string[] {
   let options = config.dateTimeFormatOptions;
 
-  // prepare data for algorithm below
   const entries: MappedDate[] = datetimes.map((datetime) => {
-    // Convert it to date
     let date = new Date(datetime);
 
-    // other properties
     let hasTimePart = datetime.includes("T");
     let hyphensCount = datetime.split("-").length - 1;
     let hasMonths = hyphensCount >= 1;
@@ -134,7 +131,6 @@ export function formatDatetime({
     return undefined;
   }
 
-  // Invoke previous function, and pick up the first entry
   const result = formatDatetimes({ config, datetimes: [datetime] });
   return result[0];
 }

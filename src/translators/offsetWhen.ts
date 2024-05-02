@@ -27,19 +27,15 @@ function transformOffset(i18next: I18N, offset?: number): string | undefined {
     return undefined;
   }
 
-  // extract days / hours / minutes from it
   let time = extractTime(offset);
 
   let subParts = [
-    // days
     time.days > 0
       ? i18next.t("unitsOfTime:withCount.d", { count: time.days })
       : undefined,
-    // hours
     time.hours > 0
       ? i18next.t("unitsOfTime:withCount.h", { count: time.hours })
       : undefined,
-    // minutes
     time.minutes > 0
       ? i18next.t("unitsOfTime:withCount.min", { count: time.minutes })
       : undefined,
@@ -50,12 +46,10 @@ function transformOffset(i18next: I18N, offset?: number): string | undefined {
 
 // Function to transform when[] into a string
 function transformWhen(i18next: I18N, when?: string[]): string | undefined {
-  // Only run when array is not empty
   if (isArrayEmpty(when)) {
     return undefined;
   }
 
-  // Turn it into a string
   const whens = (when as TimeKeys[]).map((whenCode) =>
     i18next.t(`eventTiming:${whenCode}`),
   );

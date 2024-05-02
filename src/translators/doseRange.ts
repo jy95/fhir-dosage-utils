@@ -15,7 +15,6 @@ export function transformDoseRangeToText({
     return undefined;
   }
 
-  // Turn range into a text
   const text = fromRangeToString({
     range: doseRange,
     config,

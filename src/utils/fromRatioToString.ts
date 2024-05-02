@@ -47,12 +47,9 @@ export function fromRatioToString({
   let quantityNumerator = numerator?.value;
   let quantityDenominator = denominator?.value;
 
-  // Collect results
   const parts: string[] = [];
 
-  // Deal with numerator first
   if (isNotUndefined(quantityNumerator)) {
-    // Reuse the quantity to string translation
     const numeratorString = fromQuantityToString({
       quantity: numerator!,
       config,
@@ -61,9 +58,7 @@ export function fromRatioToString({
     parts.push(numeratorString);
   }
 
-  // Deal with denominator
   if (isNotUndefined(quantityDenominator)) {
-    // Several cases exist for that, let use a proper function for that
     const denominatorString = fromDenominatorToString({
       config,
       i18next,
