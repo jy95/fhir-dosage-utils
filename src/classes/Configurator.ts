@@ -1,7 +1,6 @@
 import i18next from "i18next";
 import ChainedBackend from "i18next-chained-backend";
 
-// Default values
 import { defaultAttributes } from "../internal/defaultAttributes";
 
 import type {
@@ -22,18 +21,12 @@ export class Configurator {
   // When multiple instances of the class are used, they must act independantly regardless of the others
   protected i18nInstance: I18N;
 
-  // Set up lib, according provided parameters
   protected constructor(userConfig?: Params, i18nConfig?: I18InitOptions) {
-    // User config
     this.config = {
-      // default attributes
       ...defaultAttributes,
-      // attributes set by user
       ...userConfig,
     };
-    // I18N config
     this.i18nConfig = {
-      // default attributes
       fallbackLng: "en",
       lng: this.config.language,
       ns: [
@@ -44,7 +37,6 @@ export class Configurator {
         "quantityComparator",
       ],
       defaultNS: "common",
-      // attributes set by user
       ...i18nConfig,
     };
     this.i18nInstance = i18next.createInstance();

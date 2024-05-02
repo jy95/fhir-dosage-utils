@@ -47,9 +47,6 @@ export class FhirDosageUtils extends Configurator {
 
     let encounteredSequenceNumbers = new Set(sequencesNumbers);
 
-    // 3. We have a "sequential" situation in two cases
-    // A) No sequence number were provided
-    // B) All sequence numbers are different
     return (
       encounteredSequenceNumbers.size === 0 ||
       encounteredSequenceNumbers.size === dosages.length
@@ -67,17 +64,12 @@ export class FhirDosageUtils extends Configurator {
     for (let idx = 0; idx < dosages.length; idx++) {
       const dosage = dosages[idx];
 
-      // Get the sequence number (normally, in real world, it should be present in this case)
-      // If no sequence number, assume it is idx + 1
       let sequenceNr = dosage.sequence || idx + 1;
-
-      // Retrieve of create previous entries for this sequence number
       let localGroup = groups[sequenceNr] || [];
 
       localGroup.push(dosage);
       groups[sequenceNr] = localGroup;
 
-      // For reminder of the parsed sequence
       sequences.add(sequenceNr);
     }
 
@@ -111,7 +103,6 @@ export class FhirDosageUtils extends Configurator {
    * Turn a FHIR Dosage object into text
    */
   fromDosageToText(dos: Dosage): string {
-    // iterate on each key and generate a string from each part
     let order = this.config.displayOrder;
     return this.getFields(dos, ...order);
   }
