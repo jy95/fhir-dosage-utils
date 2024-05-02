@@ -1,4 +1,3 @@
-// translators
 import {
   transformDoseQuantityToText,
   transformDoseRangeToText,
@@ -22,12 +21,11 @@ import {
   transformBoundsPeriodToText,
   transformMaxDosePerPeriodToText,
 } from "../translators";
+import { isNotUndefined } from "../internal/undefinedChecks";
 
-// Types
 import type { DisplayOrder, DisplayOrderParams } from "../types";
 type ResultFct = (args: DisplayOrderParams) => string | undefined;
 
-// Map
 const displayOrders = {
   additionalInstruction: (input) => transformAdditionalInstructionToText(input),
   asNeeded: (input) => transformAsNeededToText(input),
@@ -55,7 +53,7 @@ const displayOrders = {
     let subParts = [
       transformFrequencyFrequencyMaxToText(input),
       transformPeriodPeriodMaxToText(input),
-    ].filter((s) => s !== undefined);
+    ].filter(isNotUndefined);
     return subParts.length > 0 ? subParts.join(" ") : undefined;
   },
   maxDosePerAdministration: (input) =>
@@ -115,6 +113,5 @@ export function fromDisplayOrderToResult({
   entry,
   ...args
 }: fromDisplayOrderToResultFct): string | undefined {
-  // Use map to provide a result without iterate on each key
   return displayOrders[entry](args);
 }

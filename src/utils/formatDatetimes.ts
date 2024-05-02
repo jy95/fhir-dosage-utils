@@ -1,4 +1,5 @@
-// types
+import { isNotUndefined } from "../internal/undefinedChecks";
+
 import type { Config } from "../types";
 
 type Args = { config: Config; datetimes: string[] };
@@ -16,7 +17,7 @@ type MappedDate = {
 function generateDateStyleFormatOptions(
   options: Intl.DateTimeFormatOptions,
 ): Intl.DateTimeFormatOptions {
-  if (options.dateStyle !== undefined) {
+  if (isNotUndefined(options.dateStyle)) {
     return {
       dateStyle: options.dateStyle,
     };
@@ -38,7 +39,7 @@ function generateDateStyleFormatOptions(
 function generateTimeStyleFormatOptions(
   options: Intl.DateTimeFormatOptions,
 ): Intl.DateTimeFormatOptions {
-  if (options.timeStyle !== undefined) {
+  if (isNotUndefined(options.timeStyle)) {
     return {
       timeStyle: options.timeStyle,
     };
@@ -63,12 +64,9 @@ function generateTimeStyleFormatOptions(
 export function formatDatetimes({ config, datetimes }: Args): string[] {
   let options = config.dateTimeFormatOptions;
 
-  // prepare data for algorithm below
   const entries: MappedDate[] = datetimes.map((datetime) => {
-    // Convert it to date
     let date = new Date(datetime);
 
-    // other properties
     let hasTimePart = datetime.includes("T");
     let hyphensCount = datetime.split("-").length - 1;
     let hasMonths = hyphensCount >= 1;
@@ -104,8 +102,6 @@ export function formatDatetimes({ config, datetimes }: Args): string[] {
     // If only year / month and days are defined, print it according
     if (!hasTimePart) {
       let df3 = new Intl.DateTimeFormat(config.language, {
-        // retrieve value from user
-        // and fallback if dateStyle is not defined
         ...generateDateStyleFormatOptions(options),
       });
       return df3.format(date);
@@ -113,8 +109,6 @@ export function formatDatetimes({ config, datetimes }: Args): string[] {
 
     // Otherwise, we have a full datetime
     let df4 = new Intl.DateTimeFormat(config.language, {
-      // retrieve value from user
-      // and fallback if dateStyle / timeStyle is not defined
       ...generateDateStyleFormatOptions(options),
       ...generateTimeStyleFormatOptions(options),
     });
@@ -124,17 +118,14 @@ export function formatDatetimes({ config, datetimes }: Args): string[] {
   return result;
 }
 
-// Function to invoke only one formatDatetimes, with the addition condition that object could be undefined
 export function formatDatetime({
   config,
   datetime,
 }: Args2): string | undefined {
-  // Can't do magic ;)
-  if (datetime === undefined) {
+  if (!isNotUndefined(datetime)) {
     return undefined;
   }
 
-  // Invoke previous function, and pick up the first entry
   const result = formatDatetimes({ config, datetimes: [datetime] });
   return result[0];
 }

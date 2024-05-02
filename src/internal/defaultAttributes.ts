@@ -1,11 +1,9 @@
-// Types
 import type { Config } from "../types";
 
 import { defaultFromFHIRQuantityUnitToString } from "../utils/fromFHIRQuantityUnitToString";
 import { defaultFromCodeableConceptToString } from "../utils/fromCodeableConceptToString";
 import { defaultFromExtensionsToString } from "../utils/fromExtensionsToString";
 
-// default attributes
 export const defaultAttributes: Config = {
   language: "en",
   fromFHIRQuantityUnitToString: defaultFromFHIRQuantityUnitToString,

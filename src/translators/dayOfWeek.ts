@@ -1,9 +1,7 @@
-// Function
 import { fromListToString } from "../utils/fromListToString";
-import { extractTimingRepeat } from "../internal/extractTimingRepeat";
+import { extractMatchingTimeRepeatField } from "../internal/extractMatchingTimingRepeat";
 import { isArrayEmpty } from "../internal/isEmptyArray";
 
-// Types
 import type { DisplayOrderParams } from "../types";
 
 // Function to transform dayOfWeek into a string
@@ -11,22 +9,13 @@ export function transformDayOfWeekToText({
   dos,
   i18next,
 }: DisplayOrderParams): string | undefined {
-  let repeat = extractTimingRepeat(dos);
-
-  // If empty, return undefined
-  if (repeat === undefined) {
-    return undefined;
-  }
-
-  // Pickup the repeat interesting attributes
-  let dayOfWeek = repeat.dayOfWeek;
+  let dayOfWeek = extractMatchingTimeRepeatField(dos, "dayOfWeek");
 
   // If empty, skip it
   if (isArrayEmpty(dayOfWeek)) {
     return undefined;
   }
 
-  // Turn it into a string
   const dayOfWeeks = dayOfWeek.map((dayCode) =>
     i18next.t(`daysOfWeek:${dayCode}`),
   );

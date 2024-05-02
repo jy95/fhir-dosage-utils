@@ -1,10 +1,8 @@
-// Functions
-import { extractTimingRepeat } from "../internal/extractTimingRepeat";
+import { extractMatchingTimeRepeatField } from "../internal/extractMatchingTimingRepeat";
+import { isNotUndefined } from "../internal/undefinedChecks";
 
-// types
 import type { Config, Duration, DisplayOrderParams, I18N } from "../types";
 
-// Duration to string
 function transformDurationToString(
   i18next: I18N,
   duration: Duration,
@@ -16,14 +14,14 @@ function transformDurationToString(
   if (duration.system === "http://hl7.org/fhir/ValueSet/duration-units") {
     let code = duration.code! as "s" | "min" | "h" | "d" | "wk" | "mo" | "a";
     return i18next.t(`unitsOfTime:withCount.${code}`, { count: quantity });
-  } else {
-    // otherwise, it is UCUM, ... so let the user do the job
-    let unit = config.fromFHIRQuantityUnitToString({
-      language: config.language,
-      quantity: duration,
-    });
-    return `${quantity} ${unit}`;
   }
+
+  // otherwise, it is UCUM, ... so let the user do the job
+  let unit = config.fromFHIRQuantityUnitToString({
+    language: config.language,
+    quantity: duration,
+  });
+  return `${quantity} ${unit}`;
 }
 
 export function transformBoundsDurationToText({
@@ -31,18 +29,9 @@ export function transformBoundsDurationToText({
   config,
   i18next,
 }: DisplayOrderParams): string | undefined {
-  let repeat = extractTimingRepeat(dos);
+  let boundsDuration = extractMatchingTimeRepeatField(dos, "boundsDuration");
 
-  // If empty, return undefined
-  if (repeat === undefined) {
-    return undefined;
-  }
-
-  // Pickup the repeat interesting attributes
-  let boundsDuration = repeat.boundsDuration;
-
-  // Do nothing if no boundsDuration, I am not a wizard
-  if (boundsDuration === undefined) {
+  if (!isNotUndefined(boundsDuration)) {
     return undefined;
   }
 

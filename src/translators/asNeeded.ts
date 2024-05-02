@@ -1,7 +1,6 @@
-// Function
 import { fromListToString } from "../utils/fromListToString";
+import { isNotUndefined } from "../internal/undefinedChecks";
 
-// types
 import type { Dosage as DosageR4 } from "fhir/r4";
 import type { Dosage as DosageR5 } from "fhir/r5";
 import type {
@@ -24,7 +23,7 @@ function fromCodeableConceptArrayToString(
         language: config.language,
       }),
     )
-    .filter((s) => s !== undefined);
+    .filter(isNotUndefined);
 
   return fromListToString(i18next, codesAsString as string[]);
 }
@@ -34,7 +33,6 @@ export function transformAsNeededToText({
   config,
   i18next,
 }: DisplayOrderParams): string | undefined {
-  // Pickup the interesting attributes
   let asNeededBoolean = (dos as DosageR4).asNeededBoolean;
   let asNeededCodeableConcept = (dos as DosageR4).asNeededCodeableConcept;
   let asNeededFor = (dos as DosageR5).asNeededFor;
@@ -55,7 +53,6 @@ export function transformAsNeededToText({
     });
   }
 
-  // merge boolean to make it simpler
   let booleanValue = [asNeededBoolean, asNeeded].includes(true);
 
   return booleanValue ? i18next.t("fields.asNeeded") : undefined;

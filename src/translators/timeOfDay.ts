@@ -1,9 +1,7 @@
-// Functions
 import { fromListToString } from "../utils/fromListToString";
-import { extractTimingRepeat } from "../internal/extractTimingRepeat";
+import { extractMatchingTimeRepeatField } from "../internal/extractMatchingTimingRepeat";
 import { isArrayEmpty } from "../internal/isEmptyArray";
 
-// Types
 import type { DisplayOrderParams } from "../types";
 
 /**
@@ -12,32 +10,20 @@ import type { DisplayOrderParams } from "../types";
  * and may be ignored at receiver discretion
  */
 function formatString(time: string): string {
-  // Split the time string by ":"
   var parts = time.split(":");
 
-  // Check if the last part (seconds) is "00", if so, remove it
   if (parts.length > 2 && parts[2] === "00") {
     parts.pop();
   }
 
-  // Join the remaining parts with ":"
   return parts.join(":");
 }
 
-// Function to transform timeOfDay into a string
 export function transformTimeOfDayToText({
   dos,
   i18next,
 }: DisplayOrderParams): string | undefined {
-  let repeat = extractTimingRepeat(dos);
-
-  // If empty, return undefined
-  if (repeat === undefined) {
-    return undefined;
-  }
-
-  // Pickup the repeat interesting attributes
-  let timeOfDay = repeat.timeOfDay;
+  let timeOfDay = extractMatchingTimeRepeatField(dos, "timeOfDay");
 
   // If empty, skip it
   if (isArrayEmpty(timeOfDay)) {

@@ -1,8 +1,7 @@
-// Functions
 import { extractMatchingDoseAndRateFirstEntry } from "../internal/extractMatchingDoseAndRateFirstEntry";
 import { fromQuantityToString } from "../utils/fromQuantityToString";
+import { isNotUndefined } from "../internal/undefinedChecks";
 
-// types
 import type { DisplayOrderParams } from "../types";
 
 export function transformRateQuantityToText({
@@ -12,8 +11,7 @@ export function transformRateQuantityToText({
 }: DisplayOrderParams): string | undefined {
   let rateQuantity = extractMatchingDoseAndRateFirstEntry(dos, "rateQuantity");
 
-  // If not found, skip
-  if (rateQuantity === undefined) {
+  if (!isNotUndefined(rateQuantity)) {
     return undefined;
   }
 

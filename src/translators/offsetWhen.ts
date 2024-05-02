@@ -1,39 +1,16 @@
-// Functions
 import { fromListToString } from "../utils/fromListToString";
-import { extractTimingRepeat } from "../internal/extractTimingRepeat";
+import { extractMatchingTimeRepeatField } from "../internal/extractMatchingTimingRepeat";
 import { isArrayEmpty } from "../internal/isEmptyArray";
+import {
+  isNotUndefined,
+  allUndefinedInArray,
+} from "../internal/undefinedChecks";
 
-// Types
-import type { DisplayOrderParams, I18N } from "../types";
-
-type TimeKeys =
-  | "MORN"
-  | "MORN.early"
-  | "MORN.late"
-  | "NOON"
-  | "AFT"
-  | "AFT.early"
-  | "AFT.late"
-  | "EVE"
-  | "EVE.early"
-  | "EVE.late"
-  | "NIGHT"
-  | "PHS"
-  | "IMD"
-  | "HS"
-  | "WAKE"
-  | "C"
-  | "CM"
-  | "CD"
-  | "CV"
-  | "AC"
-  | "ACM"
-  | "ACD"
-  | "ACV"
-  | "PC"
-  | "PCM"
-  | "PCD"
-  | "PCV";
+import type {
+  DisplayOrderParams,
+  I18N,
+  WhenTimeKeys as TimeKeys,
+} from "../types";
 
 // Function to extract times
 function extractTime(minutes: number) {
@@ -44,42 +21,33 @@ function extractTime(minutes: number) {
   return { days, hours, minutes: remainingMinutes };
 }
 
-// Function to transform offset into a string
 function transformOffset(i18next: I18N, offset?: number): string | undefined {
-  if (offset === undefined || offset <= 0) {
+  if (!isNotUndefined(offset) || offset <= 0) {
     return undefined;
   }
 
-  // extract days / hours / minutes from it
   let time = extractTime(offset);
 
-  // generate part
   let subParts = [
-    // days
     time.days > 0
       ? i18next.t("unitsOfTime:withCount.d", { count: time.days })
       : undefined,
-    // hours
     time.hours > 0
       ? i18next.t("unitsOfTime:withCount.h", { count: time.hours })
       : undefined,
-    // minutes
     time.minutes > 0
       ? i18next.t("unitsOfTime:withCount.min", { count: time.minutes })
       : undefined,
-  ].filter((s) => s !== undefined);
+  ].filter(isNotUndefined);
 
   return subParts.join(" ");
 }
 
-// Function to transform when[] into a string
 function transformWhen(i18next: I18N, when?: string[]): string | undefined {
-  // Only run when array is not empty
   if (isArrayEmpty(when)) {
     return undefined;
   }
 
-  // Turn it into a string
   const whens = (when as TimeKeys[]).map((whenCode) =>
     i18next.t(`eventTiming:${whenCode}`),
   );
@@ -90,28 +58,14 @@ export function transformOffsetWhenToText({
   dos,
   i18next,
 }: DisplayOrderParams): string | undefined {
-  let repeat = extractTimingRepeat(dos);
+  let offset = extractMatchingTimeRepeatField(dos, "offset");
+  let when = extractMatchingTimeRepeatField(dos, "when");
 
-  // If empty, return undefined
-  if (repeat === undefined) {
+  if (allUndefinedInArray(offset, when)) {
     return undefined;
   }
 
-  // Pickup the repeat interesting attributes
-  let offset = repeat.offset;
-  let when = repeat.when;
-
-  // If both are undefined, don't do anything
-  if (offset === undefined && when === undefined) {
-    return undefined;
-  }
-
-  return [
-    // offset part
-    transformOffset(i18next, offset),
-    // when part
-    transformWhen(i18next, when),
-  ]
-    .filter((s) => s !== undefined)
+  return [transformOffset(i18next, offset), transformWhen(i18next, when)]
+    .filter(isNotUndefined)
     .join(" ");
 }

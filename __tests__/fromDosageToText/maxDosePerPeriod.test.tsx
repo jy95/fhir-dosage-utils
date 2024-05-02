@@ -2,7 +2,6 @@
 import { expect, test, describe } from "@jest/globals";
 import FhirDosageUtils from "../../src/index";
 
-// types
 import type { Dosage as DosageR4 } from "fhir/r4";
 import type { Dosage as DosageR5 } from "fhir/r5";
 
