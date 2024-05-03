@@ -79,7 +79,7 @@ const config: Config = {
       appId: "A0H5ESUA6U",
       // Public API key: it is safe to commit it
       apiKey: "ed5931b0de2e3754e2da8e0f843443bd",
-      indexName: "crawler_fhir-dosage-utils",
+      indexName: "jy95io",
     },
     navbar: {
       title: "FHIR Dosage utils",
