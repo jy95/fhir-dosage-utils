@@ -12,6 +12,7 @@ export function fromQuantityToString({
   const { fromFHIRQuantityUnitToString, language } = config;
   let unit = fromFHIRQuantityUnitToString({ language, quantity });
   let value = quantity.value || 1;
+  let comparatorCode = quantity.comparator;
 
   let quantityString =
     unit.length === 0
@@ -23,14 +24,11 @@ export function fromQuantityToString({
           unit: unit,
         });
 
-  let comparatorCode = quantity.comparator;
-  let comparatorString = isNotUndefined(comparatorCode)
-    ? i18next.t(`quantityComparator:${comparatorCode}`)
-    : undefined;
-
-  if (!isNotUndefined(comparatorString)) {
+  if (!isNotUndefined(comparatorCode)) {
     return quantityString;
   }
+
+  let comparatorString = i18next.t(`quantityComparator:${comparatorCode}`);
 
   return `${comparatorString} ${quantityString}`;
 }
