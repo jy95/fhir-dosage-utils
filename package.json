@@ -21,6 +21,11 @@
       "types": "./dist/types.d.ts"
     }
   },
+  "targets": {
+    "main": {
+      "optimize": true
+    }
+  },
   "scripts": {
     "watch": "npx parcel watch",
     "build": "npx parcel build",
