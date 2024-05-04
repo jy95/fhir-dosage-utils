@@ -10,10 +10,33 @@ type MappedDate = {
   hasMonths: boolean;
   hasDays: boolean;
 };
+type RenderStrategy = "yearOnly" | "yearAndMonthOnly" | "dateOnly" | "dateTime";
+type RenderFunction = (params: RenderParams) => string;
+type RenderParams = {
+  config: Config;
+  date: Date;
+};
 
-// Function to clean up the params for dateStyle situation
-// Note: dateStyle and timeStyle can be used with each other,
-// but not with other date-time component options (e.g. weekday, hour, month, etc.).
+const strategies = {
+  yearOnly: ({ config, date }) =>
+    new Intl.DateTimeFormat(config.language, { year: "numeric" }).format(date),
+  // e.g. 2024-03 => May 2024
+  yearAndMonthOnly: ({ config, date }) =>
+    new Intl.DateTimeFormat(config.language, {
+      year: "numeric",
+      month: "long",
+    }).format(date),
+  dateOnly: ({ config, date }) =>
+    new Intl.DateTimeFormat(config.language, {
+      ...generateDateStyleFormatOptions(config.dateTimeFormatOptions),
+    }).format(date),
+  dateTime: ({ config, date }) =>
+    new Intl.DateTimeFormat(config.language, {
+      ...generateDateStyleFormatOptions(config.dateTimeFormatOptions),
+      ...generateTimeStyleFormatOptions(config.dateTimeFormatOptions),
+    }).format(date),
+} satisfies Record<RenderStrategy, RenderFunction>;
+
 function generateDateStyleFormatOptions(
   options: Intl.DateTimeFormatOptions,
 ): Intl.DateTimeFormatOptions {
@@ -35,7 +58,6 @@ function generateDateStyleFormatOptions(
   };
 }
 
-// Function to clean up the params for timeStyle situation
 function generateTimeStyleFormatOptions(
   options: Intl.DateTimeFormatOptions,
 ): Intl.DateTimeFormatOptions {
@@ -57,62 +79,40 @@ function generateTimeStyleFormatOptions(
   };
 }
 
+function fromDateToMappedDate(datetime: string): MappedDate {
+  let date = new Date(datetime);
+
+  let hasTimePart = datetime.includes("T");
+  let hyphensCount = datetime.split("-").length - 1;
+  let hasMonths = hyphensCount >= 1;
+  let hasDays = hyphensCount >= 2;
+
+  return {
+    date,
+    hasTimePart,
+    hasMonths,
+    hasDays,
+  };
+}
+
 /**
  * Generic function to map datetimes to user friendly date
  * e.g. from 2018, 1973-06, 1905-08-23, 2015-02-07T13:28:17-05:00 or 2017-01-01T00:00:00.000Z
  */
 export function formatDatetimes({ config, datetimes }: Args): string[] {
-  let options = config.dateTimeFormatOptions;
 
-  const entries: MappedDate[] = datetimes.map((datetime) => {
-    let date = new Date(datetime);
+  const entries = datetimes.map(fromDateToMappedDate);
 
-    let hasTimePart = datetime.includes("T");
-    let hyphensCount = datetime.split("-").length - 1;
-    let hasMonths = hyphensCount >= 1;
-    let hasDays = hyphensCount >= 2;
-
-    return {
-      date,
-      hasTimePart,
-      hasMonths,
-      hasDays,
-    };
-  });
-
-  // Time to do the magic
   const result = entries.map(({ date, hasTimePart, hasMonths, hasDays }) => {
-    // If only year is defined, print it fully (e.g. 2024)
-    if (!hasMonths) {
-      let df1 = new Intl.DateTimeFormat(config.language, {
-        year: "numeric",
-      });
-      return df1.format(date);
-    }
+    const chosenStrategy: RenderStrategy = !hasMonths
+      ? "yearOnly"
+      : !hasDays
+        ? "yearAndMonthOnly"
+        : !hasTimePart
+          ? "dateOnly"
+          : "dateTime";
 
-    // If only year and month are defined, print it nicely (e.g. 2024-03 => May 2024 )
-    if (!hasDays) {
-      let df2 = new Intl.DateTimeFormat(config.language, {
-        year: "numeric",
-        month: "long",
-      });
-      return df2.format(date);
-    }
-
-    // If only year / month and days are defined, print it according
-    if (!hasTimePart) {
-      let df3 = new Intl.DateTimeFormat(config.language, {
-        ...generateDateStyleFormatOptions(options),
-      });
-      return df3.format(date);
-    }
-
-    // Otherwise, we have a full datetime
-    let df4 = new Intl.DateTimeFormat(config.language, {
-      ...generateDateStyleFormatOptions(options),
-      ...generateTimeStyleFormatOptions(options),
-    });
-    return df4.format(date);
+    return strategies[chosenStrategy]({ config, date });
   });
 
   return result;
