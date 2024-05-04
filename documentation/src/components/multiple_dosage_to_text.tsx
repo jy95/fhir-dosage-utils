@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import FhirDosageUtils from "fhir-dosage-utils";
+import { decode } from "html-entities";
 import CodeBlock from "@theme/CodeBlock";
 
 // Types
@@ -11,19 +12,7 @@ type Dosage = DosageR4 | DosageR5;
 // For the WHY, consult this
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/format#avoid_comparing_formatted_date_values_to_static_values
 function decodeHtmlEntities(text: string): string {
-  return text
-    .replace(/&quot;/g, '"')
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;=/g, "<=")
-    .replace(/&gt;=/g, ">=")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&#(\d+);/g, function (match, dec) {
-      return String.fromCharCode(dec);
-    })
-    .replace(/&#x([0-9A-Fa-f]+);/g, function (match, hex) {
-      return String.fromCharCode(parseInt(hex, 16));
-    });
+  return decode(text);
 }
 
 export default function MultipleDosagesToText({
