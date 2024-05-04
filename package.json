@@ -24,6 +24,9 @@
   "targets": {
     "main": {
       "optimize": true
+    },
+    "module": {
+      "optimize": true
     }
   },
   "scripts": {
