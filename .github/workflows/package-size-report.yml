@@ -4,6 +4,9 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  pull-requests: write
+
 jobs:
   pkg-size-report:
     name: Package Size Report
