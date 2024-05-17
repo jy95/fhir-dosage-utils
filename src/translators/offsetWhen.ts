@@ -12,13 +12,12 @@ import type {
   WhenTimeKeys as TimeKeys,
 } from "../types";
 
-// Function to extract times
 function extractTime(minutes: number) {
-  let days = Math.floor(minutes / 1440);
-  let hours = Math.floor((minutes % 1440) / 60);
+  let d = Math.floor(minutes / 1440);
+  let h = Math.floor((minutes % 1440) / 60);
   let remainingMinutes = minutes % 60;
 
-  return { days, hours, minutes: remainingMinutes };
+  return { d, h, min: remainingMinutes };
 }
 
 function transformOffset(i18next: I18N, offset?: number): string | undefined {
@@ -27,20 +26,16 @@ function transformOffset(i18next: I18N, offset?: number): string | undefined {
   }
 
   let time = extractTime(offset);
+  let order = ["d", "h", "min"] as (keyof typeof time)[];
 
-  let subParts = [
-    time.days > 0
-      ? i18next.t("unitsOfTime:withCount.d", { count: time.days })
-      : undefined,
-    time.hours > 0
-      ? i18next.t("unitsOfTime:withCount.h", { count: time.hours })
-      : undefined,
-    time.minutes > 0
-      ? i18next.t("unitsOfTime:withCount.min", { count: time.minutes })
-      : undefined,
-  ].filter(isNotUndefined);
-
-  return subParts.join(" ");
+  return order
+    .map((unit) =>
+      time[unit] > 0
+        ? i18next.t(`unitsOfTime:withCount.${unit}`, { count: time[unit] })
+        : undefined,
+    )
+    .filter(isNotUndefined)
+    .join(" ");
 }
 
 function transformWhen(i18next: I18N, when?: string[]): string | undefined {

@@ -74,10 +74,7 @@ export class FhirDosageUtils extends Configurator {
     }
 
     // By using the Set values, we are sure it is returned in the way Dosages were written
-    return [...sequences.values()].map((sequence) => {
-      let concurrentInstructions = groups[sequence];
-      return concurrentInstructions;
-    });
+    return Array.from(sequences, (sequence) => groups[sequence]);
   }
 
   /**
