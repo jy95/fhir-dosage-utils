@@ -8,9 +8,9 @@ import type {
   CodeableConcept,
   DisplayOrderParams,
   I18N,
+  Dosage,
 } from "../types";
 
-// Turn a list of codeable concept into a string
 function fromCodeableConceptArrayToString(
   i18next: I18N,
   codes: CodeableConcept[],
@@ -28,32 +28,30 @@ function fromCodeableConceptArrayToString(
   return fromListToString(i18next, codesAsString as string[]);
 }
 
+function extractCodeableList(dos: Dosage): CodeableConcept[] {
+  let asNeededCodeableConcept = (dos as DosageR4).asNeededCodeableConcept;
+  let asNeededFor = (dos as DosageR5).asNeededFor;
+  return (
+    asNeededFor ||
+    (asNeededCodeableConcept !== undefined ? [asNeededCodeableConcept] : [])
+  );
+}
+
 export function transformAsNeededToText({
   dos,
   config,
   i18next,
 }: DisplayOrderParams): string | undefined {
   let asNeededBoolean = (dos as DosageR4).asNeededBoolean;
-  let asNeededCodeableConcept = (dos as DosageR4).asNeededCodeableConcept;
-  let asNeededFor = (dos as DosageR5).asNeededFor;
   let asNeeded = (dos as DosageR5).asNeeded;
-
-  // Codeable concept as list, to make algorithm simpler
-  let codeableList =
-    asNeededFor ||
-    (asNeededCodeableConcept !== undefined ? [asNeededCodeableConcept] : []);
+  let codeableList = extractCodeableList(dos);
 
   if (codeableList.length > 0) {
     return i18next.t("fields.asNeededFor", {
-      reasons: fromCodeableConceptArrayToString(
-        i18next,
-        codeableList as CodeableConcept[],
-        config,
-      ),
+      reasons: fromCodeableConceptArrayToString(i18next, codeableList, config),
     });
   }
 
   let booleanValue = [asNeededBoolean, asNeeded].includes(true);
-
   return booleanValue ? i18next.t("fields.asNeeded") : undefined;
 }
