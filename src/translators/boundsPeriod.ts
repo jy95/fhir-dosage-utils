@@ -15,7 +15,6 @@ export function transformBoundsPeriodToText({
     return undefined;
   }
 
-  // Generate the string version of them
   const boundsPeriod = dos.timing.repeat.boundsPeriod;
 
   let start = formatDatetime({ config, datetime: boundsPeriod.start });

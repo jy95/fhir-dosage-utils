@@ -108,20 +108,16 @@ export class FhirDosageUtils extends Configurator {
    * Turn multiple FHIR Dosage objects into text
    */
   fromMultipleDosageToText(dosages: Dosage[]): string {
-    // As we can have concurrent / sequential instructions, we need a generic algorithm to do the job
     const hasOnlySequentialInstructions =
       this.containsOnlySequentialInstructions(dosages);
 
-    // Sequential instructions
     if (hasOnlySequentialInstructions) {
       const dosagesAsText = dosages.map((d) => this.fromDosageToText(d));
       return fromListToString(this.i18nInstance, dosagesAsText, "then");
     }
 
-    // We have both "sequential" and "concurrent" instructions - time to see what is the configuration
     let sortedDosages = this.groupBySequence(dosages);
 
-    // Now that data structures are filled, it is a piece of cake to generate the result
     let sequentialInstructions: string[] = sortedDosages.map(
       (concurrentInstructions) => {
         let concurrentInstructionsAsString = concurrentInstructions.map(

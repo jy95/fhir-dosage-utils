@@ -25,12 +25,10 @@ export function transformTimeOfDayToText({
 }: DisplayOrderParams): string | undefined {
   let timeOfDay = extractMatchingTimeRepeatField(dos, "timeOfDay");
 
-  // If empty, skip it
   if (isArrayEmpty(timeOfDay)) {
     return undefined;
   }
 
-  // Turn it into a string
   const timeOfDays = timeOfDay.map(formatString);
   const timeOfDaysAsString = fromListToString(i18next, timeOfDays);
 

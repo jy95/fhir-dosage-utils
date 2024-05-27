@@ -58,7 +58,6 @@ export function fromRangeToString({
   const lowValue = low?.value;
   const highValue = high?.value;
 
-  // 1. If we have a empty object, return undefined
   if (allUndefinedInArray(lowValue, highValue)) {
     return undefined;
   }
