@@ -27,6 +27,26 @@ function transformQuantityUnitToString(
   });
 }
 
+type UnitType = "withUnit" | "withoutUnit";
+type ResultUnitType = { prefix: `amount.range.${UnitType}`; unit: string };
+function getParams({ range, config, i18next }: RangeParams): ResultUnitType {
+  const { low, high } = range;
+  let quantityUnit = high || low;
+  let hasQuantityUnit = hasUnit(quantityUnit);
+
+  if (hasQuantityUnit) {
+    return {
+      prefix: `amount.range.withUnit`,
+      unit: transformQuantityUnitToString(i18next, quantityUnit!, config),
+    };
+  }
+
+  return {
+    prefix: `amount.range.withoutUnit`,
+    unit: "",
+  };
+}
+
 // To cover all nasty cases of Range
 // https://build.fhir.org/datatypes.html#Range
 export function fromRangeToString({
@@ -38,24 +58,16 @@ export function fromRangeToString({
   const lowValue = low?.value;
   const highValue = high?.value;
 
-  let quantityUnit = high || low;
-  let hasQuantityUnit = hasUnit(quantityUnit);
-
   // 1. If we have a empty object, return undefined
   if (allUndefinedInArray(lowValue, highValue)) {
     return undefined;
   }
 
-  let unit = hasQuantityUnit
-    ? transformQuantityUnitToString(i18next, quantityUnit!, config)
-    : "";
-  let technicalKey: "withUnit" | "withoutUnit" = hasQuantityUnit
-    ? "withUnit"
-    : "withoutUnit";
+  const { prefix, unit } = getParams({ range, config, i18next });
 
   // 2. Both low & high are present
   if (noUndefinedInArray(lowValue, highValue)) {
-    return i18next.t(`amount.range.${technicalKey}.lowAndHigh`, {
+    return i18next.t(`${prefix}.lowAndHigh`, {
       low: lowValue,
       high: highValue,
       unit: unit,
@@ -64,14 +76,14 @@ export function fromRangeToString({
 
   // 3. Only high is present
   if (isNotUndefined(highValue)) {
-    return i18next.t(`amount.range.${technicalKey}.onlyHigh`, {
+    return i18next.t(`${prefix}.onlyHigh`, {
       high: highValue,
       unit: unit,
     });
   }
 
   // 4. Only low is present
-  return i18next.t(`amount.range.${technicalKey}.onlyLow`, {
+  return i18next.t(`${prefix}.onlyLow`, {
     low: lowValue,
     unit: unit,
   });
