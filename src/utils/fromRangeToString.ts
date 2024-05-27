@@ -64,7 +64,6 @@ export function fromRangeToString({
 
   const { prefix, unit } = getParams({ range, config, i18next });
 
-  // 2. Both low & high are present
   if (noUndefinedInArray(lowValue, highValue)) {
     return i18next.t(`${prefix}.lowAndHigh`, {
       low: lowValue,
@@ -73,7 +72,6 @@ export function fromRangeToString({
     });
   }
 
-  // 3. Only high is present
   if (isNotUndefined(highValue)) {
     return i18next.t(`${prefix}.onlyHigh`, {
       high: highValue,
@@ -81,7 +79,6 @@ export function fromRangeToString({
     });
   }
 
-  // 4. Only low is present
   return i18next.t(`${prefix}.onlyLow`, {
     low: lowValue,
     unit: unit,
