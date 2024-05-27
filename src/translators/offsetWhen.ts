@@ -6,11 +6,36 @@ import {
   allUndefinedInArray,
 } from "../internal/undefinedChecks";
 
-import type {
-  DisplayOrderParams,
-  I18N,
-  WhenTimeKeys as TimeKeys,
-} from "../types";
+import type { DisplayOrderParams, I18N } from "../types";
+
+type TimeKeys =
+  | "MORN"
+  | "MORN.early"
+  | "MORN.late"
+  | "NOON"
+  | "AFT"
+  | "AFT.early"
+  | "AFT.late"
+  | "EVE"
+  | "EVE.early"
+  | "EVE.late"
+  | "NIGHT"
+  | "PHS"
+  | "IMD"
+  | "HS"
+  | "WAKE"
+  | "C"
+  | "CM"
+  | "CD"
+  | "CV"
+  | "AC"
+  | "ACM"
+  | "ACD"
+  | "ACV"
+  | "PC"
+  | "PCM"
+  | "PCD"
+  | "PCV";
 
 function extractTime(minutes: number) {
   let d = Math.floor(minutes / 1440);

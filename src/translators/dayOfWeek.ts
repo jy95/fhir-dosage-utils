@@ -4,14 +4,12 @@ import { isArrayEmpty } from "../internal/isEmptyArray";
 
 import type { DisplayOrderParams } from "../types";
 
-// Function to transform dayOfWeek into a string
 export function transformDayOfWeekToText({
   dos,
   i18next,
 }: DisplayOrderParams): string | undefined {
   let dayOfWeek = extractMatchingTimeRepeatField(dos, "dayOfWeek");
 
-  // If empty, skip it
   if (isArrayEmpty(dayOfWeek)) {
     return undefined;
   }

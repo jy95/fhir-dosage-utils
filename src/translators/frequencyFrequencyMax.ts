@@ -18,7 +18,6 @@ export function transformFrequencyFrequencyMaxToText({
     return undefined;
   }
 
-  // 1. Frequency and frequencyMax are present
   if (noUndefinedInArray(frequency, max)) {
     return i18next.t("fields.frequency.withfrequencyMax", {
       count: max,
@@ -26,11 +25,9 @@ export function transformFrequencyFrequencyMaxToText({
     });
   }
 
-  // 2. Only frequencyMax is present
   if (isNotUndefined(max)) {
     return i18next.t("fields.frequencyMax.frequencyMax", { count: max });
   }
 
-  // 3. Only frequency is present
   return i18next.t("fields.frequency.onlyFrequency", { count: frequency });
 }

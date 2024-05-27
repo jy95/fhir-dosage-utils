@@ -18,7 +18,6 @@ export function transformPeriodPeriodMaxToText({
     return undefined;
   }
 
-  // 1. period and periodMax are present
   if (noUndefinedInArray(period, max)) {
     return i18next.t("fields.periodMax.withPeriod", {
       period: period,
@@ -27,7 +26,6 @@ export function transformPeriodPeriodMaxToText({
     });
   }
 
-  // 2. Only periodMax is present
   if (isNotUndefined(max)) {
     return i18next.t("fields.periodMax.onlyPeriodMax", {
       count: max,
@@ -35,7 +33,6 @@ export function transformPeriodPeriodMaxToText({
     });
   }
 
-  // 3. Only period present
   return i18next.t("fields.period.period", {
     count: period,
     unit: i18next.t(`unitsOfTime:withoutCount.${unit}`, { count: period }),
