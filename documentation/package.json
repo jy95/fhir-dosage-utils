@@ -31,7 +31,7 @@
     "ts-json-schema-generator": "^2.1.1"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.2.1",
+    "@docusaurus/module-type-aliases": "^3.4.0",
     "@docusaurus/tsconfig": "^3.2.1",
     "@docusaurus/types": "^3.2.1",
     "@types/fhir": "^0.0.41",
