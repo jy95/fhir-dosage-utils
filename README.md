@@ -31,3 +31,7 @@ Special thanks to [NHS England](https://digital.nhs.uk/), the author of `Impleme
 <a href="https://github.com/jy95/fhir-dosage-utils/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=jy95/fhir-dosage-utils" />
 </a>
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=jy95/fhir-dosage-utils&type=Date)](https://star-history.com/#jy95/fhir-dosage-utils&Date)
