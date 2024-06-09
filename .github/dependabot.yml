@@ -13,9 +13,9 @@ updates:
       include: "scope"
     schedule:
       interval: "daily"
-  # Files stored in repository testsite
+  # Files stored in repository documentation
   - package-ecosystem: "npm"
-    directory: "/testsite"
+    directory: "/documentation"
     commit-message:
       prefix: chore
       include: "scope"
