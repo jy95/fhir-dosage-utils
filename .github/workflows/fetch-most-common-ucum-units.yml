@@ -1,6 +1,10 @@
 name: Fetch most recent common UCUM units
 
 on:
+  schedule:
+      # Each day at 5:00PM
+      - cron: '0 17 * * *'
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 jobs:
   update_packages:
