@@ -1,0 +1,26 @@
+name: Fetch most recent common UCUM units
+
+on:
+  workflow_dispatch:
+jobs:
+  update_packages:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: 🛎️ Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js ✨
+        uses: actions/setup-node@v4.0.2
+        with:
+          node-version: "lts/*"
+      - name: Do the job 🤖
+        run: |
+          node fetchMostCommonUCUMUnits.mjs
+      - name: Create Pull Request 🤖
+        uses: peter-evans/create-pull-request@v6
+        with:
+          title: Fetch most recent common UCUM units
+          body: |
+            This PR fetches the most recent common UCUM units from the HL7 FHIR valueset and updates the `unitsOfMesure.json` file with the latest codes and display names.
