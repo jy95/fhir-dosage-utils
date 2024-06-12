@@ -1,9 +1,11 @@
 name: Fetch most recent common UCUM units
 
+# Can use https://translate.i18next.com/ afterwards for translation
+
 on:
   schedule:
-      # Each day at 5:00PM
-      - cron: '0 17 * * *'
+    # Each day at 5:00PM
+    - cron: "0 17 * * *"
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 jobs:
