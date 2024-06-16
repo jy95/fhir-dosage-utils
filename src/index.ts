@@ -1,5 +1,5 @@
-// Export utility class and configurator
+// Export utility class
 export { FhirDosageUtils } from "./api";
 
-// Export config type as that it can be used in client codes as well
+// Export types as it can be used in client codes
 export type { Config, DisplayOrderEnum, I18InitOptions } from "./types";

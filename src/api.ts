@@ -30,8 +30,6 @@ export class FhirDosageUtils extends Utils {
    * To init i18next properly according requested criteria
    */
   protected async init() {
-    // You should wait for init to complete (wait for the callback or promise resolution)
-    // before using the t function!
     return await this.i18nInstance.use(ChainedBackend).init({
       fallbackLng: "en",
       lng: this.config.language,

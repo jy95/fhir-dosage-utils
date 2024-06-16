@@ -1,5 +1,4 @@
 import { isNotUndefined } from "./internal/undefinedChecks";
-
 import type { Dosage } from "./types";
 
 export class Utils {
