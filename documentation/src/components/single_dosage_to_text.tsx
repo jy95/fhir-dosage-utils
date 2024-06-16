@@ -32,8 +32,8 @@ export default function SingleDosageToText({
   useEffect(() => {
     async function initializeDosageUtils() {
       const utils = await FhirDosageUtils.build({
-        ...config, 
-        i18nConfig: i18nConfig
+        ...config,
+        i18nConfig: i18nConfig,
       });
       setDosageUtils(utils);
     }

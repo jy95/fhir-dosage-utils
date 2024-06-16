@@ -12,11 +12,7 @@ export class Utils {
       .filter(isNotUndefined);
 
     let encounteredSequenceNumbers = new Set(sequencesNumbers);
-
-    return (
-      encounteredSequenceNumbers.size === 0 ||
-      encounteredSequenceNumbers.size === dosages.length
-    );
+    return [0, dosages.length].includes(encounteredSequenceNumbers.size);
   }
 
   /**
