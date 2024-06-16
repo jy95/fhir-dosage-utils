@@ -19,9 +19,9 @@ npm install fhir-dosage-utils
 ## Usage
 
 ```jsx title="main.js"
-import FhirDosageUtils from "fhir-dosage-utils";
+import { FhirDosageUtils } from "fhir-dosage-utils";
 
-// See https://jy95.github.io/fhir-dosage-utils/api/interface/Params for more info about config
+// See https://jy95.github.io/fhir-dosage-utils/api/interface/Config for more info about config
 const config = {
   language: "en",
 };
@@ -60,7 +60,7 @@ console.log(dosageUtils.containsOnlySequentialInstructions([dosage]));
 console.log(dosageUtils.groupBySequence([dosage]));
 
 // ... And many things
-// Read https://jy95.github.io/fhir-dosage-utils/api/class/default for more info
+// Read https://jy95.github.io/fhir-dosage-utils/api/class/FhirDosageUtils for more info
 ```
 
 ## Output examples
