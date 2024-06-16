@@ -25,13 +25,11 @@ export class Utils {
 
     for (let idx = 0; idx < dosages.length; idx++) {
       const dosage = dosages[idx];
-
-      let sequenceNr = dosage.sequence || idx + 1;
-      let localGroup = groups[sequenceNr] || [];
+      let sequenceNr = dosage.sequence ?? idx + 1;
+      let localGroup = groups[sequenceNr] ?? [];
 
       localGroup.push(dosage);
       groups[sequenceNr] = localGroup;
-
       sequences.add(sequenceNr);
     }
 
