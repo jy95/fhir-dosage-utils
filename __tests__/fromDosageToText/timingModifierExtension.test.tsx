@@ -1,6 +1,6 @@
 // For typings autocomplete whatever your IDE
 import { expect, test, describe } from "@jest/globals";
-import { FhirDosageUtils, Configurator } from "../../src/index";
+import { FhirDosageUtils } from "../../src/index";
 
 import type { Dosage } from "fhir/r4";
 

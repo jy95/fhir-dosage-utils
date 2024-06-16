@@ -1,6 +1,6 @@
 // For typings autocomplete whatever your IDE
 import { expect, test, describe } from "@jest/globals";
-import FhirDosageUtils from "../src/index";
+import { FhirDosageUtils } from "../src/index";
 
 import type { Dosage } from "fhir/r4";
 
@@ -30,8 +30,8 @@ describe("API scenarios", () => {
       },
     };
 
-    let language1 = dosagesEn.getLanguage();
-    let language2 = dosagesFr.getLanguage();
+    let language1 = dosagesEn.getProperty("language");
+    let language2 = dosagesFr.getProperty("language");
 
     let result1 = dosagesEn.fromDosageToText(dosage);
     let result2 = dosagesFr.fromDosageToText(dosage);
@@ -51,10 +51,10 @@ describe("API scenarios", () => {
       text: "Test string",
     };
 
-    let order1 = dosagesEn.getDisplayOrder();
+    let order1 = dosagesEn.getProperty("displayOrder");
     let result1 = dosagesEn.fromDosageToText(dosage);
-    dosagesEn.changeDisplayOrder(["text"]);
-    let order2 = dosagesEn.getDisplayOrder();
+    dosagesEn.setProperty("displayOrder", ["text"]);
+    let order2 = dosagesEn.getProperty("displayOrder");
     let result2 = dosagesEn.fromDosageToText(dosage);
     expect(order1).not.toBe(order2);
     expect(result1).not.toBe(result2);
@@ -78,21 +78,21 @@ describe("API scenarios", () => {
   });
 
   test("changeDisplaySeparator must be applied", async () => {
-    let sep1 = dosagesEn.getDisplaySeparator();
-    dosagesEn.changeDisplaySeparator(" | ");
-    let sep2 = dosagesEn.getDisplaySeparator();
+    let sep1 = dosagesEn.getProperty("displaySeparator");
+    dosagesEn.setProperty("displaySeparator", " | ");
+    let sep2 = dosagesEn.getProperty("displaySeparator");
     expect(sep1).not.toBe(sep2);
   });
 
   test("changeDateTimeFormatOptions must be applied", async () => {
-    let opts1 = dosagesEn.getDateTimeFormatOptions();
-    dosagesEn.changeDateTimeFormatOptions({
+    let opts1 = dosagesEn.getProperty("dateTimeFormatOptions");
+    dosagesEn.setProperty("dateTimeFormatOptions", {
       day: "2-digit",
       hour: "numeric",
       minute: "numeric",
       second: "2-digit",
     });
-    let opts2 = dosagesEn.getDateTimeFormatOptions();
+    let opts2 = dosagesEn.getProperty("dateTimeFormatOptions");
     expect(opts1).not.toBe(opts2);
   });
 });
