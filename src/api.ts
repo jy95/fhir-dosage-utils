@@ -1,80 +1,84 @@
-import { Configurator } from "./classes/Configurator";
+import i18next from "i18next";
+import ChainedBackend from "i18next-chained-backend";
 
+import { defaultAttributes } from "./configurator";
+import { Utils } from "./dosageUtils";
 import { fromDisplayOrderToResult } from "./utils/fromDisplayOrderToResult";
 import { fromListToString } from "./utils/fromListToString";
 import { isNotUndefined } from "./internal/undefinedChecks";
 
-import type {
-  Params,
-  Dosage,
-  DisplayOrder,
-  I18InitOptions,
-  NamespacesLocale,
-} from "./types";
+import type { I18N, Dosage, DisplayOrder, Config } from "./types";
 
-import resourcesToBackend from "i18next-resources-to-backend";
-const defaultI18NConfig: I18InitOptions = {
-  backend: {
-    backends: [
-      resourcesToBackend(
-        async (lng: string, ns: NamespacesLocale) =>
-          import(`./locales/${lng}/${ns}.json`),
-      ),
-    ],
-  },
-};
+type PropertyKey = keyof Config;
+type SettableProperties = Exclude<PropertyKey, "language">;
 
-export class FhirDosageUtils extends Configurator {
+export class FhirDosageUtils extends Utils {
+  protected config: Config;
+  // When multiple instances of the class are used, they must act independantly regardless of the others
+  protected i18nInstance: I18N;
+
+  protected constructor(config: Partial<Config>) {
+    super();
+    this.config = {
+      ...defaultAttributes,
+      ...config,
+    };
+    this.i18nInstance = i18next.createInstance();
+  }
+
+  /**
+   * To init i18next properly according requested criteria
+   */
+  protected async init() {
+    // You should wait for init to complete (wait for the callback or promise resolution)
+    // before using the t function!
+    return await this.i18nInstance.use(ChainedBackend).init({
+      fallbackLng: "en",
+      lng: this.config.language,
+      ns: [
+        "common",
+        "daysOfWeek",
+        "eventTiming",
+        "unitsOfTime",
+        "quantityComparator",
+      ],
+      defaultNS: "common",
+      ...this.config.i18nConfig,
+    });
+  }
+
   /**
    * Factory to create a fine-tuned instance of the utility class
    */
-  static async build(
-    userConfig?: Params,
-    i18nConfig: I18InitOptions = defaultI18NConfig,
-  ) {
-    const instance = new FhirDosageUtils(userConfig, i18nConfig);
+  static async build(config: Partial<Config> = {}) {
+    const instance = new FhirDosageUtils(config);
     await instance.init();
     return instance;
   }
 
   /**
-   * Does this array of Dosage objects contains only "sequential" instructions ?
+   * Extract wanted property from config
    */
-  containsOnlySequentialInstructions(dosages: Dosage[]): boolean {
-    let sequencesNumbers = dosages
-      .map((d) => d.sequence)
-      .filter(isNotUndefined);
-
-    let encounteredSequenceNumbers = new Set(sequencesNumbers);
-
-    return (
-      encounteredSequenceNumbers.size === 0 ||
-      encounteredSequenceNumbers.size === dosages.length
-    );
+  getProperty<T extends PropertyKey>(key: T): Config[T] {
+    return this.config[key];
   }
 
   /**
-   * Turn this array of Dosage objects into a data structure useful to handle "sequential" and "concurrent" instructions (cf. "sequence" property).
-   * @returns {Dosage[][]} - A two-dimensional array where each inner array contains Dosage objects belonging to the same sequence numberr.
+   * Set wanted property to config
    */
-  groupBySequence(dosages: Dosage[]) {
-    let groups: Record<number, Dosage[]> = {};
-    let sequences = new Set<number>();
+  setProperty<T extends SettableProperties>(
+    key: T,
+    value: Config[T],
+  ): undefined {
+    this.config[key] = value;
+  }
 
-    for (let idx = 0; idx < dosages.length; idx++) {
-      const dosage = dosages[idx];
-
-      let sequenceNr = dosage.sequence || idx + 1;
-      let localGroup = groups[sequenceNr] || [];
-
-      localGroup.push(dosage);
-      groups[sequenceNr] = localGroup;
-
-      sequences.add(sequenceNr);
-    }
-
-    // By using the Set values, we are sure it is returned in the way Dosages were written
-    return Array.from(sequences, (sequence) => groups[sequence]);
+  /**
+   * To change language
+   */
+  async changeLanguage(lng: string) {
+    this.config["language"] = lng;
+    return this.i18nInstance.changeLanguage(lng);
   }
 
   /**
