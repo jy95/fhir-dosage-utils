@@ -62,10 +62,6 @@ export class FhirDosageUtils extends Utils {
     return this.i18nInstance.changeLanguage(lng);
   }
 
-  /**
-   * From a single dosage, extract specific field(s) requested by user.
-   * Some use cases could request to split part of the object for given needs (quantity and timing separately)
-   */
   getFields(dos: Dosage, ...order: DisplayOrder[]): string {
     let parts = order
       .map((entry) =>

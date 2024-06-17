@@ -95,10 +95,8 @@ function fromDateToMappedDate(datetime: string): MappedDate {
   };
 }
 
-/**
- * Generic function to map datetimes to user friendly date
- * e.g. from 2018, 1973-06, 1905-08-23, 2015-02-07T13:28:17-05:00 or 2017-01-01T00:00:00.000Z
- */
+// Generic function to map datetimes to user friendly date
+// e.g. from 2018, 1973-06, 1905-08-23, 2015-02-07T13:28:17-05:00 or 2017-01-01T00:00:00.000Z
 export function formatDatetimes({ config, datetimes }: Args): string[] {
   const entries = datetimes.map(fromDateToMappedDate);
 
