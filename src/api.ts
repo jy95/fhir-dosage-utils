@@ -8,13 +8,11 @@ import { fromListToString } from "./utils/fromListToString";
 import { isNotUndefined } from "./internal/undefinedChecks";
 
 import type { I18N, Dosage, DisplayOrder, Config } from "./types";
-
 type PropertyKey = keyof Config;
 type SettableProperties = Exclude<PropertyKey, "language">;
 
 export class FhirDosageUtils extends Utils {
   protected config: Config;
-  // When multiple instances of the class are used, they must act independantly regardless of the others
   protected i18nInstance: I18N;
 
   protected constructor(config: Partial<Config>) {
@@ -26,9 +24,7 @@ export class FhirDosageUtils extends Utils {
     this.i18nInstance = i18next.createInstance();
   }
 
-  /**
-   * To init i18next properly according requested criteria
-   */
+  // To init i18next properly according requested criteria
   protected async init() {
     return await this.i18nInstance.use(ChainedBackend).init({
       fallbackLng: "en",
@@ -45,25 +41,19 @@ export class FhirDosageUtils extends Utils {
     });
   }
 
-  /**
-   * Factory to create a fine-tuned instance of the utility class
-   */
+  // Factory to create a fine-tuned instance of the utility class
   static async build(config: Partial<Config> = {}) {
     const instance = new FhirDosageUtils(config);
     await instance.init();
     return instance;
   }
 
-  /**
-   * Extract wanted property from config
-   */
+  // Extract wanted property from config
   getProperty<T extends PropertyKey>(key: T): Config[T] {
     return this.config[key];
   }
 
-  /**
-   * Set wanted property to config
-   */
+  // Set wanted property to config
   setProperty<T extends SettableProperties>(
     key: T,
     value: Config[T],
@@ -71,9 +61,7 @@ export class FhirDosageUtils extends Utils {
     this.config[key] = value;
   }
 
-  /**
-   * To change language
-   */
+  // To change language
   async changeLanguage(lng: string) {
     this.config["language"] = lng;
     return this.i18nInstance.changeLanguage(lng);
@@ -98,41 +86,41 @@ export class FhirDosageUtils extends Utils {
     return parts.join(this.config.displaySeparator);
   }
 
-  /**
-   * Turn a FHIR Dosage object into text
-   */
+  // Turn a FHIR Dosage object into text
   fromDosageToText(dos: Dosage): string {
     let order = this.config.displayOrder;
     return this.getFields(dos, ...order);
   }
 
-  /**
-   * Turn multiple FHIR Dosage objects into text
-   */
+  // Turn multiple FHIR Dosage objects into text
   fromMultipleDosageToText(dosages: Dosage[]): string {
-    const hasOnlySequentialInstructions =
-      this.containsOnlySequentialInstructions(dosages);
-
-    if (hasOnlySequentialInstructions) {
-      const dosagesAsText = dosages.map((d) => this.fromDosageToText(d));
-      return fromListToString(this.i18nInstance, dosagesAsText, "then");
+    if (this.containsOnlySequentialInstructions(dosages)) {
+      return this.convertSequentialDosagesToText(dosages);
     }
+    return this.convertGroupedDosagesToText(dosages);
+  }
 
-    let sortedDosages = this.groupBySequence(dosages);
+  private convertSequentialDosagesToText(dosages: Dosage[]): string {
+    const dosagesAsText = dosages.map((d) => this.fromDosageToText(d));
+    return fromListToString(this.i18nInstance, dosagesAsText, "then");
+  }
 
-    let sequentialInstructions: string[] = sortedDosages.map(
-      (concurrentInstructions) => {
-        let concurrentInstructionsAsString = concurrentInstructions.map(
-          (dosage) => this.fromDosageToText(dosage),
-        );
-        return fromListToString(
-          this.i18nInstance,
-          concurrentInstructionsAsString,
-          "and",
-        );
-      },
+  private convertConcurrentDosagesToText(dosages: Dosage[]): string {
+    const concurrentInstructionsAsString = dosages.map((d) =>
+      this.fromDosageToText(d),
     );
+    return fromListToString(
+      this.i18nInstance,
+      concurrentInstructionsAsString,
+      "and",
+    );
+  }
 
+  private convertGroupedDosagesToText(dosages: Dosage[]): string {
+    const sortedDosages = this.groupBySequence(dosages);
+    const sequentialInstructions = sortedDosages.map((d) =>
+      this.convertConcurrentDosagesToText(d),
+    );
     return fromListToString(this.i18nInstance, sequentialInstructions, "then");
   }
 }

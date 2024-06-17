@@ -2,9 +2,7 @@ import { isNotUndefined } from "./internal/undefinedChecks";
 import type { Dosage } from "./types";
 
 export class Utils {
-  /**
-   * Does this array of Dosage objects contains only "sequential" instructions ?
-   */
+  // Does this array of Dosage objects contains only "sequential" instructions ?
   containsOnlySequentialInstructions(dosages: Dosage[]): boolean {
     let sequencesNumbers = dosages
       .map((d) => d.sequence)
