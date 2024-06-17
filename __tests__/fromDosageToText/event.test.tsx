@@ -1,6 +1,6 @@
 // For typings autocomplete whatever your IDE
 import { expect, test, describe } from "@jest/globals";
-import FhirDosageUtils from "../../src/index";
+import { FhirDosageUtils } from "../../src/index";
 
 // For the WHY, consult this
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/format#avoid_comparing_formatted_date_values_to_static_values

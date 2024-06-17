@@ -1,8 +1,5 @@
-import { FhirDosageUtils } from "./api";
-import type { Params, DisplayOrderEnum, I18InitOptions } from "./types";
+// Export utility class
+export { FhirDosageUtils } from "./api";
 
-// Default export to make it user-friendly
-export default FhirDosageUtils;
-
-// Export config type as that it can be used in client codes as well
-export type { Params, DisplayOrderEnum, I18InitOptions };
+// Export types as it can be used in client codes
+export type { Config, DisplayOrderEnum, I18InitOptions } from "./types";

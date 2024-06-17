@@ -16,21 +16,17 @@ export function transformMaxDosePerPeriodToText({
   const maxDosePerPeriod = dos.maxDosePerPeriod;
 
   // In R4, it was a single object / In R5, it is an array
-  // So better to have a generic approach
   const values = Array.isArray(maxDosePerPeriod)
     ? maxDosePerPeriod
     : [maxDosePerPeriod];
 
-  // Only consider not empty array
   if (values.length === 0) {
     return undefined;
   }
 
   // Periods are expressed as ratio (like rateRatio)
   const valuesAsString = values
-    .map((period) => {
-      return fromRatioToString({ config, i18next, ratio: period });
-    })
+    .map((period) => fromRatioToString({ config, i18next, ratio: period }))
     .filter(isNotUndefined) as string[];
 
   const maxDosePerPeriodText = fromListToString(i18next, valuesAsString);

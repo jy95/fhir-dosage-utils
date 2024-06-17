@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import FhirDosageUtils from "fhir-dosage-utils";
+import { FhirDosageUtils } from "fhir-dosage-utils";
 import { decode } from "html-entities";
 import CodeBlock from "@theme/CodeBlock";
 
 // Types
 import type { Dosage as DosageR4 } from "fhir/r4";
 import type { Dosage as DosageR5 } from "fhir/r5";
-import type { Params as Config, I18InitOptions } from "fhir-dosage-utils";
+import type { Config, I18InitOptions } from "fhir-dosage-utils";
 type Dosage = DosageR4 | DosageR5;
 
 // For the WHY, consult this
@@ -31,7 +31,10 @@ export default function MultipleDosagesToText({
   // Set up instance
   useEffect(() => {
     async function initializeDosageUtils() {
-      const utils = await FhirDosageUtils.build(config, i18nConfig);
+      const utils = await FhirDosageUtils.build({
+        ...config,
+        i18nConfig: i18nConfig,
+      });
       setDosageUtils(utils);
     }
 

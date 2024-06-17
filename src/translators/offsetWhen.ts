@@ -54,12 +54,10 @@ function transformOffset(i18next: I18N, offset?: number): string | undefined {
   let order = ["d", "h", "min"] as (keyof typeof time)[];
 
   return order
+    .filter((unit) => time[unit] > 0)
     .map((unit) =>
-      time[unit] > 0
-        ? i18next.t(`unitsOfTime:withCount.${unit}`, { count: time[unit] })
-        : undefined,
+      i18next.t(`unitsOfTime:withCount.${unit}`, { count: time[unit] }),
     )
-    .filter(isNotUndefined)
     .join(" ");
 }
 
