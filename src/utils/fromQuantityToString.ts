@@ -29,6 +29,5 @@ export function fromQuantityToString({
   }
 
   let comparatorString = i18next.t(`quantityComparator:${comparatorCode}`);
-
   return `${comparatorString} ${quantityString}`;
 }
