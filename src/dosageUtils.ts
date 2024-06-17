@@ -19,20 +19,20 @@ export class Utils {
    * @returns {Dosage[][]} - A two-dimensional array where each inner array contains Dosage objects belonging to the same sequence numberr.
    */
   groupBySequence(dosages: Dosage[]) {
-    let groups: Record<number, Dosage[]> = {};
-    let sequences = new Set<number>();
+    let sequences = new Set<number | undefined>();
+    let sequencesMap = new Map<number | undefined, Dosage[]>();
 
-    for (let idx = 0; idx < dosages.length; idx++) {
-      const dosage = dosages[idx];
-      let sequenceNr = dosage.sequence ?? idx + 1;
-      let localGroup = groups[sequenceNr] ?? [];
-
+    for (let dosage of dosages) {
+      let sequenceNr = dosage.sequence;
+      let localGroup = sequencesMap.get(sequenceNr) ?? [];
       localGroup.push(dosage);
-      groups[sequenceNr] = localGroup;
+      sequencesMap.set(sequenceNr, localGroup);
       sequences.add(sequenceNr);
     }
 
-    // By using the Set values, we are sure it is returned in the way Dosages were written
-    return Array.from(sequences, (sequence) => groups[sequence]);
+    return Array.from(
+      sequences,
+      (sequence) => sequencesMap.get(sequence) as Dosage[],
+    );
   }
 }
