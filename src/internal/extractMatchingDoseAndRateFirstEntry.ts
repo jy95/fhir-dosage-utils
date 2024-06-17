@@ -11,7 +11,6 @@ export function extractMatchingDoseAndRateFirstEntry<T extends KeyType>(
     return undefined;
   }
 
-  // Find the first entry that match criteria
   let doseAndRate = dos.doseAndRate.find((s) => isNotUndefined(s[key]));
 
   if (!isNotUndefined(doseAndRate)) {

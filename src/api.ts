@@ -24,7 +24,6 @@ export class FhirDosageUtils extends Utils {
     this.i18nInstance = i18next.createInstance();
   }
 
-  // To init i18next properly according requested criteria
   protected async init() {
     return await this.i18nInstance.use(ChainedBackend).init({
       fallbackLng: "en",
@@ -41,19 +40,16 @@ export class FhirDosageUtils extends Utils {
     });
   }
 
-  // Factory to create a fine-tuned instance of the utility class
   static async build(config: Partial<Config> = {}) {
     const instance = new FhirDosageUtils(config);
     await instance.init();
     return instance;
   }
 
-  // Extract wanted property from config
   getProperty<T extends PropertyKey>(key: T): Config[T] {
     return this.config[key];
   }
 
-  // Set wanted property to config
   setProperty<T extends SettableProperties>(
     key: T,
     value: Config[T],
@@ -61,7 +57,6 @@ export class FhirDosageUtils extends Utils {
     this.config[key] = value;
   }
 
-  // To change language
   async changeLanguage(lng: string) {
     this.config["language"] = lng;
     return this.i18nInstance.changeLanguage(lng);
@@ -86,13 +81,11 @@ export class FhirDosageUtils extends Utils {
     return parts.join(this.config.displaySeparator);
   }
 
-  // Turn a FHIR Dosage object into text
   fromDosageToText(dos: Dosage): string {
     let order = this.config.displayOrder;
     return this.getFields(dos, ...order);
   }
 
-  // Turn multiple FHIR Dosage objects into text
   fromMultipleDosageToText(dosages: Dosage[]): string {
     if (this.containsOnlySequentialInstructions(dosages)) {
       return this.convertSequentialDosagesToText(dosages);
