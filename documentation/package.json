@@ -27,7 +27,7 @@
     "prism-react-renderer": "^2.3.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-monaco-editor": "^0.56.0",
+    "react-monaco-editor": "^0.56.1",
     "ts-json-schema-generator": "^2.3.0"
   },
   "devDependencies": {
