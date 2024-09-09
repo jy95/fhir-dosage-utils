@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocumentation=self.webpackChunkdocumentation||[]).push([[7472],{5513:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Customizing i18next Configuration in Our Library","permalink":"/fhir-dosage-utils/blog/empowerment","unlisted":false},{"title":"Welcome","permalink":"/fhir-dosage-utils/blog/welcome","unlisted":false}]}')}}]);
