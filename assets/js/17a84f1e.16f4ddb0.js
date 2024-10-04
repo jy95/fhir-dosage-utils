@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocumentation=self.webpackChunkdocumentation||[]).push([[5040],{95333:e=>{e.exports=JSON.parse('{"tags":[{"label":"features","permalink":"/fhir-dosage-utils/blog/tags/features","count":1},{"label":"welcome","permalink":"/fhir-dosage-utils/blog/tags/welcome","count":1}]}')}}]);
