@@ -1,0 +1,48 @@
+# .github/workflows/empty-commit.yml
+name: Empty Commit for Semantic Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_type:
+        description: 'Type of commit (feat, fix, chore, etc.)'
+        required: true
+        default: 'perf'
+      commit_scope:
+        description: 'Scope of the commit (optional)'
+        required: false
+      commit_message:
+        description: 'Commit message (optional)'
+        required: false
+        default: 'update dependencies'
+
+jobs:
+  trigger-semantic-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+# https://github.com/actions/checkout/discussions/479#discussioncomment-625461
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Create an empty commit
+        run: |
+          # If commit scope is provided, format it
+          if [ -n "${{ github.event.inputs.commit_scope }}" ]; then
+            SCOPE="(${ { github.event.inputs.commit_scope }})"
+          else
+            SCOPE=""
+          fi
+          
+          # Construct the commit message using the inputs
+          COMMIT_MESSAGE="${{ github.event.inputs.commit_type }}$SCOPE: ${{ github.event.inputs.commit_message }}"
+          
+          # Create the empty commit
+          git commit --allow-empty -m "$COMMIT_MESSAGE"
+
+      - name: Push commit
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: git push origin main
