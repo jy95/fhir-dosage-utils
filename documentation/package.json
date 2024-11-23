@@ -33,7 +33,7 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.6.3",
     "@docusaurus/tsconfig": "^3.6.2",
-    "@docusaurus/types": "^3.6.0",
+    "@docusaurus/types": "^3.6.3",
     "@types/fhir": "^0.0.41",
     "docusaurus-plugin-typedoc-api": "^4.3.0",
     "json-schema-typed": "^8.0.1",
