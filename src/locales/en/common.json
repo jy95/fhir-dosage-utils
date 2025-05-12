@@ -8,12 +8,12 @@
       "withUnit": {
         "lowAndHigh": "{{low}} to {{high}} {{unit}}",
         "onlyHigh": "up to {{high}} {{unit}}",
-        "onlyLow": "at least {{low}} {{unit}}"
+        "onlyLow": "{{low}} {{unit}}"
       },
       "withoutUnit": {
         "lowAndHigh": "{{low}} to {{high}}",
         "onlyHigh": "up to {{high}}",
-        "onlyLow": "at least {{low}}"
+        "onlyLow": "{{low}}"
       }
     },
     "ratio": {
