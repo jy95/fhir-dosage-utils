@@ -16,7 +16,7 @@
     "generateSchema": "node generateSchemas.mjs"
   },
   "dependencies": {
-    "@docusaurus/core": "^3.2.1",
+    "@docusaurus/core": "^3.8.1",
     "@docusaurus/preset-classic": "^3.6.3",
     "@docusaurus/remark-plugin-npm2yarn": "^3.8.1",
     "@mdx-js/react": "^3.1.0",
