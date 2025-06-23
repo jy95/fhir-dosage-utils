@@ -16,7 +16,7 @@
     "generateSchema": "node generateSchemas.mjs"
   },
   "dependencies": {
-    "@docusaurus/core": "^3.2.1",
+    "@docusaurus/core": "^3.8.1",
     "@docusaurus/preset-classic": "^3.8.1",
     "@docusaurus/remark-plugin-npm2yarn": "^3.8.1",
     "@mdx-js/react": "^3.1.0",
@@ -31,7 +31,7 @@
     "ts-json-schema-generator": "^2.4.0"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.6.3",
+    "@docusaurus/module-type-aliases": "^3.8.1",
     "@docusaurus/tsconfig": "^3.8.1",
     "@docusaurus/types": "^3.8.1",
     "@types/fhir": "^0.0.41",
