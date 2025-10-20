@@ -15,6 +15,7 @@ permissions:
 jobs:
   release:
     name: Release
+    environment: publisher
     permissions:
       actions: write
       contents: write # to be able to publish a GitHub release
