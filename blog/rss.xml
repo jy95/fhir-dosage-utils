@@ -18,9 +18,9 @@
 i18next, the internationalization framework, plays a crucial role in facilitating multilingual support. Now, with this enhancement, users have greater control over how i18next behaves within our system.</p>
 <p>Benefits :</p>
 <ul>
-<li><strong>Flexibility</strong> : Users can adapt i18next settings to suit their project's needs, ensuring a seamless internationalization experience.</li>
-<li><strong>Customization</strong> : Fine-tune language-related functionalities, such as pluralization rules or date formatting, to match project specifications.</li>
-<li><strong>Ease of Integration</strong> : Our library seamlessly integrates with existing i18next workflows, minimizing implementation hurdles.</li>
+<li class=""><strong>Flexibility</strong> : Users can adapt i18next settings to suit their project's needs, ensuring a seamless internationalization experience.</li>
+<li class=""><strong>Customization</strong> : Fine-tune language-related functionalities, such as pluralization rules or date formatting, to match project specifications.</li>
+<li class=""><strong>Ease of Integration</strong> : Our library seamlessly integrates with existing i18next workflows, minimizing implementation hurdles.</li>
 </ul>]]></content:encoded>
             <category>features</category>
         </item>
@@ -33,10 +33,10 @@ i18next, the internationalization framework, plays a crucial role in facilitatin
             <content:encoded><![CDATA[<p>Welcome to <code>fhir-dosage-utils</code>.<br>
 <!-- -->Key Features:</p>
 <ul>
-<li><strong>Compatible:</strong> Works with <a href="https://hl7.org/fhir/R4/dosage.html" target="_blank" rel="noopener noreferrer">Dosage R4</a> and <a href="https://hl7.org/fhir/R5/dosage.html" target="_blank" rel="noopener noreferrer">Dosage R5</a></li>
-<li><strong>Extensibility</strong> Easily adaptable and extendable to accommodate your requirements</li>
-<li><strong>Internationalization</strong> Seamlessly extendable to other languages with <code>i18next</code></li>
-<li><strong>Integration Ease</strong> Works effortlessly in various environments like the browser, Node.js, ...</li>
+<li class=""><strong>Compatible:</strong> Works with <a href="https://hl7.org/fhir/R4/dosage.html" target="_blank" rel="noopener noreferrer" class="">Dosage R4</a> and <a href="https://hl7.org/fhir/R5/dosage.html" target="_blank" rel="noopener noreferrer" class="">Dosage R5</a></li>
+<li class=""><strong>Extensibility</strong> Easily adaptable and extendable to accommodate your requirements</li>
+<li class=""><strong>Internationalization</strong> Seamlessly extendable to other languages with <code>i18next</code></li>
+<li class=""><strong>Integration Ease</strong> Works effortlessly in various environments like the browser, Node.js, ...</li>
 </ul>]]></content:encoded>
             <category>welcome</category>
         </item>
