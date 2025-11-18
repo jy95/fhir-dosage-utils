@@ -36,7 +36,7 @@
     "@docusaurus/types": "^3.8.1",
     "@types/fhir": "^0.0.41",
     "docusaurus-plugin-typedoc-api": "^4.3.0",
-    "json-schema-typed": "^8.0.1",
+    "json-schema-typed": "^8.0.2",
     "typescript": "~5.4.5"
   },
   "browserslist": {
