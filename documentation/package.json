@@ -26,7 +26,7 @@
     "monaco-editor-webpack-plugin": "^7.1.1",
     "prism-react-renderer": "^2.4.1",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "react-dom": "^19.2.1",
     "react-monaco-editor": "^0.59.0",
     "ts-json-schema-generator": "^2.4.0"
   },
