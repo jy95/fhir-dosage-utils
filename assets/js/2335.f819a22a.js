@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkdocumentation=globalThis.webpackChunkdocumentation||[]).push([[2335],{42335(t){t.exports=JSON.parse('{"mon":"montag","tue":"dienstag","wed":"mittwoch","thu":"donnerstag","fri":"freitag","sat":"samstag","sun":"sonntag"}')}}]);
